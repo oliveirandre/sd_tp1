@@ -4,21 +4,41 @@ package entities;
  *
  * @author Andre e Joao
  */
+
+import shared.IOutsideWorld;
+import shared.IPark;
+import shared.ILounge;
+
 public class Customer extends Thread {
     
     private CustomerState state;
     
+    private final IOutsideWorld outsideWorld;
+    private final IPark park;
+    private final ILounge lounge;
+    
+    private boolean carRepaired = false;
+    
+    public Customer(IOutsideWorld outsideWorld, IPark park, ILounge lounge) {
+        this.outsideWorld = outsideWorld;
+        this.park = park;
+        this.lounge = lounge;
+    }
+    
     @Override
     public void run() {
-        while(true) {
+        while(!this.carRepaired) {
             switch(this.state) {
                 case NORMAL_LIFE_WITH_CAR:
+                    this.carRepaired = true;
                     break;
                 case PARK:
                     break;
                 case WAITING_FOR_REPLACE_CAR:
                     break;
                 case RECEPTION:
+                    // lounge.talkWithManager(); lounge.collectKey() ou lounge.backToWorkByBus()
+                    // lounge.payForTheService(); lounge.collectCar();
                     break;
                 case NORMAL_LIFE_WITHOUT_CAR:
                     break;

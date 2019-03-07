@@ -11,13 +11,13 @@ package main;
  * @author Andre e Joao
  */
 
+import repository.Piece;
+import repository.RepairShop;
 import shared.Lounge;
 import shared.OutsideWorld;
 import shared.Park;
 import shared.RepairArea;
 import shared.SupplierSite;
-
-import repository.RepairShop;
 
 public class Main {
     
@@ -60,7 +60,10 @@ public class Main {
         for(int i = 0; i < nManagers; i++) {
             
         }
-        
+		
+        Piece p = new Piece();
+		
+		System.out.println(p.getTypePiece());
     }
     
 }

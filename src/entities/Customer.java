@@ -5,9 +5,9 @@ package entities;
  * @author Andre e Joao
  */
 
+import shared.ILounge;
 import shared.IOutsideWorld;
 import shared.IPark;
-import shared.ILounge;
 
 public class Customer extends Thread {
     
@@ -30,7 +30,7 @@ public class Customer extends Thread {
         while(!this.carRepaired) {
             switch(this.state) {
                 case NORMAL_LIFE_WITH_CAR:
-                    this.carRepaired = true;
+                    
                     break;
                 case PARK:
                     break;
@@ -39,6 +39,8 @@ public class Customer extends Thread {
                 case RECEPTION:
                     // lounge.talkWithManager(); lounge.collectKey() ou lounge.backToWorkByBus()
                     // lounge.payForTheService(); lounge.collectCar();
+					
+					//this.carRepaired = true; dentro do lounge.payForTheService();
                     break;
                 case NORMAL_LIFE_WITHOUT_CAR:
                     break;

@@ -1,5 +1,9 @@
 package entities;
 
+import shared.ILounge;
+import shared.IRepairArea;
+import shared.ISupplierSite;
+
 /**
  *
  * @author Andre e Joao
@@ -8,6 +12,16 @@ public class Manager extends Thread {
     
     private ManagerState state;
     
+    private final ILounge lounge;
+    private final IRepairArea repairArea;
+    private final ISupplierSite supplierSite;
+    
+    public Manager(ILounge lounge, IRepairArea repairArea, ISupplierSite supplierSite) {
+        this.lounge = lounge;
+		this.repairArea = repairArea;
+        this.supplierSite = supplierSite;
+    }
+	
     @Override
     public void run() {
        while(true) {

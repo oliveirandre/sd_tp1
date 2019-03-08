@@ -1,14 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package shared;
-
 /**
  *
- * @author andre
+ * @author andre and joao
  */
 public interface IRepairArea {
-    
+    public void readThePaper();
+	
+	public void startRepairProcedure();
+	public void getVehicle();
+	public void fixIt();
+	public void returnVehicle();
+	
+	public void getRequiredPart();
+	
+	public boolean partAvailable();
+	public void letManagerKnow();
+	
+	public void resumeRepairProcedure();
+	public void repairConcluded();
+	
+	
 }

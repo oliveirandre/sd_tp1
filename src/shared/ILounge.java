@@ -1,14 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package shared;
 
 /**
  *
- * @author andre
+ * @author andre and joao
  */
 public interface ILounge {
-    
+    public void queueIn();
+	public void talkWithManager();
+	
+	public void payForService();
+	public void collectKey(); //define what it is
+
+	//getNextTask está aqui e no supplier store
+	public void hetNextTask();
+	
+	public void talkToCustomer();
+	public void phoneCustomer();
+	public void handCarKey();
+	public void receivePayment();
+	public void registerService();
+	
+	public void goToSupplier(); //does he have to be in lounge to go to supplier???
+	 
+	public void getNextTask();
+	
+	public void backToWorkByBus();
 }

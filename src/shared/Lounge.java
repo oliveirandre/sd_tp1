@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package shared;
 
 /**
  *
  * @author andre and joao
  */
-public class Lounge {
-    
+public class Lounge{
+    //antes dum wait há sempre while 
+	//por exemplo o mecanico esta a espera enquanto nao houver peças ou carros para arranjar
 }

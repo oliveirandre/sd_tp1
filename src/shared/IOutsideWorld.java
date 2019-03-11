@@ -6,8 +6,7 @@ package shared;
  */
 public interface IOutsideWorld {
     public void decideOnRepair();
-	public void goToRepairShop();
-	
-	public void queueIn();
-	
+    public void goToRepairShop();
+    public void phoneToCustomer();
+    public void queueIn();	
 }

@@ -20,5 +20,8 @@ public class OutsideWorld implements IOutsideWorld{
 	public void queueIn() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
+        
+        public synchronized void phoneToCustomer() {
+        }
     
 }

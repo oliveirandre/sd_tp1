@@ -18,7 +18,7 @@ public class Manager extends Thread {
     
     public Manager(ILounge lounge, IRepairArea repairArea, ISupplierSite supplierSite) {
         this.lounge = lounge;
-		this.repairArea = repairArea;
+	this.repairArea = repairArea;
         this.supplierSite = supplierSite;
     }
 	

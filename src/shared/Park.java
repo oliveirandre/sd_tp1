@@ -5,14 +5,34 @@
  */
 package shared;
 
+import entities.Customer;
+import entities.CustomerState;
+
 /**
  *
  * @author andre and joao
  */
-public class Park {
+public class Park implements IPark {
     
     private int parkingSlots;
     private int replacementCars;
+    
+    @Override
+    public synchronized void backToWorkByCar() {
+        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public synchronized void findCar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public synchronized void queueIn() {
+        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public Park() {
         

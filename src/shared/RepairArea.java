@@ -10,58 +10,62 @@ import entities.MechanicState;
 public class RepairArea implements IRepairArea{
 
 	@Override
-	public void readThePaper() {
-		((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
+	public synchronized void readThePaper() {
+            ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
+            while(true) {
+                try {
+                    wait();
+                } catch(Exception e) {
+                    
+                }                
+            }
 	}
 
 	@Override
-	public void startRepairProcedure() {
-		((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
+	public synchronized void startRepairProcedure() {
+            ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
 	}
 
 	@Override
-	public void getVehicle() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public synchronized void getVehicle() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
-	public void fixIt() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public synchronized void fixIt() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
-	public void returnVehicle() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public synchronized void returnVehicle() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
-	public void getRequiredPart() {
-		//escolher randomly qual a peça que vai ser precisa
-		
-		
-		
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public synchronized void getRequiredPart() {
+            //escolher randomly qual a peça que vai ser precisa
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
-	public boolean partAvailable() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public synchronized boolean partAvailable() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
 	public synchronized void letManagerKnow() {
-		((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
-		notify();
+            ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
+            notify();
 	}
 
 	@Override
-	public void resumeRepairProcedure() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public synchronized void resumeRepairProcedure() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
-	public void repairConcluded() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public synchronized void repairConcluded() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
     
 }

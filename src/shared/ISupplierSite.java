@@ -10,5 +10,5 @@ package shared;
  * @author andre
  */
 public interface ISupplierSite {
-    
+    public void storePart();
 }

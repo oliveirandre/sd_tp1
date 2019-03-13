@@ -9,4 +9,5 @@ public interface IOutsideWorld {
     public void goToRepairShop();
     public void phoneToCustomer();
     public void queueIn();	
+    public void getNextTask();
 }

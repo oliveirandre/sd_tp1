@@ -10,7 +10,7 @@ public interface IRepairArea {
 	public void getVehicle();
 	public void fixIt();
 	public void returnVehicle();
-	
+        public void getNextTask();
 	public void getRequiredPart();
 	
 	public boolean partAvailable();

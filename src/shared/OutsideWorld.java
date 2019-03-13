@@ -2,6 +2,8 @@ package shared;
 
 import entities.Customer;
 import entities.CustomerState;
+import entities.Manager;
+import entities.ManagerState;
 
 /**
  *
@@ -29,5 +31,11 @@ public class OutsideWorld implements IOutsideWorld{
         
         public synchronized void phoneToCustomer() {
         }
+        
+        @Override
+	public synchronized void getNextTask() {
+            ((Manager)Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
     
 }

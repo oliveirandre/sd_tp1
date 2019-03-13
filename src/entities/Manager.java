@@ -38,21 +38,37 @@ public class Manager extends Thread {
             switch(this.state) {
                 
                 case ATTENDING_CUSTOMER:
+                    lounge.receivePayment();
+                    lounge.handCarKey();
+                    lounge.registerService();
                     break;
                     
                 case CHECKING_WHAT_TO_DO:
+                    lounge.getNextTask();
+                    // after posting job
+                    lounge.phoneCustomer();
+                    // after alerting customer
+                    lounge.goToSupplier();
+                    // if there are no more tasks
+                    lounge.appraiseSit();
                     break;
                     
                 case GETTING_NEW_PARTS:
+                    supplierSite.storePart();
                     break;
                     
                 case POSTING_JOB:
+                    // wake up mechanic
+                    repairArea.getNextTask();
                     break;
                     
                 case ALERTING_CUSTOMER:
+                    // wake up customer that has his car repaired
+                    outsideWorld.getNextTask();
                     break;
                     
                 case REPLENISH_STOCK:
+                    repairArea.getNextTask();
                     break;
             }
         }             

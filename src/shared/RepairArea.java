@@ -1,5 +1,7 @@
 package shared;
 
+import entities.Manager;
+import entities.ManagerState;
 import entities.Mechanic;
 import entities.MechanicState;
 
@@ -44,7 +46,8 @@ public class RepairArea implements IRepairArea{
 	@Override
 	public synchronized void getRequiredPart() {
             //escolher randomly qual a peça que vai ser precisa
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.CHECKING_STOCK);
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
@@ -60,12 +63,20 @@ public class RepairArea implements IRepairArea{
 
 	@Override
 	public synchronized void resumeRepairProcedure() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
 	public synchronized void repairConcluded() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+        
+        @Override
+	public synchronized void getNextTask() {
+            ((Manager)Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
     
 }

@@ -11,6 +11,7 @@ package main;
  * @author Andre e Joao
  */
 
+import entities.Customer;
 import repository.Piece;
 import repository.RepairShop;
 import shared.Lounge;
@@ -18,6 +19,11 @@ import shared.OutsideWorld;
 import shared.Park;
 import shared.RepairArea;
 import shared.SupplierSite;
+import shared.ILounge;
+import shared.IOutsideWorld;
+import shared.IPark;
+import shared.IRepairArea;
+import shared.ISupplierSite;
 
 public class Main {
     
@@ -26,6 +32,11 @@ public class Main {
     private static Park park;
     private static RepairArea repairArea;
     private static SupplierSite supplierSite;
+    private static ILounge iLounge;
+    private static IOutsideWorld iOutsideWorld;
+    private static IPark iPark;
+    private static IRepairArea iRepairArea;
+    private static ISupplierSite iSupplierSite;
     
     private static RepairShop repairShop;
     
@@ -50,7 +61,8 @@ public class Main {
         
         // initialization of threads
         for(int i = 0; i < nCustomers; i++) {
-            
+            /*Customer c = new Customer(iOutsideWorld, iPark, iLounge, i);
+            c.start();*/
         }
         
         for(int i = 0; i < nMechanics; i++) {
@@ -63,7 +75,7 @@ public class Main {
 		
         Piece p = new Piece();
 		
-		System.out.println(p.getTypePiece());
+        System.out.println(p.getTypePiece());
     }
     
 }

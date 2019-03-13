@@ -29,20 +29,28 @@ public class Mechanic extends Thread {
             switch(this.state) {
                 case WAITING_FOR_WORK:
                     repairArea.readThePaper();
+                    // when awaken
+                    repairArea.startRepairProcedure();
                     break;
                     
                 case FIXING_CAR:
                     repairArea.getVehicle(); //repairArea ou park??????
                     repairArea.getRequiredPart();
-                    if(repairArea.partAvailable())
-                            repairArea.resumeRepairProcedure();
-                    else
-                            repairArea.letManagerKnow();
+                    // if part available
+                    repairArea.fixIt();
+                    repairArea.returnVehicle();
+                    repairArea.repairConcluded();
                     break;
+                    
                 case ALERTING_MANAGER:
-                    repairArea.readThePaper();
+                    lounge.readThePaper();
                     break;
+                    
                 case CHECKING_STOCK:
+                    // if(partAvailable)
+                    repairArea.resumeRepairProcedure();
+                    // else
+                    repairArea.letManagerKnow();
                     break;
             }
         }    

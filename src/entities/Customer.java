@@ -49,7 +49,10 @@ public class Customer extends Thread {
                 case PARK:
                     // park car in need of a repair
                     park.parkCar(this.id);
-                    park.queueIn();
+                    
+
+                    
+                    //park.queueIn();
                     // if customer required a replace car
                     park.backToWorkByCar();
                     // after collecting repaired car
@@ -61,9 +64,15 @@ public class Customer extends Thread {
                     break;
                     
                 case RECEPTION:
-                    lounge.queueIn(id);
+                    lounge.queueIn(this.id);
                     // when customer requires a repair
                     lounge.talkWithManager();
+                    if(requiresCar) {
+                        lounge.collectKey();
+                    }
+                    else {
+                        lounge.backToWorkByBus();
+                    }
                     // goes back to work by bus
                     lounge.backToWorkByBus();
                     // or asks for a replacement car

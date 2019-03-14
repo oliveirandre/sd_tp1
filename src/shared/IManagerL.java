@@ -10,5 +10,6 @@ package shared;
  * @author andre
  */
 public interface IManagerL {
-    
+    public void talkWithCustomer();
+    public void registerService();
 }

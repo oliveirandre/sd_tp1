@@ -9,7 +9,6 @@ import entities.Customer;
 import entities.CustomerState;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 /**
  *
@@ -21,6 +20,13 @@ public class Park implements IPark, ICustomerP, IMechanicP {
     private int replacementCars = 3;
     
     private List<Integer> carsParked = new ArrayList<Integer>();
+    
+    @Override
+    public synchronized void parkCar(int id) {
+        carsParked.add(id);
+        parkingSlots--;
+        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+    }
     
     @Override
     public synchronized void backToWorkByCar() {
@@ -40,11 +46,7 @@ public class Park implements IPark, ICustomerP, IMechanicP {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    @Override
-    public synchronized void parkCar(int id) {
-        carsParked.add(id);
-        parkingSlots--;
-        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+    public int getParkingSlots() {
+        return this.parkingSlots;
     }
-    
 }

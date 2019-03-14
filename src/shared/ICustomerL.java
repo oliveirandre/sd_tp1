@@ -12,4 +12,6 @@ package shared;
 public interface ICustomerL {
     public void queueIn(int id);
     public void talkWithManager();
+    public void backToWorkByBus();
+    public void collectKey();
 }

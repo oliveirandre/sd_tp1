@@ -1,5 +1,6 @@
 package entities;
 
+import repository.Piece;
 import shared.ILounge;
 import shared.IPark;
 import shared.IRepairArea;
@@ -35,8 +36,13 @@ public class Mechanic extends Thread {
 
 				case FIXING_CAR:
 					repairArea.getVehicle(); //repairArea ou park??????
-					repairArea.getRequiredPart();
-					// if part available
+					
+					Piece requiredPart = repairArea.getRequiredPart();
+					
+					if(!repairArea.partAvailable(requiredPart))
+						repairArea.letManagerKnow();
+					
+						
 					repairArea.fixIt();
 					repairArea.returnVehicle();
 					repairArea.repairConcluded();

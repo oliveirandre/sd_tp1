@@ -5,6 +5,7 @@ import entities.ManagerState;
 import entities.Mechanic;
 import entities.MechanicState;
 import repository.Piece;
+import repository.RepairShop;
 
 /**
  *
@@ -58,9 +59,7 @@ public class RepairArea implements IRepairArea {
 
 	@Override
 	public synchronized boolean partAvailable(Piece part) {
-		//p = RepairShop.getPieces();
-		
-		return true;
+		return RepairShop.pieceInStock(part);
 	}
 
 	@Override

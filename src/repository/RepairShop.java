@@ -43,7 +43,7 @@ public class RepairShop {
 		return stock;
 	}
 
-	public boolean pieceInStock(Piece p) {
+	public static boolean pieceInStock(Piece p) {
 		return stock.containsKey(p.getTypePiece()) && stock.get(p.getTypePiece()) != 0;
 	}
 

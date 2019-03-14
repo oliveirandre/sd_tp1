@@ -11,19 +11,18 @@ package main;
  * @author Andre e Joao
  */
 
-import entities.Customer;
 import repository.Piece;
 import repository.RepairShop;
-import shared.Lounge;
-import shared.OutsideWorld;
-import shared.Park;
-import shared.RepairArea;
-import shared.SupplierSite;
 import shared.ILounge;
 import shared.IOutsideWorld;
 import shared.IPark;
 import shared.IRepairArea;
 import shared.ISupplierSite;
+import shared.Lounge;
+import shared.OutsideWorld;
+import shared.Park;
+import shared.RepairArea;
+import shared.SupplierSite;
 
 public class Main {
     
@@ -75,7 +74,15 @@ public class Main {
 		
         Piece p = new Piece();
 		
+		RepairShop repair = new RepairShop();
+		
         System.out.println(p.getTypePiece());
+		System.out.println(RepairShop.getPieces());
+		
+		
+		System.out.println(RepairShop.getPieces());
+		
+		
     }
     
 }

@@ -7,6 +7,6 @@ package shared;
 public interface IPark {
     public void queueIn();
 	public void findCar();
-	
+	//goToRepairShop é aqui também?
 	public void backToWorkByCar();
 }

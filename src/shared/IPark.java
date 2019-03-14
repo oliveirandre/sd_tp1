@@ -9,4 +9,6 @@ public interface IPark {
 	public void findCar();
 	//goToRepairShop é aqui também?
 	public void backToWorkByCar();
+	
+	public void getVehicle();
 }

@@ -30,12 +30,12 @@ public class Mechanic extends Thread {
 			switch (this.state) {
 				case WAITING_FOR_WORK:
 					repairArea.readThePaper();
-					// when awaken
-					repairArea.startRepairProcedure();
+					
+					repairArea.startRepairProcedure(); // when awaken
 					break;
 
 				case FIXING_CAR:
-					repairArea.getVehicle(); //repairArea ou park??????
+					park.getVehicle(); 
 					
 					Piece requiredPart = repairArea.getRequiredPart();
 					

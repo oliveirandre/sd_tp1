@@ -15,9 +15,6 @@ import repository.RepairShop;
 
 public class RepairArea implements IRepairArea {
 
-	Piece[] p;
-	
-	
 	
 	@Override
 	public synchronized void readThePaper() {
@@ -37,8 +34,10 @@ public class RepairArea implements IRepairArea {
 	}
 
 	@Override
-	public synchronized void getVehicle() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public synchronized int getVehicle() {
+		
+		return 0;
+		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

@@ -17,7 +17,19 @@ public class Lounge implements ILounge, ICustomerL, IManagerL, IMechanicL {
     //antes dum wait há sempre while 
     //por exemplo o mecanico esta a espera enquanto nao houver peças ou carros para arranjar
     
-    private Queue<Integer> queue;
+    private Queue<Integer> customersQueue;
+    
+    @Override
+    public synchronized void queueIn(int id) {
+        customersQueue.add(id);
+        while() {
+            try {
+                wait();
+            } catch(Exception e) {
+                
+            }
+        }
+    }
     
     @Override
     public synchronized void talkWithManager() {

@@ -5,9 +5,9 @@ package entities;
  * @author Andre e Joao
  */
 
+import shared.ICustomerL;
 import shared.ICustomerOW;
-import shared.ILounge;
-import shared.IPark;
+import shared.ICustomerP;
 
 public class Customer extends Thread {
     
@@ -15,14 +15,14 @@ public class Customer extends Thread {
     private final int id;
     
     private final ICustomerOW outsideWorld;
-    private final IPark park;
-    private final ILounge lounge;
+    private final ICustomerP park;
+    private final ICustomerL lounge;
     
     // generate automatically if customer requires a replacement car
     public boolean requiresCar = false;
     private boolean happyCustomer = false;
     
-    public Customer(ICustomerOW outsideWorld, IPark park, ILounge lounge, int id) {
+    public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id) {
         this.outsideWorld = outsideWorld;
         this.park = park;
         this.lounge = lounge;
@@ -38,6 +38,8 @@ public class Customer extends Thread {
                 
                 case NORMAL_LIFE_WITH_CAR:
                     outsideWorld.decideOnRepair();
+                    
+                    
                     // if customer has replace car
                     outsideWorld.goToRepairShop();
                     // if car is repaired
@@ -46,6 +48,7 @@ public class Customer extends Thread {
                    
                 case PARK:
                     // park car in need of a repair
+                    park.parkCar(this.id);
                     park.queueIn();
                     // if customer required a replace car
                     park.backToWorkByCar();
@@ -58,6 +61,7 @@ public class Customer extends Thread {
                     break;
                     
                 case RECEPTION:
+                    lounge.queueIn(id);
                     // when customer requires a repair
                     lounge.talkWithManager();
                     // goes back to work by bus
@@ -70,7 +74,7 @@ public class Customer extends Thread {
                     break;
                     
                 case NORMAL_LIFE_WITHOUT_CAR:
-                    outsideWorld.queueIn();
+                    //outsideWorld.queueIn();
                     break;
             }
         }

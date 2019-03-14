@@ -60,8 +60,8 @@ public class Main {
         
         // initialization of threads
         for(int i = 0; i < nCustomers; i++) {
-            /*Customer c = new Customer(iOutsideWorld, iPark, iLounge, i);
-            c.start();*/
+            //Customer c = new Customer(iOutsideWorld, iPark, iLounge, i);
+            //c.start();
         }
         
         for(int i = 0; i < nMechanics; i++) {

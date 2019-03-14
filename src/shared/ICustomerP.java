@@ -10,5 +10,5 @@ package shared;
  * @author andre
  */
 public interface ICustomerP {
-    
+    public void parkCar(int id);
 }

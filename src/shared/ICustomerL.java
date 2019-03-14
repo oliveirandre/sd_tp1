@@ -10,5 +10,5 @@ package shared;
  * @author andre
  */
 public interface ICustomerL {
-    
+    public void queueIn(int id);
 }

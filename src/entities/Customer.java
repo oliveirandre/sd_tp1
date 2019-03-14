@@ -20,7 +20,7 @@ public class Customer extends Thread {
     
     // generate automatically if customer requires a replacement car
     public boolean requiresCar = false;
-    private boolean happyCustomer = false;
+    public boolean carRepaired = false;
     
     public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id) {
         this.outsideWorld = outsideWorld;
@@ -33,57 +33,39 @@ public class Customer extends Thread {
     public void run() {
         this.setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
         System.out.println(this.getCustomerState());
-        while(!this.happyCustomer) {
+        while(!this.carRepaired) {
             switch(this.state) {
                 
                 case NORMAL_LIFE_WITH_CAR:
                     outsideWorld.decideOnRepair();
-                    
-                    
-                    // if customer has replace car
                     outsideWorld.goToRepairShop();
-                    // if car is repaired
-                    this.happyCustomer = true;
-                    break;
                    
                 case PARK:
-                    // park car in need of a repair
                     park.parkCar(this.id);
-                    
-
-                    
-                    //park.queueIn();
-                    // if customer required a replace car
-                    park.backToWorkByCar();
-                    // after collecting repaired car
-                    park.backToWorkByCar();
                     break;
                     
                 case WAITING_FOR_REPLACE_CAR:
-                    lounge.findCar();
+                    park.findCar();
                     break;
                     
                 case RECEPTION:
                     lounge.queueIn(this.id);
-                    // when customer requires a repair
-                    lounge.talkWithManager();
-                    if(requiresCar) {
-                        lounge.collectKey();
+                    if(!carRepaired) {
+                         lounge.talkWithManager();
+                        if(requiresCar)
+                            lounge.collectKey();
+                        else
+                            outsideWorld.backToWorkByBus();
                     }
                     else {
-                        lounge.backToWorkByBus();
+                        lounge.payForTheService();
+                        this.carRepaired = true;
+                        park.collectCar(this.id);
+                        outsideWorld.backToWorkByCar();
                     }
-                    // goes back to work by bus
-                    lounge.backToWorkByBus();
-                    // or asks for a replacement car
-                    lounge.collectKey();
-                    // when customer wants to get his repaired car
-                    lounge.payForService();
-                    lounge.collectCar();
                     break;
                     
                 case NORMAL_LIFE_WITHOUT_CAR:
-                    //outsideWorld.queueIn();
                     break;
             }
         }

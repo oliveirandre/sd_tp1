@@ -16,17 +16,19 @@ import java.util.Queue;
 
 public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
+    private Queue<Integer> replacementQueue;
     private Queue<Integer> customersQueue;
     private Queue<Integer> carsToRepair;
     private int nextCustomer;
     private HashMap<Integer, Boolean> requiresCar = new HashMap<Integer, Boolean>();
-    
+        
     /*
     ** Customer's method. After parking the car in need of a repair, the custo-
     ** mer now has to wait in a queue to be attended by the manager.
     */       
     @Override
     public synchronized void queueIn(int id) {
+        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         customersQueue.add(id);
         while(!(nextCustomer == id)) {
             try {
@@ -63,14 +65,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }    
     
     /*
-    ** Customer's method. When the customer doesn't require a replacement car,
-    ** he goes back to work by bus.
+    ** Manager's method. The manager awakes the customer next in the queue, and
+    ** then waits to see if the customer requires or not a replacement car.
     */
-    @Override
-    public synchronized void backToWorkByBus() {
-        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
-    }
-    
     @Override
     public synchronized boolean talkWithCustomer() {
         ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
@@ -80,8 +77,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             try {
                 wait();
                 if(requiresCar.containsKey(nextCustomer)) {
-                    if(requiresCar.get(nextCustomer) == true)
+                    if(requiresCar.get(nextCustomer) == true) {
+                        replacementQueue.add(nextCustomer);
                         return true;            
+                    }
                     else
                         return false;
                 }
@@ -97,6 +96,11 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         
     }
     
+    @Override
+    public synchronized void payForTheService() {
+        
+    }
+    
     /*
     ** Manager's method. After receiving a request from a customer, the manager 
     ** registers it for further use by the mechanics.
@@ -105,7 +109,6 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized void registerService() {
         carsToRepair.add(nextCustomer);
         ((Manager)Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }    
     
     @Override
@@ -114,11 +117,13 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         while(true) {
             try {
                 wait();
+                if(replacementQueue.peek() == ((Customer)Thread.currentThread()).getCustomerId()) {
+                    
+                }
             } catch(Exception e) {
                 
             }
         }
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     /*

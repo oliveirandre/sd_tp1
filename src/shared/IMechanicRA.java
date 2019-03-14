@@ -1,14 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package shared;
+
+import repository.Piece;
 
 /**
  *
- * @author andre
+ * @author andre e joao
  */
 public interface IMechanicRA {
+    public void readThePaper();
+    public void startRepairProcedure();
+    
+    public Piece getRequiredPart();
+    public boolean partAvailable();
+    public void letManagerKnow();
+
+    public boolean partAvailable(Piece requiredPart);
+    
+    public int getVehicle();
+    public void fixIt(Piece p);
+    
+    public void getNextTask();
+
+    public void resumeRepairProcedure();
+    public void repairConcluded();
+    //public void storePart();
     
 }

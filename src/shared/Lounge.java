@@ -18,13 +18,18 @@ public class Lounge implements ILounge, ICustomerL, IManagerL, IMechanicL {
     //por exemplo o mecanico esta a espera enquanto nao houver peças ou carros para arranjar
     
     private Queue<Integer> customersQueue;
+    private Queue<String> jobs;
+    private int attendedCustomer;
     
     @Override
     public synchronized void queueIn(int id) {
         customersQueue.add(id);
-        while() {
+        while(!(attendedCustomer == id)) {
             try {
                 wait();
+                if(attendedCustomer == id) {
+                    return;
+                }
             } catch(Exception e) {
                 
             }
@@ -33,6 +38,7 @@ public class Lounge implements ILounge, ICustomerL, IManagerL, IMechanicL {
     
     @Override
     public synchronized void talkWithManager() {
+        jobs.add("");
         queue.add(((Customer)Thread.currentThread()).getCustomerId());
         //((Customer)Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

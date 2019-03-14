@@ -11,4 +11,5 @@ package shared;
  */
 public interface ICustomerL {
     public void queueIn(int id);
+    public void talkWithManager();
 }

@@ -48,6 +48,18 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized void talkWithManager() {
         requiresCar.put(nextCustomer, ((Customer)Thread.currentThread()).requiresCar);
         notifyAll();
+        if(((Customer)Thread.currentThread()).requiresCar) {
+            while(true) {
+                try {
+                    wait();
+                } catch(Exception e) {
+                    
+                }
+            }
+        }
+        else {
+            return;
+        }
     }    
     
     /*
@@ -60,7 +72,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
     
     @Override
-    public synchronized void talkWithCustomer() {
+    public synchronized boolean talkWithCustomer() {
         ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
         nextCustomer = customersQueue.poll();
         notifyAll();
@@ -68,14 +80,22 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             try {
                 wait();
                 if(requiresCar.containsKey(nextCustomer)) {
-                    
+                    if(requiresCar.get(nextCustomer) == true)
+                        return true;            
+                    else
+                        return false;
                 }
             } catch(Exception e) {
                 
             }
         }
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
+        return false;
+    }
+
+    @Override
+    public synchronized void handCarKey() {
+        
+    }
     
     /*
     ** Manager's method. After receiving a request from a customer, the manager 

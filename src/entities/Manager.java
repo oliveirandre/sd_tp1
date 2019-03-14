@@ -1,6 +1,7 @@
 package entities;
 
 import shared.ILounge;
+import shared.IManagerL;
 import shared.IOutsideWorld;
 import shared.IPark;
 import shared.IRepairArea;
@@ -14,7 +15,7 @@ public class Manager extends Thread {
 
 	private ManagerState state;
 
-	private final ILounge lounge;
+	private final IManagerL lounge;
 	private final IRepairArea repairArea;
 	private final ISupplierSite supplierSite;
 	private final IOutsideWorld outsideWorld;
@@ -22,7 +23,7 @@ public class Manager extends Thread {
 
 	private final boolean noMoreTasks = false;
 
-	public Manager(ILounge lounge, IRepairArea repairArea, ISupplierSite supplierSite, IOutsideWorld outsideWorld, IPark park) {
+	public Manager(IManagerL lounge, IRepairArea repairArea, ISupplierSite supplierSite, IOutsideWorld outsideWorld, IPark park) {
 		this.lounge = lounge;
 		this.repairArea = repairArea;
 		this.supplierSite = supplierSite;
@@ -45,6 +46,9 @@ public class Manager extends Thread {
 
 				case CHECKING_WHAT_TO_DO:
 					lounge.getNextTask();
+                                        boolean isCarNeeded = lounge.talkWithCustomer();
+                                        if(isCarNeeded)
+                                        lounge.handCarKey();
 					// after posting job
 					lounge.phoneCustomer();
 					// after alerting customer

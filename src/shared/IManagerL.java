@@ -10,6 +10,7 @@ package shared;
  * @author andre
  */
 public interface IManagerL {
-    public void talkWithCustomer();
+    public boolean talkWithCustomer();
+    public void handCarKey();
     public void registerService();
 }

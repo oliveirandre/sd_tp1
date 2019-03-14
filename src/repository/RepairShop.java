@@ -47,7 +47,7 @@ public class RepairShop {
 		return stock.containsKey(p.getTypePiece()) && stock.get(p.getTypePiece()) != 0;
 	}
 
-	public void removePieceFromStock(Piece p) {
+	public static void removePieceFromStock(Piece p) {
 		for (int i = 0; i < N_OF_PIECES; i++) {
 			if (pieceInStock(p)) {
 				stock.put(p.getTypePiece(), stock.get(p.getTypePiece()) - 1);

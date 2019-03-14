@@ -39,11 +39,11 @@ public class Mechanic extends Thread {
 					
 					Piece requiredPart = repairArea.getRequiredPart();
 					
-					if(!repairArea.partAvailable(requiredPart))
+					if(!repairArea.partAvailable(requiredPart)){
 						repairArea.letManagerKnow();
-					
-						
-					repairArea.fixIt();
+						break;
+					}
+					repairArea.fixIt(requiredPart);
 					repairArea.returnVehicle();
 					repairArea.repairConcluded();
 					break;

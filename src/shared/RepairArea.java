@@ -42,8 +42,9 @@ public class RepairArea implements IRepairArea {
 	}
 
 	@Override
-	public synchronized void fixIt() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public synchronized void fixIt(Piece part) {
+		RepairShop.removePieceFromStock(part);
+		
 	}
 
 	@Override

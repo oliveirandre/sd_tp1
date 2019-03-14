@@ -11,7 +11,7 @@ public interface IRepairArea {
 	
 	public void startRepairProcedure();
 	public void getVehicle();
-	public void fixIt();
+	public void fixIt(Piece p);
 	public void returnVehicle();
     public void getNextTask();
 	public Piece getRequiredPart();

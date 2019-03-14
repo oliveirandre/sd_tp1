@@ -50,7 +50,7 @@ public class Main {
         
         lounge = new Lounge();
         outsideWorld = new OutsideWorld();
-        park = new Park();
+        park = new Park(repairShop.N_OF_REPLACEMENT_CARS);
         repairArea = new RepairArea();
         supplierSite = new SupplierSite();
         

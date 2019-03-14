@@ -12,7 +12,7 @@ public class RepairShop {
 	public static final int N_OF_CUSTOMERS = 30;
 	public static final int N_OF_MECHANICS = 2;
 	public static final int N_OF_MANAGERS = 1;
-	public static final int N_OF_REPLACEMENT_CARS = 3;
+	public static int N_OF_REPLACEMENT_CARS = 3;
 	public static final int N_OF_TYPE_PIECES = 3;
 
 	static int N_OF_PIECES = (int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min

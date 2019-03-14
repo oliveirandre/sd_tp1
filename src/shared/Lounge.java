@@ -8,6 +8,7 @@ import entities.Mechanic;
 import entities.MechanicState;
 import java.util.HashMap;
 import java.util.Queue;
+import repository.RepairShop;
 
 /**
  *
@@ -15,6 +16,8 @@ import java.util.Queue;
  */
 
 public class Lounge implements ICustomerL, IManagerL, IMechanicL {
+    
+    private RepairShop repairShop;
     
     private Queue<Integer> replacementQueue;
     private Queue<Integer> customersQueue;
@@ -114,6 +117,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void collectKey() {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
+        if(repairShop.N_OF_REPLACEMENT_CARS > 0) {
+            repairShop.N_OF_REPLACEMENT_CARS--;
+            return;
+        }
         while(true) {
             try {
                 wait();

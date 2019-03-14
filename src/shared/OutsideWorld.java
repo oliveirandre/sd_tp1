@@ -9,33 +9,35 @@ import entities.ManagerState;
  *
  * @author andre and joao
  */
-public class OutsideWorld implements IOutsideWorld{
+public class OutsideWorld implements IOutsideWorld {
 
 	@Override
 	public synchronized void decideOnRepair() {
-            goToRepairShop();
-            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		goToRepairShop();
+		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
 	public synchronized void goToRepairShop() {
-            ((Customer)Thread.currentThread()).setCustomerState(CustomerState.PARK);
-            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
+		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
 	public void queueIn() {
-            ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
-            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
-        
-        public synchronized void phoneToCustomer() {
-        }
-        
-        @Override
+	
+	@Override
+	public synchronized void phoneToCustomer() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
 	public synchronized void getNextTask() {
-            ((Manager)Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
-            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
-    
+
 }

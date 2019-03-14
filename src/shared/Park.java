@@ -23,20 +23,26 @@ public class Park implements IPark, ICustomerP, IMechanicP {
 
     @Override
     public synchronized void parkCar(int id) {
+        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         carsParked.add(id);
         parkingSlots--;
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+    }
+    
+    @Override
+    public synchronized void collectCar(int id) {
+        carsParked.remove(id);
+        parkingSlots++;
+    }
+    
+    @Override
+    public synchronized void findCar() {
+        
     }
 
     @Override
     public synchronized void backToWorkByCar() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public synchronized void findCar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

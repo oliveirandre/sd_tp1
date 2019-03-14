@@ -12,4 +12,6 @@ package shared;
 public interface ICustomerOW {
     public void decideOnRepair();
     public void goToRepairShop();
+    public void backToWorkByBus();
+    public void backToWorkByCar();
 }

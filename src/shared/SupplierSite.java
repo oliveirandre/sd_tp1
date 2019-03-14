@@ -12,7 +12,7 @@ import entities.ManagerState;
  *
  * @author andre and joao
  */
-public class SupplierSite implements ISupplierSite {
+public class SupplierSite implements ISupplierSite, IManagerSS {
     
     @Override
     public synchronized void storePart() {

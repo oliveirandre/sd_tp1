@@ -12,7 +12,7 @@ import entities.CustomerState;
  *
  * @author andre and joao
  */
-public class Park implements IPark {
+public class Park implements IPark, ICustomerP, IMechanicP {
     
     private int parkingSlots;
     private int replacementCars;

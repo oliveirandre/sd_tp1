@@ -12,7 +12,8 @@ import java.util.Queue;
  *
  * @author andre and joao
  */
-public class Lounge implements ILounge {
+
+public class Lounge implements ILounge, ICustomerL, IManagerL, IMechanicL {
     //antes dum wait há sempre while 
     //por exemplo o mecanico esta a espera enquanto nao houver peças ou carros para arranjar
     

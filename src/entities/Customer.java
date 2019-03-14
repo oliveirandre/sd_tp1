@@ -5,8 +5,8 @@ package entities;
  * @author Andre e Joao
  */
 
+import shared.ICustomerOW;
 import shared.ILounge;
-import shared.IOutsideWorld;
 import shared.IPark;
 
 public class Customer extends Thread {
@@ -14,13 +14,15 @@ public class Customer extends Thread {
     private CustomerState state;
     private final int id;
     
-    private final IOutsideWorld outsideWorld;
+    private final ICustomerOW outsideWorld;
     private final IPark park;
     private final ILounge lounge;
     
+    // generate automatically if customer requires a replacement car
+    public boolean requiresCar = false;
     private boolean happyCustomer = false;
     
-    public Customer(IOutsideWorld outsideWorld, IPark park, ILounge lounge, int id) {
+    public Customer(ICustomerOW outsideWorld, IPark park, ILounge lounge, int id) {
         this.outsideWorld = outsideWorld;
         this.park = park;
         this.lounge = lounge;

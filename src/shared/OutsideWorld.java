@@ -4,17 +4,27 @@ import entities.Customer;
 import entities.CustomerState;
 import entities.Manager;
 import entities.ManagerState;
+import java.util.Random;
 
 /**
  *
  * @author andre and joao
  */
-public class OutsideWorld implements IOutsideWorld {
+public class OutsideWorld implements IOutsideWorld, ICustomerOW, IManagerOW {
 
 	@Override
 	public synchronized void decideOnRepair() {
-		goToRepairShop();
-		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            boolean decided = false;
+            Random deciding = new Random();
+            Random requiring = new Random();
+            while(decided == false) {
+                decided = deciding.nextBoolean();
+                if(decided == true) {
+                    ((Customer)Thread.currentThread()).requiresCar = requiring.nextBoolean();
+                    goToRepairShop();
+                }
+            }
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override
@@ -39,5 +49,4 @@ public class OutsideWorld implements IOutsideWorld {
 		((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
 		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
-
 }

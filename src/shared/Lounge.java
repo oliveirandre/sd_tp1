@@ -19,7 +19,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private Queue<Integer> customersQueue;
     private Queue<Integer> carsToRepair;
     private int nextCustomer;
-    private HashMap<Integer, Boolean> requiresCar = new HashMap<Integer, Boolean>();
+    private static HashMap<Integer, Boolean> requiresCar = new HashMap<Integer, Boolean>();
     
     /*
     ** Customer's method. After parking the car in need of a repair, the custo-
@@ -180,4 +180,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
     }
     */
+    
+    public static Queue getCarsToRepair(){
+        return carsToRepair;
+    }
 }

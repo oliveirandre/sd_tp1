@@ -17,7 +17,7 @@ import java.util.Queue;
  */
 public class Park implements IPark, ICustomerP, IMechanicP {
 
-    private int parkingSlots = 50;
+    private int parkingSlots = 50;    
     private Queue<Integer> replacementCars;
     private List<Integer> toBeRepaired = new ArrayList<Integer>();
     private List<Integer> repairedCars = new ArrayList<Integer>();
@@ -27,6 +27,8 @@ public class Park implements IPark, ICustomerP, IMechanicP {
             replacementCars.add(i);
         }
     }
+
+    private List<Integer> carsParked = new ArrayList<Integer>();
     
     @Override
     public synchronized void parkCar(int id) {
@@ -71,17 +73,5 @@ public class Park implements IPark, ICustomerP, IMechanicP {
 
     public int getParkingSlots() {
         return this.parkingSlots;
-    }
-    
-    public int nOfReplacementCars() {
-        return this.replacementCars.size();
-    }
-    
-    public int nOfNonRepairedCars() {
-        return this.toBeRepaired.size();
-    }
-    
-    public int nOfRepairedCars() {
-        return this.repairedCars.size();
     }
 }

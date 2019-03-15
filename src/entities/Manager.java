@@ -46,9 +46,10 @@ public class Manager extends Thread {
 
 				case CHECKING_WHAT_TO_DO:
 					lounge.getNextTask();
-                                        boolean isCarNeeded = lounge.talkWithCustomer();
-                                        if(isCarNeeded)
-                                        lounge.handCarKey();
+					boolean isCarNeeded = lounge.talkWithCustomer();
+					if (isCarNeeded) {
+						lounge.handCarKey();
+					}
 					// after posting job
 					lounge.phoneCustomer();
 					// after alerting customer

@@ -189,13 +189,15 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    @Override
-    public synchronized void readThePaper() {
-        ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
-    }
+    
     */
     
     public static Queue getCarsToRepair(){
         return carsToRepair;
+    }
+
+    @Override
+    public synchronized void readThePaper() {
+        ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
     }
 }

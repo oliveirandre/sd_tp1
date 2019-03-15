@@ -4,6 +4,7 @@ import entities.Manager;
 import entities.ManagerState;
 import entities.Mechanic;
 import entities.MechanicState;
+import java.util.HashMap;
 import repository.Piece;
 import repository.RepairShop;
 
@@ -13,6 +14,8 @@ import repository.RepairShop;
  */
 public class RepairArea implements IMechanicRA, IManagerRA {
 
+    HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
+    
     @Override
     public synchronized void readThePaper() {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
@@ -36,19 +39,20 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     }
 
     @Override
-    public synchronized void fixIt(Piece part) {
+    public synchronized void fixIt(int id, Piece part) {
         RepairShop.removePieceFromStock(part);
-
+        pieceToBeRepaired.remove(id, part);
     }
 
     @Override
-    public synchronized Piece getRequiredPart() {
+    public synchronized HashMap getRequiredPart(int id) {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.CHECKING_STOCK);
-        return new Piece();
+        pieceToBeRepaired.putIfAbsent(id, new Piece());
+        return pieceToBeRepaired;
     }
 
     @Override
-    public synchronized boolean partAvailable(Piece part) {
+    public boolean partAvailable(Piece part) {
         return RepairShop.pieceInStock(part);
     }
 
@@ -59,9 +63,9 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     }
 
     @Override
-    public synchronized void resumeRepairProcedure() {
+    public synchronized boolean resumeRepairProcedure() {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return true;
     }
 
     @Override
@@ -81,4 +85,6 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 */
+
+    
 }

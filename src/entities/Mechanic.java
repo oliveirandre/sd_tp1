@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.HashMap;
 import repository.Piece;
 import shared.ILounge;
 import shared.IMechanicL;
@@ -14,66 +15,73 @@ import shared.IRepairArea;
  */
 public class Mechanic extends Thread {
 
-    private MechanicState state;
-    private final IMechanicP park;
-    private final IMechanicRA repairArea;
-    private final IMechanicL lounge;
+	private MechanicState state;
+	private final IMechanicP park;
+	private final IMechanicRA repairArea;
+	private final IMechanicL lounge;
 
-    public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge) {
-        this.park = park;
-        this.repairArea = repairArea;
-        this.lounge = lounge;
-    }
+	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge) {
+		this.park = park;
+		this.repairArea = repairArea;
+		this.lounge = lounge;
+	}
+	HashMap<Integer, Piece> pieceToBeRepaired;
+	boolean alreadyChecked = false;
 
-    @Override
-    public void run() {
-        this.setMechanicState(MechanicState.WAITING_FOR_WORK);
+	@Override
+	public void run() {
+		this.setMechanicState(MechanicState.WAITING_FOR_WORK);
 
-        while (true) {
-            switch (this.state) {
-                case WAITING_FOR_WORK:
-                    repairArea.readThePaper();
-                    repairArea.startRepairProcedure(); // when awaken
-                    break;
-                case FIXING_CAR:
-                    int idCarToFix = 0; //manager tem que dizer qual o id aqui
-                    park.getVehicle(idCarToFix);
-                    Piece requiredPart = repairArea.getRequiredPart();
+		while (true) {
+			switch (this.state) {
+				case WAITING_FOR_WORK:
+					repairArea.readThePaper(); //falta fazer wait
+					repairArea.startRepairProcedure(); // when awaken
+					break;
+				case FIXING_CAR:
+					int idCarToFix = 0; //manager tem que dizer qual o id aqui
+					if (!alreadyChecked) {
+						park.getVehicle(idCarToFix);
 
-                    if (!repairArea.partAvailable(requiredPart)) {
-                        repairArea.letManagerKnow();
-                        break;
-                    }
-                    repairArea.fixIt(requiredPart);
-                    park.returnVehicle(idCarToFix);//estacionar o carro
-                    
-                    repairArea.repairConcluded(); //alertar manager
-                    
-                    break;
+						pieceToBeRepaired = repairArea.getRequiredPart(idCarToFix); //salta para CHECKING_STOCK
+						break;
+					}
 
-                case ALERTING_MANAGER:
-                    //lounge.readThePaper();
-                    break;
+					repairArea.fixIt(idCarToFix, pieceToBeRepaired.get(idCarToFix));
 
-                case CHECKING_STOCK:
-                    // if(partAvailable)
-                    //repairArea.resumeRepairProcedure();
-                    // else
-                    //repairArea.letManagerKnow();
-                    break;
-            }
-        }
-    }
+					park.returnVehicle(idCarToFix);//estacionar o carro
 
-    public void setMechanicState(MechanicState state) {
-        if (this.state == state) {
-            return;
-        }
-        this.state = state;
-    }
+					repairArea.repairConcluded(); //alertar manager
 
-    public MechanicState getMechanicState() {
-        return this.state;
-    }
+					break;
+
+				case ALERTING_MANAGER:
+					lounge.readThePaper();
+					break;
+
+				case CHECKING_STOCK:
+
+					idCarToFix = 0; //manager tem que dizer qual o id aqui
+
+					if (!repairArea.partAvailable(pieceToBeRepaired.get(idCarToFix))) {
+						repairArea.letManagerKnow();
+					} else {
+						alreadyChecked = repairArea.resumeRepairProcedure();
+					}
+					break;
+			}
+		}
+	}
+
+	public void setMechanicState(MechanicState state) {
+		if (this.state == state) {
+			return;
+		}
+		this.state = state;
+	}
+
+	public MechanicState getMechanicState() {
+		return this.state;
+	}
 
 }

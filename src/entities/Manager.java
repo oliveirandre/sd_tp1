@@ -1,6 +1,5 @@
 package entities;
 
-import shared.ILounge;
 import shared.IManagerL;
 import shared.IOutsideWorld;
 import shared.IPark;

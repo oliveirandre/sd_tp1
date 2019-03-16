@@ -2,12 +2,9 @@ package entities;
 
 import java.util.HashMap;
 import repository.Piece;
-import shared.ILounge;
 import shared.IMechanicL;
 import shared.IMechanicP;
 import shared.IMechanicRA;
-import shared.IPark;
-import shared.IRepairArea;
 
 /**
  *
@@ -56,6 +53,7 @@ public class Mechanic extends Thread {
 					break;
 
 				case ALERTING_MANAGER:
+					//alertar manager se foi repairConcluded ou se não há stock
 					lounge.readThePaper();
 					break;
 

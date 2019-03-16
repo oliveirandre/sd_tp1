@@ -64,9 +64,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
                 }
             }
         }
-        else {
-            return;
-        }
+        return;
     }    
     
     /*
@@ -98,7 +96,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void handCarKey() {
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
@@ -119,8 +117,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void collectKey() {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
-        if(repairShop.N_OF_REPLACEMENT_CARS > 0) {
-            repairShop.N_OF_REPLACEMENT_CARS--;
+        if(RepairShop.N_OF_REPLACEMENT_CARS > 0) {
+            RepairShop.N_OF_REPLACEMENT_CARS--;
             return;
         }
         while(true) {
@@ -135,18 +133,13 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         }
     }
     
-    /*
-    @Override
-    public synchronized void collectCar() {
-        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.PARK);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+    /*
     @Override
     public synchronized void payForService() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+    */
     
     @Override
     public synchronized void getNextTask() {
@@ -167,16 +160,6 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    @Override
-    public synchronized void handCarKey() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public synchronized void findCar() {
-        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.PARK);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     @Override
     public synchronized void appraiseSit() {
@@ -189,8 +172,6 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
-    */
     
     public static Queue getCarsToRepair(){
         return carsToRepair;

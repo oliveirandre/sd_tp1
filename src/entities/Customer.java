@@ -22,6 +22,7 @@ public class Customer extends Thread {
     public boolean requiresCar = false;
     public boolean carRepaired = false;
     private boolean happyCustomer = false;
+	private boolean carInRepairShop = false;
     
     public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id) {
         this.outsideWorld = outsideWorld;
@@ -37,15 +38,19 @@ public class Customer extends Thread {
         while(!this.happyCustomer) {
             switch(this.state) {
                 case NORMAL_LIFE_WITH_CAR:
-                    outsideWorld.decideOnRepair();
-                    outsideWorld.goToRepairShop();
-                   
+                    if(!carInRepairShop)
+						outsideWorld.decideOnRepair();
+					else
+						outsideWorld.goToRepairShop();
+					break;
                 case PARK:
                     park.parkCar(this.id);
                     break;
                     
                 case WAITING_FOR_REPLACE_CAR:
-                    park.findCar();
+					carInRepairShop = true;
+                    int idReplacementCar = park.findCar();
+					park.backToWorkByCar();
                     break;
                     
                 case RECEPTION:

@@ -11,8 +11,12 @@ package main;
  * @author Andre e Joao
  */
 
+import entities.Customer;
 import repository.Piece;
 import repository.RepairShop;
+import shared.ICustomerL;
+import shared.ICustomerOW;
+import shared.ICustomerP;
 import shared.ILounge;
 import shared.IOutsideWorld;
 import shared.IPark;
@@ -23,8 +27,6 @@ import shared.OutsideWorld;
 import shared.Park;
 import shared.RepairArea;
 import shared.SupplierSite;
-import shared.*;
-import entities.*;
 
 public class Main {
     
@@ -52,17 +54,21 @@ public class Main {
          * Furthermore, there are 3 replacement vehicles and 3 distinct parts 
          * that can be repared.
          */
+		
+		int N_OF_REPLACEMENT_CARS = 3;
         
-        lounge = new Lounge();
-        outsideWorld = new OutsideWorld();
-        //park = new Park(repairShop.N_OF_REPLACEMENT_CARS);
-        repairArea = new RepairArea();
-        supplierSite = new SupplierSite();
+        
         
         int nCustomers = repairShop.N_OF_CUSTOMERS;
         int nMechanics = repairShop.N_OF_MECHANICS;
         int nManagers = repairShop.N_OF_MANAGERS;
         
+		lounge = new Lounge();
+        outsideWorld = new OutsideWorld();
+        park = new Park(RepairShop.N_OF_REPLACEMENT_CARS);
+        repairArea = new RepairArea();
+        supplierSite = new SupplierSite();
+		
         // initialization of threads
         for(int i = 0; i < nCustomers; i++) {
             Customer c = new Customer(cow, cp, cl, i);

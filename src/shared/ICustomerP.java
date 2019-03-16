@@ -12,5 +12,7 @@ package shared;
 public interface ICustomerP {
     public void parkCar(int id);
     public void collectCar(int id);
-    public void findCar();
+    public int findCar();
+	
+	public void backToWorkByCar();
 }

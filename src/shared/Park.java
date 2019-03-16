@@ -14,13 +14,21 @@ import java.util.List;
  *
  * @author andre and joao
  */
-public class Park implements IPark, ICustomerP, IMechanicP {
+public class Park implements ICustomerP, IMechanicP {
 
     private int parkingSlots = 50;
-    private int replacementCars = 3;
-
+    private int nReplacementCars = 3;
+	private final int nCustomers;
+	
     private List<Integer> carsParked = new ArrayList<Integer>();
-
+	
+	public Park(int nCustomers){
+		this.nCustomers = nCustomers;
+		for (int i = 1; i < nCustomers; i++) { //start to List 
+			carsParked.add(nCustomers+i);
+		}
+	}
+	
     @Override
     public synchronized void parkCar(int id) {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
@@ -35,21 +43,14 @@ public class Park implements IPark, ICustomerP, IMechanicP {
     }
     
     @Override
-    public synchronized void findCar() {
-        
+    public synchronized int findCar() {
+        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
+		return carsParked.remove(nCustomers+1);
     }
 
     @Override
     public synchronized void backToWorkByCar() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public synchronized void queueIn() {
-
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

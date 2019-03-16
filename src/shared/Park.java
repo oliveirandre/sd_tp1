@@ -52,12 +52,22 @@ public class Park implements ICustomerP, IMechanicP {
     public synchronized void backToWorkByCar() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
     }
-
+	
+	/**
+	 * Mechanic's method. Mechanic goes into the park and gets the vehicle 
+	 * to repair.
+	 *  
+	 */
     @Override
     public synchronized void getVehicle(int id) {
         carsParked.remove(id);
     }
-
+	
+	/**
+	 * Mechanic's method. Mechanic goes into the park and park the already
+	 * repaired vehicle.
+	 *  
+	 */
     @Override
     public synchronized void returnVehicle(int id) {
         carsParked.add(id);

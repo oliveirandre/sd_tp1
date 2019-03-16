@@ -4,8 +4,6 @@ import entities.Customer;
 import entities.CustomerState;
 import entities.Manager;
 import entities.ManagerState;
-import entities.Mechanic;
-import entities.MechanicState;
 import java.util.HashMap;
 import java.util.Queue;
 import repository.RepairShop;
@@ -15,7 +13,7 @@ import repository.RepairShop;
  * @author andre and joao
  */
 
-public class Lounge implements ICustomerL, IManagerL, IMechanicL {
+public class Lounge implements ICustomerL, IManagerL {
     
     private RepairShop repairShop;
     
@@ -175,10 +173,5 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     public static Queue getCarsToRepair(){
         return carsToRepair;
-    }
-
-    @Override
-    public synchronized void readThePaper() {
-        ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
     }
 }

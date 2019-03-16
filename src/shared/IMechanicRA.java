@@ -13,17 +13,15 @@ public interface IMechanicRA {
     
     public HashMap getRequiredPart(int id);
     
-    public void letManagerKnow();
+    public Piece letManagerKnow(Piece piece);
 
     public boolean partAvailable(Piece requiredPart);
     
-    public int getVehicle();
     public void fixIt(int id, Piece p);
     
     public void getNextTask();
 
-    public boolean resumeRepairProcedure();
+    public void resumeRepairProcedure();
     public void repairConcluded();
-    //public void storePart();
     
 }

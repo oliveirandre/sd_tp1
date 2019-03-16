@@ -71,6 +71,7 @@ public class Customer extends Thread {
                     break;
                     
                 case NORMAL_LIFE_WITHOUT_CAR:
+					outsideWorld.goToReception();
                     break;
             }
         }

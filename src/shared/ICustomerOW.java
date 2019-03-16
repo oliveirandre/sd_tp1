@@ -14,4 +14,6 @@ public interface ICustomerOW {
     public void goToRepairShop();
     public void backToWorkByBus();
     public void backToWorkByCar();
+
+	public void goToReception();
 }

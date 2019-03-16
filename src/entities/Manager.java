@@ -36,13 +36,7 @@ public class Manager extends Thread {
 
 		while (!noMoreTasks) {
 			switch (this.state) {
-
-				case ATTENDING_CUSTOMER:
-					lounge.receivePayment();
-					lounge.handCarKey();
-					lounge.registerService();
-					break;
-
+				
 				case CHECKING_WHAT_TO_DO:
 					lounge.getNextTask();
 					boolean isCarNeeded = lounge.talkWithCustomer();
@@ -55,6 +49,12 @@ public class Manager extends Thread {
 					lounge.goToSupplier();
 					// if there are no more tasks
 					lounge.appraiseSit();
+					break;
+					
+				case ATTENDING_CUSTOMER:
+					lounge.receivePayment();
+					lounge.handCarKey();
+					lounge.registerService();
 					break;
 
 				case GETTING_NEW_PARTS:

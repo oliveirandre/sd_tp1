@@ -16,7 +16,12 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 
     HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
     
-    @Override
+	/**
+	 * Mechanic's method. Reads the paper while there is no work.
+	 * When a new car is added to the queue, he exits this method.
+	 *
+	 */
+	@Override
     public synchronized void readThePaper() {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         while (Lounge.getCarsToRepair().isEmpty()) { //while there is no car to repair
@@ -28,50 +33,82 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         }
     }
 
-    @Override
+	/**
+	 * Mechanic's method. Change the state to start to fix the car.
+	 *
+	 */
+	@Override
     public synchronized void startRepairProcedure() {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
     }
 
-    @Override
-    public synchronized int getVehicle() {
-        return (int) Lounge.getCarsToRepair().poll();
+	/**
+	 * Mechanic's method. Mechanic removes one piece from stock
+	 * to repair the car in question
+	 * 
+	 * 
+	 * @param id
+	 * @param piece
+	 */
+	@Override
+    public synchronized void fixIt(int id, Piece piece) {
+        RepairShop.removePieceFromStock(piece);
+        pieceToBeRepaired.remove(id, piece);
     }
 
-    @Override
-    public synchronized void fixIt(int id, Piece part) {
-        RepairShop.removePieceFromStock(part);
-        pieceToBeRepaired.remove(id, part);
-    }
-
-    @Override
+	/**
+	 * Mechanic's method. Mechanic checks the car and finds what piece it needs.
+	 * If no required piece is associated to a car, it creates a new one. 
+	 * 
+	 * @param id
+	 * @return the HashMap containing the cars with the required piece, respectively
+	 */
+	@Override
     public synchronized HashMap getRequiredPart(int id) {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.CHECKING_STOCK);
         pieceToBeRepaired.putIfAbsent(id, new Piece());
         return pieceToBeRepaired;
     }
 
-    @Override
+	/**
+	 * Mechanic's method. After receiving a new car to fix, checks if the required
+	 * piece is available in stock.
+	 * 
+	 * @param part
+	 * @return returns true if the piece is available and false otherwise
+	 */
+	@Override
     public boolean partAvailable(Piece part) {
         return RepairShop.pieceInStock(part);
     }
-
+	
+	
+	
     @Override
-    public synchronized void letManagerKnow() {
+    public synchronized Piece letManagerKnow(Piece piece) {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
         notify();
+		return piece;
     }
-
+	
+	/**
+	 * Mechanic's method. After knowing that the required part is available in 
+	 * stock, the mechanic's state changes to fix the car
+	 * 
+	 */
     @Override
-    public synchronized boolean resumeRepairProcedure() {
+    public synchronized void resumeRepairProcedure() {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
-		return true;
     }
 
+	/**
+	 * Mechanic's method. Change the state to alert the manager that the
+	 * repair is concluded.
+	 *
+	 */
     @Override
     public synchronized void repairConcluded() {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

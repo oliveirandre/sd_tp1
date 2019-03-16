@@ -2,7 +2,6 @@ package entities;
 
 import java.util.HashMap;
 import repository.Piece;
-import shared.IMechanicL;
 import shared.IMechanicP;
 import shared.IMechanicRA;
 
@@ -15,12 +14,10 @@ public class Mechanic extends Thread {
 	private MechanicState state;
 	private final IMechanicP park;
 	private final IMechanicRA repairArea;
-	private final IMechanicL lounge;
 
-	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge) {
+	public Mechanic(IMechanicP park, IMechanicRA repairArea) {
 		this.park = park;
 		this.repairArea = repairArea;
-		this.lounge = lounge;
 	}
 	HashMap<Integer, Piece> pieceToBeRepaired;
 	boolean alreadyChecked = false;
@@ -32,8 +29,8 @@ public class Mechanic extends Thread {
 		while (true) {
 			switch (this.state) {
 				case WAITING_FOR_WORK:
-					repairArea.readThePaper(); //falta fazer wait
-					repairArea.startRepairProcedure(); // when awaken
+					repairArea.readThePaper(); 
+					repairArea.startRepairProcedure();
 					break;
 				case FIXING_CAR:
 					int idCarToFix = 0; //manager tem que dizer qual o id aqui
@@ -54,7 +51,10 @@ public class Mechanic extends Thread {
 
 				case ALERTING_MANAGER:
 					//alertar manager se foi repairConcluded ou se não há stock
-					lounge.readThePaper();
+					idCarToFix = 0;
+					
+					
+					repairArea.readThePaper();
 					break;
 
 				case CHECKING_STOCK:
@@ -62,9 +62,10 @@ public class Mechanic extends Thread {
 					idCarToFix = 0; //manager tem que dizer qual o id aqui
 
 					if (!repairArea.partAvailable(pieceToBeRepaired.get(idCarToFix))) {
-						repairArea.letManagerKnow();
+						repairArea.letManagerKnow(pieceToBeRepaired.get(idCarToFix));
 					} else {
-						alreadyChecked = repairArea.resumeRepairProcedure();
+						alreadyChecked = true;
+						repairArea.resumeRepairProcedure();
 					}
 					break;
 			}

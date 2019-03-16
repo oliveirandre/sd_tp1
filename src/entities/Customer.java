@@ -21,6 +21,7 @@ public class Customer extends Thread {
     // generate automatically if customer requires a replacement car
     public boolean requiresCar = false;
     public boolean carRepaired = false;
+    private boolean happyCustomer = false;
     
     public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id) {
         this.outsideWorld = outsideWorld;
@@ -33,9 +34,8 @@ public class Customer extends Thread {
     public void run() {
         this.setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
         System.out.println(this.getCustomerState());
-        while(!this.carRepaired) {
+        while(!this.happyCustomer) {
             switch(this.state) {
-                
                 case NORMAL_LIFE_WITH_CAR:
                     outsideWorld.decideOnRepair();
                     outsideWorld.goToRepairShop();
@@ -59,7 +59,7 @@ public class Customer extends Thread {
                     }
                     else {
                         lounge.payForTheService();
-                        this.carRepaired = true;
+                        this.happyCustomer = true;
                         park.collectCar(this.id);
                         outsideWorld.backToWorkByCar();
                     }

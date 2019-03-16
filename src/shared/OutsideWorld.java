@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class OutsideWorld implements IOutsideWorld, ICustomerOW, IManagerOW {
 
-    private List<Integer> repairedCars = new ArrayList<Integer>();
+    private final List<Integer> repairedCars = new ArrayList<>();
     
     /*
     ** Customer's method. The customer starts his life span in the outside world
@@ -42,11 +42,13 @@ public class OutsideWorld implements IOutsideWorld, ICustomerOW, IManagerOW {
     @Override
     public synchronized void backToWorkByBus() {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
-        while(!repairedCars.contains(((Customer)Thread.currentThread()).getId())) {
+        while(!repairedCars.contains(((Customer)Thread.currentThread()).getCustomerId())) {
             try {
                 wait();
-                if(repairedCars.contains(((Customer)Thread.currentThread()).getId())) {
+                if(repairedCars.contains(((Customer)Thread.currentThread()).getCustomerId())) {
                     ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+                    repairedCars.remove(((Customer)Thread.currentThread()).getCustomerId());
+                    ((Customer)Thread.currentThread()).carRepaired = true;
                     return;
                 }
             } catch(Exception e) {
@@ -57,10 +59,24 @@ public class OutsideWorld implements IOutsideWorld, ICustomerOW, IManagerOW {
     
     @Override
     public synchronized void backToWorkByCar() {
-        if(((Customer)Thread.currentThread()).carRepaired)
+        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
+        if(((Customer)Thread.currentThread()).carRepaired) {
             return;
+        }
         else {
-            
+            while(!repairedCars.contains(((Customer)Thread.currentThread()).getCustomerId())) {
+                try {
+                    wait();
+                    if(repairedCars.contains(((Customer)Thread.currentThread()).getCustomerId())) {
+                        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+                        repairedCars.remove(((Customer)Thread.currentThread()).getCustomerId());
+                        ((Customer)Thread.currentThread()).carRepaired = true;
+                        return;
+                    }
+                } catch(Exception e) {
+
+                }
+            }
         }
     }
 

@@ -23,6 +23,8 @@ import shared.OutsideWorld;
 import shared.Park;
 import shared.RepairArea;
 import shared.SupplierSite;
+import shared.*;
+import entities.*;
 
 public class Main {
     
@@ -33,6 +35,9 @@ public class Main {
     private static SupplierSite supplierSite;
     private static ILounge iLounge;
     private static IOutsideWorld iOutsideWorld;
+    private static ICustomerOW cow;
+    private static ICustomerP cp;
+    private static ICustomerL cl;
     private static IPark iPark;
     private static IRepairArea iRepairArea;
     private static ISupplierSite iSupplierSite;
@@ -50,7 +55,7 @@ public class Main {
         
         lounge = new Lounge();
         outsideWorld = new OutsideWorld();
-        park = new Park(repairShop.N_OF_REPLACEMENT_CARS);
+        //park = new Park(repairShop.N_OF_REPLACEMENT_CARS);
         repairArea = new RepairArea();
         supplierSite = new SupplierSite();
         
@@ -60,8 +65,8 @@ public class Main {
         
         // initialization of threads
         for(int i = 0; i < nCustomers; i++) {
-            //Customer c = new Customer(iOutsideWorld, iPark, iLounge, i);
-            //c.start();
+            Customer c = new Customer(cow, cp, cl, i);
+            c.start();
         }
         
         for(int i = 0; i < nMechanics; i++) {

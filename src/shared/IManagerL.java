@@ -15,7 +15,5 @@ public interface IManagerL {
 
 	public void phoneCustomer();
 
-	public void goToSupplier();
-
 	public void appraiseSit();
 }

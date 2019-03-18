@@ -11,7 +11,7 @@ import java.util.Random;
  * @author andre and joao
  */
 public class OutsideWorld implements ICustomerOW, IManagerOW {
-    
+
 	private final List<Integer> repairedCars = new ArrayList<>();
 
 	/*
@@ -28,8 +28,8 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 			decided = deciding.nextBoolean();
 			if (decided == true) {
 				//((Customer) Thread.currentThread()).requiresCar = requiring.nextBoolean();
-                                ((Customer) Thread.currentThread()).requiresCar = false;
-                                System.out.println("I have decided to go to the repair shop and " + ((Customer) Thread.currentThread()).requiresCar + " a car.");
+				((Customer) Thread.currentThread()).requiresCar = false;
+				System.out.println("I have decided to go to the repair shop and " + ((Customer) Thread.currentThread()).requiresCar + " a car.");
 			}
 		}
 	}
@@ -41,7 +41,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 	@Override
 	public synchronized void backToWorkByBus() {
 		((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
-                System.out.println("Customer - Back to Work by bus");
+		System.out.println("Customer - Back to Work by bus");
 		while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
 			try {
 				wait();
@@ -86,7 +86,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 	@Override
 	public synchronized void goToRepairShop() {
 		((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
-                System.out.println("Going to repair shop.");
+		System.out.println("Going to repair shop.");
 	}
 
 	@Override

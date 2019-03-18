@@ -31,11 +31,9 @@ public class Mechanic extends Thread {
 	HashMap<Integer, Piece> pieceToBeRepaired;
 	boolean alreadyChecked = false;
 	boolean repairConcluded = false;
-
-	public Mechanic(IMechanicP iMechanicP, IMechanicRA iMechanicRA, IMechanicL iMechanicL, int i) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
+	int idCarToFix;
+	
+	
 	@Override
 	public void run() {
 		this.setMechanicState(MechanicState.WAITING_FOR_WORK);
@@ -49,7 +47,7 @@ public class Mechanic extends Thread {
 					repairArea.startRepairProcedure();
 					break;
 				case FIXING_CAR:
-					int idCarToFix = 0; //manager tem que dizer qual o id aqui
+					idCarToFix = repairArea.getIdFromManager(); //manager tem que dizer qual o id aqui
 					if (!alreadyChecked) {
 						park.getVehicle(idCarToFix);
 
@@ -68,17 +66,15 @@ public class Mechanic extends Thread {
 
 				case ALERTING_MANAGER:
 					//alertar manager se foi repairConcluded ou se não há stock
-					idCarToFix = 0;
 					if(!repairConcluded)
 						lounge.alertManager(pieceToBeRepaired.get(idCarToFix), idCarToFix);
 					else
 						lounge.alertManager(null, idCarToFix);
-					repairArea.readThePaper();
 					break;
 
 				case CHECKING_STOCK:
 
-					idCarToFix = 0; //manager tem que dizer qual o id aqui
+					//idCarToFix = 0; //manager tem que dizer qual o id aqui
 
 					if (!repairArea.partAvailable(pieceToBeRepaired.get(idCarToFix))) {
 						repairArea.letManagerKnow();

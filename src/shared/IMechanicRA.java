@@ -23,5 +23,6 @@ public interface IMechanicRA {
 
     public void resumeRepairProcedure();
     public void repairConcluded();
-    
+	
+	public int getIdFromManager();    
 }

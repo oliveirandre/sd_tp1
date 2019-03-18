@@ -30,26 +30,26 @@ public class Manager extends Thread {
 	@Override
 	public void run() {
 		this.setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
-
+		int idCustomer = 0; //este idCustomer é o id que se manda ao mecânico
 		while (!noMoreTasks) {
 			switch (this.state) {
-				
+
 				case CHECKING_WHAT_TO_DO:
-                                        lounge.appraiseSit();
+					lounge.appraiseSit();
 					//lounge.getNextTask();
 					boolean isCarNeeded = lounge.talkWithCustomer();
-                                        System.out.println(isCarNeeded);
+					System.out.println(isCarNeeded);
 					if (isCarNeeded) {
 						lounge.handCarKey();
 					}
 					// after posting job
 					lounge.phoneCustomer();
 					// after alerting customer
-					lounge.goToSupplier();
+					supplierSite.goToSupplier();
 					// if there are no more tasks
 					//lounge.appraiseSit();
 					break;
-					
+
 				case ATTENDING_CUSTOMER:
 					lounge.receivePayment();
 					lounge.handCarKey();
@@ -57,11 +57,11 @@ public class Manager extends Thread {
 					break;
 
 				case GETTING_NEW_PARTS:
-					//supplierSite.storePart();
+					repairArea.storePart();
 					break;
 
 				case POSTING_JOB:
-					// wake up mechanic
+					repairArea.registerService(idCustomer); // wake up mechanic
 					lounge.getNextTask();
 					break;
 
@@ -71,7 +71,6 @@ public class Manager extends Thread {
 					break;
 
 				case REPLENISH_STOCK:
-					//repairArea.storePart();
 					lounge.getNextTask();
 					break;
 			}

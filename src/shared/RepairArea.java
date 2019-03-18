@@ -16,6 +16,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 
     HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
     private boolean work = false; //manager tem que alterar no post
+	private int idCustomer;
 	
 	/**
 	 * Mechanic's method. Reads the paper while there is no work.
@@ -117,6 +118,19 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+	@Override
+	public synchronized void registerService(int idCustomer) {
+		this.idCustomer = idCustomer;
+	}
 
+	@Override
+	public synchronized int getIdFromManager() {
+		return idCustomer;
+	}
+
+	@Override
+	public void storePart() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
     
 }

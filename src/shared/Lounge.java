@@ -4,6 +4,8 @@ import entities.Customer;
 import entities.CustomerState;
 import entities.Manager;
 import entities.ManagerState;
+import entities.Mechanic;
+import entities.MechanicState;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -153,12 +155,6 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
     
     @Override
-    public synchronized void goToSupplier() {
-        ((Manager)Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
     public synchronized void receivePayment() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -192,13 +188,14 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
 
 	@Override
-	public void alertManager(Piece piece, int idCar) {
-		if(piece==null){ //repair of this id is concluded
-			
+	public synchronized void alertManager(Piece piece, int idCar) {
+		((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
+		if(piece==null){ //repair of this carId is concluded
 			
 		}else{
 			
 			
 		}
+		notify();
 	}
 }

@@ -20,7 +20,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private RepairShop repairShop;
     
     private Queue<Integer> replacementQueue;
-    private Queue<Integer> customersQueue = new LinkedList<>();
+    private final Queue<Integer> customersQueue = new LinkedList<>();
     private static Queue<Integer> carsToRepair = new LinkedList<>();
     private int nextCustomer;
     
@@ -34,11 +34,13 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void queueIn(int id) {
         customersQueue.add(id);
-        System.out.println("Waiting in queue.");
+        notify();
+        System.out.println("Customer " + id + " - Waiting in queue.");
         while(!(nextCustomer == id)) {
             try {
                 wait();
                 if(nextCustomer == id) {
+                    System.out.println("Customer " + id + " - Attended by manager.");
                     return;
                 }
             } catch(Exception e) {
@@ -75,6 +77,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized boolean talkWithCustomer() {
         ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
         nextCustomer = customersQueue.poll();
+        System.out.println("Manager - Attending customer number " + nextCustomer);
         notifyAll();
         while(!(requiresCar.containsKey(nextCustomer))) {
             try {
@@ -163,7 +166,18 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     @Override
     public synchronized void appraiseSit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Manager - Appraising sit.");
+        while(customersQueue.isEmpty()) {
+            try {
+                wait();
+                if(!customersQueue.isEmpty()) {
+                    System.out.println("Manager - Customer waiting!");
+                    return;
+                }
+            } catch(Exception e) {
+                
+            }
+        }
     }
     
     @Override

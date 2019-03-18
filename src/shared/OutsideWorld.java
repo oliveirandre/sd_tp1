@@ -23,11 +23,12 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 	public synchronized void decideOnRepair() {
 		boolean decided = false;
 		Random deciding = new Random();
-		Random requiring = new Random();
+		//Random requiring = new Random();
 		while (decided == false) {
 			decided = deciding.nextBoolean();
 			if (decided == true) {
-				((Customer) Thread.currentThread()).requiresCar = requiring.nextBoolean();
+				//((Customer) Thread.currentThread()).requiresCar = requiring.nextBoolean();
+                                ((Customer) Thread.currentThread()).requiresCar = false;
                                 System.out.println("I have decided to go to the repair shop and " + ((Customer) Thread.currentThread()).requiresCar + " a car.");
 			}
 		}
@@ -40,6 +41,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 	@Override
 	public synchronized void backToWorkByBus() {
 		((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
+                System.out.println("Customer - Back to Work by bus");
 		while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
 			try {
 				wait();

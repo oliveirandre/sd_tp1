@@ -63,7 +63,7 @@ public class Customer extends Thread {
                     System.out.println(this.getCustomerState());
                     lounge.queueIn(this.id);
                     if(!carRepaired) {
-                         lounge.talkWithManager();
+                        lounge.talkWithManager();
                         if(requiresCar)
                             lounge.collectKey();
                         else

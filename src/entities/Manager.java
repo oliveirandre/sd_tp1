@@ -35,8 +35,10 @@ public class Manager extends Thread {
 			switch (this.state) {
 				
 				case CHECKING_WHAT_TO_DO:
-					lounge.getNextTask();
+                                        lounge.appraiseSit();
+					//lounge.getNextTask();
 					boolean isCarNeeded = lounge.talkWithCustomer();
+                                        System.out.println(isCarNeeded);
 					if (isCarNeeded) {
 						lounge.handCarKey();
 					}
@@ -45,7 +47,7 @@ public class Manager extends Thread {
 					// after alerting customer
 					lounge.goToSupplier();
 					// if there are no more tasks
-					lounge.appraiseSit();
+					//lounge.appraiseSit();
 					break;
 					
 				case ATTENDING_CUSTOMER:

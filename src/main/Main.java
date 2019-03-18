@@ -12,12 +12,17 @@ package main;
  */
 
 import entities.Customer;
+import entities.Manager;
 import entities.Mechanic;
 import repository.Piece;
 import repository.RepairShop;
 import shared.ICustomerL;
 import shared.ICustomerOW;
 import shared.ICustomerP;
+import shared.IManagerL;
+import shared.IManagerOW;
+import shared.IManagerRA;
+import shared.IManagerSS;
 import shared.IMechanicL;
 import shared.IMechanicP;
 import shared.IMechanicRA;
@@ -60,20 +65,23 @@ public class Main {
         repairArea = new RepairArea();
         supplierSite = new SupplierSite();
 		
+        
+        for(int i = 0; i < nManagers; i++) {
+            Manager m = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld);
+            m.start();
+        }
+        
         // initialization of threads
         for(int i = 0; i < nCustomers; i++) {
-            Customer c = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i);
-            //c.start();
+            Customer c = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i+1);
+            c.start();
         }
         
         for(int i = 0; i < nMechanics; i++) {
             Mechanic mec = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i, (RepairShop) repairShop);
-			mec.start();
+			//mec.start();
         }
         
-        for(int i = 0; i < nManagers; i++) {
-            
-        }
 		
         Piece p = new Piece();
 		

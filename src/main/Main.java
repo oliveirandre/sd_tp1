@@ -17,11 +17,6 @@ import repository.RepairShop;
 import shared.ICustomerL;
 import shared.ICustomerOW;
 import shared.ICustomerP;
-import shared.ILounge;
-import shared.IOutsideWorld;
-import shared.IPark;
-import shared.IRepairArea;
-import shared.ISupplierSite;
 import shared.Lounge;
 import shared.OutsideWorld;
 import shared.Park;
@@ -35,14 +30,6 @@ public class Main {
     private static Park park;
     private static RepairArea repairArea;
     private static SupplierSite supplierSite;
-    private static ILounge iLounge;
-    private static IOutsideWorld iOutsideWorld;
-    private static ICustomerOW cow;
-    private static ICustomerP cp;
-    private static ICustomerL cl;
-    private static IPark iPark;
-    private static IRepairArea iRepairArea;
-    private static ISupplierSite iSupplierSite;
     
     private static RepairShop repairShop;
     
@@ -63,7 +50,7 @@ public class Main {
         int nMechanics = repairShop.N_OF_MECHANICS;
         int nManagers = repairShop.N_OF_MANAGERS;
         
-		lounge = new Lounge();
+        lounge = new Lounge();
         outsideWorld = new OutsideWorld();
         park = new Park(RepairShop.N_OF_REPLACEMENT_CARS);
         repairArea = new RepairArea();
@@ -71,7 +58,7 @@ public class Main {
 		
         // initialization of threads
         for(int i = 0; i < nCustomers; i++) {
-            Customer c = new Customer(cow, cp, cl, i);
+            Customer c = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i);
             c.start();
         }
         

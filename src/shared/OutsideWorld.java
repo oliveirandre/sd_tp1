@@ -13,7 +13,7 @@ import java.util.Random;
  * @author andre and joao
  */
 public class OutsideWorld implements IOutsideWorld, ICustomerOW, IManagerOW {
-
+    
 	private final List<Integer> repairedCars = new ArrayList<>();
 
 	/*
@@ -30,7 +30,7 @@ public class OutsideWorld implements IOutsideWorld, ICustomerOW, IManagerOW {
 			decided = deciding.nextBoolean();
 			if (decided == true) {
 				((Customer) Thread.currentThread()).requiresCar = requiring.nextBoolean();
-				goToRepairShop();
+                                System.out.println("I have decided to go to the repair shop and " + ((Customer) Thread.currentThread()).requiresCar + " a car.");
 			}
 		}
 	}
@@ -86,6 +86,7 @@ public class OutsideWorld implements IOutsideWorld, ICustomerOW, IManagerOW {
 	@Override
 	public synchronized void goToRepairShop() {
 		((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
+                System.out.println("Going to repair shop.");
 	}
 
 	@Override

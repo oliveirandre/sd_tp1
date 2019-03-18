@@ -34,26 +34,32 @@ public class Customer extends Thread {
     @Override
     public void run() {
         this.setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
-        System.out.println(this.getCustomerState());
         while(!this.happyCustomer) {
             switch(this.state) {
                 case NORMAL_LIFE_WITH_CAR:
-                    if(!carInRepairShop)
-						outsideWorld.decideOnRepair();
-					else
-						outsideWorld.goToRepairShop();
-					break;
+                    System.out.println(this.getCustomerState());
+                    if(!carInRepairShop) {
+                            outsideWorld.decideOnRepair();
+                            outsideWorld.goToRepairShop();
+                    }
+                    else
+                            outsideWorld.goToRepairShop();
+                    break;
+                    
                 case PARK:
+                    System.out.println(this.getCustomerState());
                     park.parkCar(this.id);
                     break;
                     
                 case WAITING_FOR_REPLACE_CAR:
-					carInRepairShop = true;
+                    System.out.println(this.getCustomerState());      
+                    carInRepairShop = true;
                     int idReplacementCar = park.findCar();
 					park.backToWorkByCar();
                     break;
                     
                 case RECEPTION:
+                    System.out.println(this.getCustomerState());
                     lounge.queueIn(this.id);
                     if(!carRepaired) {
                          lounge.talkWithManager();
@@ -71,6 +77,7 @@ public class Customer extends Thread {
                     break;
                     
                 case NORMAL_LIFE_WITHOUT_CAR:
+                    System.out.println(this.getCustomerState());
 					outsideWorld.goToReception();
                     break;
             }

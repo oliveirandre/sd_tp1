@@ -5,6 +5,7 @@ import entities.CustomerState;
 import entities.Manager;
 import entities.ManagerState;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Queue;
 import repository.Piece;
 import repository.RepairShop;
@@ -19,7 +20,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private RepairShop repairShop;
     
     private Queue<Integer> replacementQueue;
-    private Queue<Integer> customersQueue;
+    private Queue<Integer> customersQueue = new LinkedList<>();
     private static Queue<Integer> carsToRepair;
     private int nextCustomer;
     
@@ -32,7 +33,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     */       
     @Override
     public synchronized void queueIn(int id) {
-        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+        System.out.println("entra?");
         customersQueue.add(id);
         while(!(nextCustomer == id)) {
             try {

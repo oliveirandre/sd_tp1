@@ -33,8 +33,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     */       
     @Override
     public synchronized void queueIn(int id) {
-        System.out.println("entra?");
         customersQueue.add(id);
+        System.out.println("Waiting in queue.");
         while(!(nextCustomer == id)) {
             try {
                 wait();

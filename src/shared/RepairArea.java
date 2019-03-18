@@ -15,7 +15,8 @@ import repository.RepairShop;
 public class RepairArea implements IMechanicRA, IManagerRA {
 
     HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
-    
+    private boolean work = false; //manager tem que alterar no post
+	
 	/**
 	 * Mechanic's method. Reads the paper while there is no work.
 	 * When a new car is added to the queue, he exits this method.
@@ -24,7 +25,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	@Override
     public synchronized void readThePaper() {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
-        while (Lounge.getCarsToRepair().isEmpty()) { //while there is no car to repair
+        while (!work) { //while there is no car to repair
             try {
                 wait();
             } catch (Exception e) {
@@ -116,11 +117,6 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /*@Override
-    public void storePart() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-*/
 
     
 }

@@ -10,7 +10,7 @@ import static repository.RepairShop.N_OF_REPLACEMENT_CARS;
 public class RepairShop {
 
 	public static final int N_OF_CUSTOMERS = 1;
-	public static final int N_OF_MECHANICS = 2;
+	public static final int N_OF_MECHANICS = 1;
 	public static final int N_OF_MANAGERS = 1;
 	public static int N_OF_REPLACEMENT_CARS = 3;
 	public static final int N_OF_TYPE_PIECES = 3;

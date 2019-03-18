@@ -21,7 +21,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     private Queue<Integer> replacementQueue;
     private Queue<Integer> customersQueue = new LinkedList<>();
-    private static Queue<Integer> carsToRepair;
+    private static Queue<Integer> carsToRepair = new LinkedList<>();
     private int nextCustomer;
     
     private static HashMap<Integer, Boolean> requiresCar = new HashMap<Integer, Boolean>();
@@ -173,7 +173,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
     
     
-    public static Queue getCarsToRepair(){
+    public synchronized static Queue getCarsToRepair(){
         return carsToRepair;
     }
 

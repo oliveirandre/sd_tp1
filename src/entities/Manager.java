@@ -1,10 +1,9 @@
 package entities;
 
 import shared.IManagerL;
-import shared.IOutsideWorld;
-import shared.IPark;
-import shared.IRepairArea;
-import shared.ISupplierSite;
+import shared.IManagerOW;
+import shared.IManagerRA;
+import shared.IManagerSS;
 
 /**
  *
@@ -15,19 +14,17 @@ public class Manager extends Thread {
 	private ManagerState state;
 
 	private final IManagerL lounge;
-	private final IRepairArea repairArea;
-	private final ISupplierSite supplierSite;
-	private final IOutsideWorld outsideWorld;
-	private final IPark park;
+	private final IManagerRA repairArea;
+	private final IManagerSS supplierSite;
+	private final IManagerOW outsideWorld;
 
 	private final boolean noMoreTasks = false;
 
-	public Manager(IManagerL lounge, IRepairArea repairArea, ISupplierSite supplierSite, IOutsideWorld outsideWorld, IPark park) {
+	public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld) {
 		this.lounge = lounge;
 		this.repairArea = repairArea;
 		this.supplierSite = supplierSite;
 		this.outsideWorld = outsideWorld;
-		this.park = park;
 	}
 
 	@Override
@@ -58,22 +55,22 @@ public class Manager extends Thread {
 					break;
 
 				case GETTING_NEW_PARTS:
-					supplierSite.storePart();
+					//supplierSite.storePart();
 					break;
 
 				case POSTING_JOB:
 					// wake up mechanic
-					repairArea.getNextTask();
+					lounge.getNextTask();
 					break;
 
 				case ALERTING_CUSTOMER:
 					// wake up customer that has his car repaired
-					outsideWorld.getNextTask();
+					lounge.getNextTask();
 					break;
 
 				case REPLENISH_STOCK:
-					repairArea.storePart();
-					repairArea.getNextTask();
+					//repairArea.storePart();
+					lounge.getNextTask();
 					break;
 			}
 		}

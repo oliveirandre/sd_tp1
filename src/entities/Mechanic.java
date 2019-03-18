@@ -2,6 +2,7 @@ package entities;
 
 import java.util.HashMap;
 import repository.Piece;
+import repository.RepairShop;
 import shared.IMechanicL;
 import shared.IMechanicP;
 import shared.IMechanicRA;
@@ -16,16 +17,24 @@ public class Mechanic extends Thread {
 	private final IMechanicP park;
 	private final IMechanicRA repairArea;
 	private final IMechanicL lounge;
+	private final int id;
+	private RepairShop repairShop;
 
-	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge) {
+	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge, int id, RepairShop repairShop) {
 		this.park = park;
 		this.repairArea = repairArea;
 		this.lounge = lounge;
+		this.id = id;
+		this.repairShop = repairShop;
 	}
 	
 	HashMap<Integer, Piece> pieceToBeRepaired;
 	boolean alreadyChecked = false;
 	boolean repairConcluded = false;
+
+	public Mechanic(IMechanicP iMechanicP, IMechanicRA iMechanicRA, IMechanicL iMechanicL, int i) {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
 	@Override
 	public void run() {

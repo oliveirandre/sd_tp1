@@ -2,8 +2,6 @@ package shared;
 
 import entities.Customer;
 import entities.CustomerState;
-import entities.Manager;
-import entities.ManagerState;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,7 +10,7 @@ import java.util.Random;
  *
  * @author andre and joao
  */
-public class OutsideWorld implements IOutsideWorld, ICustomerOW, IManagerOW {
+public class OutsideWorld implements ICustomerOW, IManagerOW {
     
 	private final List<Integer> repairedCars = new ArrayList<>();
 
@@ -87,23 +85,6 @@ public class OutsideWorld implements IOutsideWorld, ICustomerOW, IManagerOW {
 	public synchronized void goToRepairShop() {
 		((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
                 System.out.println("Going to repair shop.");
-	}
-
-	@Override
-	public void queueIn() {
-		((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
-		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
-	@Override
-	public synchronized void phoneToCustomer() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
-	@Override
-	public synchronized void getNextTask() {
-		((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
-		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	@Override

@@ -22,7 +22,8 @@ public class Customer extends Thread {
     public boolean requiresCar = false;
     public boolean carRepaired = false;
     private boolean happyCustomer = false;
-	private boolean carInRepairShop = false;
+    private boolean carInRepairShop = false;
+    public int replacementCar = 0;
     
     public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id) {
         this.outsideWorld = outsideWorld;
@@ -54,8 +55,8 @@ public class Customer extends Thread {
                 case WAITING_FOR_REPLACE_CAR:
                     System.out.println(this.getCustomerState());      
                     carInRepairShop = true;
-                    int idReplacementCar = park.findCar();
-					park.backToWorkByCar();
+                    replacementCar = park.findCar();
+                    park.backToWorkByCar();
                     break;
                     
                 case RECEPTION:
@@ -78,7 +79,7 @@ public class Customer extends Thread {
                     
                 case NORMAL_LIFE_WITHOUT_CAR:
                     System.out.println(this.getCustomerState());
-					outsideWorld.goToReception();
+                    outsideWorld.goToReception();
                     break;
             }
         }

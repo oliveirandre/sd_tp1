@@ -85,10 +85,9 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	
 	
     @Override
-    public synchronized Piece letManagerKnow(Piece piece) {
+    public synchronized void letManagerKnow() {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
         notify();
-		return piece;
     }
 	
 	/**

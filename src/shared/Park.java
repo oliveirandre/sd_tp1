@@ -45,6 +45,8 @@ public class Park implements ICustomerP, IMechanicP {
     @Override
     public synchronized int findCar() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
+		nReplacementCars--;
+		parkingSlots++;
 		return carsParked.remove(nCustomers+1);
     }
 
@@ -61,6 +63,7 @@ public class Park implements ICustomerP, IMechanicP {
     @Override
     public synchronized void getVehicle(int id) {
         carsParked.remove(id);
+		parkingSlots++;
     }
 	
 	/**
@@ -71,6 +74,7 @@ public class Park implements ICustomerP, IMechanicP {
     @Override
     public synchronized void returnVehicle(int id) {
         carsParked.add(id);
+		parkingSlots--;
     }
 
     public int getParkingSlots() {

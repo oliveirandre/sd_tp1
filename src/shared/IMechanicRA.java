@@ -13,7 +13,7 @@ public interface IMechanicRA {
     
     public HashMap getRequiredPart(int id);
     
-    public Piece letManagerKnow(Piece piece);
+    public void letManagerKnow();
 
     public boolean partAvailable(Piece requiredPart);
     

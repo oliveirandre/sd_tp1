@@ -6,6 +6,7 @@ import entities.Manager;
 import entities.ManagerState;
 import java.util.HashMap;
 import java.util.Queue;
+import repository.Piece;
 import repository.RepairShop;
 
 /**
@@ -13,7 +14,7 @@ import repository.RepairShop;
  * @author andre and joao
  */
 
-public class Lounge implements ICustomerL, IManagerL {
+public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     private RepairShop repairShop;
     
@@ -174,4 +175,15 @@ public class Lounge implements ICustomerL, IManagerL {
     public static Queue getCarsToRepair(){
         return carsToRepair;
     }
+
+	@Override
+	public void alertManager(Piece piece, int idCar) {
+		if(piece==null){ //repair of this id is concluded
+			
+			
+		}else{
+			
+			
+		}
+	}
 }

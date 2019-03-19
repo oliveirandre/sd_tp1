@@ -36,20 +36,19 @@ public class Manager extends Thread {
 			switch (this.state) {
 
 				case CHECKING_WHAT_TO_DO:
-					lounge.appraiseSit();
-                    System.out.println("?=?");
-					lounge.getNextTask();
+					lounge.appraiseSit(); //while customersQueue is empty, waits
+                    
+					System.out.println("?=?");
+					
+					lounge.getNextTask(); 
 					// after posting job
 					//lounge.phoneCustomer();
 					// after alerting customer
 					
-					supplierSite.goToSupplier(); //nao faz nada
+					
 					
                     //System.out.println("JDAIWJDAW");
-					//supplierSite.goToSupplier();
 	
-					// if there are no more tasks
-					//lounge.appraiseSit();
 					break;
 
 				case ATTENDING_CUSTOMER:
@@ -60,26 +59,30 @@ public class Manager extends Thread {
 					}
 					lounge.receivePayment();
 					lounge.handCarKey();
-					lounge.registerService();
+					
 					break;
 
 				case GETTING_NEW_PARTS:
-					
-					Piece partNeeded = lounge.getPieceToReStock();
-					repairArea.storePart(partNeeded);
+					supplierSite.goToSupplier();
 					break;
 
 				case POSTING_JOB:
-					repairArea.registerService(idCustomer); // wake up mechanic
+					repairArea.registerService(idCustomer); // wake up mechanic 
+					//TEMOS DOIS REGISTERSERVICE FALAR DISTO COM CUNHA
+					//URGENTEEEEEEEEEEE
+					//UM NO LOUNGE E OUTRO NO REPAIRAREA
 					lounge.getNextTask();
 					break;
 
 				case ALERTING_CUSTOMER:
 					// wake up customer that has his car repaired
+					lounge.phoneCustomer(); // ou do outsideWorld
 					lounge.getNextTask();
 					break;
 
 				case REPLENISH_STOCK:
+					Piece partNeeded = lounge.getPieceToReStock();
+					repairArea.storePart(partNeeded);
 					lounge.getNextTask();
 					break;
 			}

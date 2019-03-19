@@ -123,6 +123,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	public synchronized void registerService(int idCustomer) {
 		this.idCustomer = idCustomer;
 		work = true;
+		notify(); //wake mechanic
 	}
 
 	@Override

@@ -144,10 +144,15 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void getNextTask() {
         // manager gets the next task: can be talkToCustomer, phoneCustomer, goToSupplier
-        if(!customersQueue.isEmpty()) {
+        if(pieceToReStock!=null)
+			((Manager)Thread.currentThread()).setManagerState(ManagerState.REPLENISH_STOCK);
+		else if(!customersToCallQueue.isEmpty())
+			((Manager)Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
+		else if(!customersQueue.isEmpty())
             ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
-            System.out.println(((Manager)Thread.currentThread()).getManagerState());
-        }
+		else
+			((Manager)Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+        
     }
     
     @Override
@@ -175,11 +180,12 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void phoneCustomer() {
         ((Manager)Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
+		notify();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
-    public synchronized static Queue getCarsToRepair(){
+    @Override
+    public synchronized Queue getCarsToRepair(){
         return carsToRepair;
     }
 
@@ -194,7 +200,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 		notify();
 	}
 	
+	@Override
 	public synchronized Piece getPieceToReStock(){
-		return pieceToReStock;
+		Piece temp = pieceToReStock;
+		pieceToReStock = null; //put null since piece is already going to stock when this method is called
+		return temp;
 	}
 }

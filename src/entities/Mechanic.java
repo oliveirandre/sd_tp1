@@ -47,7 +47,7 @@ public class Mechanic extends Thread {
 					repairArea.startRepairProcedure();
 					break;
 				case FIXING_CAR:
-					idCarToFix = repairArea.getIdFromManager(); //manager tem que dizer qual o id aqui
+					idCarToFix = (int) lounge.getCarsToRepair().poll();//repairArea.getIdFromManager(); //manager tem que dizer qual o id aqui
 					if (!alreadyChecked) {
 						park.getVehicle(idCarToFix);
 

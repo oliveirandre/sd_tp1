@@ -1,5 +1,6 @@
 package entities;
 
+import repository.Piece;
 import shared.IManagerL;
 import shared.IManagerOW;
 import shared.IManagerRA;
@@ -45,7 +46,7 @@ public class Manager extends Thread {
 					// after posting job
 					lounge.phoneCustomer();
 					// after alerting customer
-					supplierSite.goToSupplier();
+					supplierSite.goToSupplier(); //nao faz nada
 					// if there are no more tasks
 					//lounge.appraiseSit();
 					break;
@@ -57,7 +58,8 @@ public class Manager extends Thread {
 					break;
 
 				case GETTING_NEW_PARTS:
-					repairArea.storePart();
+					Piece partNeeded = lounge.getPieceToReStock();
+					repairArea.storePart(partNeeded);
 					break;
 
 				case POSTING_JOB:

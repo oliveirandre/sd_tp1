@@ -25,6 +25,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 */
 	@Override
     public synchronized void readThePaper() {
+		if(pieceToBeRepaired.isEmpty())
+			work = false;
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         while (!work) { //while there is no car to repair
             try {
@@ -85,7 +87,6 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     }
 	
 	
-	
     @Override
     public synchronized void letManagerKnow() {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
@@ -121,6 +122,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	@Override
 	public synchronized void registerService(int idCustomer) {
 		this.idCustomer = idCustomer;
+		work = true;
 	}
 
 	@Override
@@ -129,8 +131,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	}
 
 	@Override
-	public void storePart() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public void storePart(Piece part) {
+		RepairShop.addPieceToStock(part);
 	}
     
 }

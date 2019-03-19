@@ -25,6 +25,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private final Queue<Integer> customersQueue = new LinkedList<>();
     private static Queue<Integer> carsToRepair = new LinkedList<>();
     private int nextCustomer;
+	private Piece pieceToReStock;
+	private Queue<Integer> customersToCallQueue = new LinkedList<>(); //repair Concluded
     
     private static HashMap<Integer, Boolean> requiresCar = new HashMap<Integer, Boolean>();
 
@@ -106,7 +108,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     @Override
     public synchronized void payForTheService() {
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     /*
@@ -139,18 +141,19 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
     
     
-    /*
-    @Override
-    public synchronized void payForService() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    */
-    
     @Override
     public synchronized void getNextTask() {
         // manager gets the next task: can be talkToCustomer, phoneCustomer, goToSupplier
+        if(((Manager)Thread.currentThread()).getManagerState() == ManagerState.ATTENDING_CUSTOMER){
+		
+		}else if(((Manager)Thread.currentThread()).getManagerState() == ManagerState.ATTENDING_CUSTOMER){
+			
+		}else if(((Manager)Thread.currentThread()).getManagerState() == ManagerState.ATTENDING_CUSTOMER){
+			
+			
+		}
+			
         ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
-        
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -191,11 +194,14 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	public synchronized void alertManager(Piece piece, int idCar) {
 		((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
 		if(piece==null){ //repair of this carId is concluded
-			
+			customersToCallQueue.add(idCar);
 		}else{
-			
-			
+			pieceToReStock = piece;
 		}
 		notify();
+	}
+	
+	public synchronized Piece getPieceToReStock(){
+		return pieceToReStock;
 	}
 }

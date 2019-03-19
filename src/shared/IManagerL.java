@@ -1,5 +1,7 @@
 package shared;
 
+import repository.Piece;
+
 /**
  *
  * @author andre e joao
@@ -16,4 +18,6 @@ public interface IManagerL {
 	public void phoneCustomer();
 
 	public void appraiseSit();
+
+	public Piece getPieceToReStock();
 }

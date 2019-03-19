@@ -54,4 +54,10 @@ public class RepairShop {
 			}
 		}
 	}
+	
+	public static void addPieceToStock(Piece p) {
+		if (pieceInStock(p)) {
+			stock.put(p.getTypePiece(), stock.get(p.getTypePiece()) + 1);
+		}
+	}
 }

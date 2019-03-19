@@ -77,7 +77,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     */
     @Override
     public synchronized boolean talkWithCustomer() {
-        ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
+        //((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
         nextCustomer = customersQueue.poll();
         System.out.println("Manager - Attending customer number " + nextCustomer);
         notifyAll();
@@ -149,9 +149,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void getNextTask() {
         // manager gets the next task: can be talkToCustomer, phoneCustomer, goToSupplier
-        ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
-        
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!customersQueue.isEmpty()) {
+            ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
+            System.out.println(((Manager)Thread.currentThread()).getManagerState());
+        }
     }
     
     @Override

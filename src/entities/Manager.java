@@ -37,27 +37,34 @@ public class Manager extends Thread {
 
 				case CHECKING_WHAT_TO_DO:
 					lounge.appraiseSit();
-					//lounge.getNextTask();
-					boolean isCarNeeded = lounge.talkWithCustomer();
-					System.out.println(isCarNeeded);
-					if (isCarNeeded) {
-						lounge.handCarKey();
-					}
+                    System.out.println("?=?");
+					lounge.getNextTask();
 					// after posting job
-					lounge.phoneCustomer();
+					//lounge.phoneCustomer();
 					// after alerting customer
+					
 					supplierSite.goToSupplier(); //nao faz nada
+					
+                    //System.out.println("JDAIWJDAW");
+					//supplierSite.goToSupplier();
+	
 					// if there are no more tasks
 					//lounge.appraiseSit();
 					break;
 
 				case ATTENDING_CUSTOMER:
+					boolean isCarNeeded = lounge.talkWithCustomer();
+					System.out.println(isCarNeeded);
+					if (isCarNeeded) {
+						lounge.handCarKey();
+					}
 					lounge.receivePayment();
 					lounge.handCarKey();
 					lounge.registerService();
 					break;
 
 				case GETTING_NEW_PARTS:
+					
 					Piece partNeeded = lounge.getPieceToReStock();
 					repairArea.storePart(partNeeded);
 					break;

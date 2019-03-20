@@ -7,6 +7,8 @@ package shared;
 
 import entities.Customer;
 import entities.CustomerState;
+import entities.Mechanic;
+import entities.MechanicState;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,8 @@ public class Park implements ICustomerP, IMechanicP {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         System.out.println("Customer " + ((Customer)Thread.currentThread()).getCustomerId() + " - Car parked.");
         carsParked.add(id);
+        
+        System.out.println(carsParked.toString());
         parkingSlots--;
     }
     
@@ -41,6 +45,7 @@ public class Park implements ICustomerP, IMechanicP {
     public synchronized void collectCar(int id) {
         carsParked.remove(id);
         parkingSlots++;
+        System.out.println(carsParked.toString());
     }
     
     @Override
@@ -64,7 +69,9 @@ public class Park implements ICustomerP, IMechanicP {
     @Override
     public synchronized void getVehicle(int id) {
         carsParked.remove(id);
-		parkingSlots++;
+        
+        System.out.println(carsParked.toString());
+        parkingSlots++;
     }
 	
 	/**
@@ -74,8 +81,11 @@ public class Park implements ICustomerP, IMechanicP {
 	 */
     @Override
     public synchronized void returnVehicle(int id) {
+        ((Mechanic)Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
         carsParked.add(id);
-		parkingSlots--;
+        
+        System.out.println(carsParked.toString());
+	parkingSlots--;
     }
 
     public int getParkingSlots() {

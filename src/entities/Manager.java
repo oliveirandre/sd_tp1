@@ -32,6 +32,7 @@ public class Manager extends Thread {
 	public void run() {
 		this.setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
 		int idCustomer = 0; //este idCustomer é o id que se manda ao mecânico
+                int idToCall = 0;
 		while (!noMoreTasks) {
 			switch (this.state) {
 
@@ -47,13 +48,19 @@ public class Manager extends Thread {
 				case ATTENDING_CUSTOMER:
                                     System.out.println("Manager  - " + this.getManagerState());
                                         idCustomer = lounge.currentCustomer();
-					boolean isCarNeeded = lounge.talkWithCustomer();
-					if (isCarNeeded) {
-						lounge.handCarKey();
+					String action = lounge.talkWithCustomer();
+					if (action.equals("car")) {
+                                            lounge.handCarKey();
 					}
-                                        else {
+                                        else if (action.equals("nocar")) {
                                             repairArea.registerService(idCustomer);
                                         }
+                                        else {
+                                            //lounge.receivePayment();
+                                            System.out.println("Manager - Customer payed.");
+                                            lounge.checkWhatToDo();
+                                        }
+                                        
 					break;
 
 				case GETTING_NEW_PARTS:
@@ -67,14 +74,15 @@ public class Manager extends Thread {
 					//TEMOS DOIS REGISTERSERVICE FALAR DISTO COM CUNHA
 					//URGENTEEEEEEEEEEE
 					//UM NO LOUNGE E OUTRO NO REPAIRAREA
-					lounge.getNextTask();
+					lounge.checkWhatToDo();
 					break;
 
 				case ALERTING_CUSTOMER:
                                     System.out.println("Manager  - " + this.getManagerState());
 					// wake up customer that has his car repaired
-					lounge.phoneCustomer(); // ou do outsideWorld
-					lounge.getNextTask();
+                                        idToCall = lounge.getIdToCall();
+					outsideWorld.phoneCustomer(idToCall); // ou do outsideWorld
+					lounge.checkWhatToDo();
 					break;
 
 				case REPLENISH_STOCK:

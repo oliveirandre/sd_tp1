@@ -46,9 +46,8 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 			try {
 				wait();
 				if (repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
-					((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
-					repairedCars.remove(((Customer) Thread.currentThread()).getCustomerId());
 					((Customer) Thread.currentThread()).carRepaired = true;
+					repairedCars.remove(((Customer) Thread.currentThread()).getCustomerId());
 					return;
 				}
 			} catch (Exception e) {
@@ -93,4 +92,10 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 	public void goToReception() {
 		((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
 	}
+        
+        @Override
+        public synchronized void phoneCustomer(int id) {
+            repairedCars.add(id);
+            notifyAll();
+        }
 }

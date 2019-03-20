@@ -29,6 +29,7 @@ public class Mechanic extends Thread {
 	}
 	
 	HashMap<Integer, Piece> pieceToBeRepaired;
+        private boolean noMoreWork = false;
 	boolean alreadyChecked = false;
 	boolean repairConcluded = false;
 	int idCarToFix;
@@ -39,15 +40,19 @@ public class Mechanic extends Thread {
 		this.setMechanicState(MechanicState.WAITING_FOR_WORK);
 		
 		Piece pieceManagerReStock = null;
-		
-		while (true) {
+                int car = 0;
+		while (!noMoreWork) {
 			switch (this.state) {
 				case WAITING_FOR_WORK:
 					repairArea.readThePaper(); 
-					repairArea.startRepairProcedure();
+					car = repairArea.startRepairProcedure();
 					break;
 				case FIXING_CAR:
-					idCarToFix = (int) lounge.getCarsToRepair().poll();//repairArea.getIdFromManager(); //manager tem que dizer qual o id aqui
+                                        park.getVehicle(car);
+                                        park.returnVehicle(car);
+                                        System.out.println("Mechanic - Car " + car + " repaired.");
+                                        /*
+					//idCarToFix = (int) lounge.getCarsToRepair().poll();//repairArea.getIdFromManager(); //manager tem que dizer qual o id aqui
 					if (!alreadyChecked) {
 						park.getVehicle(idCarToFix);
 
@@ -61,10 +66,12 @@ public class Mechanic extends Thread {
 
 					repairArea.repairConcluded(); //alertar manager
 					repairConcluded = true;
-					
+					*/
 					break;
 
 				case ALERTING_MANAGER:
+                                    lounge.alertManager(null, car);
+                                    /*
 					//alertar manager se foi repairConcluded ou se não há stock
 					if(!repairConcluded)
 						lounge.alertManager(pieceToBeRepaired.get(idCarToFix), idCarToFix);
@@ -82,7 +89,7 @@ public class Mechanic extends Thread {
 						alreadyChecked = true;
 						repairArea.resumeRepairProcedure();
 					}
-					break;
+					break;*/
 			}
 		}
 	}

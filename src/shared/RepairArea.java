@@ -16,7 +16,7 @@ import repository.RepairShop;
  */
 public class RepairArea implements IMechanicRA, IManagerRA {
 
-    private Queue<Integer> carsToRepair = new LinkedList<>();
+    private final Queue<Integer> carsToRepair = new LinkedList<>();
     private Queue<Integer> carsWaitingForPieces = new LinkedList<>();
     HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
     private boolean work = false; //manager tem que alterar no post
@@ -28,13 +28,17 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 *
 	 */
 	@Override
-    public synchronized void readThePaper() {
-		if(pieceToBeRepaired.isEmpty())
-			work = false;
+        public synchronized void readThePaper() {
+		/*if(pieceToBeRepaired.isEmpty())
+			work = false;*/
+        System.out.println("Mechanic - Waiting for work...");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         while (!work) { //while there is no car to repair
             try {
                 wait();
+                if(work) {
+                    return;
+                }
             } catch (Exception e) {
 
             }
@@ -46,8 +50,10 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 *
 	 */
 	@Override
-    public synchronized void startRepairProcedure() {
+    public synchronized int startRepairProcedure() {
+        work = false;
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
+        return carsToRepair.poll();
     }
 
 	/**
@@ -133,7 +139,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
                 */
                 ((Manager)Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
                 carsToRepair.add(idCustomer);
-                //notifyAll();
+                work = true;
+                notifyAll();
 	}
 
 	@Override

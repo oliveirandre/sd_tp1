@@ -70,7 +70,8 @@ public class Customer extends Thread {
                             outsideWorld.backToWorkByBus();
                     }
                     else {
-                        lounge.payForTheService();
+                        System.out.println("Customer 1 - Paying for service.");
+                        //lounge.payForTheService();
                         this.happyCustomer = true;
                         park.collectCar(this.id);
                         outsideWorld.backToWorkByCar();
@@ -83,6 +84,7 @@ public class Customer extends Thread {
                     break;
             }
         }
+        System.out.println("Customer " + this.id + " is happy!");
     }
     
     public void setCustomerState(CustomerState state) {

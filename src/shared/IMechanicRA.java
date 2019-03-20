@@ -9,7 +9,7 @@ import repository.Piece;
  */
 public interface IMechanicRA {
     public void readThePaper();
-    public void startRepairProcedure();
+    public int startRepairProcedure();
     
     public HashMap getRequiredPart(int id);
     

@@ -79,7 +79,7 @@ public class Main {
         
         for(int i = 0; i < nMechanics; i++) {
             Mechanic mec = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i, (RepairShop) repairShop);
-			//mec.start();
+            mec.start();
         }
         
 		

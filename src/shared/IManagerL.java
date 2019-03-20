@@ -7,15 +7,15 @@ import repository.Piece;
  * @author andre e joao
  */
 public interface IManagerL {
-    public boolean talkWithCustomer();
+    public String talkWithCustomer();
     public void handCarKey();
     public void registerService();
     public int currentCustomer();
+    public void checkWhatToDo();
+    public int getIdToCall();
 	public void receivePayment();
 
 	public void getNextTask();
-
-	public void phoneCustomer();
 
 	public void appraiseSit();
 

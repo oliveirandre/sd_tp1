@@ -23,6 +23,7 @@ public class Customer extends Thread {
     public boolean carRepaired = false;
     private boolean happyCustomer = false;
     private boolean carInRepairShop = false;
+    private boolean haveReplacementCar = false;
     public int replacementCar = 0;
     
     public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id) {
@@ -39,7 +40,7 @@ public class Customer extends Thread {
             switch(this.state) {
                 case NORMAL_LIFE_WITH_CAR:
                     System.out.println("Customer " + this.id + " - " + this.getCustomerState());
-                    if(!carInRepairShop) {
+                    if(!haveReplacementCar) {
                             outsideWorld.decideOnRepair();
                             outsideWorld.goToRepairShop();
                     }
@@ -49,14 +50,20 @@ public class Customer extends Thread {
                     
                 case PARK:
                     System.out.println("Customer " + this.id + " - " + this.getCustomerState());
-                    park.parkCar(this.id);
+                    if(!haveReplacementCar) {
+                        park.parkCar(this.id);
+                    }
+                    else {
+                        park.returnReplacementCar(replacementCar);
+                    }
                     break;
                     
                 case WAITING_FOR_REPLACE_CAR:
                     System.out.println("Customer " + this.id + " - " + this.getCustomerState());      
                     carInRepairShop = true;
-                    replacementCar = park.findCar();
-                    park.backToWorkByCar();
+                    park.findCar(replacementCar);
+                    haveReplacementCar = true;
+                    outsideWorld.backToWorkByCar();
                     break;
                     
                 case RECEPTION:
@@ -64,8 +71,9 @@ public class Customer extends Thread {
                     lounge.queueIn(this.id);
                     if(!carRepaired) {
                         lounge.talkWithManager();
-                        if(requiresCar)
-                            lounge.collectKey();
+                        if(requiresCar) {
+                            replacementCar = lounge.collectKey();
+                        }
                         else
                             outsideWorld.backToWorkByBus();
                     }

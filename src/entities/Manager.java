@@ -3,6 +3,7 @@ package entities;
 import repository.Piece;
 import shared.IManagerL;
 import shared.IManagerOW;
+import shared.IManagerP;
 import shared.IManagerRA;
 import shared.IManagerSS;
 
@@ -18,14 +19,16 @@ public class Manager extends Thread {
 	private final IManagerRA repairArea;
 	private final IManagerSS supplierSite;
 	private final IManagerOW outsideWorld;
+        private final IManagerP park;
 
 	private final boolean noMoreTasks = false;
 
-	public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld) {
+	public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park) {
 		this.lounge = lounge;
 		this.repairArea = repairArea;
 		this.supplierSite = supplierSite;
 		this.outsideWorld = outsideWorld;
+                this.park = park;
 	}
 
 	@Override
@@ -33,6 +36,7 @@ public class Manager extends Thread {
 		this.setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
 		int idCustomer = 0; //este idCustomer é o id que se manda ao mecânico
                 int idToCall = 0;
+                int replacementCar = 0;
 		while (!noMoreTasks) {
 			switch (this.state) {
 
@@ -50,7 +54,10 @@ public class Manager extends Thread {
                                         idCustomer = lounge.currentCustomer();
 					String action = lounge.talkWithCustomer();
 					if (action.equals("car")) {
-                                            lounge.handCarKey();
+                                            replacementCar = park.getReplacementCar();
+                                            lounge.handCarKey(replacementCar);
+                                            repairArea.registerService(idCustomer);
+                                            lounge.checkWhatToDo();
 					}
                                         else if (action.equals("nocar")) {
                                             repairArea.registerService(idCustomer);

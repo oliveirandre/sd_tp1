@@ -62,13 +62,13 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 		if (((Customer) Thread.currentThread()).carRepaired) {
 			return;
 		} else {
+                        System.out.println("normal life with replacement car");
 			while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
 				try {
 					wait();
 					if (repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
-						((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+                                                ((Customer) Thread.currentThread()).carRepaired = true;
 						repairedCars.remove(((Customer) Thread.currentThread()).getCustomerId());
-						((Customer) Thread.currentThread()).carRepaired = true;
 						return;
 					}
 				} catch (Exception e) {

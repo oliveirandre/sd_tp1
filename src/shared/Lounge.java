@@ -20,14 +20,14 @@ import repository.RepairShop;
 public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     private RepairShop repairShop;
-    
+    private int availableCar = 0;
     private Queue<Integer> replacementQueue;
     private final Queue<Integer> customersQueue = new LinkedList<>();
     private final Queue<Piece> mechanicsQueue = new LinkedList<>();
     private static Queue<Integer> carsToRepair = new LinkedList<>();
     private int nextCustomer;
-	private Piece pieceToReStock;
-	private Queue<Integer> customersToCallQueue = new LinkedList<>(); //repair Concluded
+    private Piece pieceToReStock;
+    private Queue<Integer> customersToCallQueue = new LinkedList<>(); //repair Concluded
     
     private static HashMap<Integer, String> order = new HashMap<Integer, String>();
 
@@ -63,13 +63,14 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         if(((Customer)Thread.currentThread()).carRepaired)
             order.put(nextCustomer, "pay");
         else {
-            if(((Customer)Thread.currentThread()).requiresCar)
+            if(((Customer)Thread.currentThread()).requiresCar) {
                 order.put(nextCustomer, "car");
+            }
             else
                 order.put(nextCustomer, "nocar");
         }
         notifyAll();
-        if(((Customer)Thread.currentThread()).requiresCar) {
+        /*if(((Customer)Thread.currentThread()).requiresCar) {
             while(true) {
                 try {
                     wait();
@@ -78,7 +79,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
                 }
             }
         }
-        return;
+        return;*/
     }    
     
     /*
@@ -95,10 +96,14 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             try {
                 wait();
                 if(order.containsKey(nextCustomer)) {
-                    if(order.get(nextCustomer).equals("car")) {
-                        replacementQueue.add(nextCustomer);         
+                    String s = order.get(nextCustomer);
+                    if(s.equals("car")) {
+                        //replacementQueue.add(nextCustomer);
+                        return s;        
                     }
-                    return order.get(nextCustomer);
+                    else {                       
+                        return s;    
+                    }
                 }
             } catch(Exception e) {
                 
@@ -108,8 +113,11 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
 
     @Override
-    public synchronized void handCarKey() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public synchronized void handCarKey(int car) {
+        if(car != 0) {
+            availableCar = car;
+            notifyAll();
+        }
     }
     
     @Override
@@ -133,9 +141,22 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
     
     @Override
-    public synchronized void collectKey() {
+    public synchronized int collectKey() {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
-        if(RepairShop.N_OF_REPLACEMENT_CARS > 0) {
+        System.out.println("Waiting for key...");
+        while(availableCar == 0) {
+            try {
+                wait();
+                if(availableCar != 0) {
+                    System.out.println("have key for car " + availableCar);
+                    return availableCar;
+                }
+            } catch(Exception e) {
+                
+            }
+        }
+        return 0;
+        /*if(RepairShop.N_OF_REPLACEMENT_CARS > 0) {
             RepairShop.N_OF_REPLACEMENT_CARS--;
             return;
         }
@@ -148,7 +169,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             } catch(Exception e) {
                 
             }
-        }
+        }*/
     }
     
     

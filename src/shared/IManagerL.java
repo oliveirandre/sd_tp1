@@ -8,7 +8,7 @@ import repository.Piece;
  */
 public interface IManagerL {
     public String talkWithCustomer();
-    public void handCarKey();
+    public void handCarKey(int car);
     public void registerService();
     public int currentCustomer();
     public void checkWhatToDo();

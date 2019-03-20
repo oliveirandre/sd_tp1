@@ -7,11 +7,8 @@ package shared;
 
 /**
  *
- * @author andre
+ * @author AndréOliveira
  */
-public interface ICustomerL {
-    public void queueIn(int id);
-    public void talkWithManager();
-    public int collectKey();
-    public void payForTheService();
+public interface IManagerP {
+    public int getReplacementCar();
 }

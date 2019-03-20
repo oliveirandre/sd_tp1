@@ -10,25 +10,29 @@ import entities.CustomerState;
 import entities.Mechanic;
 import entities.MechanicState;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  *
  * @author andre and joao
  */
-public class Park implements ICustomerP, IMechanicP {
+public class Park implements ICustomerP, IMechanicP, IManagerP {
 
     private int parkingSlots = 50;
-    private int nReplacementCars = 3;
-	private final int nCustomers;
 	
-    private List<Integer> carsParked = new ArrayList<Integer>();
+    private final List<Integer> carsParked = new ArrayList<>();
+    private final Queue<Integer> replacementCars = new LinkedList<>();
 	
-	public Park(int nCustomers){
-		this.nCustomers = nCustomers;
-		for (int i = 1; i < nCustomers; i++) { //start to List 
+	public Park(int ncars){
+            for(int i = 1; i < ncars + 1; i++) {
+                replacementCars.add(i);
+            }
+            carsParked.add(0);
+		/*for (int i = 1; i < nCustomers; i++) { //start to List 
 			carsParked.add(nCustomers+i);
-		}
+		}*/
 	}
 	
     @Override
@@ -49,11 +53,14 @@ public class Park implements ICustomerP, IMechanicP {
     }
     
     @Override
-    public synchronized int findCar() {
+    public synchronized void findCar(int id) {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
+        replacementCars.poll();
+        /*
 		nReplacementCars--;
 		parkingSlots++;
 		return carsParked.remove(nCustomers+1);
+        */
     }
 
     @Override
@@ -73,6 +80,13 @@ public class Park implements ICustomerP, IMechanicP {
         System.out.println(carsParked.toString());
         parkingSlots++;
     }
+    
+    @Override
+    public synchronized void returnReplacementCar(int id) {
+        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+        replacementCars.add(id);
+        System.out.println("Customer " + ((Customer)Thread.currentThread()).getCustomerId() + " - Replacement car parked.");        
+    }
 	
 	/**
 	 * Mechanic's method. Mechanic goes into the park and park the already
@@ -90,6 +104,11 @@ public class Park implements ICustomerP, IMechanicP {
 
     public int getParkingSlots() {
         return this.parkingSlots;
+    }
+    
+    @Override
+    public int getReplacementCar() {
+        return replacementCars.peek();
     }
 
 }

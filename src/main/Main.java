@@ -21,6 +21,7 @@ import shared.ICustomerOW;
 import shared.ICustomerP;
 import shared.IManagerL;
 import shared.IManagerOW;
+import shared.IManagerP;
 import shared.IManagerRA;
 import shared.IManagerSS;
 import shared.IMechanicL;
@@ -67,7 +68,7 @@ public class Main {
 		
         
         for(int i = 0; i < nManagers; i++) {
-            Manager m = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld);
+            Manager m = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld, (IManagerP) park);
             m.start();
         }
         

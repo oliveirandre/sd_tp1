@@ -10,7 +10,7 @@ public interface IManagerL {
     public boolean talkWithCustomer();
     public void handCarKey();
     public void registerService();
-
+    public int currentCustomer();
 	public void receivePayment();
 
 	public void getNextTask();

@@ -86,13 +86,14 @@ public class Main {
         Piece p = new Piece();
 		
 		RepairShop repair = new RepairShop();
-		
+	
+                /*
         System.out.println(p.getTypePiece());
 		System.out.println(RepairShop.getPieces());
 		
 		
 		System.out.println(RepairShop.getPieces());
-		
+		*/
 		
     }
     

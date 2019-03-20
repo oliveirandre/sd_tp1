@@ -23,6 +23,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     private Queue<Integer> replacementQueue;
     private final Queue<Integer> customersQueue = new LinkedList<>();
+    private final Queue<Piece> mechanicsQueue = new LinkedList<>();
     private static Queue<Integer> carsToRepair = new LinkedList<>();
     private int nextCustomer;
 	private Piece pieceToReStock;
@@ -117,9 +118,14 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     */
     @Override
     public synchronized void registerService() {
-        carsToRepair.add(nextCustomer);
         ((Manager)Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
+        carsToRepair.add(nextCustomer);
     }    
+    
+    @Override
+    public int currentCustomer() {
+        return customersQueue.peek();
+    }
     
     @Override
     public synchronized void collectKey() {
@@ -144,7 +150,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void getNextTask() {
         // manager gets the next task: can be talkToCustomer, phoneCustomer, goToSupplier
-        if(pieceToReStock!=null)
+        /*if(pieceToReStock!=null)
 			((Manager)Thread.currentThread()).setManagerState(ManagerState.REPLENISH_STOCK);
 		else if(!customersToCallQueue.isEmpty())
 			((Manager)Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
@@ -152,7 +158,17 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
 		else
 			((Manager)Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
-        
+        */
+        System.out.println("Manager - Waiting for next task...");
+        while(customersQueue.isEmpty() && mechanicsQueue.isEmpty()) {
+            try {
+                wait();
+                if(!customersQueue.isEmpty() || !mechanicsQueue.isEmpty())
+                    return;
+            } catch(Exception e) {
+                
+            }
+        }
     }
     
     @Override
@@ -163,17 +179,11 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     @Override
     public synchronized void appraiseSit() {
-        System.out.println("Manager - Appraising sit.");
-        while(customersQueue.isEmpty()) {
-            try {
-                wait();
-                if(!customersQueue.isEmpty()) {
-                    System.out.println("Manager - Customer waiting!");
-                    return;
-                }
-            } catch(Exception e) {
-                
-            }
+        if(!mechanicsQueue.isEmpty()) {
+        }
+        if(!customersQueue.isEmpty()) {
+            ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
+            return;
         }
     }
     

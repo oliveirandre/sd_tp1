@@ -38,7 +38,7 @@ public class Customer extends Thread {
         while(!this.happyCustomer) {
             switch(this.state) {
                 case NORMAL_LIFE_WITH_CAR:
-                    System.out.println(this.getCustomerState());
+                    System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     if(!carInRepairShop) {
                             outsideWorld.decideOnRepair();
                             outsideWorld.goToRepairShop();
@@ -48,19 +48,19 @@ public class Customer extends Thread {
                     break;
                     
                 case PARK:
-                    System.out.println(this.getCustomerState());
+                    System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     park.parkCar(this.id);
                     break;
                     
                 case WAITING_FOR_REPLACE_CAR:
-                    System.out.println(this.getCustomerState());      
+                    System.out.println("Customer " + this.id + " - " + this.getCustomerState());      
                     carInRepairShop = true;
                     replacementCar = park.findCar();
                     park.backToWorkByCar();
                     break;
                     
                 case RECEPTION:
-                    System.out.println(this.getCustomerState());
+                    System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     lounge.queueIn(this.id);
                     if(!carRepaired) {
                         lounge.talkWithManager();
@@ -78,7 +78,7 @@ public class Customer extends Thread {
                     break;
                     
                 case NORMAL_LIFE_WITHOUT_CAR:
-                    System.out.println(this.getCustomerState());
+                    System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     outsideWorld.goToReception();
                     break;
             }

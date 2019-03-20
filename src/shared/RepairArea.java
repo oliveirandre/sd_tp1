@@ -5,6 +5,8 @@ import entities.ManagerState;
 import entities.Mechanic;
 import entities.MechanicState;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 import repository.Piece;
 import repository.RepairShop;
 
@@ -14,6 +16,8 @@ import repository.RepairShop;
  */
 public class RepairArea implements IMechanicRA, IManagerRA {
 
+    private Queue<Integer> carsToRepair = new LinkedList<>();
+    private Queue<Integer> carsWaitingForPieces = new LinkedList<>();
     HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
     private boolean work = false; //manager tem que alterar no post
 	private int idCustomer;
@@ -121,9 +125,15 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 
 	@Override
 	public synchronized void registerService(int idCustomer) {
-		this.idCustomer = idCustomer;
+		/*this.idCustomer = idCustomer;
 		work = true;
 		notify(); //wake mechanic
+                /*
+                não devia ser? :
+                */
+                ((Manager)Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
+                carsToRepair.add(idCustomer);
+                //notifyAll();
 	}
 
 	@Override

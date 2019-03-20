@@ -32,7 +32,7 @@ public class Park implements ICustomerP, IMechanicP {
     @Override
     public synchronized void parkCar(int id) {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
-        System.out.println("Car parked.");
+        System.out.println("Customer " + ((Customer)Thread.currentThread()).getCustomerId() + " - Car parked.");
         carsParked.add(id);
         parkingSlots--;
     }

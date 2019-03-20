@@ -36,38 +36,34 @@ public class Manager extends Thread {
 			switch (this.state) {
 
 				case CHECKING_WHAT_TO_DO:
-					lounge.appraiseSit(); //while customersQueue is empty, waits
-                    
-					System.out.println("?=?");
-					
-					lounge.getNextTask(); 
-					// after posting job
-					//lounge.phoneCustomer();
-					// after alerting customer
-					
-					
-					
-                    //System.out.println("JDAIWJDAW");
-	
-					break;
+                                    System.out.println("Manager  - " + this.getManagerState());
+                                    lounge.getNextTask();
+                                    lounge.appraiseSit();
+                                    /*if(action.equals("customer")) {
+                                        boolean isCarNeeded = lounge.talkWithCustomer();
+                                    }*/
+                                    break;
 
 				case ATTENDING_CUSTOMER:
+                                    System.out.println("Manager  - " + this.getManagerState());
+                                        idCustomer = lounge.currentCustomer();
 					boolean isCarNeeded = lounge.talkWithCustomer();
-					System.out.println(isCarNeeded);
 					if (isCarNeeded) {
 						lounge.handCarKey();
 					}
-					lounge.receivePayment();
-					lounge.handCarKey();
-					
+                                        else {
+                                            repairArea.registerService(idCustomer);
+                                        }
 					break;
 
 				case GETTING_NEW_PARTS:
+                                    System.out.println("Manager  - " + this.getManagerState());
 					supplierSite.goToSupplier();
 					break;
 
 				case POSTING_JOB:
-					repairArea.registerService(idCustomer); // wake up mechanic 
+                                    System.out.println("Manager  - " + this.getManagerState());
+					//repairArea.registerService(idCustomer); // wake up mechanic 
 					//TEMOS DOIS REGISTERSERVICE FALAR DISTO COM CUNHA
 					//URGENTEEEEEEEEEEE
 					//UM NO LOUNGE E OUTRO NO REPAIRAREA
@@ -75,12 +71,14 @@ public class Manager extends Thread {
 					break;
 
 				case ALERTING_CUSTOMER:
+                                    System.out.println("Manager  - " + this.getManagerState());
 					// wake up customer that has his car repaired
 					lounge.phoneCustomer(); // ou do outsideWorld
 					lounge.getNextTask();
 					break;
 
 				case REPLENISH_STOCK:
+                                    System.out.println("Manager  - " + this.getManagerState());
 					Piece partNeeded = lounge.getPieceToReStock();
 					repairArea.storePart(partNeeded);
 					lounge.getNextTask();

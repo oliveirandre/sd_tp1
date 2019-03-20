@@ -14,6 +14,7 @@ package main;
 import entities.Customer;
 import entities.Manager;
 import entities.Mechanic;
+import repository.Log;
 import repository.Piece;
 import repository.RepairShop;
 import shared.ICustomerL;
@@ -35,6 +36,7 @@ import shared.SupplierSite;
 
 public class Main {
     
+    private static Log log;
     private static Lounge lounge;
     private static OutsideWorld outsideWorld;
     private static Park park;
@@ -65,7 +67,6 @@ public class Main {
         park = new Park(repairShop.N_OF_REPLACEMENT_CARS);
         repairArea = new RepairArea();
         supplierSite = new SupplierSite();
-		
         
         for(int i = 0; i < nManagers; i++) {
             Manager m = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld, (IManagerP) park);

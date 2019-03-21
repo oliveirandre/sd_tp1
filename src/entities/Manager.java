@@ -52,10 +52,10 @@ public class Manager extends Thread {
 				case ATTENDING_CUSTOMER:
                                     //System.out.println("Manager  - " + this.getManagerState());
                                         idCustomer = lounge.currentCustomer();
-					String action = lounge.talkWithCustomer();
-                                        System.out.println(action);
+                                        availableCar = park.getReplacementCar();
+					String action = lounge.talkWithCustomer(availableCar);
+                                        //System.out.println(action);
 					if (action.equals("car")) {
-                                            availableCar = park.getReplacementCar();
                                             if(availableCar) {
                                                 lounge.handCarKey();
                                                 repairArea.registerService(idCustomer);
@@ -68,8 +68,10 @@ public class Manager extends Thread {
 					}
                                         else if (action.equals("nocar")) {
                                             repairArea.registerService(idCustomer);
+                                            lounge.checkWhatToDo();
                                         }
                                         else {
+                                            System.out.println("Receiving payment");
                                             lounge.receivePayment(action);
                                             System.out.println("Manager - Customer payed.");
                                             lounge.checkWhatToDo();

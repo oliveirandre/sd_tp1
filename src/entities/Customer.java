@@ -68,7 +68,9 @@ public class Customer extends Thread {
                     
                 case RECEPTION:
                     //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
+                    //System.out.println("Customer " + this.id + " - " + this.carRepaired);
                     lounge.queueIn(this.id);
+                    //System.out.println(carRepaired);
                     if(!carRepaired) {
                         lounge.talkWithManager();
                         if(requiresCar) {
@@ -78,7 +80,7 @@ public class Customer extends Thread {
                             outsideWorld.backToWorkByBus();
                     }
                     else {
-                        System.out.println("Customer 1 - Paying for service.");
+                        //System.out.println("Customer 1 - Paying for service.");
                         lounge.payForTheService();
                         this.happyCustomer = true;
                         park.collectCar(this.id);

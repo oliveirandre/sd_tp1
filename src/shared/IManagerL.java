@@ -7,7 +7,7 @@ import repository.Piece;
  * @author andre e joao
  */
 public interface IManagerL {
-    public String talkWithCustomer();
+    public String talkWithCustomer(boolean availableCar);
     public void handCarKey();
     public void registerService();
     public int currentCustomer();

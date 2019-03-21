@@ -71,14 +71,14 @@ public class Manager extends Thread {
                             lounge.handCarKey();
                             park.waitForCustomer(idCustomer);
                             repairArea.registerService(idCustomer);
-                            System.out.println("1");
+                            //System.out.println("1");
                         } else {
                             repairArea.registerService(idCustomer);
-                            System.out.println("2");
+                            //System.out.println("2");
                         }
                     } else if (action.equals("nocar")) {
                         repairArea.registerService(idCustomer);
-                        System.out.println("3");
+                        //System.out.println("3");
                     } else {
                         //System.out.println("Receiving payment");
                         lounge.receivePayment(action);

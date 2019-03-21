@@ -63,7 +63,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
             ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
             System.out.println("REPLACEMENT CARS: " + replacementCars.toString());
             int n = replacementCars.peek();
-            System.out.println("----> Retrieved car " + n);
+            System.out.println("----> Retrieved car " + n + " from REPLACEMENT CARS: " + replacementCars.toString());
             return replacementCars.poll();
         } else {
             return 0;
@@ -95,7 +95,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     public synchronized void returnReplacementCar(int id) {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         replacementCars.add(id);
-        System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Replacement car " + id + " parked.");
+        System.out.println("----> Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Replacement car " + id + " parked.");
         System.out.println("----> Replacement cars: " + replacementCars.toString());
     }
 

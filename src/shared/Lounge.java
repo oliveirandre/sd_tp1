@@ -89,8 +89,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized String talkWithCustomer(boolean availableCar) {
         //((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
-        System.out.println("Customers Queue - " + customersQueue.toString() + " - ");
-        System.out.println("Replacement Queue - " + replacementQueue.toString() + " - ");
+        //System.out.println("Customers Queue - " + customersQueue.toString() + " - ");
+        //System.out.println("Replacement Queue - " + replacementQueue.toString() + " - ");
         /*if(!replacementQueue.isEmpty() && availableCar) {
             customerGetRepCar = replacementQueue.poll();
             notifyAll();
@@ -119,7 +119,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void handCarKey() {
-        System.out.println("ACORDA " + replacementQueue.peek());
+        //System.out.println("ACORDA " + replacementQueue.peek());
         customerGetRepCar = replacementQueue.poll();
         notifyAll();
     }
@@ -187,7 +187,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void getNextTask() {
-        System.out.println("Manager - Waiting for next task..." + customersQueue.toString());
+        System.out.println("Manager - Waiting for next task...");
         
         while (customersQueue.isEmpty() && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty() && replacementQueue.isEmpty()) {
             try {

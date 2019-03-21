@@ -47,7 +47,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     
     @Override
     public synchronized void collectCar(int id) {
-        carsParked.remove(id);
+        carsParked.remove(new Integer(id));
         parkingSlots++;
         System.out.println(carsParked.toString());
     }
@@ -75,7 +75,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
 	 */
     @Override
     public synchronized void getVehicle(int id) {
-        carsParked.remove(id);
+        carsParked.remove(new Integer(id));
         
         System.out.println(carsParked.toString());
         parkingSlots++;

@@ -23,12 +23,12 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 	public synchronized void decideOnRepair() {
 		boolean decided = false;
 		Random deciding = new Random();
-		//Random requiring = new Random();
+		Random requiring = new Random();
 		while (decided == false) {
 			decided = deciding.nextBoolean();
 			if (decided == true) {
-				//((Customer) Thread.currentThread()).requiresCar = requiring.nextBoolean();
-				((Customer) Thread.currentThread()).requiresCar = true;
+				((Customer) Thread.currentThread()).requiresCar = requiring.nextBoolean();
+				//((Customer) Thread.currentThread()).requiresCar = true;
 				System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - I have decided to go to the repair shop and " + ((Customer) Thread.currentThread()).requiresCar + " a car.");
 			}
 		}

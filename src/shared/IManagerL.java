@@ -13,6 +13,8 @@ public interface IManagerL {
     public int currentCustomer();
     public void checkWhatToDo();
     public int getIdToCall();
+    public boolean enoughWork();
+    public void alertCustomer(int id);
 	public void receivePayment(String s);
 
 	public void getNextTask();

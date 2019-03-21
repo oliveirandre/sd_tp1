@@ -20,8 +20,8 @@ import repository.RepairShop;
 public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     private RepairShop repairShop;
-    private boolean availableCar = false;
-    private Queue<Integer> replacementQueue;
+    private int customerGetRepCar;
+    private Queue<Integer> replacementQueue = new LinkedList<>();
     private final Queue<Integer> customersQueue = new LinkedList<>();
     private final Queue<Piece> mechanicsQueue = new LinkedList<>();
     private static Queue<Integer> carsToRepair = new LinkedList<>();
@@ -115,7 +115,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void handCarKey(int car) {
         if(car != 0) {
-            availableCar = true;
+            customerGetRepCar = replacementQueue.poll();
             notifyAll();
         }
     }
@@ -143,12 +143,12 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void collectKey() {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
+        replacementQueue.add(((Customer)Thread.currentThread()).getCustomerId());
         System.out.println("Waiting for key...");
-        while(!availableCar) {
+        while(customerGetRepCar != ((Customer)Thread.currentThread()).getCustomerId()) {
             try {
                 wait();
-                if(availableCar) {
-                    System.out.println("have key for car " + availableCar);
+                if(customerGetRepCar == ((Customer)Thread.currentThread()).getCustomerId()) {
                     return;
                 }
             } catch(Exception e) {
@@ -185,10 +185,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 			((Manager)Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
         */
         System.out.println("Manager - Waiting for next task...");
-        while(customersQueue.isEmpty() && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty()) {
+        while(customersQueue.isEmpty() && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty() && replacementQueue.isEmpty()) {
             try {
                 wait();
-                if(!customersQueue.isEmpty() || !mechanicsQueue.isEmpty() || !customersToCallQueue.isEmpty())
+                if(!customersQueue.isEmpty() || !mechanicsQueue.isEmpty() || !customersToCallQueue.isEmpty() || !replacementQueue.isEmpty())
                     return;
             } catch(Exception e) {
                 

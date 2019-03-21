@@ -90,7 +90,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 */
 	@Override
     public synchronized int startRepairProcedure() {
-		System.out.println("Mechanic - Starting repair procedure");
+		//System.out.println("Mechanic - Starting repair procedure");
         work = false;
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
         return carsToRepair.poll();
@@ -106,7 +106,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 */
 	@Override
     public synchronized void fixIt(int id, Piece piece) {
-		System.out.println("Mechanic - Fixing it");
+		//System.out.println("Mechanic - Fixing it");
         removePieceFromStock(piece);
         pieceToBeRepaired.remove(id, piece);
     }
@@ -120,7 +120,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 */
 	@Override
     public synchronized HashMap getRequiredPart(int id) {
-		System.out.println("Mechanic - Getting required part");
+		//System.out.println("Mechanic - Getting required part");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.CHECKING_STOCK);
         pieceToBeRepaired.putIfAbsent(id, new Piece());
         return pieceToBeRepaired;
@@ -141,7 +141,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	
     @Override
     public synchronized void letManagerKnow() {
-		System.out.println("Mechanic - Letting manager know");
+		//System.out.println("Mechanic - Letting manager know");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
         notify();
     }

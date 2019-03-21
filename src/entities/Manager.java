@@ -70,9 +70,9 @@ public class Manager extends Thread {
 						repairArea.registerService(idCustomer);
 						lounge.checkWhatToDo();
 					} else {
-						System.out.println("Receiving payment");
+						//System.out.println("Receiving payment");
 						lounge.receivePayment(action);
-						System.out.println("Manager - Customer payed.");
+						//System.out.println("Manager - Customer payed.");
 						lounge.checkWhatToDo();
 					}
 
@@ -84,12 +84,12 @@ public class Manager extends Thread {
 					break;
 
 				case POSTING_JOB:
-					System.out.println("Manager  - " + this.getManagerState());
+					//System.out.println("Manager  - " + this.getManagerState());
 					lounge.checkWhatToDo();
 					break;
 
 				case ALERTING_CUSTOMER:
-					System.out.println("Manager  - " + this.getManagerState());
+					//System.out.println("Manager  - " + this.getManagerState());
 					// wake up customer that has his car repaired
 					idToCall = lounge.getIdToCall();
 					outsideWorld.phoneCustomer(idToCall); // ou do outsideWorld
@@ -97,7 +97,7 @@ public class Manager extends Thread {
 					break;
 
 				case REPLENISH_STOCK:
-					System.out.println("Manager  - " + this.getManagerState());
+					//System.out.println("Manager  - " + this.getManagerState());
 					Piece partNeeded = lounge.getPieceToReStock();
 					repairArea.storePart(partNeeded);
 					lounge.getNextTask();

@@ -41,7 +41,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
         //System.out.println("Customer " + ((Customer)Thread.currentThread()).getCustomerId() + " - Car parked.");
         carsParked.add(id);
         
-        System.out.println("---> Customer cars parked: " + carsParked.toString());
+        //System.out.println("---> Customer cars parked: " + carsParked.toString());
         parkingSlots--;
     }
     

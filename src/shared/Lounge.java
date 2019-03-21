@@ -148,6 +148,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized void collectKey() {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
         replacementQueue.add(((Customer)Thread.currentThread()).getCustomerId());
+        System.out.println("Replacement Queue - " + replacementQueue.toString());
         System.out.println("Customer " + ((Customer)Thread.currentThread()).getCustomerId() + " - Waiting for key...");
         while(customerGetRepCar != ((Customer)Thread.currentThread()).getCustomerId()) {
             try {

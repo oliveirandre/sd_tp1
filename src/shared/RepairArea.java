@@ -33,7 +33,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	public RepairArea(int N_OF_TYPE_PIECES){
 		
 		for (int i = 0; i < N_OF_TYPE_PIECES; i++) {
-			stock.put(EnumPiece.values()[i], 5); 
+			stock.put(EnumPiece.values()[i], 0); 
 		}
 
 		for (int i = 0; i < nPieces; i++) {

@@ -15,62 +15,61 @@ import repository.Piece;
  *
  * @author andre and joao
  */
-
 public class Lounge implements ICustomerL, IManagerL, IMechanicL {
-    
-    private int customerGetRepCar;
-    private Queue<Integer> replacementQueue = new LinkedList<>();
-    private final Queue<Integer> customersQueue = new LinkedList<>();
-    private final Queue<Piece> mechanicsQueue = new LinkedList<>();
-    private static Queue<Integer> carsToRepair = new LinkedList<>();
-    private int nextCustomer;
-    private Piece pieceToReStock;
-    private boolean payed = false;
-    private Queue<Integer> customersToCallQueue = new LinkedList<>(); //repair Concluded
-    
-    private static HashMap<Integer, String> order = new HashMap<Integer, String>();
+
+	private int customerGetRepCar;
+	private Queue<Integer> replacementQueue = new LinkedList<>();
+	private final Queue<Integer> customersQueue = new LinkedList<>();
+	private final Queue<Piece> mechanicsQueue = new LinkedList<>();
+	private static Queue<Integer> carsToRepair = new LinkedList<>();
+	private int nextCustomer;
+	private Piece pieceToReStock;
+	private boolean payed = false;
+	private Queue<Integer> customersToCallQueue = new LinkedList<>(); //repair Concluded
+
+	private static HashMap<Integer, String> order = new HashMap<Integer, String>();
 
 
-    /*
+	/*
     ** Customer's method. After parking the car in need of a repair, the custo-
     ** mer now has to wait in a queue to be attended by the manager.
-    */       
-    @Override
-    public synchronized void queueIn(int id) {
-        customersQueue.add(id);
-        notifyAll();
-        System.out.println("Customer " + id + " - Waiting in queue.");
-        while(!(nextCustomer == id)) {
-            try {
-                wait();
-                /*if(nextCustomer == id) {
+	 */
+	@Override
+	public synchronized void queueIn(int id) {
+		customersQueue.add(id);
+		notifyAll();
+		System.out.println("Customer " + id + " - Waiting in queue.");
+		while (!(nextCustomer == id)) {
+			try {
+				wait();
+				/*if(nextCustomer == id) {
                     return;
                 }*/
-            } catch(Exception e) {
-                
-            }
-        }
-        System.out.println("Customer " + id + " - Attended by manager.");
-    }
-    
-    /*
+			} catch (Exception e) {
+
+			}
+		}
+		System.out.println("Customer " + id + " - Attended by manager.");
+	}
+
+	/*
     ** Customer's method. When the customer is talking to the manager he says if
     ** he requires a replacement car or not.
-    */
-    @Override
-    public synchronized void talkWithManager() {
-        //System.out.println("Talking with manager.");
-        if(((Customer)Thread.currentThread()).carRepaired)
-            order.put(nextCustomer, "pay");
-        else {
-            if(((Customer)Thread.currentThread()).requiresCar) {
-                order.put(nextCustomer, "car");
-            }
-            else
-                order.put(nextCustomer, "nocar");
-        }
-        notifyAll();
-        /*if(((Customer)Thread.currentThread()).requiresCar) {
+	 */
+	@Override
+	public synchronized void talkWithManager() {
+		//System.out.println("Talking with manager.");
+		if (((Customer) Thread.currentThread()).carRepaired) {
+			order.put(nextCustomer, "pay");
+		} else {
+			if (((Customer) Thread.currentThread()).requiresCar) {
+				order.put(nextCustomer, "car");
+			} else {
+				order.put(nextCustomer, "nocar");
+			}
+		}
+		notifyAll();
+		/*if(((Customer)Thread.currentThread()).requiresCar) {
             while(true) {
                 try {
                     wait();
@@ -80,84 +79,85 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             }
         }
         return;*/
-    }    
-    
-    /*
+	}
+
+	/*
     ** Manager's method. The manager awakes the customer next in the queue, and
     ** then waits to see if the customer requires or not a replacement car.
-    */
-    @Override
-    public synchronized String talkWithCustomer(boolean availableCar) {
-        //((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
-        System.out.println("Customers Queue - " + customersQueue.toString() + " - ");
-        System.out.println("Replacement Queue - " + replacementQueue.toString() + " - ");
-        /*if(!replacementQueue.isEmpty() && availableCar) {
+	 */
+	@Override
+	public synchronized String talkWithCustomer(boolean availableCar) {
+		//((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
+		System.out.println("Customers Queue - " + customersQueue.toString() + " - ");
+		System.out.println("Replacement Queue - " + replacementQueue.toString() + " - ");
+		/*if(!replacementQueue.isEmpty() && availableCar) {
             customerGetRepCar = replacementQueue.poll();
             notifyAll();
             return order.get(customerGetRepCar);
         }*/
-            nextCustomer = customersQueue.poll();
-        
-            //System.out.println("Manager - Attending customer number " + nextCustomer);
-            notifyAll();
-            while(!(order.containsKey(nextCustomer))) {
-                try {
-                    wait();
-                } catch(Exception e) {
+		nextCustomer = customersQueue.poll();
 
-                }
-            }
-            String s = order.get(nextCustomer);
-            order.remove(nextCustomer);
-            return s;
-        
-    }
+		//System.out.println("Manager - Attending customer number " + nextCustomer);
+		notifyAll();
+		while (!(order.containsKey(nextCustomer))) {
+			try {
+				wait();
+			} catch (Exception e) {
 
-    @Override
-    public synchronized void handCarKey() {
-        customerGetRepCar = replacementQueue.poll();
-        notifyAll();
-    }
-    
-    @Override
-    public synchronized void payForTheService() {
-        order.put(nextCustomer, "pay");
-        payed = true;
-        notifyAll();
-    }
-    
-    /*
+			}
+		}
+		String s = order.get(nextCustomer);
+		order.remove(nextCustomer);
+		return s;
+
+	}
+
+	@Override
+	public synchronized void handCarKey() {
+		customerGetRepCar = replacementQueue.poll();
+		notifyAll();
+	}
+
+	@Override
+	public synchronized void payForTheService() {
+		order.put(nextCustomer, "pay");
+		payed = true;
+		notifyAll();
+	}
+
+	/*
     ** Manager's method. After receiving a request from a customer, the manager 
     ** registers it for further use by the mechanics.
-    */
-    @Override
-    public synchronized void registerService() {
-        ((Manager)Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
-        carsToRepair.add(nextCustomer);
-    }    
-    
-    @Override
-    public synchronized int currentCustomer() {
-        if(replacementQueue.isEmpty())
-            return customersQueue.peek();
-        else
-            return replacementQueue.peek();
-    }
-    
-    @Override
-    public synchronized void collectKey() {
-        ((Customer)Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
-        replacementQueue.add(((Customer)Thread.currentThread()).getCustomerId());
-        System.out.println("Replacement Queue - " + replacementQueue.toString());
-        System.out.println("Customer " + ((Customer)Thread.currentThread()).getCustomerId() + " - Waiting for key...");
-        while(customerGetRepCar != ((Customer)Thread.currentThread()).getCustomerId()) {
-            try {
-                wait();
-            } catch(Exception e) {
-                
-            }
-        }
-        /*if(RepairShop.N_OF_REPLACEMENT_CARS > 0) {
+	 */
+	@Override
+	public synchronized void registerService() {
+		((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
+		carsToRepair.add(nextCustomer);
+	}
+
+	@Override
+	public synchronized int currentCustomer() {
+		if (replacementQueue.isEmpty()) {
+			return customersQueue.peek();
+		} else {
+			return replacementQueue.peek();
+		}
+	}
+
+	@Override
+	public synchronized void collectKey() {
+		((Customer) Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
+		replacementQueue.add(((Customer) Thread.currentThread()).getCustomerId());
+		System.out.println("Replacement Queue - " + replacementQueue.toString());
+		System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Waiting for key...");
+		while (customerGetRepCar != ((Customer) Thread.currentThread()).getCustomerId()) {
+			try {
+				wait();
+			} catch (Exception e) {
+
+			}
+		}
+		/*if(RepairShop.N_OF_REPLACEMENT_CARS > 0) {
             RepairShop.N_OF_REPLACEMENT_CARS--;
             return;
         }
@@ -171,13 +171,12 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
                 
             }
         }*/
-    }
-    
-    
-    @Override
-    public synchronized void getNextTask() {
-        // manager gets the next task: can be talkToCustomer, phoneCustomer, goToSupplier
-        /*if(pieceToReStock!=null)
+	}
+
+	@Override
+	public synchronized void getNextTask() {
+		// manager gets the next task: can be talkToCustomer, phoneCustomer, goToSupplier
+		/*if(pieceToReStock!=null)
 			((Manager)Thread.currentThread()).setManagerState(ManagerState.REPLENISH_STOCK);
 		else if(!customersToCallQueue.isEmpty())
 			((Manager)Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
@@ -185,38 +184,38 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
 		else
 			((Manager)Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
-        */
-        System.out.println("Manager - Waiting for next task...");
-        while(customersQueue.isEmpty() && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty()) {
-            try {
-                wait();
-            } catch(Exception e) {
-                
-            }
-        }
-    }
-    
-    @Override
-    public synchronized void checkWhatToDo() {
-        ((Manager)Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
-    }
-    
-    @Override
-    public synchronized int getIdToCall() {
-        return customersToCallQueue.poll();
-    }
-    
-    @Override
-    public synchronized void receivePayment(String s) {
-        while(!payed) {
-            try {
-                
-            } catch(Exception e) {
-                
-            }
-            
-        }
-        /*
+		 */
+		System.out.println("Manager - Waiting for next task...");
+		while (customersQueue.isEmpty() && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty()) {
+			try {
+				wait();
+			} catch (Exception e) {
+
+			}
+		}
+	}
+
+	@Override
+	public synchronized void checkWhatToDo() {
+		((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+	}
+
+	@Override
+	public synchronized int getIdToCall() {
+		return customersToCallQueue.poll();
+	}
+
+	@Override
+	public synchronized void receivePayment(String s) {
+		while (!payed) {
+			try {
+
+			} catch (Exception e) {
+
+			}
+
+		}
+		/*
         System.out.println(s);
         if(s.equals("payandcar")) {
             customerGetRepCar = replacementQueue.poll();
@@ -226,46 +225,45 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         else {
             System.out.println("-------- CUSTOMER PAYED. -----------");
         }
-*/
-    }
-    
-    
-    @Override
-    public synchronized void appraiseSit() {
-        if(!mechanicsQueue.isEmpty()) {
-            
-        }
-        if(!customersToCallQueue.isEmpty()) {
-            ((Manager)Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
-            return;
-        }
-        if(!replacementQueue.isEmpty()) {
-            ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
-            return;
-        }
-        if(!customersQueue.isEmpty()) {
-            ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
-        }
-    }
-    
-    @Override
-    public synchronized Queue getCarsToRepair(){
-        return carsToRepair;
-    }
+		 */
+	}
+
+	@Override
+	public synchronized void appraiseSit() {
+		if (!mechanicsQueue.isEmpty()) {
+
+		}
+		if (!customersToCallQueue.isEmpty()) {
+			((Manager) Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
+			return;
+		}
+		if (!replacementQueue.isEmpty()) {
+			((Manager) Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
+			return;
+		}
+		if (!customersQueue.isEmpty()) {
+			((Manager) Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
+		}
+	}
+
+	@Override
+	public synchronized Queue getCarsToRepair() {
+		return carsToRepair;
+	}
 
 	@Override
 	public synchronized void alertManager(Piece piece, int idCar) {
 		((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
-		if(piece==null){ //repair of this carId is concluded
+		if (piece == null) { //repair of this carId is concluded
 			customersToCallQueue.add(idCar);
-		}else{
+		} else {
 			pieceToReStock = piece;
 		}
 		notifyAll();
 	}
-	
+
 	@Override
-	public synchronized Piece getPieceToReStock(){
+	public synchronized Piece getPieceToReStock() {
 		Piece temp = pieceToReStock;
 		pieceToReStock = null; //put null since piece is already going to stock when this method is called
 		return temp;

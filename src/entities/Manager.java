@@ -22,6 +22,7 @@ public class Manager extends Thread {
 	private final IManagerP park;
 
 	private final boolean noMoreTasks = false;
+	private boolean verifyReplacementCar = false;
 
 	public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park) {
 		this.lounge = lounge;
@@ -54,7 +55,15 @@ public class Manager extends Thread {
 				case ATTENDING_CUSTOMER:
 					//System.out.println("Manager  - " + this.getManagerState());
 					idCustomer = lounge.currentCustomer();
-					availableCar = park.getReplacementCar();
+
+					if (park.getReplacementCarSize() == 1 && !verifyReplacementCar) {
+						verifyReplacementCar = true;
+						availableCar = true;
+					} else if (verifyReplacementCar && park.getReplacementCarSize() == 1) {
+						availableCar = false;
+						verifyReplacementCar = true;
+					}
+
 					String action = lounge.talkWithCustomer(availableCar);
 					//System.out.println(action);
 					if (action.equals("car")) {

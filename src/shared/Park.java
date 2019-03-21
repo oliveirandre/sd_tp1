@@ -119,5 +119,10 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
             return true;
         }
     }
+	
+	@Override
+	public synchronized int getReplacementCarSize(){
+		return replacementCars.size();
+	}
 
 }

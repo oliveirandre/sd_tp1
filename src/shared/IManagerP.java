@@ -11,4 +11,6 @@ package shared;
  */
 public interface IManagerP {
     public boolean getReplacementCar();
+
+	public int getReplacementCarSize();
 }

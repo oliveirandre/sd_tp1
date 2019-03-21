@@ -5,12 +5,10 @@
  */
 package main;
 
-
 /**
  *
  * @author Andre e Joao
  */
-
 import entities.Customer;
 import entities.Manager;
 import entities.Mechanic;
@@ -33,14 +31,14 @@ import shared.RepairArea;
 import shared.SupplierSite;
 
 public class Main {
-    
+
     private static Log log;
     private static Lounge lounge;
     private static OutsideWorld outsideWorld;
     private static Park park;
     private static RepairArea repairArea;
     private static SupplierSite supplierSite;
-    
+
     public static void main(String[] args) {
         /* 
          * There are 5 different locations: park, lounge, repair area, supplier
@@ -49,37 +47,35 @@ public class Main {
          * Furthermore, there are 3 replacement vehicles and 3 distinct parts 
          * that can be repared.
          */
-		
-		
-		final int N_OF_CUSTOMERS = 10;
-		final int N_OF_MECHANICS = 1;
-		final int N_OF_MANAGERS = 1;
-		final int N_OF_REPLACEMENT_CARS = 2;
-		int N_OF_TYPE_PIECES = 3;
-        
-        
+
+        final int N_OF_CUSTOMERS = 5;
+        final int N_OF_MECHANICS = 1;
+        final int N_OF_MANAGERS = 1;
+        final int N_OF_REPLACEMENT_CARS = 3;
+        int N_OF_TYPE_PIECES = 3;
+
         int nCustomers = N_OF_CUSTOMERS;
         int nMechanics = N_OF_MECHANICS;
         int nManagers = N_OF_MANAGERS;
-        
+
         lounge = new Lounge();
         outsideWorld = new OutsideWorld();
         park = new Park(N_OF_REPLACEMENT_CARS);
         repairArea = new RepairArea(N_OF_TYPE_PIECES);
         supplierSite = new SupplierSite();
-        
-        for(int i = 0; i < nManagers; i++) {
+
+        for (int i = 0; i < nManagers; i++) {
             Manager m = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld, (IManagerP) park);
             m.start();
         }
-        
+
         // initialization of threads
-        for(int i = 0; i < nCustomers; i++) {
-            Customer c = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i+1);
+        for (int i = 0; i < nCustomers; i++) {
+            Customer c = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i + 1);
             c.start();
         }
-        
-        for(int i = 0; i < nMechanics; i++) {
+
+        for (int i = 0; i < nMechanics; i++) {
             Mechanic mec = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i);
             mec.start();
         }
@@ -91,9 +87,8 @@ public class Main {
 			repairArea.removePieceFromStock(p);
 		}
 		
-		*/
-		
-    }
-    
-}
+         */
 
+    }
+
+}

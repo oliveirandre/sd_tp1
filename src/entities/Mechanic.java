@@ -35,8 +35,7 @@ public class Mechanic extends Thread {
 	@Override
 	public void run() {
 		this.setMechanicState(MechanicState.WAITING_FOR_WORK);
-		
-		
+
 		while (!noMoreWork) {
 			switch (this.state) {
 				case WAITING_FOR_WORK:
@@ -45,21 +44,22 @@ public class Mechanic extends Thread {
 					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar por causa dda situaÃ§ao em q o carro esta a espera de peÃ§a
 					break;
 				case FIXING_CAR:
+
 					System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
 					park.getVehicle(idCarToFix);
+
 					
 					if (!alreadyChecked) {
 						piecesToBeRepaired = repairArea.getRequiredPart(idCarToFix); //salta para CHECKING_STOCK
 						break;
 					}
-					
 
 					repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
 					System.out.println("Mechanic " + this.id + " - Fixed");
-					
+
 					park.returnVehicle(idCarToFix);//estacionar o carro
 					System.out.println("Mechanic " + this.id + " - Returning vehicle");
-					
+
 					repairArea.repairConcluded(); //alertar manager
 					repairConcluded = true;
 					alreadyChecked = false;

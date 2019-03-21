@@ -25,6 +25,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private static Queue<Integer> carsToRepair = new LinkedList<>();
     private int nextCustomer;
     private Piece pieceToReStock;
+    private boolean payed = false;
     private Queue<Integer> customersToCallQueue = new LinkedList<>(); //repair Concluded
     
     private static HashMap<Integer, String> order = new HashMap<Integer, String>();
@@ -37,19 +38,19 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void queueIn(int id) {
         customersQueue.add(id);
-        notify();
+        notifyAll();
         System.out.println("Customer " + id + " - Waiting in queue.");
         while(!(nextCustomer == id)) {
             try {
                 wait();
-                if(nextCustomer == id) {
-                    System.out.println("Customer " + id + " - Attended by manager.");
+                /*if(nextCustomer == id) {
                     return;
-                }
+                }*/
             } catch(Exception e) {
                 
             }
         }
+        System.out.println("Customer " + id + " - Attended by manager.");
     }
     
     /*
@@ -58,6 +59,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     */
     @Override
     public synchronized void talkWithManager() {
+        //System.out.println("Talking with manager.");
         if(((Customer)Thread.currentThread()).carRepaired)
             order.put(nextCustomer, "pay");
         else {
@@ -85,42 +87,43 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     ** then waits to see if the customer requires or not a replacement car.
     */
     @Override
-    public synchronized String talkWithCustomer() {
+    public synchronized String talkWithCustomer(boolean availableCar) {
         //((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
-        nextCustomer = customersQueue.poll();
-        System.out.println("Manager - Attending customer number " + nextCustomer);
-        notifyAll();
-        while(!(order.containsKey(nextCustomer))) {
-            try {
-                wait();
-                if(order.containsKey(nextCustomer)) {
-                    String s = order.get(nextCustomer);
-                    if(s.equals("car")) {
-                        //replacementQueue.add(nextCustomer);
-                        return s;        
-                    }
-                    else {                       
-                        return s;    
-                    }
+        System.out.println("Customers Queue - " + customersQueue.toString() + " - ");
+        System.out.println("Replacement Queue - " + replacementQueue.toString() + " - ");
+        /*if(!replacementQueue.isEmpty() && availableCar) {
+            customerGetRepCar = replacementQueue.poll();
+            notifyAll();
+            return order.get(customerGetRepCar);
+        }*/
+            nextCustomer = customersQueue.poll();
+        
+            //System.out.println("Manager - Attending customer number " + nextCustomer);
+            notifyAll();
+            while(!(order.containsKey(nextCustomer))) {
+                try {
+                    wait();
+                } catch(Exception e) {
+
                 }
-            } catch(Exception e) {
-                
             }
-        }
-        return "";
+            String s = order.get(nextCustomer);
+            order.remove(nextCustomer);
+            return s;
+        
     }
 
     @Override
-    public synchronized void handCarKey(int car) {
-        if(car != 0) {
-            customerGetRepCar = replacementQueue.poll();
-            notifyAll();
-        }
+    public synchronized void handCarKey() {
+        customerGetRepCar = replacementQueue.poll();
+        notifyAll();
     }
     
     @Override
     public synchronized void payForTheService() {
-        notifyAll();    
+        order.put(nextCustomer, "pay");
+        payed = true;
+        notifyAll();
     }
     
     /*
@@ -134,21 +137,21 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }    
     
     @Override
-    public int currentCustomer() {
-        return customersQueue.peek();
+    public synchronized int currentCustomer() {
+        if(replacementQueue.isEmpty())
+            return customersQueue.peek();
+        else
+            return replacementQueue.peek();
     }
     
     @Override
     public synchronized void collectKey() {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
         replacementQueue.add(((Customer)Thread.currentThread()).getCustomerId());
-        System.out.println("Waiting for key...");
+        System.out.println("Customer " + ((Customer)Thread.currentThread()).getCustomerId() + " - Waiting for key...");
         while(customerGetRepCar != ((Customer)Thread.currentThread()).getCustomerId()) {
             try {
                 wait();
-                if(customerGetRepCar == ((Customer)Thread.currentThread()).getCustomerId()) {
-                    return;
-                }
             } catch(Exception e) {
                 
             }
@@ -183,11 +186,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 			((Manager)Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
         */
         System.out.println("Manager - Waiting for next task...");
-        while(customersQueue.isEmpty() && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty() && replacementQueue.isEmpty()) {
+        while(customersQueue.isEmpty() && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty()) {
             try {
                 wait();
-                if(!customersQueue.isEmpty() || !mechanicsQueue.isEmpty() || !customersToCallQueue.isEmpty() || !replacementQueue.isEmpty())
-                    return;
             } catch(Exception e) {
                 
             }
@@ -205,8 +206,26 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
     
     @Override
-    public synchronized void receivePayment() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public synchronized void receivePayment(String s) {
+        while(!payed) {
+            try {
+                
+            } catch(Exception e) {
+                
+            }
+            
+        }
+        /*
+        System.out.println(s);
+        if(s.equals("payandcar")) {
+            customerGetRepCar = replacementQueue.poll();
+            notifyAll();
+            System.out.println("CUSTOMER PAYED.");
+        }
+        else {
+            System.out.println("-------- CUSTOMER PAYED. -----------");
+        }
+*/
     }
     
     
@@ -217,6 +236,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         }
         if(!customersToCallQueue.isEmpty()) {
             ((Manager)Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
+            return;
+        }
+        if(!replacementQueue.isEmpty()) {
+            ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
             return;
         }
         if(!customersQueue.isEmpty()) {

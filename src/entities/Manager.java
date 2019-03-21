@@ -35,13 +35,15 @@ public class Manager extends Thread {
 	public void run() {
 		this.setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
 		int idCustomer = 0; //este idCustomer é o id que se manda ao mecânico
-		int idToCall = 0;
+
 		int replacementCar = 0;
+		int idToCall = 0;
+		boolean availableCar = false;
 		while (!noMoreTasks) {
 			switch (this.state) {
 
 				case CHECKING_WHAT_TO_DO:
-					System.out.println("Manager  - " + this.getManagerState());
+					//System.out.println("Manager  - " + this.getManagerState());
 					lounge.getNextTask();
 					lounge.appraiseSit();
 					/*if(action.equals("customer")) {
@@ -50,18 +52,26 @@ public class Manager extends Thread {
 					break;
 
 				case ATTENDING_CUSTOMER:
-					System.out.println("Manager  - " + this.getManagerState());
+					//System.out.println("Manager  - " + this.getManagerState());
 					idCustomer = lounge.currentCustomer();
-					String action = lounge.talkWithCustomer();
+					availableCar = park.getReplacementCar();
+					String action = lounge.talkWithCustomer(availableCar);
+					//System.out.println(action);
 					if (action.equals("car")) {
-						replacementCar = park.getReplacementCar();
-						lounge.handCarKey(replacementCar);
-						repairArea.registerService(idCustomer);
-						lounge.checkWhatToDo();
+						if (availableCar) {
+							lounge.handCarKey();
+							repairArea.registerService(idCustomer);
+							lounge.checkWhatToDo();
+						} else {
+							repairArea.registerService(idCustomer);
+							lounge.checkWhatToDo();
+						}
 					} else if (action.equals("nocar")) {
 						repairArea.registerService(idCustomer);
+						lounge.checkWhatToDo();
 					} else {
-						//lounge.receivePayment();
+						System.out.println("Receiving payment");
+						lounge.receivePayment(action);
 						System.out.println("Manager - Customer payed.");
 						lounge.checkWhatToDo();
 					}
@@ -69,7 +79,7 @@ public class Manager extends Thread {
 					break;
 
 				case GETTING_NEW_PARTS:
-					System.out.println("Manager  - " + this.getManagerState());
+					//System.out.println("Manager  - " + this.getManagerState());
 					supplierSite.goToSupplier();
 					break;
 

@@ -69,7 +69,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	public synchronized void readThePaper() {
 		/*if(pieceToBeRepaired.isEmpty())
 			work = false;*/
-        
+        //System.out.println("Mechanic - Waiting for work...");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         while (!work) { //while there is no car to repair
             try {

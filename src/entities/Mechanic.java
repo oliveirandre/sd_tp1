@@ -2,7 +2,6 @@ package entities;
 
 import java.util.HashMap;
 import repository.Piece;
-import repository.RepairShop;
 import shared.IMechanicL;
 import shared.IMechanicP;
 import shared.IMechanicRA;
@@ -18,79 +17,72 @@ public class Mechanic extends Thread {
 	private final IMechanicRA repairArea;
 	private final IMechanicL lounge;
 	private final int id;
-	private RepairShop repairShop;
 
-	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge, int id, RepairShop repairShop) {
+	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge, int id) {
 		this.park = park;
 		this.repairArea = repairArea;
 		this.lounge = lounge;
 		this.id = id;
-		this.repairShop = repairShop;
 	}
-	
-	HashMap<Integer, Piece> pieceToBeRepaired;
-        private boolean noMoreWork = false;
+
+	HashMap<Integer, Piece> piecesToBeRepaired;
+	private boolean noMoreWork = false;
 	boolean alreadyChecked = false;
 	boolean repairConcluded = false;
-	int idCarToFix;
-	
-	
+	Piece pieceManagerReStock;
+	int idCarToFix = 0;
+
 	@Override
 	public void run() {
 		this.setMechanicState(MechanicState.WAITING_FOR_WORK);
 		
-		Piece pieceManagerReStock = null;
-                int car = 0;
+		
 		while (!noMoreWork) {
 			switch (this.state) {
 				case WAITING_FOR_WORK:
-					repairArea.readThePaper(); 
-					car = repairArea.startRepairProcedure();
+					System.out.println("Mechanic " + this.id + " - Waiting for work...");
+					repairArea.readThePaper();
+					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar por causa dda situaÃ§ao em q o carro esta a espera de peÃ§a
 					break;
 				case FIXING_CAR:
-                                        System.out.println("Mechanic - Going to repair car " + car);
-                                        park.getVehicle(car);
-                                        System.out.println("Mechanic - Returning car " + car);
-                                        park.returnVehicle(car);
-                                        /*
-					//idCarToFix = (int) lounge.getCarsToRepair().poll();//repairArea.getIdFromManager(); //manager tem que dizer qual o id aqui
+					System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
+					park.getVehicle(idCarToFix);
+					
 					if (!alreadyChecked) {
-						park.getVehicle(idCarToFix);
-
-						pieceToBeRepaired = repairArea.getRequiredPart(idCarToFix); //salta para CHECKING_STOCK
+						piecesToBeRepaired = repairArea.getRequiredPart(idCarToFix); //salta para CHECKING_STOCK
 						break;
 					}
+					
 
-					repairArea.fixIt(idCarToFix, pieceToBeRepaired.get(idCarToFix));
-
+					repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
+					System.out.println("Mechanic " + this.id + " - Fixed");
+					
 					park.returnVehicle(idCarToFix);//estacionar o carro
-
+					System.out.println("Mechanic " + this.id + " - Returning vehicle");
+					
 					repairArea.repairConcluded(); //alertar manager
 					repairConcluded = true;
-					*/
+					alreadyChecked = false;
 					break;
 
 				case ALERTING_MANAGER:
-                                    lounge.alertManager(null, car);
-                                    /*
-					//alertar manager se foi repairConcluded ou se não há stock
-					if(!repairConcluded)
-						lounge.alertManager(pieceToBeRepaired.get(idCarToFix), idCarToFix);
-					else
+					if (!repairConcluded) {
+						lounge.alertManager(piecesToBeRepaired.get(idCarToFix), idCarToFix);
+					} else {
 						lounge.alertManager(null, idCarToFix);
+					}
 					break;
 
 				case CHECKING_STOCK:
-
-					//idCarToFix = 0; //manager tem que dizer qual o id aqui
-
-					if (!repairArea.partAvailable(pieceToBeRepaired.get(idCarToFix))) {
+					if (!repairArea.partAvailable(piecesToBeRepaired.get(idCarToFix))) {
 						repairArea.letManagerKnow();
+						System.out.println("Mechanic " + this.id + " - There is no stock");
 					} else {
 						alreadyChecked = true;
+						System.out.println("Mechanic " + this.id + " - There is stock so let's proceed");
 						repairArea.resumeRepairProcedure();
 					}
-					break;*/
+					break;
 			}
 		}
 	}

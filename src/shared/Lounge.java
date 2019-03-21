@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import repository.Piece;
-import repository.RepairShop;
 
 /**
  *
@@ -19,7 +18,6 @@ import repository.RepairShop;
 
 public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
-    private RepairShop repairShop;
     private int customerGetRepCar;
     private Queue<Integer> replacementQueue = new LinkedList<>();
     private final Queue<Integer> customersQueue = new LinkedList<>();

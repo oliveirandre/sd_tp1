@@ -15,8 +15,6 @@ import entities.Customer;
 import entities.Manager;
 import entities.Mechanic;
 import repository.Log;
-import repository.Piece;
-import repository.RepairShop;
 import shared.ICustomerL;
 import shared.ICustomerOW;
 import shared.ICustomerP;
@@ -43,8 +41,6 @@ public class Main {
     private static RepairArea repairArea;
     private static SupplierSite supplierSite;
     
-    private static RepairShop repairShop;
-    
     public static void main(String[] args) {
         /* 
          * There are 5 different locations: park, lounge, repair area, supplier
@@ -54,18 +50,22 @@ public class Main {
          * that can be repared.
          */
 		
-		int N_OF_REPLACEMENT_CARS = 3;
+		
+		final int N_OF_CUSTOMERS = 6;
+		final int N_OF_MECHANICS = 1;
+		final int N_OF_MANAGERS = 1;
+		final int N_OF_REPLACEMENT_CARS = 3;
+		int N_OF_TYPE_PIECES = 3;
         
-        repairShop = new RepairShop();
         
-        int nCustomers = repairShop.N_OF_CUSTOMERS;
-        int nMechanics = repairShop.N_OF_MECHANICS;
-        int nManagers = repairShop.N_OF_MANAGERS;
+        int nCustomers = N_OF_CUSTOMERS;
+        int nMechanics = N_OF_MECHANICS;
+        int nManagers = N_OF_MANAGERS;
         
         lounge = new Lounge();
         outsideWorld = new OutsideWorld();
-        park = new Park(repairShop.N_OF_REPLACEMENT_CARS);
-        repairArea = new RepairArea();
+        park = new Park(N_OF_REPLACEMENT_CARS);
+        repairArea = new RepairArea(N_OF_TYPE_PIECES);
         supplierSite = new SupplierSite();
         
         for(int i = 0; i < nManagers; i++) {
@@ -80,21 +80,17 @@ public class Main {
         }
         
         for(int i = 0; i < nMechanics; i++) {
-            Mechanic mec = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i, (RepairShop) repairShop);
+            Mechanic mec = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i);
             mec.start();
         }
-        
+        /*
+		Piece p = new Piece();
+		System.out.println(p.getTypePiece());
+		for (int i = 0; i < repairArea.getPieces().size(); i++) {
+			System.out.println("pep"+repairArea.getPieces().keySet().toArray()[i] );
+			repairArea.removePieceFromStock(p);
+		}
 		
-        Piece p = new Piece();
-		
-		RepairShop repair = new RepairShop();
-	
-                /*
-        System.out.println(p.getTypePiece());
-		System.out.println(RepairShop.getPieces());
-		
-		
-		System.out.println(RepairShop.getPieces());
 		*/
 		
     }

@@ -7,8 +7,8 @@ import entities.MechanicState;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import repository.EnumPiece;
 import repository.Piece;
-import repository.RepairShop;
 
 /**
  *
@@ -18,9 +18,47 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 
     private final Queue<Integer> carsToRepair = new LinkedList<>();
     private Queue<Integer> carsWaitingForPieces = new LinkedList<>();
-    HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
+    private HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
     private boolean work = false; //manager tem que alterar no post
 	private int idCustomer;
+	
+	
+	static final int nPieces = (int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min
+
+
+	private final static HashMap<EnumPiece, Integer> stock = new HashMap<>();
+	
+	
+	
+	public RepairArea(int N_OF_TYPE_PIECES){
+		
+		for (int i = 0; i < N_OF_TYPE_PIECES; i++) {
+			stock.put(EnumPiece.values()[i], 5); 
+		}
+
+		for (int i = 0; i < nPieces; i++) {
+			Piece pec = new Piece();
+			stock.put(pec.getTypePiece(), stock.get(pec.getTypePiece()) + 1);
+		}
+		
+	}
+	
+	public static HashMap getPieces() {
+		return stock;
+	}
+
+	public boolean pieceInStock(Piece p) {
+		return stock.get(p.getTypePiece()) != 0;
+	}
+
+	public void removePieceFromStock(Piece p) {
+		stock.put(p.getTypePiece(), stock.get(p.getTypePiece()) - 1);
+	}
+	
+	public void addPieceToStock(Piece p) {
+		stock.put(p.getTypePiece(), stock.get(p.getTypePiece()) + 1);
+	}
+	
 	
 	/**
 	 * Mechanic's method. Reads the paper while there is no work.
@@ -28,10 +66,10 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 *
 	 */
 	@Override
-        public synchronized void readThePaper() {
+	public synchronized void readThePaper() {
 		/*if(pieceToBeRepaired.isEmpty())
 			work = false;*/
-        System.out.println("Mechanic - Waiting for work...");
+        
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         while (!work) { //while there is no car to repair
             try {
@@ -48,9 +86,11 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	/**
 	 * Mechanic's method. Change the state to start to fix the car.
 	 *
+	 * @return idCar
 	 */
 	@Override
     public synchronized int startRepairProcedure() {
+		System.out.println("Mechanic - Starting repair procedure");
         work = false;
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
         return carsToRepair.poll();
@@ -66,7 +106,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 */
 	@Override
     public synchronized void fixIt(int id, Piece piece) {
-        RepairShop.removePieceFromStock(piece);
+		System.out.println("Mechanic - Fixing it");
+        removePieceFromStock(piece);
         pieceToBeRepaired.remove(id, piece);
     }
 
@@ -79,6 +120,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 */
 	@Override
     public synchronized HashMap getRequiredPart(int id) {
+		System.out.println("Mechanic - Getting required part");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.CHECKING_STOCK);
         pieceToBeRepaired.putIfAbsent(id, new Piece());
         return pieceToBeRepaired;
@@ -93,12 +135,13 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 */
 	@Override
     public boolean partAvailable(Piece part) {
-        return RepairShop.pieceInStock(part);
+        return pieceInStock(part);
     }
 	
 	
     @Override
     public synchronized void letManagerKnow() {
+		System.out.println("Mechanic - Letting manager know");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
         notify();
     }
@@ -131,16 +174,10 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 
 	@Override
 	public synchronized void registerService(int idCustomer) {
-		/*this.idCustomer = idCustomer;
+		((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
+		carsToRepair.add(idCustomer);
 		work = true;
-		notify(); //wake mechanic
-                /*
-                não devia ser? :
-                */
-                ((Manager)Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
-                carsToRepair.add(idCustomer);
-                work = true;
-                notifyAll();
+		notifyAll();
 	}
 
 	@Override
@@ -149,8 +186,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	}
 
 	@Override
-	public void storePart(Piece part) {
-		RepairShop.addPieceToStock(part);
+	public synchronized void storePart(Piece part) {
+		addPieceToStock(part);
 	}
     
 }

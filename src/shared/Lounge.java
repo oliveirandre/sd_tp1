@@ -20,7 +20,7 @@ import repository.RepairShop;
 public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     private RepairShop repairShop;
-    private int availableCar = 0;
+    private boolean availableCar = false;
     private Queue<Integer> replacementQueue;
     private final Queue<Integer> customersQueue = new LinkedList<>();
     private final Queue<Piece> mechanicsQueue = new LinkedList<>();
@@ -115,7 +115,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void handCarKey(int car) {
         if(car != 0) {
-            availableCar = car;
+            availableCar = true;
             notifyAll();
         }
     }
@@ -141,21 +141,20 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
     
     @Override
-    public synchronized int collectKey() {
+    public synchronized void collectKey() {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
         System.out.println("Waiting for key...");
-        while(availableCar == 0) {
+        while(!availableCar) {
             try {
                 wait();
-                if(availableCar != 0) {
+                if(availableCar) {
                     System.out.println("have key for car " + availableCar);
-                    return availableCar;
+                    return;
                 }
             } catch(Exception e) {
                 
             }
         }
-        return 0;
         /*if(RepairShop.N_OF_REPLACEMENT_CARS > 0) {
             RepairShop.N_OF_REPLACEMENT_CARS--;
             return;

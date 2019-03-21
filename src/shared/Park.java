@@ -53,9 +53,11 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     }
     
     @Override
-    public synchronized void findCar(int id) {
+    public synchronized int findCar() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
-        replacementCars.poll();
+        int n = replacementCars.peek();
+        System.out.println("----> Retrieved car " + n);
+        return replacementCars.poll();
         /*
 		nReplacementCars--;
 		parkingSlots++;
@@ -76,7 +78,6 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     @Override
     public synchronized void getVehicle(int id) {
         carsParked.remove(new Integer(id));
-        
         System.out.println(carsParked.toString());
         parkingSlots++;
     }
@@ -85,7 +86,8 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     public synchronized void returnReplacementCar(int id) {
         ((Customer)Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         replacementCars.add(id);
-        System.out.println("Customer " + ((Customer)Thread.currentThread()).getCustomerId() + " - Replacement car parked.");        
+        System.out.println("----> Replacement cars: " + replacementCars.toString());
+        System.out.println("Customer " + ((Customer)Thread.currentThread()).getCustomerId() + " - Replacement car " + id + " parked.");        
     }
 	
 	/**
@@ -108,6 +110,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     
     @Override
     public int getReplacementCar() {
+        System.out.println("**** U GET CAR " + replacementCars.peek());
         return replacementCars.peek();
     }
 

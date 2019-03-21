@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package repository;
 
 import java.io.File;
@@ -10,7 +5,7 @@ import java.io.PrintWriter;
 
 /**
  *
- * @author AndréOliveira
+ * @author Andre e Joao
  */
 public class Log {
     
@@ -44,7 +39,13 @@ public class Log {
             pw.println("                S20 C20 P20 R20 S21 C21 P21 R21 S22 C22 P22 R22 S23 C23 P23 R23 S24 C24 P24 R24 S25 C25 P25 R25 S26 C26 P26 R26 S27 C27 P27 R27 S28 C28 P28 R28 S29 C29 P29 R29");
             pw.println("                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIERS SITE");
             pw.println("                InQ WtK NRV    NCV  NPV       NSRQ   Prt0  NV0  S0 Prt1  NV1  S1 Prt2  NV1  S1                         PP0   PP1   PP2");
-       
+			
+			
+			//Manager states: aCtm, cwtd, gnwp, pjob, alrC, repS
+			
+			
+			
+			
         } catch(Exception e) {
             
         }

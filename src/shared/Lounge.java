@@ -31,7 +31,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private static HashMap<Integer, String> order = new HashMap<Integer, String>();
 
 
-    /*
+	/*
     ** Customer's method. After parking the car in need of a repair, the custo-
     ** mer now has to wait in a queue to be attended by the manager.
      */

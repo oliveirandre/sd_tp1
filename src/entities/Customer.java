@@ -41,10 +41,8 @@ public class Customer extends Thread {
                     //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     if (!haveReplacementCar) {
                         outsideWorld.decideOnRepair();
-                        outsideWorld.goToRepairShop();
-                    } else {
-                        outsideWorld.goToRepairShop();
                     }
+					outsideWorld.goToRepairShop();
                     break;
 
                 case PARK:

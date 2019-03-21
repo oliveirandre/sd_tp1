@@ -39,13 +39,15 @@ public class Mechanic extends Thread {
 		while (!noMoreWork) {
 			switch (this.state) {
 				case WAITING_FOR_WORK:
-					//System.out.println("Mechanic " + this.id + " - Waiting for work...");
+					System.out.println("Mechanic " + this.id + " - Waiting for work...");
 					repairArea.readThePaper();
-					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar por causa dda situaÃ§ao em q o carro esta a espera de peÃ§a
+					System.out.println("Mechanic "+this.id+" - Starting repair procedure");
+					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar por causa dda situaÃ§ao em q o carro 
+					//esta a espera de peça
 					break;
 				case FIXING_CAR:
 
-					//System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
+					System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
 					park.getVehicle(idCarToFix);
 
 					
@@ -55,10 +57,10 @@ public class Mechanic extends Thread {
 					}
 
 					repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
-					//System.out.println("Mechanic " + this.id + " - Fixed");
+					System.out.println("Mechanic " + this.id + " - Fixed");
 
 					park.returnVehicle(idCarToFix);//estacionar o carro
-					//System.out.println("Mechanic " + this.id + " - Returning vehicle");
+					System.out.println("Mechanic " + this.id + " - Returning vehicle");
 
 					repairArea.repairConcluded(); //alertar manager
 					repairConcluded = true;
@@ -76,10 +78,10 @@ public class Mechanic extends Thread {
 				case CHECKING_STOCK:
 					if (!repairArea.partAvailable(piecesToBeRepaired.get(idCarToFix))) {
 						repairArea.letManagerKnow();
-						//System.out.println("Mechanic " + this.id + " - There is no stock");
+						System.out.println("Mechanic " + this.id + " - There is no stock");
 					} else {
 						alreadyChecked = true;
-						//System.out.println("Mechanic " + this.id + " - There is stock so let's proceed");
+						System.out.println("Mechanic " + this.id + " - There is stock so let's proceed");
 						repairArea.resumeRepairProcedure();
 					}
 					break;

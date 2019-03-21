@@ -1,20 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
 /**
  *
- * @author andre
+ * @author andre e joao
  */
 public enum MechanicState {
-    
+    //Mechanic stats: wfw, ftc, amg, cks
     WAITING_FOR_WORK {
         @Override
         public String toString() {
             return "Waiting for work.";
+        }
+		public String toStringLog() {
+            return "wfw";
         }
     },
     
@@ -23,12 +21,18 @@ public enum MechanicState {
         public String toString() {
             return "Fixing car.";
         }
+		public String toStringLog() {
+            return "ftc";
+        }
     },
     
     ALERTING_MANAGER {
         @Override
         public String toString() {
             return "Alerting manager.";
+        }
+		public String toStringLog() {
+            return "amg";
         }
     },
     
@@ -37,6 +41,12 @@ public enum MechanicState {
         public String toString() {
             return "Checking stock.";
         }
-    },
+		public String toStringLog() {
+            return "cks";
+        }
+    },;
     
+	public String toStringLog() {
+		return toStringLog();
+	}
 }

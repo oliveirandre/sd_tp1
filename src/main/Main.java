@@ -48,7 +48,7 @@ public class Main {
          * that can be repared.
          */
 
-        final int N_OF_CUSTOMERS = 5;
+        final int N_OF_CUSTOMERS = 15;
         final int N_OF_MECHANICS = 1;
         final int N_OF_MANAGERS = 1;
         final int N_OF_REPLACEMENT_CARS = 3;
@@ -58,6 +58,8 @@ public class Main {
         int nMechanics = N_OF_MECHANICS;
         int nManagers = N_OF_MANAGERS;
 
+		Log log = new Log("RepairShop.log");
+		
         lounge = new Lounge();
         outsideWorld = new OutsideWorld();
         park = new Park(N_OF_REPLACEMENT_CARS);
@@ -88,6 +90,9 @@ public class Main {
 		}
 		
          */
+		
+		
+		
 
     }
 

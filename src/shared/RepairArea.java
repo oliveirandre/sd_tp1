@@ -67,8 +67,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 */
 	@Override
 	public synchronized void readThePaper() {
-		/*if(pieceToBeRepaired.isEmpty())
-			work = false;*/
+		if(pieceToBeRepaired.isEmpty() || carsToRepair.isEmpty())
+			work = false;
         //System.out.println("Mechanic - Waiting for work...");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         while (!work) { //while there is no car to repair
@@ -90,10 +90,16 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	 */
 	@Override
     public synchronized int startRepairProcedure() {
-		//System.out.println("Mechanic - Starting repair procedure");
-        work = false;
+		
+		 
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
         return carsToRepair.poll();
+		/*try{
+			
+		}catch(Exception e){
+			System.out.println("PILAS" + carsToRepair);
+		}
+		return ;*/
     }
 
 	/**
@@ -177,7 +183,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 		((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
 		carsToRepair.add(idCustomer);
 		work = true;
-		notifyAll();
+		System.out.println("MECANICO, PÕE TE A TRABALHAR");
+		notify();
 	}
 
 	@Override

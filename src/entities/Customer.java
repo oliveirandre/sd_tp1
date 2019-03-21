@@ -91,7 +91,7 @@ public class Customer extends Thread {
                     break;
             }
         }
-        System.out.println("Customer " + this.id + " is happy!");
+        System.out.println("----------------------------- CUSTOMER " + this.id + " IS DEAD! -----------------------------");
     }
 
     public void setCustomerState(CustomerState state) {

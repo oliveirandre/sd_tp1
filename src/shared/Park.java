@@ -109,9 +109,12 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     }
     
     @Override
-    public int getReplacementCar() {
+    public boolean getReplacementCar() {
         System.out.println("**** U GET CAR " + replacementCars.peek());
-        return replacementCars.peek();
+        if(replacementCars.isEmpty())
+            return false;
+        else
+            return true;
     }
 
 }

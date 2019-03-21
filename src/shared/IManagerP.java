@@ -10,5 +10,5 @@ package shared;
  * @author AndréOliveira
  */
 public interface IManagerP {
-    public int getReplacementCar();
+    public boolean getReplacementCar();
 }

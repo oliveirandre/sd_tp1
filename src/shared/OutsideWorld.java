@@ -29,7 +29,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 			if (decided == true) {
 				//((Customer) Thread.currentThread()).requiresCar = requiring.nextBoolean();
 				((Customer) Thread.currentThread()).requiresCar = true;
-				System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - I have decided to go to the repair shop and " + ((Customer) Thread.currentThread()).requiresCar + " a car.");
+				//System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - I have decided to go to the repair shop and " + ((Customer) Thread.currentThread()).requiresCar + " a car.");
 			}
 		}
 	}
@@ -85,7 +85,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 	@Override
 	public synchronized void goToRepairShop() {
 		((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
-		System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Going to repair shop.");
+		//System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Going to repair shop.");
 	}
 
 	@Override

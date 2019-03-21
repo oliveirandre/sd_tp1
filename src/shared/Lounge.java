@@ -97,13 +97,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
                 wait();
                 if(order.containsKey(nextCustomer)) {
                     String s = order.get(nextCustomer);
-                    if(s.equals("car")) {
-                        //replacementQueue.add(nextCustomer);
-                        return s;        
-                    }
-                    else {                       
-                        return s;    
-                    }
+                    order.remove(nextCustomer);
+                    return s;
                 }
             } catch(Exception e) {
                 
@@ -113,16 +108,18 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
 
     @Override
-    public synchronized void handCarKey(int car) {
-        if(car != 0) {
-            customerGetRepCar = replacementQueue.poll();
-            notifyAll();
-        }
+    public synchronized void handCarKey() {
+        customerGetRepCar = replacementQueue.poll();
+        notifyAll();
     }
     
     @Override
     public synchronized void payForTheService() {
-        notifyAll();    
+        if(((Customer)Thread.currentThread()).requiresCar)
+            order.put(nextCustomer, "payandcar");
+        else
+            order.put(nextCustomer, "payandnocar");
+        notifyAll();
     }
     
     /*
@@ -137,7 +134,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     @Override
     public int currentCustomer() {
-        return customersQueue.peek();
+        if(replacementQueue.isEmpty())
+            return customersQueue.peek();
+        else
+            return replacementQueue.peek();
     }
     
     @Override
@@ -207,8 +207,16 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
     
     @Override
-    public synchronized void receivePayment() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public synchronized void receivePayment(String s) {
+        System.out.println(s);
+        if(s.equals("payandcar")) {
+            customerGetRepCar = replacementQueue.poll();
+            notifyAll();
+            System.out.println("CUSTOMER PAYED.");
+        }
+        else {
+            System.out.println("-------- CUSTOMER PAYED. -----------");
+        }
     }
     
     
@@ -219,6 +227,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         }
         if(!customersToCallQueue.isEmpty()) {
             ((Manager)Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
+            return;
+        }
+        if(!replacementQueue.isEmpty()) {
+            ((Manager)Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
             return;
         }
         if(!customersQueue.isEmpty()) {

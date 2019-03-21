@@ -39,7 +39,7 @@ public class Customer extends Thread {
         while(!this.happyCustomer) {
             switch(this.state) {
                 case NORMAL_LIFE_WITH_CAR:
-                    System.out.println("Customer " + this.id + " - " + this.getCustomerState());
+                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     if(!haveReplacementCar) {
                             outsideWorld.decideOnRepair();
                             outsideWorld.goToRepairShop();
@@ -49,7 +49,7 @@ public class Customer extends Thread {
                     break;
                     
                 case PARK:
-                    System.out.println("Customer " + this.id + " - " + this.getCustomerState());
+                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     if(!haveReplacementCar) {
                         park.parkCar(this.id);
                     }
@@ -59,7 +59,7 @@ public class Customer extends Thread {
                     break;
                     
                 case WAITING_FOR_REPLACE_CAR:
-                    System.out.println("Customer " + this.id + " - " + this.getCustomerState());      
+                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());      
                     carInRepairShop = true;
                     replacementCar = park.findCar();
                     haveReplacementCar = true;
@@ -67,7 +67,7 @@ public class Customer extends Thread {
                     break;
                     
                 case RECEPTION:
-                    System.out.println("Customer " + this.id + " - " + this.getCustomerState());
+                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     lounge.queueIn(this.id);
                     if(!carRepaired) {
                         lounge.talkWithManager();
@@ -79,7 +79,7 @@ public class Customer extends Thread {
                     }
                     else {
                         System.out.println("Customer 1 - Paying for service.");
-                        //lounge.payForTheService();
+                        lounge.payForTheService();
                         this.happyCustomer = true;
                         park.collectCar(this.id);
                         outsideWorld.backToWorkByCar();
@@ -87,7 +87,7 @@ public class Customer extends Thread {
                     break;
                     
                 case NORMAL_LIFE_WITHOUT_CAR:
-                    System.out.println("Customer " + this.id + " - " + this.getCustomerState());
+                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     outsideWorld.goToReception();
                     break;
             }

@@ -36,12 +36,12 @@ public class Manager extends Thread {
 		this.setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
 		int idCustomer = 0; //este idCustomer é o id que se manda ao mecânico
                 int idToCall = 0;
-                int replacementCar = 0;
+                boolean availableCar = false;
 		while (!noMoreTasks) {
 			switch (this.state) {
 
 				case CHECKING_WHAT_TO_DO:
-                                    System.out.println("Manager  - " + this.getManagerState());
+                                    //System.out.println("Manager  - " + this.getManagerState());
                                     lounge.getNextTask();
                                     lounge.appraiseSit();
                                     /*if(action.equals("customer")) {
@@ -50,20 +50,27 @@ public class Manager extends Thread {
                                     break;
 
 				case ATTENDING_CUSTOMER:
-                                    System.out.println("Manager  - " + this.getManagerState());
+                                    //System.out.println("Manager  - " + this.getManagerState());
                                         idCustomer = lounge.currentCustomer();
 					String action = lounge.talkWithCustomer();
+                                        System.out.println(action);
 					if (action.equals("car")) {
-                                            replacementCar = park.getReplacementCar();
-                                            lounge.handCarKey(replacementCar);
-                                            repairArea.registerService(idCustomer);
-                                            lounge.checkWhatToDo();
+                                            availableCar = park.getReplacementCar();
+                                            if(availableCar) {
+                                                lounge.handCarKey();
+                                                repairArea.registerService(idCustomer);
+                                                lounge.checkWhatToDo();
+                                            }
+                                            else {
+                                                repairArea.registerService(idCustomer);
+                                                lounge.checkWhatToDo();
+                                            }
 					}
                                         else if (action.equals("nocar")) {
                                             repairArea.registerService(idCustomer);
                                         }
                                         else {
-                                            //lounge.receivePayment();
+                                            lounge.receivePayment(action);
                                             System.out.println("Manager - Customer payed.");
                                             lounge.checkWhatToDo();
                                         }
@@ -71,12 +78,12 @@ public class Manager extends Thread {
 					break;
 
 				case GETTING_NEW_PARTS:
-                                    System.out.println("Manager  - " + this.getManagerState());
+                                    //System.out.println("Manager  - " + this.getManagerState());
 					supplierSite.goToSupplier();
 					break;
 
 				case POSTING_JOB:
-                                    System.out.println("Manager  - " + this.getManagerState());
+                                    //System.out.println("Manager  - " + this.getManagerState());
 					//repairArea.registerService(idCustomer); // wake up mechanic 
 					//TEMOS DOIS REGISTERSERVICE FALAR DISTO COM CUNHA
 					//URGENTEEEEEEEEEEE
@@ -85,7 +92,7 @@ public class Manager extends Thread {
 					break;
 
 				case ALERTING_CUSTOMER:
-                                    System.out.println("Manager  - " + this.getManagerState());
+                                    //System.out.println("Manager  - " + this.getManagerState());
 					// wake up customer that has his car repaired
                                         idToCall = lounge.getIdToCall();
 					outsideWorld.phoneCustomer(idToCall); // ou do outsideWorld
@@ -93,7 +100,7 @@ public class Manager extends Thread {
 					break;
 
 				case REPLENISH_STOCK:
-                                    System.out.println("Manager  - " + this.getManagerState());
+                                    //System.out.println("Manager  - " + this.getManagerState());
 					Piece partNeeded = lounge.getPieceToReStock();
 					repairArea.storePart(partNeeded);
 					lounge.getNextTask();

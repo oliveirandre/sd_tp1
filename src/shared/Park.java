@@ -57,12 +57,12 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     @Override
     public synchronized int findCar() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
-        System.out.println("REPLACEMENT CARS: " + replacementCars.toString());
+        //System.out.println("REPLACEMENT CARS: " + replacementCars.toString());
         if (reserve.containsKey(((Customer) Thread.currentThread()).getCustomerId())) {
             int n = reserve.get(((Customer) Thread.currentThread()).getCustomerId());
             reserve.remove(((Customer) Thread.currentThread()).getCustomerId());
             replacementCars.remove(n);
-            System.out.println("----> Retrieved car " + n + " from REPLACEMENT CARS: " + replacementCars.toString());
+            //System.out.println("----> Retrieved car " + n + " from REPLACEMENT CARS: " + replacementCars.toString());
             notifyAll();
             return n;
         } else {
@@ -95,8 +95,8 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     public synchronized void returnReplacementCar(int id) {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         replacementCars.add(id);
-        System.out.println("----> Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Replacement car " + id + " parked.");
-        System.out.println("----> Replacement cars: " + replacementCars.toString());
+        //System.out.println("----> Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Replacement car " + id + " parked.");
+        //System.out.println("----> Replacement cars: " + replacementCars.toString());
     }
 
     /**

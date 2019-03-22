@@ -32,12 +32,16 @@ import shared.SupplierSite;
 
 public class Main {
 
-    private static Log log;
     private static Lounge lounge;
     private static OutsideWorld outsideWorld;
     private static Park park;
     private static RepairArea repairArea;
     private static SupplierSite supplierSite;
+	
+	private static Log log;
+	private static Manager manager;
+	private static Mechanic mechanics[];
+	private static Customer customers[];
 
     public static void main(String[] args) {
         /* 
@@ -57,41 +61,53 @@ public class Main {
         int nCustomers = N_OF_CUSTOMERS;
         int nMechanics = N_OF_MECHANICS;
         int nManagers = N_OF_MANAGERS;
+		
+		log = Log.getInstance();
 
-		Log log = new Log("RepairShop.log");
 		
         lounge = new Lounge();
         outsideWorld = new OutsideWorld();
         park = new Park(N_OF_REPLACEMENT_CARS);
         repairArea = new RepairArea(N_OF_TYPE_PIECES);
         supplierSite = new SupplierSite();
-
+		
+		// initialization of threads
         for (int i = 0; i < nManagers; i++) {
-            Manager m = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld, (IManagerP) park);
-            m.start();
+            manager = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld, (IManagerP) park);
+            manager.start();
         }
 
-        // initialization of threads
+        
+		customers = new Customer[nCustomers];
         for (int i = 0; i < nCustomers; i++) {
-            Customer c = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i + 1);
-            c.start();
+            customers[i] = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i + 1);
+            customers[i].start();
         }
-
+		
+		mechanics = new Mechanic[nMechanics];
         for (int i = 0; i < nMechanics; i++) {
-            Mechanic mec = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i);
-            mec.start();
+            mechanics[i] = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i);
+            mechanics[i].start();
         }
-        /*
-		Piece p = new Piece();
-		System.out.println(p.getTypePiece());
-		for (int i = 0; i < repairArea.getPieces().size(); i++) {
-			System.out.println("pep"+repairArea.getPieces().keySet().toArray()[i] );
-			repairArea.removePieceFromStock(p);
-		}
+        
 		
-         */
-		
-		
+		for(int j = 0; j < nManagers; j++){
+            try {
+                manager.join();
+                System.err.println("Manager " + j + " Died ");
+            } catch (InterruptedException ex) {
+                //Escrever para o log
+            }
+        }
+        
+        for(int j = 0; j < nMechanics; j++){
+            try {
+                mechanics[j].join();
+                System.err.println("Mechanic " + j + " Died ");
+            } catch (InterruptedException ex) {
+                //Escrever para o log
+            }
+        }
 		
 
     }

@@ -23,17 +23,12 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
     @Override
     public synchronized void decideOnRepair() {
         Random n = new Random();
-        int randomNum = n.nextInt((10000 - 1) + 1) + 1;
+        int randomNum = n.nextInt((100000000 - 1) + 1) + 1;
         while(randomNum != 1) {
-            randomNum = n.nextInt((10000 - 1) + 1) + 1;
+            randomNum = n.nextInt((100000000 - 1) + 1) + 1;
         }
-        Random requiring = new Random();        
-        if (randomNum == 1) {
-            //((Customer) Thread.currentThread()).requiresCar = requiring.nextBoolean();
-            ((Customer) Thread.currentThread()).requiresCar = true;
-            //System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - I have decided to go to the repair shop and " + ((Customer) Thread.currentThread()).requiresCar + " a car.");
-        }
-    }
+        ((Customer) Thread.currentThread()).requiresCar = true;
+	}
 
     /*
 	 ** Customer's method. After going back to work by bus, the customer waits
@@ -43,8 +38,8 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
     public synchronized void backToWorkByBus() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
         waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
-        System.out.println(waitingForCar.toString());
-        System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Back to Work by bus");
+        //System.out.println(waitingForCar.toString());
+        //System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Back to Work by bus");
         while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
             try {
                 wait();
@@ -59,9 +54,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
     public synchronized void backToWorkByCar() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
         waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
-        if (((Customer) Thread.currentThread()).carRepaired) {
-
-        } else {
+        if (!((Customer) Thread.currentThread()).carRepaired) {
             while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
                 try {
                     wait();

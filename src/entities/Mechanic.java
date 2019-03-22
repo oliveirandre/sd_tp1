@@ -39,7 +39,6 @@ public class Mechanic extends Thread {
 		while (!noMoreWork) {
 			switch (this.state) {
 				case WAITING_FOR_WORK:
-					System.out.println("Mechanic " + this.id + " - Waiting for work...");
 					repairArea.readThePaper();
 					System.out.println("Mechanic " + this.id + " - Starting repair procedure");
 					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar 
@@ -59,7 +58,8 @@ public class Mechanic extends Thread {
 					//System.out.println("Mechanic " + this.id + " - Fixed");
 
 					park.returnVehicle(idCarToFix);//estacionar o carro
-					//System.out.println("Mechanic " + this.id + " - Returning vehicle");
+					
+					System.out.println("Mechanic " + this.id + " - Returning vehicle");
 
 					repairArea.repairConcluded(); //alertar manager
 					repairConcluded = true;

@@ -56,15 +56,15 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
 
     @Override
     public synchronized int findCar() {
+        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
+        System.out.println("REPLACEMENT CARS: " + replacementCars.toString());
         if (reserve.containsKey(((Customer) Thread.currentThread()).getCustomerId())) {
+            int n = reserve.get(((Customer) Thread.currentThread()).getCustomerId());
             reserve.remove(((Customer) Thread.currentThread()).getCustomerId());
-            notifyAll();
-            System.out.println(reserve.toString());
-            ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
-            System.out.println("REPLACEMENT CARS: " + replacementCars.toString());
-            int n = replacementCars.peek();
+            replacementCars.remove(n);
             System.out.println("----> Retrieved car " + n + " from REPLACEMENT CARS: " + replacementCars.toString());
-            return replacementCars.poll();
+            notifyAll();
+            return n;
         } else {
             return 0;
         }

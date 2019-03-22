@@ -100,7 +100,7 @@ public class Manager extends Thread {
                     System.out.println("Manager  - " + this.getManagerState());
                     // wake up customer that has his car repaired
                     idToCall = lounge.getIdToCall();
-                    //System.out.println(idToCall);
+                    System.out.println("Car "+ idToCall+ " is repaired!");
                     customerWaiting = outsideWorld.phoneCustomer(idToCall);
                     //System.out.println(customerWaiting);
                     if(!customerWaiting)

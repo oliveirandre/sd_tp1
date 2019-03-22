@@ -51,7 +51,7 @@ public class Main {
         final int N_OF_CUSTOMERS = 2;
         final int N_OF_MECHANICS = 1;
         final int N_OF_MANAGERS = 1;
-        final int N_OF_REPLACEMENT_CARS = 1;
+        final int N_OF_REPLACEMENT_CARS = 3;
         int N_OF_TYPE_PIECES = 3;
 
         int nCustomers = N_OF_CUSTOMERS;

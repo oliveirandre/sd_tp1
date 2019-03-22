@@ -14,7 +14,7 @@ public interface IManagerL {
     public void checkWhatToDo();
     public int getIdToCall();
     public boolean enoughWork();
-    public void alertCustomer(int id);
+    public boolean alertCustomer(int id);
 	public void receivePayment(String s);
 
 	public void getNextTask();

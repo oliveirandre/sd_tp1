@@ -68,9 +68,11 @@ public class Manager extends Thread {
                     if (action.equals("car")) {
                         if (availableCar) {
                             park.reserveCar(idCustomer);
-                            System.out.println("CAR RESERVED FOR " + idCustomer);
+                            //System.out.println("CAR RESERVED FOR " + idCustomer);
                             lounge.handCarKey();
+                            //System.out.println("HANDED.");
                             park.waitForCustomer(idCustomer);
+                            //System.out.println("Client left.");
                         }
 						repairArea.registerService(idCustomer);
                     } else if (action.equals("nocar")) {
@@ -101,10 +103,13 @@ public class Manager extends Thread {
                     // wake up customer that has his car repaired
                     idToCall = lounge.getIdToCall();
                     //System.out.println("Car "+ idToCall+ " is repaired!");
-                    customerWaiting = outsideWorld.phoneCustomer(idToCall);
+                    customerWaiting = lounge.alertCustomer(idToCall);
+                    if(!customerWaiting)
+                        outsideWorld.phoneCustomer(idToCall);
+                    /*customerWaiting = outsideWorld.phoneCustomer(idToCall);
                     //System.out.println(customerWaiting);
                     if(!customerWaiting)
-                        lounge.alertCustomer(idToCall);
+                        lounge.alertCustomer(idToCall);*/
                     lounge.checkWhatToDo();
                     break;
 

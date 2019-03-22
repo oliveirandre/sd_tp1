@@ -111,7 +111,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void handCarKey() {
         customerGetRepCar = replacementQueue.poll();
-        //notifyAll();
+        notifyAll();
     }
 
     @Override
@@ -148,20 +148,20 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         //System.out.println("Replacement Queue - " + replacementQueue.toString());
         //System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Waiting for key...");
         // customerGetRepCar != ((Customer) Thread.currentThread()).getCustomerId() && 
-        while (!carsRepaired.contains(((Customer) Thread.currentThread()).getCustomerId())) {
+        while (customerGetRepCar != ((Customer) Thread.currentThread()).getCustomerId() && !carsRepaired.contains(((Customer) Thread.currentThread()).getCustomerId())) {
             try {
                 wait();
             } catch (Exception e) {
 
             }
         }
-        carsRepaired.remove(((Customer) Thread.currentThread()).getCustomerId());
-        //if(carsRepaired.contains(((Customer) Thread.currentThread()).getCustomerId())) {
+        if(carsRepaired.contains(((Customer) Thread.currentThread()).getCustomerId())) {
             ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
             ((Customer) Thread.currentThread()).carRepaired = true;
+            carsRepaired.remove(((Customer) Thread.currentThread()).getCustomerId());
             replacementQueue.remove(((Customer) Thread.currentThread()).getCustomerId());
             //System.out.println("azar do caralho");
-        //}
+        }
     }
 
     @Override
@@ -260,12 +260,16 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * @param id
 	 */
 	@Override
-    public synchronized void alertCustomer(int id) {
+    public synchronized boolean alertCustomer(int id) {
         if(replacementQueue.contains(id)) {
             carsRepaired.add(id);
             //System.out.println(carsRepaired.toString());
             notifyAll();
             customersToCallQueue.remove(id);
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }

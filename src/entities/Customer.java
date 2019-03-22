@@ -55,10 +55,12 @@ public class Customer extends Thread {
                     break;
 
                 case WAITING_FOR_REPLACE_CAR:
-                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());      
+                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());   
+                    //System.out.println("GOT KEY.");
                     carInRepairShop = true;
                     replacementCar = park.findCar();
                     haveReplacementCar = true;
+                    //System.out.println("Leaving with car.");
                     outsideWorld.backToWorkByCar();
                     break;
 

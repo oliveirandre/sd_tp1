@@ -37,7 +37,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
     @Override
     public synchronized void backToWorkByBus() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
-        waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
+        //waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
         //System.out.println(waitingForCar.toString());
         //System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Back to Work by bus");
         while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
@@ -53,8 +53,11 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
     @Override
     public synchronized void backToWorkByCar() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
-        waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
+        //System.out.println(waitingForCar.toString());
         if (!((Customer) Thread.currentThread()).carRepaired) {
+            //System.out.println("OUTSIDE WORLD WITH CAR");
+            waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
+            notifyAll();
             while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
                 try {
                     wait();
@@ -63,6 +66,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
                 }
             }
             ((Customer) Thread.currentThread()).carRepaired = true;
+            //waitingForCar.remove(((Customer) Thread.currentThread()).getCustomerId());
         }
     }
 
@@ -83,9 +87,20 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 
     @Override
     public synchronized boolean phoneCustomer(int id) {
+        while(!waitingForCar.contains(id)) {
+            try {
+                wait();
+            } catch(Exception e) {
+                
+            }
+        }
+        
+        //System.out.println(id + " - " + waitingForCar.toString());
+        //System.out.println(waitingForCar.contains(id));
         if(waitingForCar.contains(id)) {
             repairedCars.add(id);
             notifyAll();
+            waitingForCar.remove(new Integer(id));
             return true;
         }
         else

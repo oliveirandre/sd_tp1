@@ -22,12 +22,13 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      */
     @Override
     public synchronized void decideOnRepair() {
+        Random requires = new Random();
         Random n = new Random();
         int randomNum = n.nextInt((100000000 - 1) + 1) + 1;
         while(randomNum != 1) {
             randomNum = n.nextInt((100000000 - 1) + 1) + 1;
         }
-        ((Customer) Thread.currentThread()).requiresCar = true;
+        ((Customer) Thread.currentThread()).requiresCar = false;
 	}
 
     /*
@@ -39,15 +40,20 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
         //waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
         //System.out.println(waitingForCar.toString());
-        //System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Back to Work by bus");
-        while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
-            try {
-                wait();
-            } catch (Exception e) {
+        System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Back to Work by bus");
+        if (!((Customer) Thread.currentThread()).carRepaired) {
+            //System.out.println("OUTSIDE WORLD WITH CAR");
+            waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
+            notifyAll();
+            while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
+                try {
+                    wait();
+                } catch (Exception e) {
 
+                }
             }
+            ((Customer) Thread.currentThread()).carRepaired = true;
         }
-        ((Customer) Thread.currentThread()).carRepaired = true;
     }
 
     @Override

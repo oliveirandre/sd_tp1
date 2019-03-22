@@ -41,7 +41,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void queueIn(int id) {
         customersQueue.add(id);
-        //System.out.println("Customer " + id + " - Waiting in queue.");
+        System.out.println("Customer " + id + " - Waiting in queue.");
         notifyAll();
         while(nextCustomer != id && !managerAvailable) {
             try {
@@ -50,7 +50,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
             }
         }
-        //System.out.println("Customer " + id + " - Attended by manager.");
+        System.out.println("Customer " + id + " - Attended by manager.");
     }
 
     /*
@@ -91,7 +91,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         notifyAll();
         managerAvailable = false;
         // fiquei aqui
-        //System.out.println("Manager - Attending customer number " + nextCustomer);
+        System.out.println("Manager - Attending customer number " + nextCustomer);
         //notifyAll();
         while (!(order.containsKey(nextCustomer)) && !ordered) {
             try {

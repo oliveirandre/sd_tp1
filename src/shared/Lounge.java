@@ -38,7 +38,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void queueIn(int id) {
         customersQueue.add(id);
-        notifyAll();
+        notify();
         System.out.println("Customer " + id + " - Waiting in queue.");
         while (!(nextCustomer == id)) {
             try {
@@ -71,7 +71,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
                 order.put(nextCustomer, "nocar");
             }
         }
-        notifyAll();
+        notify();
         /*if(((Customer)Thread.currentThread()).requiresCar) {
             while(true) {
                 try {
@@ -130,7 +130,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized void payForTheService() {
         order.put(nextCustomer, "pay");
         payed = true;
-        notifyAll();
+        notify();
     }
 
     /*
@@ -189,7 +189,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void getNextTask() {
-        System.out.println("Manager - Waiting for next task... "+ customersQueue.toString());
+        System.out.println("Manager - Waiting for next task... <---> "+ customersQueue.toString());
         
         while (customersQueue.isEmpty() && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty() && replacementQueue.isEmpty()) {
             try {
@@ -255,7 +255,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         } else {
             pieceToReStock = piece;
         }
-        notifyAll();
+        notify();
     }
 
     @Override

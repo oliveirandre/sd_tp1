@@ -55,11 +55,11 @@ public class Mechanic extends Thread {
 					}
 
 					repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
-					//System.out.println("Mechanic " + this.id + " - Fixed");
+					//System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Fixed");
 
 					park.returnVehicle(idCarToFix);//estacionar o carro
 					
-					//System.out.println("Mechanic " + this.id + " - Returning vehicle");
+                    //System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Returning vehicle");
 
 					repairArea.repairConcluded(); //alertar manager
 					repairConcluded = true;
@@ -67,6 +67,7 @@ public class Mechanic extends Thread {
 					break;
 
 				case ALERTING_MANAGER:
+                    //System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
 					if (!repairConcluded) {
 						lounge.alertManager(piecesToBeRepaired.get(idCarToFix), idCarToFix);
 					} else {
@@ -75,6 +76,7 @@ public class Mechanic extends Thread {
 					break;
 
 				case CHECKING_STOCK:
+                    //System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
 					if (!repairArea.partAvailable(piecesToBeRepaired.get(idCarToFix))) {
 						repairArea.letManagerKnow();
 						//System.out.println("Mechanic " + this.id + " - There is no stock");

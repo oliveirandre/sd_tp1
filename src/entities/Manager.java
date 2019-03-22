@@ -71,7 +71,7 @@ public class Manager extends Thread {
                             System.out.println("CAR RESERVED FOR " + idCustomer);
                             lounge.handCarKey();
                             park.waitForCustomer(idCustomer);
-						}
+                        }
 						repairArea.registerService(idCustomer);
                     } else if (action.equals("nocar")) {
                         repairArea.registerService(idCustomer);
@@ -92,15 +92,15 @@ public class Manager extends Thread {
                     break;
 
                 case POSTING_JOB:
-                    System.out.println("Manager  - " + this.getManagerState());
+                    //System.out.println("Manager  - " + this.getManagerState());
                     lounge.checkWhatToDo();
                     break;
 
                 case ALERTING_CUSTOMER:
-                    System.out.println("Manager  - " + this.getManagerState());
+                    //System.out.println("Manager  - " + this.getManagerState());
                     // wake up customer that has his car repaired
                     idToCall = lounge.getIdToCall();
-                    System.out.println("Car "+ idToCall+ " is repaired!");
+                    //System.out.println("Car "+ idToCall+ " is repaired!");
                     customerWaiting = outsideWorld.phoneCustomer(idToCall);
                     //System.out.println(customerWaiting);
                     if(!customerWaiting)

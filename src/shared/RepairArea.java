@@ -21,7 +21,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     private HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
     private boolean workMechanic = false; //manager tem que alterar no post
     private int idCustomer;
-
+	private int nMechanicsWaiting;
+	
     static final int nPieces = (int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min
 
     private final static HashMap<EnumPiece, Integer> stock = new HashMap<>();
@@ -68,14 +69,28 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         while (!workMechanic) { //while there is no car to repair
             try {
+				nMechanicsWaiting++;
+				//System.out.println("NUMERO MECANICOS:"+nMechanicsWaiting);
                 wait();
-                if (workMechanic) {
-                    return;
+				
+				if(nMechanicsWaiting>1){ //o mechanic 0 volta a dormir se estiverem dois a dormir e são chamados a trabalhar
+					if(((Mechanic) Thread.currentThread()).getId()==0){ 
+						//System.out.println("MECANICO "+((Mechanic) Thread.currentThread()).getId()+" lÊ o papel");
+						nMechanicsWaiting--;
+						workMechanic = false;
+						readThePaper();
+					}
+				}
+				if (workMechanic && nMechanicsWaiting==1) {
+					nMechanicsWaiting--;
+					//System.out.println("MECANICO "+((Mechanic) Thread.currentThread()).getId()+" vai começar a trabalhar");
+					return;
                 }
             } catch (Exception e) {
 
             }
         }
+		
     }
 
     /**

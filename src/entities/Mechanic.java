@@ -39,11 +39,11 @@ public class Mechanic extends Thread {
 		while (!noMoreWork) {
 			switch (this.state) {
 				case WAITING_FOR_WORK:
-					//System.out.println("Mechanic " + this.id + " - Waiting for work...");
+					System.out.println("Mechanic " + this.id + " - Waiting for work...");
 					repairArea.readThePaper();
-					//System.out.println("Mechanic " + this.id + " - Starting repair procedure");
-					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar por causa dda situaÃ§ao em q o carro 
-					//esta a espera de peça
+					System.out.println("Mechanic " + this.id + " - Starting repair procedure");
+					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar 
+					//por causa dda situaÃ§ao em q o carro esta a espera de peça
 					break;
 				case FIXING_CAR:
 
@@ -98,5 +98,9 @@ public class Mechanic extends Thread {
 	public MechanicState getMechanicState() {
 		return this.state;
 	}
-
+	
+	@Override
+	public long getId(){
+		return this.id;
+	}
 }

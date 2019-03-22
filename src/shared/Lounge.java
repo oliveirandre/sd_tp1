@@ -63,7 +63,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         if (((Customer) Thread.currentThread()).carRepaired) {
             order.put(nextCustomer, "pay");
         } else {
-			System.out.println("PILOCAS DAS DURAS: " + ((Customer) Thread.currentThread()).requiresCar);
+			//System.out.println("PILOCAS DAS DURAS: " + ((Customer) Thread.currentThread()).requiresCar);
             if (((Customer) Thread.currentThread()).requiresCar) {
 				
                 order.put(nextCustomer, "car");

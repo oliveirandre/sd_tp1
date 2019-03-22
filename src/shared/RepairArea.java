@@ -19,16 +19,16 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     private final Queue<Integer> carsToRepair = new LinkedList<>();
     private Queue<Integer> carsWaitingForPieces = new LinkedList<>();
     private HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
-    private boolean work = false; //manager tem que alterar no post
+    private boolean workMechanic = false; //manager tem que alterar no post
     private int idCustomer;
 
     static final int nPieces = (int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min
 
     private final static HashMap<EnumPiece, Integer> stock = new HashMap<>();
 
-    public RepairArea(int N_OF_TYPE_PIECES) {
+    public RepairArea(int nTypePieces) {
 
-        for (int i = 0; i < N_OF_TYPE_PIECES; i++) {
+        for (int i = 0; i < nTypePieces; i++) {
             stock.put(EnumPiece.values()[i], 5);
         }
 
@@ -66,10 +66,10 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 			work = false;*/
         //System.out.println("Mechanic - Waiting for work...");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
-        while (!work) { //while there is no car to repair
+        while (!workMechanic) { //while there is no car to repair
             try {
                 wait();
-                if (work) {
+                if (workMechanic) {
                     return;
                 }
             } catch (Exception e) {
@@ -86,15 +86,9 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     @Override
     public synchronized int startRepairProcedure() {
         //System.out.println("Mechanic - Starting repair procedure");
-        work = false;
+        workMechanic = false;
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
         return carsToRepair.poll();
-		/*try{
-			
-		}catch(Exception e){
-			System.out.println("PILAS" + carsToRepair);
-		}
-		return ;*/
     }
 
     /**
@@ -144,7 +138,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     public synchronized void letManagerKnow() {
         //System.out.println("Mechanic - Letting manager know");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
-        notify();
+        notifyAll();
     }
 
     /**
@@ -177,7 +171,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     public synchronized void registerService(int idCustomer) {
         ((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
         carsToRepair.add(idCustomer);
-        work = true;
+        workMechanic = true;
         notifyAll();
     }
 
@@ -187,8 +181,10 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     }
 
     @Override
-    public synchronized void storePart(Piece part) {
-        addPieceToStock(part);
+    public synchronized void storePart(Piece part, int quant) {
+        for (int i = 1; i < quant; i++) {
+			addPieceToStock(part);
+		}
     }
 
 }

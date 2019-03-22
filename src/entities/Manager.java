@@ -21,6 +21,7 @@ public class Manager extends Thread {
     private final IManagerOW outsideWorld;
     private final IManagerP park;
     private boolean customerWaiting = false;
+	private int quant;
 
     private boolean noMoreTasks = false;
 
@@ -57,7 +58,7 @@ public class Manager extends Thread {
 
                 case ATTENDING_CUSTOMER:
                     System.out.println("Manager  - " + this.getManagerState());
-                    idCustomer = lounge.currentCustomer();
+                    idCustomer = lounge.currentCustomer(); // nao ha distinçao de qual customer
                     //System.out.println(idCustomer);
                     availableCar = park.getReplacementCar();
                     //System.out.println(availableCar);
@@ -70,12 +71,8 @@ public class Manager extends Thread {
                             System.out.println("CAR RESERVED FOR " + idCustomer);
                             lounge.handCarKey();
                             park.waitForCustomer(idCustomer);
-                            repairArea.registerService(idCustomer);
-                            //System.out.println("1");
-                        } else {
-                            repairArea.registerService(idCustomer);
-                            //System.out.println("2");
-                        }
+						}
+						repairArea.registerService(idCustomer);
                     } else if (action.equals("nocar")) {
                         repairArea.registerService(idCustomer);
                         //System.out.println("3");
@@ -86,12 +83,12 @@ public class Manager extends Thread {
                         //System.out.println("4");
                         lounge.checkWhatToDo();
                     }
-
+					
                     break;
 
                 case GETTING_NEW_PARTS:
                     //System.out.println("Manager  - " + this.getManagerState());
-                    supplierSite.goToSupplier();
+                    quant = supplierSite.goToSupplier();
                     break;
 
                 case POSTING_JOB:
@@ -104,7 +101,7 @@ public class Manager extends Thread {
                     // wake up customer that has his car repaired
                     idToCall = lounge.getIdToCall();
                     //System.out.println(idToCall);
-                    customerWaiting = outsideWorld.phoneCustomer(idToCall); // ou do outsideWorld
+                    customerWaiting = outsideWorld.phoneCustomer(idToCall);
                     //System.out.println(customerWaiting);
                     if(!customerWaiting)
                         lounge.alertCustomer(idToCall);
@@ -114,7 +111,7 @@ public class Manager extends Thread {
                 case REPLENISH_STOCK:
                     //System.out.println("Manager  - " + this.getManagerState());
                     Piece partNeeded = lounge.getPieceToReStock();
-                    repairArea.storePart(partNeeded);
+                    repairArea.storePart(partNeeded, quant);
                     lounge.getNextTask();
                     break;
             }

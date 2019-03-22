@@ -63,7 +63,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         if (((Customer) Thread.currentThread()).carRepaired) {
             order.put(nextCustomer, "pay");
         } else {
+			System.out.println("PILOCAS DAS DURAS: " + ((Customer) Thread.currentThread()).requiresCar);
             if (((Customer) Thread.currentThread()).requiresCar) {
+				
                 order.put(nextCustomer, "car");
             } else {
                 order.put(nextCustomer, "nocar");
@@ -143,10 +145,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized int currentCustomer() {
-        if (replacementQueue.isEmpty()) {
-            return customersQueue.peek();
-        } else {
+        if (customersQueue.isEmpty()) {
             return replacementQueue.peek();
+        } else {
+            return customersQueue.peek();
         }
     }
 
@@ -187,7 +189,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void getNextTask() {
-        System.out.println("Manager - Waiting for next task...");
+        System.out.println("Manager - Waiting for next task... "+ customersQueue.toString());
         
         while (customersQueue.isEmpty() && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty() && replacementQueue.isEmpty()) {
             try {
@@ -271,7 +273,11 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             return false;
     }
     
-    @Override
+	/**
+	 * DO MANAGER PARA CUSTOMER
+	 * @param id
+	 */
+	@Override
     public synchronized void alertCustomer(int id) {
         if(replacementQueue.contains(id)) {
             carsRepaired.add(id);

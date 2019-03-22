@@ -8,5 +8,5 @@ import repository.Piece;
  */
 public interface IManagerRA {
 	public void registerService(int idCustomer);
-	public void storePart(Piece part);
+	public void storePart(Piece part, int quant);
 }

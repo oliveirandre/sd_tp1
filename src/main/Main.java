@@ -52,10 +52,10 @@ public class Main {
          * that can be repared.
          */
 
-        final int N_OF_CUSTOMERS = 30;
-        final int N_OF_MECHANICS = 2;
+        final int N_OF_CUSTOMERS = 1;
+        final int N_OF_MECHANICS = 1;
         final int N_OF_MANAGERS = 1;
-        final int N_OF_REPLACEMENT_CARS = 3;
+        final int N_OF_REPLACEMENT_CARS = 0;
         int N_OF_TYPE_PIECES = 3;
 
         int nCustomers = N_OF_CUSTOMERS;

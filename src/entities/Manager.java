@@ -57,7 +57,7 @@ public class Manager extends Thread {
                     break;
 
                 case ATTENDING_CUSTOMER:
-                    System.out.println("Manager  - " + this.getManagerState());
+                    //System.out.println("Manager  - " + this.getManagerState());
                     idCustomer = lounge.currentCustomer(); // nao ha distinçao de qual customer
                     //System.out.println(idCustomer);
                     availableCar = park.getReplacementCar();

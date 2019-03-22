@@ -40,7 +40,7 @@ public class Mechanic extends Thread {
 			switch (this.state) {
 				case WAITING_FOR_WORK:
 					repairArea.readThePaper();
-					System.out.println("Mechanic " + this.id + " - Starting repair procedure");
+					//System.out.println("Mechanic " + this.id + " - Starting repair procedure");
 					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar 
 					//por causa dda situaÃ§ao em q o carro esta a espera de peça
 					break;
@@ -59,7 +59,7 @@ public class Mechanic extends Thread {
 
 					park.returnVehicle(idCarToFix);//estacionar o carro
 					
-					System.out.println("Mechanic " + this.id + " - Returning vehicle");
+					//System.out.println("Mechanic " + this.id + " - Returning vehicle");
 
 					repairArea.repairConcluded(); //alertar manager
 					repairConcluded = true;

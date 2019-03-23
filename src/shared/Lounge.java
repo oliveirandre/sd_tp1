@@ -97,7 +97,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         notifyAll();
         managerAvailable = false;
         // fiquei aqui
-        //System.out.println("Manager - Attending customer number " + nextCustomer);
+        System.out.println("Manager - Attending customer number " + nextCustomer);
         //notifyAll();
         while (!(order.containsKey(nextCustomer)) && !ordered) {
             try {

@@ -44,15 +44,20 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         customersQueue.add(id);
         System.out.println("Customer " + id + " - Waiting in queue.");
         notifyAll();
-        enoughWork = true;
-        while(nextCustomer != id && !managerAvailable) {
-            try {
-                wait();
-            } catch (Exception e) {
+        //while(customersQueue.peek() != id && !managerAvailable) {
+        //System.out.println("!!!!!!!!!!!!!!!! " + (nextCustomer == id) + " ????????? " + managerAvailable);
+        // ERRO É AQUI | THREAD ESTÁ NO FIM DA FILA E AVANÇA PORQUE NEXTCUSTOMER É IGUAL A ELA
+        while(nextCustomer != id) {
+            if(!managerAvailable) {
+                try {
+                    wait();
+                } catch (Exception e) {
 
+                }                
             }
         }
-        //System.out.println("Customer " + id + " - Attended by manager.");
+        System.out.println("ADIHWADIWA || " + nextCustomer);
+        System.out.println("Customer " + id + " - Attended by manager.");
     }
 
     /*
@@ -87,16 +92,15 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         /*if (customersQueue.isEmpty()) {
             customersQueue.add(replacementQueue.poll());
         }*/
-        nextCustomer = customersQueue.poll();
         //System.out.println(nextCustomer);
+        nextCustomer = customersQueue.poll();
+        System.out.println(nextCustomer + " | " + customersQueue.toString());
         managerAvailable = true;
-        notifyAll();
+        notify();
         managerAvailable = false;
         // fiquei aqui
-        //System.out.println("Manager - Attending customer number " + nextCustomer);
+        System.out.println("Manager - Attending customer number " + nextCustomer);
         //notifyAll();
-        if(customersQueue.contains(nextCustomer))
-            System.out.println("wtf?");
         while (!(order.containsKey(nextCustomer)) && !ordered) {
             try {
                 //System.out.println("SERA AQUI");
@@ -105,6 +109,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
             }
         }
+        System.out.println(order.toString());
         String s = order.get(nextCustomer);
         //System.out.println("HDAUIDHW "+ s);
         order.remove(nextCustomer);
@@ -168,7 +173,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void getNextTask() {
-        //System.out.println("Manager - Waiting for next task..."); // <---> \n-> CUSTOMERS "+ customersQueue.toString() + "\n-> TO CALL " + customersToCallQueue.toString());
+        System.out.println("Manager - Waiting for next task... <---> \n-> CUSTOMERS "+ customersQueue.toString() + "\n-> TO CALL " + customersToCallQueue.toString());
         //  && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty() && replacementQueue.isEmpty()
         
         
@@ -278,7 +283,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized boolean alertCustomer(int id) {
         if(replacementQueue.contains(id)) {
             carsRepaired.add(id);
-            //System.out.println(carsRepaired.toString());
+            System.out.println("CARS REPAIRED " + carsRepaired.toString());
             notifyAll();
             customersToCallQueue.remove(id);
             return true;

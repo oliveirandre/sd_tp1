@@ -52,6 +52,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 
                 }
             }
+            repairedCars.remove(new Integer(((Customer) Thread.currentThread()).getCustomerId()));
             ((Customer) Thread.currentThread()).carRepaired = true;
         }
     }
@@ -60,8 +61,8 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
     public synchronized void backToWorkByCar() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
         //System.out.println(waitingForCar.toString());
+        System.out.println(((Customer) Thread.currentThread()).getCustomerId() + " - OUTSIDE WORLD WITH CAR REPAIRED");
         if (!((Customer) Thread.currentThread()).carRepaired) {
-            //System.out.println("OUTSIDE WORLD WITH CAR");
             waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
             notifyAll();
             while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
@@ -105,6 +106,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
         //System.out.println(waitingForCar.contains(id));
         if(waitingForCar.contains(id)) {
             repairedCars.add(id);
+            System.out.println("CARS REPAIRED " + repairedCars.toString());
             notifyAll();
             waitingForCar.remove(new Integer(id));
             return true;

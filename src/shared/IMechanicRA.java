@@ -11,9 +11,9 @@ public interface IMechanicRA {
     public void readThePaper();
     public int startRepairProcedure();
     
-    public HashMap getRequiredPart(int id);
+    public void getRequiredPart(int id);
     
-    public void letManagerKnow();
+    public void letManagerKnow(int idCarToFix);
 
     public boolean partAvailable(Piece requiredPart);
     
@@ -22,7 +22,7 @@ public interface IMechanicRA {
     public void getNextTask();
 
     public void resumeRepairProcedure();
-    public void repairConcluded();
+    public void repairConcluded();  
 	
-	public int getIdFromManager();    
+	public HashMap getPiecesToBeRepaired();
 }

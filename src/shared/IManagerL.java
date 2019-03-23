@@ -9,17 +9,16 @@ import repository.Piece;
 public interface IManagerL {
     public String talkWithCustomer(boolean availableCar);
     public void handCarKey();
-    public void registerService();
     public int currentCustomer();
     public void checkWhatToDo();
     public int getIdToCall();
     public boolean enoughWork();
     public boolean alertCustomer(int id);
-	public void receivePayment(String s);
-
 	public void getNextTask();
-
+	
+	public void receivePayment(String s);
 	public void appraiseSit();
 
 	public Piece getPieceToReStock();
+	public void goReplenishStock();
 }

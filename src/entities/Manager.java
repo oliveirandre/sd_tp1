@@ -22,7 +22,7 @@ public class Manager extends Thread {
     private final IManagerP park;
     private boolean customerWaiting = false;
 	private int quant;
-
+	Piece partNeeded;
     private boolean noMoreTasks = false;
 
     public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park) {
@@ -90,7 +90,8 @@ public class Manager extends Thread {
 
                 case GETTING_NEW_PARTS:
                     //System.out.println("Manager  - " + this.getManagerState());
-                    quant = supplierSite.goToSupplier();
+                    partNeeded = lounge.getPieceToReStock();
+					lounge.goReplenishStock();
                     break;
 
                 case POSTING_JOB:
@@ -115,8 +116,12 @@ public class Manager extends Thread {
 
                 case REPLENISH_STOCK:
                     //System.out.println("Manager  - " + this.getManagerState());
-                    Piece partNeeded = lounge.getPieceToReStock();
-                    repairArea.storePart(partNeeded, quant);
+                    
+                    quant = supplierSite.goToSupplier(partNeeded);
+					
+					int idToReFix = repairArea.storePart(partNeeded, quant);
+					
+					repairArea.registerService(idToReFix);
                     lounge.getNextTask();
                     break;
             }

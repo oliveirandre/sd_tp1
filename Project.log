@@ -1,0 +1,9 @@
+                                       REPAIR SHOP ACTIVITIES - Description of the internal state of the problem
+
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  lwc  08  F   F  lwc  09  F   F  lwc  10  F   F  
+               lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  lwc  08  F   F  lwc  09  F   F  lwc  10  F   F  
+               lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  lwc  08  F   F  lwc  09  F   F  lwc  10  F   F  
+               
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIERS SITE
+                 00  00  00     01   03        01     8    null   null  010    null   null  8    null   null                          00   00   00   

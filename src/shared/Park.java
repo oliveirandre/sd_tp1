@@ -106,7 +106,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      */
     @Override
     public synchronized void returnVehicle(int id) {
-        ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
+        //((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
         carsParked.add(id);
         parkingSlots--;
     }
@@ -141,4 +141,12 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
             }
         }
     }
+	
+	public int getCarsParkedSize(){
+		return carsParked.size();
+	}
+	
+	public int getReplacementCarsSize(){
+		return replacementCars.size();
+	}
 }

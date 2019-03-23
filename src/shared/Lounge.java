@@ -20,11 +20,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private int customerGetRepCar;
     private final Queue<Integer> replacementQueue = new LinkedList<>();
     private final Queue<Integer> customersQueue = new LinkedList<>();
-    private final Queue<Piece> mechanicsQueue = new LinkedList<>();
-    private final Queue<Integer> carsToRepair = new LinkedList<>();
     private int nextCustomer = 0;
     private Piece pieceToReStock;
-    private boolean payed = false;
+	private Piece pieceToReStock2;
     private boolean managerAvailable = false;
     private boolean ordered = false;
     private boolean call = false;
@@ -41,7 +39,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void queueIn(int id) {
         customersQueue.add(id);
-        System.out.println("Customer " + id + " - Waiting in queue.");
+        //System.out.println("Customer " + id + " - Waiting in queue.");
         notifyAll();
         while(nextCustomer != id && !managerAvailable) {
             try {
@@ -50,7 +48,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
             }
         }
-        System.out.println("Customer " + id + " - Attended by manager.");
+        //System.out.println("Customer " + id + " - Attended by manager.");
     }
 
     /*
@@ -91,7 +89,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         notifyAll();
         managerAvailable = false;
         // fiquei aqui
-        System.out.println("Manager - Attending customer number " + nextCustomer);
+        //System.out.println("Manager - Attending customer number " + nextCustomer);
         //notifyAll();
         while (!(order.containsKey(nextCustomer)) && !ordered) {
             try {
@@ -121,16 +119,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         notify();
         payed = false;*/
     }
-
-    /*
-    ** Manager's method. After receiving a request from a customer, the manager 
-    ** registers it for further use by the mechanics.
-     */
-    @Override
-    public synchronized void registerService() {
-        ((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
-        carsToRepair.add(nextCustomer);
-    }
+    
 
     @Override
     public synchronized int currentCustomer() {
@@ -204,8 +193,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void appraiseSit() {
-        if (!mechanicsQueue.isEmpty()) {
-
+        if (pieceToReStock!=null) {
+			((Manager) Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);
         }
         else if (!customersToCallQueue.isEmpty()) {
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
@@ -221,20 +210,22 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         }
     }
 
-    @Override
-    public synchronized Queue getCarsToRepair() {
-        return carsToRepair;
-    }
-
-    @Override
+	/**
+	 * Mechanic's method. 	
+	 * 
+	 * @param piece
+	 * @param idCar
+	 */
+	@Override
     public synchronized void alertManager(Piece piece, int idCar) {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         if (piece == null) { //repair of this carId is concluded
             customersToCallQueue.add(idCar);
         } else {
             pieceToReStock = piece;
+			
         }
-        //.println("Customers to call : " + customersToCallQueue.toString());
+        //System.out.println("Customers to call : " + customersToCallQueue.toString());
         call = true;
         notifyAll();
         call = false;
@@ -242,9 +233,15 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized Piece getPieceToReStock() {
-        Piece temp = pieceToReStock;
-        pieceToReStock = null; //put null since piece is already going to stock when this method is called
+		Piece temp = pieceToReStock;
+		pieceToReStock2 = pieceToReStock;
+		pieceToReStock = null;	//put null since piece is already going to stock when this method is called
         return temp;
+    }
+	
+	@Override
+    public synchronized void goReplenishStock() {
+        ((Manager)Thread.currentThread()).setManagerState(ManagerState.REPLENISH_STOCK);
     }
     
     @Override
@@ -272,4 +269,20 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             return false;
         }
     }
+	
+	public int getCustomersQueueSize(){
+		return customersQueue.size();
+	}
+	
+	public int getCustomersReplacementQueueSize(){
+		return replacementQueue.size();
+	}
+	
+	public int getCarsRepairedSize(){
+		return carsRepaired.size();
+	}
+	
+	public int getPieceMissingId(){
+		return pieceToReStock2.getTypePiece().ordinal();
+	}
 }

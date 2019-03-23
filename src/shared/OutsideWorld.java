@@ -24,9 +24,9 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
     public synchronized void decideOnRepair() {
         Random requires = new Random();
         Random n = new Random();
-        int randomNum = n.nextInt((100000000 - 1) + 1) + 1;
+        int randomNum = 0;
         while(randomNum != 1) {
-            randomNum = n.nextInt((100000000 - 1) + 1) + 1;
+            randomNum = n.nextInt((100000 - 1) + 1) + 1;
         }
         ((Customer) Thread.currentThread()).requiresCar = false;
 	}
@@ -40,7 +40,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
         //waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
         //System.out.println(waitingForCar.toString());
-        System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Back to Work by bus");
+        //System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Back to Work by bus");
         if (!((Customer) Thread.currentThread()).carRepaired) {
             //System.out.println("OUTSIDE WORLD WITH CAR");
             waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());

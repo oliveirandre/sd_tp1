@@ -1,6 +1,8 @@
 package entities;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 import repository.Piece;
 import shared.IMechanicL;
 import shared.IMechanicP;
@@ -24,10 +26,10 @@ public class Mechanic extends Thread {
 		this.lounge = lounge;
 		this.id = id;
 	}
-
+	
+	
 	HashMap<Integer, Piece> piecesToBeRepaired;
 	private boolean noMoreWork = false;
-	boolean alreadyChecked = false;
 	boolean repairConcluded = false;
 	Piece pieceManagerReStock;
 	int idCarToFix = 0;
@@ -42,18 +44,20 @@ public class Mechanic extends Thread {
 					repairArea.readThePaper();
 					//System.out.println("Mechanic " + this.id + " - Starting repair procedure");
 					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar 
+					
+					
 					//por causa dda situaÃ§ao em q o carro esta a espera de peça
 					break;
 				case FIXING_CAR:
 
 					//System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
 					park.getVehicle(idCarToFix);
-
-					if (!alreadyChecked) {
-						piecesToBeRepaired = repairArea.getRequiredPart(idCarToFix); //salta para CHECKING_STOCK
+					piecesToBeRepaired = repairArea.getPiecesToBeRepaired();
+					if (!piecesToBeRepaired.containsKey(new Integer(idCarToFix))) {
+						repairArea.getRequiredPart(idCarToFix); //salta para CHECKING_STOCK
 						break;
 					}
-
+					
 					repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
 					System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Fixed");
 
@@ -61,27 +65,28 @@ public class Mechanic extends Thread {
 					
                     //System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Returning vehicle");
 
-					repairArea.repairConcluded(); //alertar manager
+					repairArea.repairConcluded();
 					repairConcluded = true;
-					alreadyChecked = false;
 					break;
 
 				case ALERTING_MANAGER:
                     //System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
+					
 					if (!repairConcluded) {
 						lounge.alertManager(piecesToBeRepaired.get(idCarToFix), idCarToFix);
 					} else {
 						lounge.alertManager(null, idCarToFix);
 					}
+					repairConcluded = false;
 					break;
 
 				case CHECKING_STOCK:
+					piecesToBeRepaired = repairArea.getPiecesToBeRepaired();
                     //System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
 					if (!repairArea.partAvailable(piecesToBeRepaired.get(idCarToFix))) {
-						repairArea.letManagerKnow();
-						//System.out.println("Mechanic " + this.id + " - There is no stock");
+						repairArea.letManagerKnow(idCarToFix);
+						System.out.println("Mechanic " + this.id + " - There is no stock for car "+idCarToFix);
 					} else {
-						alreadyChecked = true;
 						//System.out.println("Mechanic " + this.id + " - There is stock so let's proceed");
 						repairArea.resumeRepairProcedure();
 					}

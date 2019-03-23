@@ -18,10 +18,11 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 
     private final Queue<Integer> carsToRepair = new LinkedList<>();
     private Queue<Integer> carsWaitingForPieces = new LinkedList<>();
-    private HashMap<Integer, Piece> pieceToBeRepaired = new HashMap<>();
+    private HashMap<Integer, Piece> piecesToBeRepaired = new HashMap<>();
     private boolean workMechanic = false; //manager tem que alterar no post
-    private int idCustomer;
-	private int nMechanicsWaiting;
+	private int idCustomerNeedsPiece;
+	private boolean busyMechanic = true;
+	private int nRequestsManager = 0;
 	
     static final int nPieces = (int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min
 
@@ -71,9 +72,6 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         while (!workMechanic) { //while there is no car to repair
             try {
                 wait();
-                if (workMechanic) {
-                    return;
-                }
             } catch (Exception e) {
 				
 			}
@@ -90,6 +88,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         //System.out.println("Mechanic - Starting repair procedure");
         workMechanic = false;
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
+		//System.out.println(carsToRepair);
+		busyMechanic = false;
         return carsToRepair.poll();
     }
 
@@ -103,9 +103,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
      */
     @Override
     public synchronized void fixIt(int id, Piece piece) {
-        //System.out.println("Mechanic - Fixing it");
         removePieceFromStock(piece);
-        pieceToBeRepaired.remove(id, piece);
+        piecesToBeRepaired.remove(id, piece);
     }
 
     /**
@@ -117,11 +116,10 @@ public class RepairArea implements IMechanicRA, IManagerRA {
      * respectively
      */
     @Override
-    public synchronized HashMap getRequiredPart(int id) {
+    public synchronized void getRequiredPart(int id) {
         //System.out.println("Mechanic - Getting required part");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.CHECKING_STOCK);
-        pieceToBeRepaired.putIfAbsent(id, new Piece());
-        return pieceToBeRepaired;
+        piecesToBeRepaired.putIfAbsent(id, new Piece());
     }
 
     /**
@@ -137,10 +135,11 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     }
 
     @Override
-    public synchronized void letManagerKnow() {
+    public synchronized void letManagerKnow(int idCustomerNeedsPiece) {
         //System.out.println("Mechanic - Letting manager know");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
         notifyAll();
+		this.idCustomerNeedsPiece = idCustomerNeedsPiece;
     }
 
     /**
@@ -168,25 +167,36 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         ((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+	
+	/*
+    ** Manager's method. After receiving a request from a customer, the manager 
+    ** registers it for further use by the mechanics.
+     */
     @Override
     public synchronized void registerService(int idCustomer) {
         ((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
         carsToRepair.add(idCustomer);
+		//System.out.println(idCustomer);
         workMechanic = true;
+		//System.out.println(carsToRepair);
         notify();
+		nRequestsManager++;
     }
 
     @Override
-    public synchronized int getIdFromManager() {
-        return idCustomer;
-    }
-
-    @Override
-    public synchronized void storePart(Piece part, int quant) {
+    public synchronized int storePart(Piece part, int quant) {
         for (int i = 1; i < quant; i++) {
 			addPieceToStock(part);
 		}
+		return idCustomerNeedsPiece;
     }
-
+	
+	@Override
+    public synchronized HashMap getPiecesToBeRepaired() {
+        return piecesToBeRepaired;
+    }
+	
+	public int getRequestsManagerSize(){
+		return nRequestsManager;
+	}
 }

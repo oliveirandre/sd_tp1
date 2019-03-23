@@ -17,4 +17,9 @@ public class Piece {
 	public EnumPiece getTypePiece(){
 		return p;
 	}
+	
+	public int getIdTypePiece(){
+		return p.ordinal();
+	}
+		
 }

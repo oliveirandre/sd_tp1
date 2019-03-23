@@ -21,9 +21,9 @@ public class Customer extends Thread {
     public boolean requiresCar = false;
     public boolean carRepaired = false;
     private boolean happyCustomer = false;
-    private boolean carInRepairShop = false;
     private boolean haveReplacementCar = false;
     public int replacementCar;
+	private boolean haveCar = true;
 
     public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id) {
         this.outsideWorld = outsideWorld;
@@ -38,7 +38,8 @@ public class Customer extends Thread {
         while (!this.happyCustomer) {
             switch (this.state) {
                 case NORMAL_LIFE_WITH_CAR:
-                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
+                    haveCar=true;
+					//System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     if (!haveReplacementCar) {
                         outsideWorld.decideOnRepair();
                     }
@@ -57,7 +58,6 @@ public class Customer extends Thread {
                 case WAITING_FOR_REPLACE_CAR:
                     //System.out.println("Customer " + this.id + " - " + this.getCustomerState());   
                     //System.out.println("GOT KEY.");
-                    carInRepairShop = true;
                     replacementCar = park.findCar();
                     haveReplacementCar = true;
                     //System.out.println("Leaving with car.");
@@ -88,7 +88,8 @@ public class Customer extends Thread {
 
                 case NORMAL_LIFE_WITHOUT_CAR:
                     //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
-                    outsideWorld.goToReception();
+                    haveCar = false;
+					outsideWorld.goToReception();
                     break;
             }
         }
@@ -109,5 +110,32 @@ public class Customer extends Thread {
     public int getCustomerId() {
         return this.id;
     }
-
+	
+	public String getCustomerVehicle(){
+		if(haveReplacementCar)
+			return "R"+Integer.toString(replacementCar);
+		else if(haveCar)
+			if(id<10)
+				return "0"+Integer.toString(id);
+			else
+				return Integer.toString(id);
+		else{
+			return "--";
+		}
+	}
+	
+	public String requiresReplacementCar(){
+		if(requiresCar)
+			return "T";
+		else 
+			return "F";
+	}
+	
+	
+	
+	public String vehicleRepaired(){
+		if(carRepaired)
+			return "T";
+		else return "F";
+	}
 }

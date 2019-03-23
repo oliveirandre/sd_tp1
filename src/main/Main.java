@@ -51,8 +51,8 @@ public class Main {
          * that can be repared.
 		 */
 
-		final int nCustomers = 30;
-		final int nMechanics = 2;
+		final int nCustomers = 5;
+		final int nMechanics = 1;
 		final int nManagers = 1;
 		final int nReplacementCars = 3;
 		final int nTypePieces = 3;

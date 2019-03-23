@@ -80,8 +80,8 @@ public class Manager extends Thread {
                         //System.out.println("3");
                     } else {
                         //System.out.println("Receiving payment");
-                        lounge.receivePayment(action);
-                        //System.out.println("Manager - Customer payed.");
+                        //lounge.receivePayment(action);
+                        System.out.println("Manager - Customer payed.");
                         //System.out.println("4");
                         lounge.checkWhatToDo();
                     }

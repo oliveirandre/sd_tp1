@@ -44,7 +44,7 @@ public class Mechanic extends Thread {
 					repairArea.readThePaper();
 					//System.out.println("Mechanic " + this.id + " - Starting repair procedure");
 					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar 
-					
+					System.out.println("Going to repair car " + idCarToFix);
 					
 					//por causa dda situaÃ§ao em q o carro esta a espera de peça
 					break;
@@ -53,7 +53,7 @@ public class Mechanic extends Thread {
 					//System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
 					park.getVehicle(idCarToFix);
 					piecesToBeRepaired = repairArea.getPiecesToBeRepaired();
-					if (!piecesToBeRepaired.containsKey(new Integer(idCarToFix))) {
+					if (!piecesToBeRepaired.containsKey(idCarToFix)) {
 						repairArea.getRequiredPart(idCarToFix); //salta para CHECKING_STOCK
 						break;
 					}

@@ -9,44 +9,28 @@ public enum MechanicState {
     WAITING_FOR_WORK {
         @Override
         public String toString() {
-            return "Waiting for work.";
-        }
-		public String toStringLog() {
-            return "wfw";
+            return "wfw"; // return "Waiting for work.";
         }
     },
     
     FIXING_CAR {
         @Override
         public String toString() {
-            return "Fixing car.";
-        }
-		public String toStringLog() {
-            return "ftc";
+            return "ftc"; // return "Fixing car.";
         }
     },
     
     ALERTING_MANAGER {
         @Override
         public String toString() {
-            return "Alerting manager.";
-        }
-		public String toStringLog() {
-            return "amg";
+            return "amg"; // return "Alerting manager.";
         }
     },
     
     CHECKING_STOCK {
         @Override
         public String toString() {
-            return "Checking stock.";
-        }
-		public String toStringLog() {
-            return "cks";
+            return "cks"; // return "Checking stock.";
         }
     },;
-    
-	public String toStringLog() {
-		return toStringLog();
-	}
 }

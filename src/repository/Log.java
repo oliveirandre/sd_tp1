@@ -36,9 +36,9 @@ public class Log {
     
     private void start() {
         try {
-            String managerState = ((Manager) Thread.currentThread()).getManagerState().toStringLog();
-			String mechanicState = ((Mechanic) Thread.currentThread()).getMechanicState().toStringLog();
-			String customerState = ((Customer) Thread.currentThread()).getCustomerState().toStringLog();
+            String managerState = ((Manager) Thread.currentThread()).toString();
+			String mechanicState = ((Mechanic) Thread.currentThread()).toString();
+			String customerState = ((Customer) Thread.currentThread()).toString();
 			
 			ThreadGroup mechanicGroup = ((Mechanic)Thread.currentThread()).getThreadGroup();
 			ThreadGroup customerGroup = ((Customer)Thread.currentThread()).getThreadGroup();

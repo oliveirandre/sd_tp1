@@ -10,9 +10,6 @@ public enum ManagerState {
     ATTENDING_CUSTOMER {
         @Override
         public String toString() {
-            return "Attending customer.";
-        }
-		public String toStringLog() {
             return "aCtm";
         }
     },
@@ -20,9 +17,6 @@ public enum ManagerState {
     CHECKING_WHAT_TO_DO {
         @Override
         public String toString() {
-            return "Checking what to do.";
-        }
-		public String toStringLog() {
             return "cwtd";
         }
     },
@@ -31,9 +25,6 @@ public enum ManagerState {
     GETTING_NEW_PARTS {
         @Override
         public String toString() {
-            return "Getting new parts.";
-        }
-		public String toStringLog() {
             return "gnwp";
         }
     },
@@ -41,9 +32,6 @@ public enum ManagerState {
     POSTING_JOB {
         @Override
         public String toString() {
-            return "Posting job.";
-        }
-		public String toStringLog() {
             return "pjob";
         }
     },
@@ -51,9 +39,6 @@ public enum ManagerState {
     ALERTING_CUSTOMER {
         @Override
         public String toString() {
-            return "Alerting customer.";
-        }
-		public String toStringLog() {
             return "aCtm";
         }
     },
@@ -61,14 +46,7 @@ public enum ManagerState {
     REPLENISH_STOCK {
         @Override
         public String toString() {
-            return "Replenish stock.";
-        }
-		public String toStringLog() {
             return "rSto";
         }
     };
-
-	public String toStringLog() {
-		return toStringLog();
-	}
 }

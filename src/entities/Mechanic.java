@@ -44,7 +44,7 @@ public class Mechanic extends Thread {
 					repairArea.readThePaper();
 					//System.out.println("Mechanic " + this.id + " - Starting repair procedure");
 					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar 
-					System.out.println("Going to repair car " + idCarToFix);
+					//System.out.println("Going to repair car " + idCarToFix);
 					
 					//por causa dda situaÃ§ao em q o carro esta a espera de peça
 					break;
@@ -59,7 +59,7 @@ public class Mechanic extends Thread {
 					}
 					
 					repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
-					System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Fixed");
+					//System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Fixed");
 
 					park.returnVehicle(idCarToFix);//estacionar o carro
 					
@@ -85,7 +85,7 @@ public class Mechanic extends Thread {
                     //System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
 					if (!repairArea.partAvailable(piecesToBeRepaired.get(idCarToFix))) {
 						repairArea.letManagerKnow(idCarToFix);
-						System.out.println("Mechanic " + this.id + " - There is no stock for car "+idCarToFix);
+						//System.out.println("Mechanic " + this.id + " - There is no stock for car "+idCarToFix);
 					} else {
 						//System.out.println("Mechanic " + this.id + " - There is stock so let's proceed");
 						repairArea.resumeRepairProcedure();

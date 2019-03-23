@@ -81,7 +81,7 @@ public class Manager extends Thread {
                     } else {
                         //System.out.println("Receiving payment");
                         //lounge.receivePayment(action);
-                        System.out.println("Manager - Customer payed.");
+                        //System.out.println("Manager - Customer payed.");
                         //System.out.println("4");
                         lounge.checkWhatToDo();
                     }
@@ -126,6 +126,7 @@ public class Manager extends Thread {
                     break;
             }
         }
+        //System.out.println("Manager dead.");
     }
 
     public void setManagerState(ManagerState state) {

@@ -28,6 +28,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private boolean call = false;
     private boolean payed = false;
     private boolean receivePayment = false;
+    private boolean enoughWork = false;
     private final Queue<Integer> customersToCallQueue = new LinkedList<>(); //repair Concluded
     private final Queue<Integer> carsRepaired = new LinkedList<>();
 
@@ -43,6 +44,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         customersQueue.add(id);
         System.out.println("Customer " + id + " - Waiting in queue.");
         notifyAll();
+        enoughWork = true;
         while(nextCustomer != id && !managerAvailable) {
             try {
                 wait();
@@ -50,7 +52,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
             }
         }
-        System.out.println("Customer " + id + " - Attended by manager.");
+        //System.out.println("Customer " + id + " - Attended by manager.");
     }
 
     /*
@@ -118,17 +120,17 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void payForTheService() {
+        payed = true;
+        //System.out.println("PAYED");
+        notifyAll();
         while(!receivePayment) {
             try {
                 wait();
             } catch(Exception e){
                 
             }
-        }
-        order.put(nextCustomer, "pay");
-        payed = true;
-        //System.out.println("PAYED");
-        notifyAll();
+        }      
+        receivePayment = false;
     }
     
 
@@ -166,7 +168,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void getNextTask() {
-        System.out.println("Manager - Waiting for next task... <---> \n-> CUSTOMERS "+ customersQueue.toString() + "\n-> TO CALL " + customersToCallQueue.toString());
+        //System.out.println("Manager - Waiting for next task..."); // <---> \n-> CUSTOMERS "+ customersQueue.toString() + "\n-> TO CALL " + customersToCallQueue.toString());
         //  && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty() && replacementQueue.isEmpty()
         
         
@@ -193,9 +195,6 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void receivePayment(String s) {
-        receivePayment = true;
-        notifyAll();
-        //System.out.println("Manager - Waiting for payed.");
         while (!payed) {
             try {
                 wait();
@@ -203,8 +202,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
             }
         }
-        receivePayment = false;
         payed = false;
+        receivePayment = true;
+        notifyAll();
+        //System.out.println("Manager - Waiting for payed.");
     }
 
     @Override
@@ -262,7 +263,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     @Override
     public synchronized boolean enoughWork() {
-        if(customersQueue.isEmpty() && replacementQueue.isEmpty())
+        System.out.println(enoughWork);
+        if(customersQueue.isEmpty() && replacementQueue.isEmpty() && enoughWork)
             return true;
         else
             return false;

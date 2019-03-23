@@ -31,10 +31,15 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private boolean enoughWork = false;
     private final Queue<Integer> customersToCallQueue = new LinkedList<>(); //repair Concluded
     private final Queue<Integer> carsRepaired = new LinkedList<>();
+	private boolean[] flagPartMissing;
+	
 
     private static HashMap<Integer, String> order = new HashMap<Integer, String>();
 
-
+	public Lounge(int nTypePieces){
+		flagPartMissing = new boolean[nTypePieces];
+	}
+	
 	/*
     ** Customer's method. After parking the car in need of a repair, the custo-
     ** mer now has to wait in a queue to be attended by the manager.
@@ -306,5 +311,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	
 	public int getPieceMissingId(){
 		return pieceToReStock2.getTypePiece().ordinal();
+	}
+	
+	public boolean[] getFlagPartMissing(){
+		return flagPartMissing;
 	}
 }

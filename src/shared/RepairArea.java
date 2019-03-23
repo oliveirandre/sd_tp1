@@ -200,4 +200,23 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 	public int getRequestsManagerSize(){
 		return nRequestsManager;
 	}
+	
+	public int[] getNumberVehiclesWaitingForParts(int nTypePieces) {
+		//private HashMap<Integer, Piece> piecesToBeRepaired = new HashMap<>();
+		//piecesToBeRepaired.putIfAbsent(id, newPart);
+		// KEY, VALUE
+		int[] nVehiclesWaitingForParts = new int[nTypePieces];
+
+		for (int i = 0; i < nTypePieces; i++) {
+			nVehiclesWaitingForParts[i] = 0;
+		}
+		int i = 0;
+		for (Piece value : piecesToBeRepaired.values()) {
+			if(value.getIdTypePiece()==i)
+				nVehiclesWaitingForParts[i]++;
+			i++;
+		}
+
+		return nVehiclesWaitingForParts;
+	}
 }

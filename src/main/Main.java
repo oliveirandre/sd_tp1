@@ -59,7 +59,7 @@ public class Main {
 
 		log = Log2.getInstance();
 
-		lounge = new Lounge();
+		lounge = new Lounge(nTypePieces);
 		outsideWorld = new OutsideWorld();
 		park = new Park(nReplacementCars);
 		repairArea = new RepairArea(nTypePieces);
@@ -252,14 +252,18 @@ public class Main {
 		for (int i = 0; i < nTypePieces; i++) {
 			int temp = (int) repairArea.getPieces().get(EnumPiece.values()[i]);
 			if(temp<10)
-				Prt[i]=""+Integer.toString(temp);
-			else Prt[i]="0"+Integer.toString(temp);
+				Prt[i]="0"+Integer.toString(temp);
+			else Prt[i]=""+Integer.toString(temp);
 			
-			//System.out.println("PEIDO GROSSO"+lounge.getPieceToReStock().getIdTypePiece());
-			//aqui calcula-se os valores NV e S
-			//if(i==lounge.getPieceMissingId())
-			//	S[i]="T";
-			//else S[i]="F";
+			
+			if(repairArea.getNumberVehiclesWaitingForParts(nTypePieces)[i]<10)
+				NV[i]="0"+repairArea.getNumberVehiclesWaitingForParts(nTypePieces)[i];
+			else NV[i]=""+repairArea.getNumberVehiclesWaitingForParts(nTypePieces)[i];
+			
+						
+			if(lounge.getFlagPartMissing()[i])
+				S[i]="T";
+			else S[i]="F";
 			
 			if(supplierSite.getPiecesBought()[i]<10)
 				PP[i] = "0"+supplierSite.getPiecesBought()[i];

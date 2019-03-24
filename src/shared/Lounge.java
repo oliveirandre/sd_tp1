@@ -20,7 +20,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private int customerGetRepCar;
     private final Queue<Integer> replacementQueue = new LinkedList<>();
     private final Queue<Integer> customersQueue = new LinkedList<>();
-    private final Queue<Piece> mechanicsQueue = new LinkedList<>();
+    private final Queue<Piece> piecesQueue = new LinkedList<>();
     private int nextCustomer = 0;
     private Piece pieceToReStock;
 	private Piece pieceToReStock2;
@@ -182,9 +182,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         //  && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty() && replacementQueue.isEmpty()
         
         // && !call 
-        while (customersQueue.isEmpty() && customersToCallQueue.isEmpty() && mechanicsQueue.isEmpty()) {
+        while (customersQueue.isEmpty() && customersToCallQueue.isEmpty() && piecesQueue.isEmpty()) {
             try {
-                System.out.println("------- FIQUEI PRESO EM WAIT ---------");
+                //System.out.println("------- FIQUEI PRESO EM WAIT ---------");
                 wait();
             } catch (Exception e) {
 
@@ -222,7 +222,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void appraiseSit() {
         //if (pieceToReStock!=null) {
-		if(!mechanicsQueue.isEmpty()) {
+		if(!piecesQueue.isEmpty()) {
             System.out.println("attending mechanic");
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);
         }
@@ -257,10 +257,11 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         } else {
             System.out.println("WE NEED " + piece.getTypePiece() + " FOR CAR " + idCar);
             //pieceToReStock = piece;
-            mechanicsQueue.add(piece); 
+            piecesQueue.add(piece); 
             call = true;    
             notifyAll();    
             call = false; 
+			System.out.println("Mechanic - Car "+idCar+" needs "+piece.toString());
         }
         //System.out.println("Customers to call : " + customersToCallQueue.toString());
         //call = false;
@@ -272,7 +273,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 		pieceToReStock2 = pieceToReStock;
 		pieceToReStock = null;	//put null since piece is already going to stock when this method is called
         return temp;*/
-        return mechanicsQueue.poll();
+        return piecesQueue.poll();
     }
 	
 	@Override

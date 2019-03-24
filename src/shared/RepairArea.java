@@ -7,6 +7,8 @@ import entities.MechanicState;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import repository.EnumPiece;
 import repository.Piece;
 
@@ -23,42 +25,46 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     private final HashMap<Integer, Piece> piecesToBeRepaired = new HashMap<>();
     private final Queue<Integer> mechanicsQueue = new LinkedList<>();
     private boolean workMechanic = false; //manager tem que alterar no post
-	private int idCustomerNeedsPiece;
-	private boolean busyMechanic = true;
 	private int nRequestsManager = 0;
     private int mechanicToWork = 0;
 	
     static final int nPieces = 0;//(int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min
 
-    private final static HashMap<EnumPiece, Integer> stock = new HashMap<>();
+    private static final HashMap<EnumPiece, Integer> stock = new HashMap<>();
 
     public RepairArea(int nTypePieces) {
 
         for (int i = 0; i < nTypePieces; i++) {
             stock.put(EnumPiece.values()[i], 0); // 5
         }
-
+		/*
+		//adds random pieces to stock
         for (int i = 0; i < nPieces; i++) {
             Piece pec = new Piece();
             stock.put(pec.getTypePiece(), stock.get(pec.getTypePiece()) + 1);
-        }
+        }*/
 
     }
 
-    public static HashMap getPieces() {
+	@Override
+    public HashMap getPieces() {
         return stock;
     }
 
-    public boolean pieceInStock(Piece p) {
-        return stock.get(p.getTypePiece()) != 0;
+    private synchronized boolean pieceInStock(Piece p) {
+        return stock.get(p.getTypePiece()) > 0;
     }
 
-    public void removePieceFromStock(Piece p) {
-        stock.put(p.getTypePiece(), stock.get(p.getTypePiece()) - 1);
+    private synchronized void removePieceFromStock(Piece p, int temp) {
+		//int temp = stock.get(p.getTypePiece());
+        
+		stock.put(p.getTypePiece(), temp-1);
     }
 
-    public void addPieceToStock(Piece p) {
-        stock.put(p.getTypePiece(), stock.get(p.getTypePiece()) + 1);
+    private synchronized void addPieceToStock(Piece p,int peido) {
+		int temp = stock.get(p.getTypePiece());
+		System.out.println("TEMPTEMPTEMP:"+peido+temp);
+        stock.put(p.getTypePiece(), peido+1);
     }
 
     /**
@@ -115,15 +121,17 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         workMechanic = false;
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
 		//System.out.println(carsToRepair);
-		busyMechanic = false;
+		
         //System.out.println(carsToRepair.toString());
         if(!readyToRepair.isEmpty()) {
             System.out.println("Going to repair car " + readyToRepair.peek());
             return readyToRepair.poll();
         }
-        else
-            return carsToRepair.poll();
-    }
+		else{
+            System.out.println("Going to repair car " + carsToRepair.peek());
+			return carsToRepair.poll();
+		}
+	}
 
     /**
      * Mechanic's method. Mechanic removes one piece from stock to repair the
@@ -135,8 +143,9 @@ public class RepairArea implements IMechanicRA, IManagerRA {
      */
     @Override
     public synchronized void fixIt(int id, Piece piece) {
-        //System.out.println(piecesToBeRepaired.toString());
-        removePieceFromStock(piece);
+		System.out.println("mecanico a reparar carro, ou seja, a retirar peça do stock");
+		removePieceFromStock(piece, stock.get(piece.getTypePiece()));
+		
         piecesToBeRepaired.remove(id, piece);
         repaired.add(id);
     }
@@ -155,7 +164,6 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.CHECKING_STOCK);
         System.out.println("CAR - " + id);
         piecesToBeRepaired.put(id, new Piece());
-        System.out.println(piecesToBeRepaired.toString());
     }
 
     /**
@@ -177,7 +185,6 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         carsToRepair.remove(idCustomerNeedsPiece);
         carsWaitingForPieces.put(idCustomerNeedsPiece, piece);
         //notifyAll();
-		this.idCustomerNeedsPiece = idCustomerNeedsPiece;
     }
 
     /**
@@ -214,7 +221,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     public synchronized void registerService(int idCustomer) {
         ((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
         if(!readyToRepair.contains(idCustomer) && !carsWaitingForPieces.containsKey(idCustomer) && !repaired.contains(idCustomer)) {
-            System.out.println("Added customer "+ idCustomer);
+            System.out.println("Added customer "+ idCustomer + "registerService");
             carsToRepair.add(idCustomer);
         }
 		//System.out.println(idCustomer);
@@ -243,9 +250,11 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         readyToRepair.add(n);
         carsWaitingForPieces.remove(n);
         System.out.println(quant + " " + part.getTypePiece() + " ADDED FOR CAR " + readyToRepair.toString());
-        for (int i = 1; i < quant; i++) {
-			addPieceToStock(part);
+        for (int i = 0; i < quant; i++) {
+			
 		}
+		addPieceToStock(part,stock.get(part.getTypePiece()));
+		System.out.println("STOCK ATUALIZADO:: " + stock);
         /*HashMap.Entry<Integer,Piece> entry = carsWaitingForPieces.entrySet().iterator().next();
         Integer key = entry.getKey();
         Piece value = entry.getValue();*/
@@ -281,11 +290,11 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 			nVehiclesWaitingForParts[i] = 0;
 		}
 		int i = 0;
-		for (Piece value : piecesToBeRepaired.values()) {
+		/*for (Piece value : piecesToBeRepaired.values()) {
 			if(value.getIdTypePiece()==i)
 				nVehiclesWaitingForParts[i]++;
 			i++;
-		}
+		}*/
 
 		return nVehiclesWaitingForParts;
 	}

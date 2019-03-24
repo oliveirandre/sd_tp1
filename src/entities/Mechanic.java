@@ -45,14 +45,15 @@ public class Mechanic extends Thread {
 					//System.out.println("Mechanic " + this.id + " - Starting repair procedure");
 					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar 
 					//System.out.println("Going to repair car " + idCarToFix);
-					
+					park.getVehicle(idCarToFix);
 					//por causa dda situaÃ§ao em q o carro esta a espera de peça
 					break;
 				case FIXING_CAR:
 
 					//System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
-					park.getVehicle(idCarToFix);
+					//park.getVehicle(idCarToFix);
 					piecesToBeRepaired = repairArea.getPiecesToBeRepaired();
+					System.out.println(piecesToBeRepaired.toString());
 					if (!piecesToBeRepaired.containsKey(idCarToFix)) {
 						repairArea.getRequiredPart(idCarToFix); //salta para CHECKING_STOCK
 						break;
@@ -82,13 +83,19 @@ public class Mechanic extends Thread {
 					break;
 
 				case CHECKING_STOCK:
-					piecesToBeRepaired = repairArea.getPiecesToBeRepaired();
+					//piecesToBeRepaired = repairArea.getPiecesToBeRepaired();
                     //System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
+					System.out.println("Mechanic " + this.id + " - Checking if there is piece available in stock for car "+idCarToFix);
 					if (!repairArea.partAvailable(piecesToBeRepaired.get(idCarToFix))) {
 						repairArea.letManagerKnow(piecesToBeRepaired.get(idCarToFix), idCarToFix);
-						//System.out.println("Mechanic " + this.id + " - There is no stock for car "+idCarToFix);
+						System.out.println("Mechanic " + this.id + " - There is no stock -"+piecesToBeRepaired.get(idCarToFix)+"- for car "+idCarToFix);
+						
+						System.out.println("stock: "+repairArea.getPieces());
+						
+						park.returnVehicle(idCarToFix);
 					} else {
-						//System.out.println("Mechanic " + this.id + " - There is stock so let's proceed");
+						System.out.println("Mechanic " + this.id + " - There is stock -"+piecesToBeRepaired.get(idCarToFix)+"- for car "+idCarToFix+" so let's proceed");
+						System.out.println("stock: "+repairArea.getPieces());
 						repairArea.resumeRepairProcedure();
 					}
 					break;

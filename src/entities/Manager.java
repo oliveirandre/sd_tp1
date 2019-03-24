@@ -119,7 +119,7 @@ public class Manager extends Thread {
                     //System.out.println("Manager  - " + this.getManagerState());
                     
                     quant = supplierSite.goToSupplier(partNeeded);
-					
+					System.out.println("PEÇA PRECISA TOTOROORROL:"+partNeeded.getTypePiece());
 					int idToReFix = repairArea.storePart(partNeeded, quant);
 					
 					repairArea.registerService(idToReFix);

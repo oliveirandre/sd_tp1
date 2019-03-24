@@ -6,6 +6,7 @@ import entities.ManagerState;
 import entities.Mechanic;
 import java.io.File;
 import java.io.PrintWriter;
+import shared.Park;
 
 /**
  *
@@ -13,6 +14,8 @@ import java.io.PrintWriter;
  */
 public class Log2 {
     
+	//private final Park park = Park.getInstace();
+	
     private static Log2 instance = null;
     
     private final File log;

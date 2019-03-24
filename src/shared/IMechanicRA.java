@@ -25,4 +25,6 @@ public interface IMechanicRA {
     public void repairConcluded();  
 	
 	public HashMap getPiecesToBeRepaired();
+
+	public HashMap getPieces();
 }

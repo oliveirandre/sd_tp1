@@ -1,15 +1,9 @@
 package main;
 
-/**
- *
- * @author Andre e Joao
- */
+
 import entities.Customer;
 import entities.Manager;
 import entities.Mechanic;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import repository.RepairShop;
 import shared.Lounge;
 import shared.OutsideWorld;
@@ -17,6 +11,10 @@ import shared.Park;
 import shared.RepairArea;
 import shared.SupplierSite;
 
+/**
+ *
+ * @author Andre e Joao
+ */
 public class Main {
 
 	private static Lounge lounge;
@@ -29,6 +27,10 @@ public class Main {
 	private static Mechanic mechanics[];
 	private static Customer customers[];
 
+	/**
+	 *
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		/* 
          * There are 5 different locations: park, lounge, repair area, supplier

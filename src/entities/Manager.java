@@ -32,7 +32,17 @@ public class Manager extends Thread {
     private int idCustomer = 0;
     private int idToCall = 0;
 
-    public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park, int nCustomers, RepairShop repairShop) {
+	/**
+	 * Manager's constructor.
+	 * @param lounge
+	 * @param repairArea
+	 * @param supplierSite
+	 * @param outsideWorld
+	 * @param park
+	 * @param nCustomers
+	 * @param repairShop
+	 */
+	public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park, int nCustomers, RepairShop repairShop) {
         this.lounge = lounge;
         this.repairArea = repairArea;
         this.supplierSite = supplierSite;
@@ -106,7 +116,12 @@ public class Manager extends Thread {
         }
     }
 
-    public void setManagerState(ManagerState state) {
+	/**
+	 * Manager's method. Change state of manager and report status to log.
+	 * 
+	 * @param state state of manager
+	 */
+	public void setManagerState(ManagerState state) {
         repairShop.reportStatus();
         if (this.state == state) {
             return;
@@ -114,7 +129,11 @@ public class Manager extends Thread {
         this.state = state;
     }
 
-    public ManagerState getManagerState() {
+	/**
+	 * Manager's method. Retrieves manager's state.
+	 * @return manager's state
+	 */
+	public ManagerState getManagerState() {
         return this.state;
     }
 }

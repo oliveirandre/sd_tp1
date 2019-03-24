@@ -66,7 +66,7 @@ public class Mechanic extends Thread {
 					}
 					
 					repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
-					System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Fixed");
+					//System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Fixed");
 
 					park.returnVehicle(idCarToFix);//estacionar o carro
 					

@@ -135,9 +135,9 @@ public class RepairArea implements IMechanicRA, IManagerRA {
      */
     @Override
     public synchronized void fixIt(int id, Piece piece) {
+        //System.out.println(piecesToBeRepaired.toString());
         removePieceFromStock(piece);
         piecesToBeRepaired.remove(id, piece);
-        System.out.println(piecesToBeRepaired.toString());
         repaired.add(id);
     }
 
@@ -153,7 +153,9 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     public synchronized void getRequiredPart(int id) {
         //System.out.println("Mechanic - Getting required part");
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.CHECKING_STOCK);
+        System.out.println(" JWOIDJWA - " + id);
         piecesToBeRepaired.putIfAbsent(id, new Piece());
+        System.out.println(piecesToBeRepaired.toString());
     }
 
     /**

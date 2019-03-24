@@ -10,9 +10,14 @@ package shared;
  * @author andre
  */
 public interface ICustomerP {
+
     public void parkCar(int id);
+
     public void collectCar(int id);
+
     public int findCar();
+
     public void backToWorkByCar();
+
     public void returnReplacementCar(int id);
 }

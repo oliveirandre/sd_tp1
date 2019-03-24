@@ -14,179 +14,179 @@ import java.util.Queue;
  */
 public class Park implements ICustomerP, IMechanicP, IManagerP {
 
-	private int parkingSlots = 50;
+    private int parkingSlots = 50;
 
-	private final List<Integer> carsParked = new ArrayList<>();
-	private final Queue<Integer> replacementCars = new LinkedList<>();
-	private final HashMap<Integer, Integer> reserve = new HashMap<>();
+    private final List<Integer> carsParked = new ArrayList<>();
+    private final Queue<Integer> replacementCars = new LinkedList<>();
+    private final HashMap<Integer, Integer> reserve = new HashMap<>();
 
-	/**
-	 * Park Constructor. Initializes the replacement cars in the park.
-	 *
-	 * @param nReplacementCars the number of replacement cars
-	 */
-	public Park(int nReplacementCars) {
-		for (int i = 1; i < nReplacementCars + 1; i++) {
-			replacementCars.add(i);
-		}
-	}
+    /**
+     * Park Constructor. Initializes the replacement cars in the park.
+     *
+     * @param nReplacementCars the number of replacement cars
+     */
+    public Park(int nReplacementCars) {
+        for (int i = 1; i < nReplacementCars + 1; i++) {
+            replacementCars.add(i);
+        }
+    }
 
-	/**
-	 * Customer's method. Customer arrives to Repair Shop and parks is car in
-	 * the park.
-	 *
-	 * @param id the id of the car
-	 */
-	@Override
-	public synchronized void parkCar(int id) {
-		((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
-		carsParked.add(id);
-		parkingSlots--;
-	}
+    /**
+     * Customer's method. Customer arrives to Repair Shop and parks is car in
+     * the park.
+     *
+     * @param id the id of the car
+     */
+    @Override
+    public synchronized void parkCar(int id) {
+        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+        carsParked.add(id);
+        parkingSlots--;
+    }
 
-	/**
-	 * Customer's method. Customer goes into the park and collect his own car.
-	 *
-	 * @param id the id of the car
-	 */
-	@Override
-	public synchronized void collectCar(int id) {
-		carsParked.remove(new Integer(id));
-		parkingSlots++;
-	}
+    /**
+     * Customer's method. Customer goes into the park and collect his own car.
+     *
+     * @param id the id of the car
+     */
+    @Override
+    public synchronized void collectCar(int id) {
+        carsParked.remove(new Integer(id));
+        parkingSlots++;
+    }
 
-	/**
-	 * Customer's method. Customer goes into the park and finds the replacement
-	 * car that has been associated to him.
-	 *
-	 * @return an Integer representing the replacement car id
-	 */
-	@Override
-	public synchronized int findCar() {
-		((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
-		if (reserve.containsKey(((Customer) Thread.currentThread()).getCustomerId())) {
-			int n = reserve.get(((Customer) Thread.currentThread()).getCustomerId());
-			reserve.remove(((Customer) Thread.currentThread()).getCustomerId());
-			replacementCars.remove(n);
-			notifyAll();
-			return n;
-		} else {
-			return 0;
-		}
-	}
+    /**
+     * Customer's method. Customer goes into the park and finds the replacement
+     * car that has been associated to him.
+     *
+     * @return an Integer representing the replacement car id
+     */
+    @Override
+    public synchronized int findCar() {
+        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
+        if (reserve.containsKey(((Customer) Thread.currentThread()).getCustomerId())) {
+            int n = reserve.get(((Customer) Thread.currentThread()).getCustomerId());
+            reserve.remove(((Customer) Thread.currentThread()).getCustomerId());
+            replacementCars.remove(n);
+            notifyAll();
+            return n;
+        } else {
+            return 0;
+        }
+    }
 
-	/**
-	 * Customer's method. Customer goes back into his normal life, either with a
-	 * replacement car or with his own car.
-	 */
-	@Override
-	public synchronized void backToWorkByCar() {
-		((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
-	}
+    /**
+     * Customer's method. Customer goes back into his normal life, either with a
+     * replacement car or with his own car.
+     */
+    @Override
+    public synchronized void backToWorkByCar() {
+        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
+    }
 
-	/**
-	 * Mechanic's method. Mechanic goes into the park and gets the vehicle to
-	 * repair.
-	 *
-	 * @param id the car's id that is going to be checked in the repair area
-	 */
-	@Override
-	public synchronized void getVehicle(int id) {
-		carsParked.remove(new Integer(id));
-		parkingSlots++;
-	}
+    /**
+     * Mechanic's method. Mechanic goes into the park and gets the vehicle to
+     * repair.
+     *
+     * @param id the car's id that is going to be checked in the repair area
+     */
+    @Override
+    public synchronized void getVehicle(int id) {
+        carsParked.remove(new Integer(id));
+        parkingSlots++;
+    }
 
-	/**
-	 * Customer's method. After being alerted that his own car is ready, the
-	 * customer goes into the park and parks his replacement car.
-	 *
-	 * @param id the replacement car's id
-	 */
-	@Override
-	public synchronized void returnReplacementCar(int id) {
-		((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
-		replacementCars.add(id);
-	}
+    /**
+     * Customer's method. After being alerted that his own car is ready, the
+     * customer goes into the park and parks his replacement car.
+     *
+     * @param id the replacement car's id
+     */
+    @Override
+    public synchronized void returnReplacementCar(int id) {
+        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+        replacementCars.add(id);
+    }
 
-	/**
-	 * Mechanic's method. Mechanic goes into the park and park the already
-	 * repaired vehicle.
-	 *
-	 * @param id id of the vehicle that has been worked on
-	 */
-	@Override
-	public synchronized void returnVehicle(int id) {
-		carsParked.add(id);
-		parkingSlots--;
-	}
+    /**
+     * Mechanic's method. Mechanic goes into the park and park the already
+     * repaired vehicle.
+     *
+     * @param id id of the vehicle that has been worked on
+     */
+    @Override
+    public synchronized void returnVehicle(int id) {
+        carsParked.add(id);
+        parkingSlots--;
+    }
 
-	/**
-	 * Method used for log. Retrieves the number of parking slots available.
-	 *
-	 * @return an Integer representing the number of parking slots available
-	 */
-	public int getParkingSlots() {
-		return this.parkingSlots;
-	}
+    /**
+     * Method used for log. Retrieves the number of parking slots available.
+     *
+     * @return an Integer representing the number of parking slots available
+     */
+    public int getParkingSlots() {
+        return this.parkingSlots;
+    }
 
-	/**
-	 * Manager's method. Manager checks if there is any replacement car
-	 * available in the park.
-	 * 
-	 * @return a boolean representing if a replacement car is available
-	 */
-	@Override
-	public synchronized boolean replacementCarAvailable() {
-		if (replacementCars.isEmpty()) {
-			return false;
-		} else {
-			return true;
-		}
-	}
+    /**
+     * Manager's method. Manager checks if there is any replacement car
+     * available in the park.
+     *
+     * @return a boolean representing if a replacement car is available
+     */
+    @Override
+    public synchronized boolean replacementCarAvailable() {
+        if (replacementCars.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
-	/**
-	 * Manager's method. Reserves a replacement car for a customer.
-	 * 
-	 * @param id customer's id
-	 */
-	@Override
-	public synchronized void reserveCar(int id) {
-		reserve.put(id, replacementCars.peek());
-	}
+    /**
+     * Manager's method. Reserves a replacement car for a customer.
+     *
+     * @param id customer's id
+     */
+    @Override
+    public synchronized void reserveCar(int id) {
+        reserve.put(id, replacementCars.peek());
+    }
 
-	/**
-	 * Manager's method. Manager waits for customer to get the replacement car
-	 * it was given to him.
-	 * 
-	 * @param id
-	 */
-	@Override
-	public synchronized void waitForCustomer(int id) {
-		while (reserve.containsKey(id)) {
-			try {
-				wait();
-			} catch (Exception e) {
+    /**
+     * Manager's method. Manager waits for customer to get the replacement car
+     * it was given to him.
+     *
+     * @param id
+     */
+    @Override
+    public synchronized void waitForCustomer(int id) {
+        while (reserve.containsKey(id)) {
+            try {
+                wait();
+            } catch (Exception e) {
 
-			}
-		}
-	}
+            }
+        }
+    }
 
-	/**
-	 * Method used for log. Retrieves the number of customer cars parked.
-	 *
-	 * @return an Integer that represents the number of customer cars parked
-	 */
-	public int getCarsParkedSize() {
-		return carsParked.size();
-	}
+    /**
+     * Method used for log. Retrieves the number of customer cars parked.
+     *
+     * @return an Integer that represents the number of customer cars parked
+     */
+    public int getCarsParkedSize() {
+        return carsParked.size();
+    }
 
-	/**
-	 * Method used for log. Retrieves the number of replacement cars available
-	 *
-	 * @return an Integer that represents the number of replacement cars
-	 * available
-	 */
-	public int getReplacementCarsSize() {
-		return replacementCars.size();
-	}
+    /**
+     * Method used for log. Retrieves the number of replacement cars available
+     *
+     * @return an Integer that represents the number of replacement cars
+     * available
+     */
+    public int getReplacementCarsSize() {
+        return replacementCars.size();
+    }
 }

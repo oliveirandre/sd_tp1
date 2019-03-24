@@ -15,7 +15,7 @@ import shared.IManagerSS;
 public class Manager extends Thread {
 
     private ManagerState state;
-	private RepairShop repairShop;
+    private RepairShop repairShop;
 
     private final IManagerL lounge;
     private final IManagerRA repairArea;
@@ -23,8 +23,8 @@ public class Manager extends Thread {
     private final IManagerOW outsideWorld;
     private final IManagerP park;
     private boolean customerWaiting = false;
-	private int quant;
-	Piece partNeeded;
+    private int quant;
+    Piece partNeeded;
     private boolean noMoreTasks = false;
     private int nCustomers;
     private int leftCustomers = 0;
@@ -32,14 +32,14 @@ public class Manager extends Thread {
     private int idCustomer = 0;
     private int idToCall = 0;
 
-    public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park, int nCustomers,  RepairShop repairShop) {
+    public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park, int nCustomers, RepairShop repairShop) {
         this.lounge = lounge;
         this.repairArea = repairArea;
         this.supplierSite = supplierSite;
         this.outsideWorld = outsideWorld;
         this.park = park;
         this.nCustomers = nCustomers;
-		this.repairShop = repairShop;
+        this.repairShop = repairShop;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Manager extends Thread {
         while (!noMoreTasks) {
             switch (this.state) {
                 case CHECKING_WHAT_TO_DO:
-                    if(leftCustomers == nCustomers) {
+                    if (leftCustomers == nCustomers) {
                         repairArea.enoughWork();
                         noMoreTasks = true;
                         break;
@@ -67,7 +67,7 @@ public class Manager extends Thread {
                             lounge.handCarKey();
                             park.waitForCustomer(idCustomer);
                         }
-						repairArea.registerService(idCustomer);
+                        repairArea.registerService(idCustomer);
                     } else if (action.equals("nocar")) {
                         repairArea.registerService(idCustomer);
                     } else {
@@ -75,12 +75,12 @@ public class Manager extends Thread {
                         leftCustomers++;
                         lounge.checkWhatToDo();
                     }
-					
+
                     break;
 
                 case GETTING_NEW_PARTS:
                     partNeeded = lounge.getPieceToReStock();
-					lounge.goReplenishStock();
+                    lounge.goReplenishStock();
                     break;
 
                 case POSTING_JOB:
@@ -90,16 +90,16 @@ public class Manager extends Thread {
                 case ALERTING_CUSTOMER:
                     idToCall = lounge.getIdToCall();
                     customerWaiting = lounge.alertCustomer(idToCall);
-                    if(!customerWaiting)
+                    if (!customerWaiting) {
                         outsideWorld.phoneCustomer(idToCall);
+                    }
                     lounge.checkWhatToDo();
                     break;
 
                 case REPLENISH_STOCK:
                     quant = supplierSite.goToSupplier(partNeeded);
-					int idToReFix = repairArea.storePart(partNeeded, quant);
-					
-					repairArea.registerService(idToReFix);
+                    int idToReFix = repairArea.storePart(partNeeded, quant);
+                    repairArea.registerService(idToReFix);
                     lounge.getNextTask();
                     break;
             }
@@ -107,7 +107,7 @@ public class Manager extends Thread {
     }
 
     public void setManagerState(ManagerState state) {
-		repairShop.reportStatus();
+        repairShop.reportStatus();
         if (this.state == state) {
             return;
         }

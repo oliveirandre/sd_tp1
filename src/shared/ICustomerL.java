@@ -10,8 +10,12 @@ package shared;
  * @author andre
  */
 public interface ICustomerL {
+
     public void queueIn(int id);
+
     public void talkWithManager();
+
     public void collectKey();
+
     public void payForTheService();
 }

@@ -10,10 +10,14 @@ package shared;
  * @author andre
  */
 public interface ICustomerOW {
+
     public void decideOnRepair();
+
     public void goToRepairShop();
+
     public void backToWorkByBus();
+
     public void backToWorkByCar();
 
-	public void goToReception();
+    public void goToReception();
 }

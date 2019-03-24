@@ -20,7 +20,15 @@ public class Mechanic extends Thread {
     private final IMechanicL lounge;
     private final int id;
 
-    public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge, int id, RepairShop repairShop) {
+	/**
+	 * Mechanic's constructor.
+	 * @param park
+	 * @param repairArea
+	 * @param lounge
+	 * @param id
+	 * @param repairShop
+	 */
+	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge, int id, RepairShop repairShop) {
         this.park = park;
         this.repairArea = repairArea;
         this.lounge = lounge;
@@ -88,7 +96,12 @@ public class Mechanic extends Thread {
             }
         }
     }
-
+	
+	/**
+	 * Mechanic's method. Change state of mechanic and report status to log.
+	 * 
+	 * @param state state of mechanic
+	 */
     public void setMechanicState(MechanicState state) {
         repairShop.reportStatus();
         if (this.state == state) {
@@ -97,11 +110,19 @@ public class Mechanic extends Thread {
         this.state = state;
     }
 
-    public MechanicState getMechanicState() {
+	/**
+	 * Mechanic's method. Retrieves mechanic's state.
+	 * @return mechanic's state
+	 */
+	public MechanicState getMechanicState() {
         return this.state;
     }
 
-    public int getMechanicId() {
+	/**
+	 * Mechanic's method. Retrieves mechanic's id.
+	 * @return mechanic's id
+	 */
+	public int getMechanicId() {
         return this.id;
     }
 }

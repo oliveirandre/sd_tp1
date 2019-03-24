@@ -1,14 +1,15 @@
 package entities;
 
-/**
- *
- * @author Andre e Joao
- */
+
 import repository.RepairShop;
 import shared.ICustomerL;
 import shared.ICustomerOW;
 import shared.ICustomerP;
 
+/**
+ *
+ * @author Andre e Joao
+ */
 public class Customer extends Thread {
 
     private CustomerState state;
@@ -20,15 +21,28 @@ public class Customer extends Thread {
     private final ICustomerP park;
     private final ICustomerL lounge;
 
-    // generate automatically if customer requires a replacement car
-    public boolean requiresCar = false;
-    public boolean carRepaired = false;
+	/**
+	 * A boolean that represents if a customer requires a replacement car.
+	 */
+	public boolean requiresCar = false;
+	/**
+	 * A boolean that represents if a car has already been repaired.
+	 */
+	public boolean carRepaired = false;
     private boolean happyCustomer = false;
     private boolean haveReplacementCar = false;
-    public int replacementCar;
+    private int replacementCar;
 	private boolean haveCar = true;
 
-    public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id, RepairShop repairShop) {
+	/**
+	 * Customer's constructor.
+	 * @param outsideWorld
+	 * @param park
+	 * @param lounge
+	 * @param id
+	 * @param repairShop
+	 */
+	public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id, RepairShop repairShop) {
         this.outsideWorld = outsideWorld;
         this.park = park;
         this.lounge = lounge;
@@ -90,7 +104,12 @@ public class Customer extends Thread {
         }
     }
 
-    public void setCustomerState(CustomerState state) {
+	/**
+	 * Customer's method. Change state of customer and report status to log.
+	 * 
+	 * @param state state of customer
+	 */
+	public void setCustomerState(CustomerState state) {
 		repairShop.reportStatus();
         if (state == this.state) {
             return;
@@ -98,14 +117,27 @@ public class Customer extends Thread {
         this.state = state;
     }
 
-    public CustomerState getCustomerState() {
+	/**
+	 * Customer's method. Retrieves customer's state.
+	 * @return customer's state
+	 */
+	public CustomerState getCustomerState() {
         return this.state;
     }
 
-    public int getCustomerId() {
+	/**
+	 * Customer's method. Retrieves customer's id.
+	 * @return customer's id
+	 */
+	public int getCustomerId() {
         return this.id;
     }
 	
+	/**
+	 * Method used for log. Retrieves the current car, replacement car
+	 * or no car of a customer
+	 * @return a String representing the current car of a customer
+	 */
 	public String getCustomerVehicle(){
 		if(haveReplacementCar)
 			return "R"+Integer.toString(replacementCar);
@@ -119,6 +151,10 @@ public class Customer extends Thread {
 		}
 	}
 	
+	/**
+	 * Method used for log. Retrieves if the customer requires a replacement car.
+	 * @return a String representing if the customer requires a replacement car or not
+	 */
 	public String requiresReplacementCar(){
 		if(requiresCar)
 			return "T";
@@ -126,8 +162,10 @@ public class Customer extends Thread {
 			return "F";
 	}
 	
-	
-	
+	/**
+	 * Method used for log. Retrieves if the customer's vehicle has already been repaired.
+	 * @return a String that represents if a car has already been repaired
+	 */
 	public String vehicleRepaired(){
 		if(carRepaired)
 			return "T";

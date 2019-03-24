@@ -47,7 +47,17 @@ public class RepairShop {
 
     private String fileName = "repairShop.log";
 
-    public RepairShop(int nManagers, int nMechanics, int nCustomers, int nTypePieces, int nReplacementCars, String fileName) {
+	/**
+	 * RepairShop's constructor. This is where everything is initialized and
+	 * the log start.
+	 * @param nManagers
+	 * @param nMechanics
+	 * @param nCustomers
+	 * @param nTypePieces
+	 * @param nReplacementCars
+	 * @param fileName
+	 */
+	public RepairShop(int nManagers, int nMechanics, int nCustomers, int nTypePieces, int nReplacementCars, String fileName) {
         this.nManagers = nManagers;
         this.nReplacementCars = nReplacementCars;
         this.nCustomers = nCustomers;
@@ -135,7 +145,10 @@ public class RepairShop {
         reportStatus();
     }
 
-    public synchronized void reportStatus() {
+	/**
+	 * Method to update log in every state change.
+	 */
+	public synchronized void reportStatus() {
         TextFile log = new TextFile(); // instanciação de uma variável de tipo ficheiro de texto
 
         String lineStatus = ""; // linha a imprimir

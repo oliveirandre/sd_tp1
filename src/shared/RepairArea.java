@@ -33,7 +33,12 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 
     private static final HashMap<EnumPiece, Integer> stock = new HashMap<>();
 
-    public RepairArea(int nTypePieces) {
+	/**
+	 * RepairArea's constructor. Initializes the stock and adds random pieces 
+	 * to stock.
+	 * @param nTypePieces
+	 */
+	public RepairArea(int nTypePieces) {
 
         for (int i = 0; i < nTypePieces; i++) {
             stock.put(EnumPiece.values()[i], 0);
@@ -73,6 +78,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
      * Mechanic's method. Reads the paper while there is no work. When a he is
      * alerted by the manager, he starts to work.
      *
+	 * @return a boolean representing if mechanic has more work or can go home
      */
     @Override
     public synchronized boolean readThePaper() {
@@ -123,13 +129,11 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     @Override
     public synchronized void fixIt(int id, Piece piece) {
         repaired.add(id);
-        System.out.println("BEFORE REPAIR: " + stock);
         if (stock.get(piece.getTypePiece()) == 0) {
             ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
             return;
         }
         removePieceFromStock(piece);
-        System.out.println("AFTER REPAIR : " + stock);
         piecesToBeRepaired.remove(id, piece);
     }
 

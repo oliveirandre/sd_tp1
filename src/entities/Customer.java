@@ -79,7 +79,7 @@ public class Customer extends Thread {
                     } else {
                         //System.out.println("Customer 1 - Paying for service.");
                         lounge.talkWithManager();
-                        //lounge.payForTheService();
+                        lounge.payForTheService();
                         this.happyCustomer = true;
                         park.collectCar(this.id);
                         outsideWorld.backToWorkByCar();

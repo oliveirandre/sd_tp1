@@ -33,6 +33,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private final Queue<Integer> customersToCallQueue = new LinkedList<>(); //repair Concluded
     private final Queue<Integer> carsRepaired = new LinkedList<>();
 	private boolean[] flagPartMissing;
+    private boolean readyToReceive;
 	
 
     private static HashMap<Integer, String> order = new HashMap<Integer, String>();
@@ -124,25 +125,58 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void handCarKey() {
+        while(replacementQueue.isEmpty()) {
+            try {
+                wait();
+            } catch(Exception e) {
+                
+            }
+        }
         customerGetRepCar = replacementQueue.poll();
         notifyAll();
     }
 
     @Override
     public synchronized void payForTheService() {
+        System.out.println("Waiting for manager");
+        while(!readyToReceive) {
+            try {
+                wait();
+            } catch(Exception e) {
+                
+            }
+        }
+        readyToReceive = false;
         payed = true;
         //System.out.println("PAYED");
         notifyAll();
-        while(!receivePayment) {
+        /*while(!receivePayment) {
             try {
                 wait();
             } catch(Exception e){
                 
             }
         }      
-        receivePayment = false;
+        receivePayment = false;*/
     }
     
+    @Override
+    public synchronized void receivePayment() {
+        readyToReceive = true;
+        notifyAll();
+        while (!payed) {
+            try {
+                wait();
+            } catch (Exception e) {
+
+            }
+        }
+        payed = false;
+        /*payed = false;
+        receivePayment = true;
+        notifyAll();*/
+        //System.out.println("Manager - Waiting for payed.");
+    }
 
     @Override
     public synchronized int currentCustomer() {
@@ -157,6 +191,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized void collectKey() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
         replacementQueue.add(((Customer) Thread.currentThread()).getCustomerId());
+        notify();
         //System.out.println("Replacement Queue - " + replacementQueue.toString());
         //System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Waiting for key...");
         // customerGetRepCar != ((Customer) Thread.currentThread()).getCustomerId() && 
@@ -205,29 +240,14 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
 
     @Override
-    public synchronized void receivePayment(String s) {
-        while (!payed) {
-            try {
-                wait();
-            } catch (Exception e) {
-
-            }
-        }
-        payed = false;
-        receivePayment = true;
-        notifyAll();
-        //System.out.println("Manager - Waiting for payed.");
-    }
-
-    @Override
     public synchronized void appraiseSit() {
         //if (pieceToReStock!=null) {
 		if(!piecesQueue.isEmpty()) {
-            System.out.println("attending mechanic");
+            //System.out.println("attending mechanic");
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);
         }
         else if (!customersToCallQueue.isEmpty()) {
-            System.out.println("Calling customer.");
+            //System.out.println("Calling customer.");
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
         }
         /*if (!replacementQueue.isEmpty()) {
@@ -236,7 +256,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             return;
         }*/
         else if(!customersQueue.isEmpty()) {
-            System.out.println("Attending customer.");
+            //System.out.println("Attending customer.");
             //System.out.println("-> CUSTOMERS QUEUE " + customersQueue.toString());
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
         }

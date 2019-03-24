@@ -32,7 +32,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     private int mechanicToWork = 0;
     private boolean enoughWork = false;
 	
-    static final int nPieces = 0;//(int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min;////(int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min
+    static final int nPieces = (int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min; //0;
 
     private static final HashMap<EnumPiece, Integer> stock = new HashMap<>();
 
@@ -107,7 +107,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
             return true;
         //System.out.println("CARS TO REPAIR " + carsToRepair.toString());
         //System.out.println("READY TO REPAIR " + readyToRepair.toString());
-        System.out.println(mechanicToWork + " to fix car " + carsToRepair.peek() + " or " + readyToRepair.peek());
+        //System.out.println(mechanicToWork + " to fix car " + carsToRepair.peek() + " or " + readyToRepair.peek());
         //System.out.println("mechanicToWork : ME - " + id + " | CALLED - " +  mechanicToWork);
         //if(!readyToRepair.isEmpty())
             //System.out.println("Mechanic " + mechanicToWork + " to fix car " + readyToRepair.peek() + " - READY TO REPAIR");

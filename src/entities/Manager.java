@@ -89,8 +89,8 @@ public class Manager extends Thread {
                         repairArea.registerService(idCustomer);
                         //System.out.println("3");
                     } else {
-                        //System.out.println("Receiving payment");
-                        //lounge.receivePayment(action);
+                        System.out.println("Pre receive payment");
+                        lounge.receivePayment();
                         leftCustomers++;
                         //System.out.println("Manager - Customer payed.");
                         //System.out.println("4");

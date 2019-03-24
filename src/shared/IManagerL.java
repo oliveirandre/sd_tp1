@@ -16,7 +16,7 @@ public interface IManagerL {
     public boolean alertCustomer(int id);
 	public void getNextTask();
 	
-	public void receivePayment(String s);
+	public void receivePayment();
 	public void appraiseSit();
 
 	public Piece getPieceToReStock();

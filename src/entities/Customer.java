@@ -4,6 +4,7 @@ package entities;
  *
  * @author Andre e Joao
  */
+import repository.RepairShop;
 import shared.ICustomerL;
 import shared.ICustomerOW;
 import shared.ICustomerP;
@@ -11,6 +12,8 @@ import shared.ICustomerP;
 public class Customer extends Thread {
 
     private CustomerState state;
+	private RepairShop repairShop;
+
     private final int id;
 
     private final ICustomerOW outsideWorld;
@@ -25,11 +28,12 @@ public class Customer extends Thread {
     public int replacementCar;
 	private boolean haveCar = true;
 
-    public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id) {
+    public Customer(ICustomerOW outsideWorld, ICustomerP park, ICustomerL lounge, int id, RepairShop repairShop) {
         this.outsideWorld = outsideWorld;
         this.park = park;
         this.lounge = lounge;
         this.id = id;
+		this.repairShop = repairShop;
     }
 
     @Override
@@ -97,6 +101,7 @@ public class Customer extends Thread {
     }
 
     public void setCustomerState(CustomerState state) {
+		repairShop.reportStatus();
         if (state == this.state) {
             return;
         }

@@ -1,6 +1,7 @@
 package entities;
 
 import repository.Piece;
+import repository.RepairShop;
 import shared.IManagerL;
 import shared.IManagerOW;
 import shared.IManagerP;
@@ -14,6 +15,7 @@ import shared.IManagerSS;
 public class Manager extends Thread {
 
     private ManagerState state;
+	private RepairShop repairShop;
 
     private final IManagerL lounge;
     private final IManagerRA repairArea;
@@ -30,13 +32,14 @@ public class Manager extends Thread {
     private int idCustomer = 0;
     private int idToCall = 0;
 
-    public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park, int nCustomers) {
+    public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park, int nCustomers,  RepairShop repairShop) {
         this.lounge = lounge;
         this.repairArea = repairArea;
         this.supplierSite = supplierSite;
         this.outsideWorld = outsideWorld;
         this.park = park;
         this.nCustomers = nCustomers;
+		this.repairShop = repairShop;
     }
 
     @Override
@@ -140,6 +143,7 @@ public class Manager extends Thread {
     }
 
     public void setManagerState(ManagerState state) {
+		repairShop.reportStatus();
         if (this.state == state) {
             return;
         }

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import repository.Piece;
+import repository.RepairShop;
 import shared.IMechanicL;
 import shared.IMechanicP;
 import shared.IMechanicRA;
@@ -15,16 +16,18 @@ import shared.IMechanicRA;
 public class Mechanic extends Thread {
 
 	private MechanicState state;
+	private RepairShop repairShop;
 	private final IMechanicP park;
 	private final IMechanicRA repairArea;
 	private final IMechanicL lounge;
 	private final int id;
 
-	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge, int id) {
+	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge, int id, RepairShop repairShop) {
 		this.park = park;
 		this.repairArea = repairArea;
 		this.lounge = lounge;
 		this.id = id;
+		this.repairShop = repairShop;
 	}
 	
 	
@@ -110,6 +113,7 @@ public class Mechanic extends Thread {
 	}
 
 	public void setMechanicState(MechanicState state) {
+		repairShop.reportStatus();
 		if (this.state == state) {
 			return;
 		}

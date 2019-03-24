@@ -105,8 +105,9 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         //workMechanic = false;
         if(enoughWork)
             return true;
-        System.out.println("CARS TO REPAIR " + carsToRepair.toString());
-        System.out.println("READY TO REPAIR " + readyToRepair.toString());
+        //System.out.println("CARS TO REPAIR " + carsToRepair.toString());
+        //System.out.println("READY TO REPAIR " + readyToRepair.toString());
+        System.out.println(mechanicToWork + " to fix car " + carsToRepair.peek() + " or " + readyToRepair.peek());
         //System.out.println("mechanicToWork : ME - " + id + " | CALLED - " +  mechanicToWork);
         //if(!readyToRepair.isEmpty())
             //System.out.println("Mechanic " + mechanicToWork + " to fix car " + readyToRepair.peek() + " - READY TO REPAIR");
@@ -133,11 +134,15 @@ public class RepairArea implements IMechanicRA, IManagerRA {
 		//System.out.println(carsToRepair);
 		
         //System.out.println(carsToRepair.toString());
-        if(!readyToRepair.isEmpty()) {
+        if(readyToRepair.isEmpty() && carsToRepair.isEmpty()) {
+            ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
+            return 0;
+        }
+        else if(!readyToRepair.isEmpty()) {
             //System.out.println("Going to repair car " + readyToRepair.peek());
             return readyToRepair.poll();
         }
-		else{
+        else {
             //System.out.println("Going to repair car " + carsToRepair.peek());
 			return carsToRepair.poll();
 		}
@@ -232,7 +237,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         ((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
         //if(!readyToRepair.contains(idCustomer) && !carsWaitingForPieces.containsKey(idCustomer) && !repaired.contains(idCustomer)) {
         if(!alreadyAdded.contains(idCustomer)) {
-            System.out.println("Added customer "+ idCustomer + "registerService");
+            //System.out.println("Added customer "+ idCustomer + "registerService");
             carsToRepair.add(idCustomer);
         }
         alreadyAdded.add(idCustomer);

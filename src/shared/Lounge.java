@@ -184,7 +184,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         // && !call 
         while (customersQueue.isEmpty() && customersToCallQueue.isEmpty() && piecesQueue.isEmpty()) {
             try {
-                //System.out.println("------- FIQUEI PRESO EM WAIT ---------");
+                System.out.println("------- FIQUEI PRESO EM WAIT ---------");
                 wait();
             } catch (Exception e) {
 
@@ -223,10 +223,11 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized void appraiseSit() {
         //if (pieceToReStock!=null) {
 		if(!piecesQueue.isEmpty()) {
-            //System.out.println("attending mechanic");
+            System.out.println("attending mechanic");
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);
         }
         else if (!customersToCallQueue.isEmpty()) {
+            System.out.println("Calling customer.");
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
         }
         /*if (!replacementQueue.isEmpty()) {
@@ -235,6 +236,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             return;
         }*/
         else if(!customersQueue.isEmpty()) {
+            System.out.println("Attending customer.");
             //System.out.println("-> CUSTOMERS QUEUE " + customersQueue.toString());
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
         }

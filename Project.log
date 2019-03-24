@@ -1,9 +1,9 @@
                                        REPAIR SHOP ACTIVITIES - Description of the internal state of the problem
 
  MAN  MECHANIC                                                                  CUSTOMER
-aCtm  wfw  rcp  R1  T   T  
-               rcp  R1  T   T  
-               rcp  R1  T   T  
+aCtm  wfw wfw  lwc  01  F   F  rcp  02  T   F  rcp  03  T   F  rcp  04  T   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  rcp  08  F   F  lwc  09  F   F  
+               lwc  01  F   F  rcp  02  T   F  rcp  03  T   F  rcp  04  T   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  rcp  08  F   F  lwc  09  F   F  
+               lwc  01  F   F  rcp  02  T   F  rcp  03  T   F  rcp  04  T   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  rcp  08  F   F  lwc  09  F   F  
                
                    LOUNGE        PARK                             REPAIR AREA                                           SUPPLIERS SITE
-                 02  01  00     05   02        07     00    00   F  00    00   F  00    00   F                          00   01   02   
+                 11  00  00     12   03        02     00    00   F  00    00   F  00    00   F                          00   00   01   

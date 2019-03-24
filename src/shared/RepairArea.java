@@ -244,11 +244,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         readyToRepair.add(n);
         carsWaitingForPieces.remove(n);
         for (int i = 0; i < quant; i++) {
-
+			addPieceToStock(part);
         }
-        System.out.println("BEFORE ADDING TO STOCK " + stock);
-        addPieceToStock(part);
-        System.out.println("AFTER ADDING TO STOCK " + stock);
         return n;
     }
 
@@ -295,14 +292,14 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         for (int i = 0; i < nTypePieces; i++) {
             nVehiclesWaitingForParts[i] = 0;
         }
-        int i = 0;
-        for (Piece value : piecesToBeRepaired.values()) {
-            if (value.getIdTypePiece() == i) {
-                nVehiclesWaitingForParts[i]++;
-            }
-            i++;
-        }
-
+        
+		for (int j = 0; j < nTypePieces; j++) {
+			for (Piece value : piecesToBeRepaired.values()) {
+				if (value.getIdTypePiece() == j) {
+					nVehiclesWaitingForParts[j]++;
+				}
+			}
+		}
         return nVehiclesWaitingForParts;
     }
 

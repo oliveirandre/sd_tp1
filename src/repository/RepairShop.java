@@ -99,7 +99,16 @@ public class RepairShop {
             this.fileName = fileName;
         }
         reportInitialStatus();
-
+		
+		for (int j = 0; j < nCustomers; j++) {
+            try {
+                customers[j].join();
+                System.err.println("Customer " + (j + 1) + " Died ");
+            } catch (InterruptedException ex) {
+                //Escrever para o log
+            }
+        }
+		
         for (int j = 0; j < nMechanics; j++) {
             try {
                 mechanics[j].join();
@@ -117,14 +126,7 @@ public class RepairShop {
             //Escrever para o log
         }
 
-        for (int j = 0; j < nCustomers; j++) {
-            try {
-                customers[j].join();
-                System.err.println("Customer " + (j + 1) + " Died ");
-            } catch (InterruptedException ex) {
-                //Escrever para o log
-            }
-        }
+        
 
     }
 
@@ -163,24 +165,6 @@ public class RepairShop {
 
         for (int i = 0; i < nMechanics; i++) {
             lineStatus += mechanics[i].getMechanicState() + " ";
-            /*switch (mechanics[i].getMechanicState().toString()) {
-				case "wfw":
-					lineStatus += " wfw";
-					break;
-
-				case "ftc":
-					lineStatus += " ftc";
-					break;
-
-				case "amg":
-					lineStatus += " amg";
-					break;
-
-				case "cks":
-					lineStatus += " cks";
-					break;
-
-			}*/
         }
         //Manager states: aCtm, cwtd, gnwp, pjob, alrC, repS
         //Mechanic stats: wfw, ftc, amg, cks

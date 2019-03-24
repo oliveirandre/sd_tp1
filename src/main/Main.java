@@ -44,9 +44,10 @@ public class Main {
 		final int nReplacementCars = 3;
 		final int nTypePieces = 3;
 		String fileName = "repairShop.log";
+		
 		RepairShop repairShop;
 		
-		repairShop = new RepairShop(nMechanics, nCustomers, nReplacementCars, fileName);
+		repairShop = new RepairShop(nManagers, nMechanics, nCustomers, nTypePieces, nReplacementCars, fileName);
 		
 		
 		

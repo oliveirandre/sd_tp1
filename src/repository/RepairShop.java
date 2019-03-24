@@ -5,8 +5,6 @@ import entities.Manager;
 import entities.Mechanic;
 import genclass.GenericIO;
 import genclass.TextFile;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import shared.ICustomerL;
 import shared.ICustomerOW;
 import shared.ICustomerP;
@@ -29,11 +27,12 @@ import shared.SupplierSite;
  * @author andre e joao
  */
 public class RepairShop {
-	
+	private int nManagers;
 	private int nMechanics;
 	private int nCustomers;
 	private int nReplacementCars;
-
+	private int nTypePieces;
+	
 	private Customer customers[];
 	private Mechanic mechanics[];
 	private Manager manager;
@@ -47,20 +46,16 @@ public class RepairShop {
 
 	private String fileName = "repairShop.log";
 
-	public RepairShop(int nMechanics, int nCustomers, int nReplacementCars, String fileName) {
-		/* fixar os parâmetros do problema */
+	public RepairShop(int nManagers, int nMechanics, int nCustomers, int nTypePieces, int nReplacementCars, String fileName) {
+		this.nManagers = nManagers;
 		this.nReplacementCars = nReplacementCars;
 		this.nCustomers = nCustomers;
 		this.nMechanics = nMechanics;
+		this.nTypePieces = nTypePieces;
 		mechanics = new Mechanic[nMechanics];
 		customers = new Customer[nCustomers];     // array de threads cliente
 		
 		
-		
-		final int nTypePieces = 3;
-		
-		//runnable entities
-		//shared entities
 		lounge = new Lounge(nTypePieces);
 		outsideWorld = new OutsideWorld();
 		park = new Park(nReplacementCars);
@@ -74,11 +69,14 @@ public class RepairShop {
 		for (int i = 0; i < nMechanics; i++) {
 			mechanics[i] = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i + 1, this);
 		}
-
-		manager = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld, (IManagerP) park, nCustomers, this);
-
-		manager.start();
-
+		
+		for (int i = 0; i < nManagers; i++) {
+			manager = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld, (IManagerP) park, nCustomers, this);
+		}
+		
+		for (int i = 0; i < nManagers; i++) {
+			manager.start();
+		}
 		for (int i = 0; i < nMechanics; i++) {
 			mechanics[i].start();
 		}
@@ -96,7 +94,7 @@ public class RepairShop {
 		for (int j = 0; j < nMechanics; j++) {
 			try {
 				mechanics[j].join();
-				System.err.println("Mechanic " + j + " Died ");
+				System.err.println("Mechanic " + (j+1) + " Died ");
 			} catch (InterruptedException ex) {
 				//Escrever para o log
 			}
@@ -114,7 +112,7 @@ public class RepairShop {
 		for (int j = 0; j < nCustomers; j++) {
 			try {
 				customers[j].join();
-				System.err.println("Customer " + j + " Died ");
+				System.err.println("Customer " + (j+1) + " Died ");
 			} catch (InterruptedException ex) {
 				//Escrever para o log
 			}

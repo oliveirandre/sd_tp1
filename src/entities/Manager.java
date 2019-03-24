@@ -24,13 +24,16 @@ public class Manager extends Thread {
 	private int quant;
 	Piece partNeeded;
     private boolean noMoreTasks = false;
+    private int nCustomers;
+    private int leftCustomers = 0;
 
-    public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park) {
+    public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park, int nCustomers) {
         this.lounge = lounge;
         this.repairArea = repairArea;
         this.supplierSite = supplierSite;
         this.outsideWorld = outsideWorld;
         this.park = park;
+        this.nCustomers = nCustomers;
     }
 
     @Override
@@ -49,6 +52,12 @@ public class Manager extends Thread {
                     /*noMoreTasks = lounge.enoughWork();
                     if(noMoreTasks)
                         break;*/
+                    //System.out.println("-> " + leftCustomers + " | " + nCustomers + " <-");
+                    if(leftCustomers == nCustomers) {
+                        repairArea.enoughWork();
+                        noMoreTasks = true;
+                        break;
+                    }
                     lounge.getNextTask();
                     lounge.appraiseSit();
                     /*if(action.equals("customer")) {
@@ -58,6 +67,7 @@ public class Manager extends Thread {
 
                 case ATTENDING_CUSTOMER:
                     //System.out.println("Manager  - " + this.getManagerState());
+                    //System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                     idCustomer = lounge.currentCustomer(); // nao ha distinçao de qual customer
                     //System.out.println(idCustomer);
                     availableCar = park.getReplacementCar();
@@ -81,6 +91,7 @@ public class Manager extends Thread {
                     } else {
                         //System.out.println("Receiving payment");
                         //lounge.receivePayment(action);
+                        leftCustomers++;
                         //System.out.println("Manager - Customer payed.");
                         //System.out.println("4");
                         lounge.checkWhatToDo();
@@ -103,7 +114,7 @@ public class Manager extends Thread {
                     //System.out.println("Manager  - " + this.getManagerState());
                     // wake up customer that has his car repaired
                     idToCall = lounge.getIdToCall();
-                    System.out.println("-----> Car "+ idToCall+ " is repaired!");
+                    //System.out.println("-----> Car "+ idToCall+ " is repaired!");
                     customerWaiting = lounge.alertCustomer(idToCall);
                     //System.out.println(customerWaiting);
                     if(!customerWaiting)
@@ -119,7 +130,7 @@ public class Manager extends Thread {
                     //System.out.println("Manager  - " + this.getManagerState());
                     
                     quant = supplierSite.goToSupplier(partNeeded);
-					System.out.println("PEÇA PRECISA TOTOROORROL:"+partNeeded.getTypePiece());
+					//System.out.println("PEÇA PRECISA TOTOROORROL:"+partNeeded.getTypePiece());
 					int idToReFix = repairArea.storePart(partNeeded, quant);
 					
 					repairArea.registerService(idToReFix);

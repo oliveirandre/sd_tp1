@@ -31,6 +31,7 @@ public class Mechanic extends Thread {
 	HashMap<Integer, Piece> piecesToBeRepaired;
 	private boolean noMoreWork = false;
 	boolean repairConcluded = false;
+    private boolean enoughWork = false;
 	Piece pieceManagerReStock;
 	int idCarToFix = 0;
 
@@ -41,8 +42,13 @@ public class Mechanic extends Thread {
 		while (!noMoreWork) {
 			switch (this.state) {
 				case WAITING_FOR_WORK:
-					repairArea.readThePaper();
+					enoughWork = repairArea.readThePaper();
 					//System.out.println("Mechanic " + this.id + " - Starting repair procedure");
+                    if(enoughWork) {
+                        noMoreWork = true;
+                        break;
+                    }
+                    
 					idCarToFix = repairArea.startRepairProcedure(); //acho que assim nao vai funcionar 
 					//System.out.println("Going to repair car " + idCarToFix);
 					park.getVehicle(idCarToFix);
@@ -53,14 +59,14 @@ public class Mechanic extends Thread {
 					//System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
 					//park.getVehicle(idCarToFix);
 					piecesToBeRepaired = repairArea.getPiecesToBeRepaired();
-					System.out.println(piecesToBeRepaired.toString());
+					//System.out.println(piecesToBeRepaired.toString());
 					if (!piecesToBeRepaired.containsKey(idCarToFix)) {
 						repairArea.getRequiredPart(idCarToFix); //salta para CHECKING_STOCK
 						break;
 					}
 					
 					repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
-					//System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Fixed");
+					System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Fixed");
 
 					park.returnVehicle(idCarToFix);//estacionar o carro
 					
@@ -85,17 +91,17 @@ public class Mechanic extends Thread {
 				case CHECKING_STOCK:
 					//piecesToBeRepaired = repairArea.getPiecesToBeRepaired();
                     //System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
-					System.out.println("Mechanic " + this.id + " - Checking if there is piece available in stock for car "+idCarToFix);
+					//System.out.println("Mechanic " + this.id + " - Checking if there is piece available in stock for car "+idCarToFix);
 					if (!repairArea.partAvailable(piecesToBeRepaired.get(idCarToFix))) {
 						repairArea.letManagerKnow(piecesToBeRepaired.get(idCarToFix), idCarToFix);
-						System.out.println("Mechanic " + this.id + " - There is no stock -"+piecesToBeRepaired.get(idCarToFix)+"- for car "+idCarToFix);
+						//System.out.println("Mechanic " + this.id + " - There is no stock -"+piecesToBeRepaired.get(idCarToFix)+"- for car "+idCarToFix);
 						
-						System.out.println("stock: "+repairArea.getPieces());
+						//System.out.println("stock: "+repairArea.getPieces());
 						
 						park.returnVehicle(idCarToFix);
 					} else {
-						System.out.println("Mechanic " + this.id + " - There is stock -"+piecesToBeRepaired.get(idCarToFix)+"- for car "+idCarToFix+" so let's proceed");
-						System.out.println("stock: "+repairArea.getPieces());
+						//System.out.println("Mechanic " + this.id + " - There is stock -"+piecesToBeRepaired.get(idCarToFix)+"- for car "+idCarToFix+" so let's proceed");
+						//System.out.println("stock: "+repairArea.getPieces());
 						repairArea.resumeRepairProcedure();
 					}
 					break;

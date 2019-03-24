@@ -28,7 +28,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
         while(randomNum != 1) {
             randomNum = n.nextInt((100000 - 1) + 1) + 1;
         }
-        ((Customer) Thread.currentThread()).requiresCar = true;
+        ((Customer) Thread.currentThread()).requiresCar = requires.nextBoolean();
 	}
 
     /*

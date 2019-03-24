@@ -67,7 +67,7 @@ public class Main {
 
 		// initialization of threads
 		for (int i = 0; i < nManagers; i++) {
-			manager = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld, (IManagerP) park);
+			manager = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld, (IManagerP) park, nCustomers);
 			manager.start();
 		}
 

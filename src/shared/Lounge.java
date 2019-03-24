@@ -223,7 +223,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized void appraiseSit() {
         //if (pieceToReStock!=null) {
 		if(!piecesQueue.isEmpty()) {
-            System.out.println("attending mechanic");
+            //System.out.println("attending mechanic");
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);
         }
         else if (!customersToCallQueue.isEmpty()) {
@@ -255,13 +255,13 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             notifyAll();
             call = false;
         } else {
-            System.out.println("WE NEED " + piece.getTypePiece() + " FOR CAR " + idCar);
+            //System.out.println("WE NEED " + piece.getTypePiece() + " FOR CAR " + idCar);
             //pieceToReStock = piece;
             piecesQueue.add(piece); 
             call = true;    
             notifyAll();    
             call = false; 
-			System.out.println("Mechanic - Car "+idCar+" needs "+piece.toString());
+			//System.out.println("Mechanic - Car "+idCar+" needs "+piece.toString());
         }
         //System.out.println("Customers to call : " + customersToCallQueue.toString());
         //call = false;
@@ -283,7 +283,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     @Override
     public synchronized boolean enoughWork() {
-        System.out.println(enoughWork);
+        //System.out.println(enoughWork);
         if(customersQueue.isEmpty() && replacementQueue.isEmpty() && enoughWork)
             return true;
         else
@@ -298,7 +298,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized boolean alertCustomer(int id) {
         if(replacementQueue.contains(id)) {
             carsRepaired.add(id);
-            System.out.println("CARS REPAIRED " + carsRepaired.toString());
+            //System.out.println("CARS REPAIRED " + carsRepaired.toString());
             notifyAll();
             customersToCallQueue.remove(id);
             return true;

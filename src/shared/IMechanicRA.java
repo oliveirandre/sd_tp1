@@ -8,7 +8,7 @@ import repository.Piece;
  * @author andre e joao
  */
 public interface IMechanicRA {
-    public void readThePaper();
+    public boolean readThePaper();
     public int startRepairProcedure();
     
     public void getRequiredPart(int id);

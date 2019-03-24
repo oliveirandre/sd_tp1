@@ -125,8 +125,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
 
     /**
-     *
-     */
+	 * Customer's method. Customer waits until manager is ready to 
+	 * receive payment, and then proceeds to pay.
+	 */
     @Override
     public synchronized void payForTheService() {
         while (!readyToReceive) {
@@ -142,8 +143,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     }
 
     /**
-     *
-     */
+	 * Manager's method. Receives payment from customer.
+	 */
     @Override
     public synchronized void receivePayment() {
         readyToReceive = true;
@@ -158,7 +159,13 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         payed = false;
     }
 
-    @Override
+	/**
+	 * Manager's method. Manager chooses the customer with the highest
+	 * priority.
+	 * 
+	 * @return an Integer indicating the next customer's id to attend
+	 */
+	@Override
     public synchronized int currentCustomer() {
         if (customersQueue.isEmpty()) {
             return replacementQueue.peek();
@@ -167,7 +174,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         }
     }
 
-    @Override
+	/**
+	 * Customer's method. 
+	 */
+	@Override
     public synchronized void collectKey() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
         replacementQueue.add(((Customer) Thread.currentThread()).getCustomerId());
@@ -187,9 +197,11 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         }
     }
 
-    @Override
+	/**
+	 * Manager's method. Manager waits while there is nothing to do.
+	 */
+	@Override
     public synchronized void getNextTask() {
-        System.out.print(" ");
         while (customersQueue.isEmpty() && customersToCallQueue.isEmpty() && piecesQueue.isEmpty()) {
             try {
                 wait();
@@ -199,17 +211,29 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         }
     }
 
-    @Override
+	/**
+	 * Manager's method. Manager changes state to check what to do next.
+	 */
+	@Override
     public synchronized void checkWhatToDo() {
         ((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
     }
 
-    @Override
+	/**
+	 * Manager's method. Manager goes into the queue of customers to call and
+	 * retrieves the head of the queue.
+	 * 
+	 * @return an Integer indicating the customer's id
+	 */
+	@Override
     public synchronized int getIdToCall() {
         return customersToCallQueue.poll();
     }
 
-    @Override
+	/**
+	 *
+	 */
+	@Override
     public synchronized void appraiseSit() {
         if (!piecesQueue.isEmpty()) {
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);

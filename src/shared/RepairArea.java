@@ -123,7 +123,13 @@ public class RepairArea implements IMechanicRA, IManagerRA {
     @Override
     public synchronized void fixIt(int id, Piece piece) {
         repaired.add(id);
+        System.out.println("BEFORE REPAIR: " + stock);
+        if (stock.get(piece.getTypePiece()) == 0) {
+            ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
+            return;
+        }
         removePieceFromStock(piece);
+        System.out.println("AFTER REPAIR : " + stock);
         piecesToBeRepaired.remove(id, piece);
     }
 
@@ -146,7 +152,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
      * @return returns true if the piece is available and false otherwise
      */
     @Override
-    public boolean partAvailable(Piece part) {
+    public synchronized boolean partAvailable(Piece part) {
         return pieceInStock(part);
     }
 
@@ -236,7 +242,9 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         for (int i = 0; i < quant; i++) {
 
         }
+        System.out.println("BEFORE ADDING TO STOCK " + stock);
         addPieceToStock(part);
+        System.out.println("AFTER ADDING TO STOCK " + stock);
         return n;
     }
 

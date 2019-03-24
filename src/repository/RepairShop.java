@@ -150,7 +150,7 @@ public class RepairShop {
 			GenericIO.writelnString("A operação de criação do ficheiro " + fileName + " falhou!");
 			System.exit(1);
 		}
-		log.writelnString(" MAN  MECHANIC                                                                  CUSTOMER");
+		lineStatus += " MAN  MECHANIC                                                                  CUSTOMER\n";
 		//( (Customer) Thread.currentThread() ).carRepaired
 		lineStatus += manager.getManagerState() + "  ";
 
@@ -304,8 +304,9 @@ public class RepairShop {
 		for (int i = 0; i < nTypePieces; i++) {
 			lineStatus += PP[i] + "   ";
 		}
-
-		log.writelnString(lineStatus);
+		
+		if(!lineStatus.toLowerCase().contains("null"))
+			log.writelnString(lineStatus);
 		if (!log.close()) {
 			GenericIO.writelnString("A operação de fecho do ficheiro " + fileName + " falhou!");
 			System.exit(1);

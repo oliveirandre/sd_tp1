@@ -56,6 +56,7 @@ public class Customer extends Thread {
                         park.parkCar(this.id);
                     } else {
                         park.returnReplacementCar(replacementCar);
+						haveReplacementCar = false;
                     }
                     break;
 

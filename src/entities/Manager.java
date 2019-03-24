@@ -26,6 +26,9 @@ public class Manager extends Thread {
     private boolean noMoreTasks = false;
     private int nCustomers;
     private int leftCustomers = 0;
+    private boolean availableCar = false;
+    private int idCustomer = 0;
+    private int idToCall = 0;
 
     public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park, int nCustomers) {
         this.lounge = lounge;
@@ -39,11 +42,6 @@ public class Manager extends Thread {
     @Override
     public void run() {
         this.setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
-        int idCustomer = 0; //este idCustomer é o id que se manda ao mecânico
-
-        int replacementCar = 0;
-        int idToCall = 0;
-        boolean availableCar = false;
         while (!noMoreTasks) {
             switch (this.state) {
 
@@ -89,7 +87,7 @@ public class Manager extends Thread {
                         repairArea.registerService(idCustomer);
                         //System.out.println("3");
                     } else {
-                        System.out.println("Pre receive payment");
+                        //System.out.println("Pre receive payment");
                         lounge.receivePayment();
                         leftCustomers++;
                         //System.out.println("Manager - Customer payed.");
@@ -114,7 +112,7 @@ public class Manager extends Thread {
                     //System.out.println("Manager  - " + this.getManagerState());
                     // wake up customer that has his car repaired
                     idToCall = lounge.getIdToCall();
-                    //System.out.println("-----> Car "+ idToCall+ " is repaired!");
+                    System.out.println("-----> Car "+ idToCall+ " is repaired!");
                     customerWaiting = lounge.alertCustomer(idToCall);
                     //System.out.println(customerWaiting);
                     if(!customerWaiting)

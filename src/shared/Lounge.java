@@ -22,17 +22,14 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private final Queue<Integer> customersQueue = new LinkedList<>();
     private final Queue<Piece> piecesQueue = new LinkedList<>();
     private int nextCustomer = 0;
-    private Piece pieceToReStock;
 	private Piece pieceToReStock2;
     private boolean managerAvailable = false;
     private boolean ordered = false;
-    private boolean call = false;
     private boolean payed = false;
-    private boolean receivePayment = false;
-    private boolean enoughWork = false;
-    private final Queue<Integer> customersToCallQueue = new LinkedList<>(); //repair Concluded
+    private final boolean enoughWork = false;
+    private final Queue<Integer> customersToCallQueue = new LinkedList<>();
     private final Queue<Integer> carsRepaired = new LinkedList<>();
-	private boolean[] flagPartMissing;
+	private final boolean[] flagPartMissing;
     private boolean readyToReceive;
 	
 
@@ -138,7 +135,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void payForTheService() {
-        System.out.println("Waiting for manager");
+        //System.out.println("Waiting for manager");
         while(!readyToReceive) {
             try {
                 wait();
@@ -213,13 +210,13 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void getNextTask() {
-        //System.out.println("Manager - Waiting for next task... <---> \n-> CUSTOMERS "+ customersQueue.toString() + "\n-> TO CALL " + customersToCallQueue.toString());
+        System.out.println("Manager - Waiting for next task... <---> \n-> CUSTOMERS "+ customersQueue.toString() + "\n-> TO CALL " + customersToCallQueue.toString());
         //  && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty() && replacementQueue.isEmpty()
         
         // && !call 
         while (customersQueue.isEmpty() && customersToCallQueue.isEmpty() && piecesQueue.isEmpty()) {
             try {
-                System.out.println("------- FIQUEI PRESO EM WAIT ---------");
+                //System.out.println("------- FIQUEI PRESO EM WAIT ---------");
                 wait();
             } catch (Exception e) {
 
@@ -273,16 +270,16 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         if (piece == null) { //repair of this carId is concluded
             customersToCallQueue.add(idCar);   
-            call = true; 
+            //call = true; 
             notifyAll();
-            call = false;
+            //call = false;
         } else {
             //System.out.println("WE NEED " + piece.getTypePiece() + " FOR CAR " + idCar);
             //pieceToReStock = piece;
             piecesQueue.add(piece); 
-            call = true;    
+            //call = true;    
             notifyAll();    
-            call = false; 
+            //call = false; 
 			//System.out.println("Mechanic - Car "+idCar+" needs "+piece.toString());
         }
         //System.out.println("Customers to call : " + customersToCallQueue.toString());

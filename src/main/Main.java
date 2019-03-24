@@ -9,6 +9,15 @@ import entities.Manager;
 import entities.Mechanic;
 import genclass.GenericIO;
 import genclass.TextFile;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import repository.EnumPiece;
 import repository.Log;
 import repository.Log2;
@@ -42,7 +51,7 @@ public class Main {
 	private static Mechanic mechanics[];
 	private static Customer customers[];
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, IOException {
 		/* 
          * There are 5 different locations: park, lounge, repair area, supplier
          * site and the outside world.
@@ -84,12 +93,13 @@ public class Main {
 		}
 		
 		
-		reportInitialStatus(nMechanics, nCustomers);
+		//reportInitialStatus(nMechanics, nCustomers);
 
 		for (int j = 0; j < nManagers; j++) {
 			try {
 				manager.join();
 				System.err.println("Manager " + j + " Died ");
+                //System.err.println("----------");
 			} catch (InterruptedException ex) {
 				//Escrever para o log
 			}
@@ -98,14 +108,14 @@ public class Main {
 		for (int j = 0; j < nMechanics; j++) {
 			try {
 				mechanics[j].join();
-				System.err.println("Mechanic " + j + " Died ");
+				//System.err.println("Mechanic " + j + " Died ");
 			} catch (InterruptedException ex) {
 				//Escrever para o log
 			}
-		}
+		}        
 	}
 
-	public static void reportInitialStatus(int nMechanics, int nCustomers) {
+	/*public static void reportInitialStatus(int nMechanics, int nCustomers) {
 		TextFile log = new TextFile(); // instanciaÃ§Ã£o de uma variÃ¡vel de tipo ficheiro de texto
 
 		String fileName = "Project.log";
@@ -131,7 +141,7 @@ public class Main {
 	 * Uma linha de texto com o estado de actividade dos barbeiros e dos
 	 * clientes Ã© escrito no ficheiro.
 	 */
-	public static void reportStatus(String fileName, int nMechanics, int nCustomers) {
+	/*public static void reportStatus(String fileName, int nMechanics, int nCustomers) {
 		TextFile log = new TextFile(); // instanciação de uma variável de tipo ficheiro de texto
 
 		String lineStatus = ""; // linha a imprimir
@@ -289,7 +299,7 @@ public class Main {
 			System.exit(1);
 		}
 
-	}
+	}*/
 	
 	
 }

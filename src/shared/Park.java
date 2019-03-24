@@ -128,7 +128,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     @Override
     public synchronized void reserveCar(int id) {
         reserve.put(id, replacementCars.peek());
-        System.out.println(reserve.toString());
+        //System.out.println(reserve.toString());
     }
 
     @Override

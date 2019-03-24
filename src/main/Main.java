@@ -51,7 +51,7 @@ public class Main {
          * that can be repared.
 		 */
 
-		final int nCustomers = 29;
+		final int nCustomers = 5;
 		final int nMechanics = 1;
 		final int nManagers = 1;
 		final int nReplacementCars = 3;
@@ -71,16 +71,16 @@ public class Main {
 			manager.start();
 		}
 
-		customers = new Customer[nCustomers];
-		for (int i = 0; i < nCustomers; i++) {
-			customers[i] = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i + 1);
-			customers[i].start();
-		}
-
 		mechanics = new Mechanic[nMechanics];
 		for (int i = 0; i < nMechanics; i++) {
 			mechanics[i] = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i + 1);
 			mechanics[i].start();
+		}
+
+		customers = new Customer[nCustomers];
+		for (int i = 0; i < nCustomers; i++) {
+			customers[i] = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i + 1);
+			customers[i].start();
 		}
 		
 		

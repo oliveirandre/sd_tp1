@@ -59,7 +59,7 @@ public class Mechanic extends Thread {
 					}
 					
 					repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
-					//System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Fixed");
+					System.out.println("Mechanic " + this.id + " - " + idCarToFix + " Fixed");
 
 					park.returnVehicle(idCarToFix);//estacionar o carro
 					
@@ -75,6 +75,7 @@ public class Mechanic extends Thread {
 					if (!repairConcluded) {
 						lounge.alertManager(piecesToBeRepaired.get(idCarToFix), idCarToFix);
 					} else {
+                        //System.out.println(idCarToFix + " FIXED");
 						lounge.alertManager(null, idCarToFix);
 					}
 					repairConcluded = false;
@@ -84,10 +85,10 @@ public class Mechanic extends Thread {
 					piecesToBeRepaired = repairArea.getPiecesToBeRepaired();
                     //System.out.println("Mechanic " + this.id + " - " + this.getMechanicState());
 					if (!repairArea.partAvailable(piecesToBeRepaired.get(idCarToFix))) {
-						repairArea.letManagerKnow(idCarToFix);
-						//System.out.println("Mechanic " + this.id + " - There is no stock for car "+idCarToFix);
+						repairArea.letManagerKnow(piecesToBeRepaired.get(idCarToFix), idCarToFix);
+						System.out.println("Mechanic " + this.id + " - There is no stock for car "+idCarToFix);
 					} else {
-						//System.out.println("Mechanic " + this.id + " - There is stock so let's proceed");
+						System.out.println("Mechanic " + this.id + " - There is stock so let's proceed");
 						repairArea.resumeRepairProcedure();
 					}
 					break;
@@ -106,8 +107,7 @@ public class Mechanic extends Thread {
 		return this.state;
 	}
 	
-	@Override
-	public long getId(){
+	public int getMechanicId(){
 		return this.id;
 	}
 }

@@ -13,7 +13,7 @@ public interface IMechanicRA {
     
     public void getRequiredPart(int id);
     
-    public void letManagerKnow(int idCarToFix);
+    public void letManagerKnow(Piece piece, int idCarToFix);
 
     public boolean partAvailable(Piece requiredPart);
     

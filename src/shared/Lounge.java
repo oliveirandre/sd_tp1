@@ -20,6 +20,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private int customerGetRepCar;
     private final Queue<Integer> replacementQueue = new LinkedList<>();
     private final Queue<Integer> customersQueue = new LinkedList<>();
+    private final Queue<Piece> mechanicsQueue = new LinkedList<>();
     private int nextCustomer = 0;
     private Piece pieceToReStock;
 	private Piece pieceToReStock2;
@@ -102,7 +103,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         notifyAll();
         managerAvailable = false;
         // fiquei aqui
-        System.out.println("Manager - Attending customer number " + nextCustomer);
+        //System.out.println("Manager - Attending customer number " + nextCustomer);
         //notifyAll();
         while (!(order.containsKey(nextCustomer)) && !ordered) {
             try {
@@ -180,9 +181,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         //System.out.println("Manager - Waiting for next task... <---> \n-> CUSTOMERS "+ customersQueue.toString() + "\n-> TO CALL " + customersToCallQueue.toString());
         //  && mechanicsQueue.isEmpty() && customersToCallQueue.isEmpty() && replacementQueue.isEmpty()
         
-        
-        while (customersQueue.isEmpty() && !call && customersToCallQueue.isEmpty()) {
+        // && !call 
+        while (customersQueue.isEmpty() && customersToCallQueue.isEmpty() && mechanicsQueue.isEmpty()) {
             try {
+                System.out.println("------- FIQUEI PRESO EM WAIT ---------");
                 wait();
             } catch (Exception e) {
 
@@ -219,8 +221,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
     @Override
     public synchronized void appraiseSit() {
-        if (pieceToReStock!=null) {
-			((Manager) Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);
+        //if (pieceToReStock!=null) {
+		if(!mechanicsQueue.isEmpty()) {
+            System.out.println("attending mechanic");
+            ((Manager) Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);
         }
         else if (!customersToCallQueue.isEmpty()) {
             ((Manager) Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
@@ -246,23 +250,29 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized void alertManager(Piece piece, int idCar) {
         ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         if (piece == null) { //repair of this carId is concluded
-            customersToCallQueue.add(idCar);
+            customersToCallQueue.add(idCar);   
+            call = true; 
+            notifyAll();
+            call = false;
         } else {
-            pieceToReStock = piece;
-			
+            System.out.println("WE NEED " + piece.getTypePiece() + " FOR CAR " + idCar);
+            //pieceToReStock = piece;
+            mechanicsQueue.add(piece); 
+            call = true;    
+            notifyAll();    
+            call = false; 
         }
         //System.out.println("Customers to call : " + customersToCallQueue.toString());
-        call = true;
-        notifyAll();
-        call = false;
+        //call = false;
     }
 
     @Override
     public synchronized Piece getPieceToReStock() {
-		Piece temp = pieceToReStock;
+		/*Piece temp = pieceToReStock;
 		pieceToReStock2 = pieceToReStock;
 		pieceToReStock = null;	//put null since piece is already going to stock when this method is called
-        return temp;
+        return temp;*/
+        return mechanicsQueue.poll();
     }
 	
 	@Override

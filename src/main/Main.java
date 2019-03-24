@@ -29,7 +29,7 @@ public class Main {
 	private static Mechanic mechanics[];
 	private static Customer customers[];
 
-	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, IOException {
+	public static void main(String[] args) {
 		/* 
          * There are 5 different locations: park, lounge, repair area, supplier
          * site and the outside world.

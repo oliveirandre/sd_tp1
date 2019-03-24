@@ -10,7 +10,7 @@ package shared;
  * @author AndréOliveira
  */
 public interface IManagerP {
-    public boolean getReplacementCar();
+    public boolean replacementCarAvailable();
     public void reserveCar(int id);
     public void waitForCustomer(int id);
 }

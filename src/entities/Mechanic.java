@@ -1,8 +1,6 @@
 package entities;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
 import repository.Piece;
 import repository.RepairShop;
 import shared.IMechanicL;

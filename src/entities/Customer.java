@@ -43,7 +43,6 @@ public class Customer extends Thread {
             switch (this.state) {
                 case NORMAL_LIFE_WITH_CAR:
                     haveCar=true;
-					//System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     if (!haveReplacementCar) {
                         outsideWorld.decideOnRepair();
                     }
@@ -51,7 +50,6 @@ public class Customer extends Thread {
                     break;
 
                 case PARK:
-                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     if (!haveReplacementCar) {
                         park.parkCar(this.id);
                     } else {
@@ -61,19 +59,13 @@ public class Customer extends Thread {
                     break;
 
                 case WAITING_FOR_REPLACE_CAR:
-                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());   
-                    //System.out.println("GOT KEY.");
                     replacementCar = park.findCar();
                     haveReplacementCar = true;
-                    //System.out.println("Leaving with car.");
                     outsideWorld.backToWorkByCar();
                     break;
 
                 case RECEPTION:
-                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
-                    //System.out.println("Customer " + this.id + " - " + this.carRepaired);
                     lounge.queueIn(this.id);
-                    //System.out.println(carRepaired);
                     if (!carRepaired) {
                         lounge.talkWithManager();
                         if (requiresCar) {
@@ -82,7 +74,6 @@ public class Customer extends Thread {
                             outsideWorld.backToWorkByBus();
                         }
                     } else {
-                        //System.out.println("Customer 1 - Paying for service.");
                         lounge.talkWithManager();
                         lounge.payForTheService();
                         this.happyCustomer = true;
@@ -92,13 +83,11 @@ public class Customer extends Thread {
                     break;
 
                 case NORMAL_LIFE_WITHOUT_CAR:
-                    //System.out.println("Customer " + this.id + " - " + this.getCustomerState());
                     haveCar = false;
 					outsideWorld.goToReception();
                     break;
             }
         }
-        //System.out.println("----------------------------- CUSTOMER " + this.id + " IS DEAD! -----------------------------");
     }
 
     public void setCustomerState(CustomerState state) {

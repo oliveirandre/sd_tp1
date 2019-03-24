@@ -10,7 +10,7 @@ import repository.Piece;
  */
 public class SupplierSite implements IManagerSS {
     
-	int randomNum = 1;//1 + (int)(Math.random() * ((5 - 1) + 1)); //between 1 and 6////
+	int randomNum = 1 + (int)(Math.random() * ((5 - 1) + 1)); //between 1 and 6////
 	Piece partNeeded;
 	
 	int[] piecesBought;

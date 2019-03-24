@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import repository.EnumPiece;
 import repository.Piece;
 
@@ -20,307 +18,283 @@ import repository.Piece;
  */
 public class RepairArea implements IMechanicRA, IManagerRA {
 
-    private final Queue<Integer> carsToRepair = new LinkedList<>();
-    private final HashMap<Integer, Piece> carsWaitingForPieces = new HashMap<>();
-    private final Queue<Integer> readyToRepair = new LinkedList<>();
-    private final Queue<Integer> repaired = new LinkedList<>();
-    private final HashMap<Integer, Piece> piecesToBeRepaired = new HashMap<>();
-    private final List<Integer> alreadyAdded = new ArrayList<>();
-    private final Queue<Integer> mechanicsQueue = new LinkedList<>();
-    private boolean workMechanic = false; //manager tem que alterar no post
+	private final Queue<Integer> carsToRepair = new LinkedList<>();
+	private final HashMap<Integer, Piece> carsWaitingForPieces = new HashMap<>();
+	private final Queue<Integer> readyToRepair = new LinkedList<>();
+	private final Queue<Integer> repaired = new LinkedList<>();
+	private final HashMap<Integer, Piece> piecesToBeRepaired = new HashMap<>();
+	private final List<Integer> alreadyAdded = new ArrayList<>();
+	private final Queue<Integer> mechanicsQueue = new LinkedList<>();
+	private boolean workMechanic = false;
 	private int nRequestsManager = 0;
-    private int mechanicToWork = 0;
-    private boolean enoughWork = false;
-	
-    static final int nPieces = (int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min; //0;
+	private boolean enoughWork = false;
 
-    private static final HashMap<EnumPiece, Integer> stock = new HashMap<>();
+	static final int nPieces = (int) (Math.random() * 13) + 3; //between 3 and 15 Math.random() * ((max - min) + 1)) + min; //0;
 
-    public RepairArea(int nTypePieces) {
+	private static final HashMap<EnumPiece, Integer> stock = new HashMap<>();
 
-        for (int i = 0; i < nTypePieces; i++) {
-            stock.put(EnumPiece.values()[i], 0); // 5
-        }
-		/*
-		//adds random pieces to stock
-        for (int i = 0; i < nPieces; i++) {
-            Piece pec = new Piece();
-            stock.put(pec.getTypePiece(), stock.get(pec.getTypePiece()) + 1);
-        }*/
+	public RepairArea(int nTypePieces) {
 
-    }
-
-	@Override
-    public HashMap getPieces() {
-        return stock;
-    }
-
-    private synchronized boolean pieceInStock(Piece p) {
-        return stock.get(p.getTypePiece()) > 0;
-    }
-
-    private synchronized void removePieceFromStock(Piece p, int temp) {
-		//int temp = stock.get(p.getTypePiece());
-        
-		stock.put(p.getTypePiece(), temp-1);
-    }
-
-    private synchronized void addPieceToStock(Piece p,int peido) {
-		int temp = stock.get(p.getTypePiece());
-		//System.out.println("TEMPTEMPTEMP:"+peido+temp);
-        stock.put(p.getTypePiece(), peido+1);
-    }
-
-    /**
-     * Mechanic's method. Reads the paper while there is no work. When a new car
-     * is added to the queue, he exits this method.
-     *
-     */
-    @Override
-    public synchronized boolean readThePaper() {
-		//System.out.println("Mechanic " + ((Mechanic) Thread.currentThread()).getId()+ " - Waiting for work...");
-        //if(carsToRepair.isEmpty() || pieceToBeRepaired.isEmpty())
-		//	workMechanic = false;
-        ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
-        int id = ((Mechanic)Thread.currentThread()).getMechanicId();
-        /*if(mechanicsQueue.isEmpty())
-            mechanicToWork = id;*/
-        mechanicsQueue.add(id);
-        //System.out.println("BEFORE - " + mechanicsQueue.toString());
-        //while (!workMechanic) { //while there is no car to repair
-        // readyToRepair.isEmpty() && 
-        //mechanicToWork != id && 
-        // && !workMechanic
-        while(readyToRepair.isEmpty() && carsToRepair.isEmpty() && !enoughWork) {
-            //if(mechanicToWork != id) {
-                try {
-                    wait();
-                } catch (Exception e) {
-
-                }
-            //}
+		for (int i = 0; i < nTypePieces; i++) {
+			stock.put(EnumPiece.values()[i], 0);
 		}
-        //workMechanic = false;
-        //System.out.println("WORK MECHANIC " + workMechanic);
-        //workMechanic = false;
-        if(enoughWork)
-            return true;
-        //System.out.println("CARS TO REPAIR " + carsToRepair.toString());
-        //System.out.println("READY TO REPAIR " + readyToRepair.toString());
-        //System.out.println(mechanicToWork + " to fix car " + carsToRepair.peek() + " or " + readyToRepair.peek());
-        //System.out.println("mechanicToWork : ME - " + id + " | CALLED - " +  mechanicToWork);
-        //if(!readyToRepair.isEmpty())
-            //System.out.println("Mechanic " + mechanicToWork + " to fix car " + readyToRepair.peek() + " - READY TO REPAIR");
-        //else
-            //System.out.println("Mechanic " + mechanicToWork + " to fix car " + carsToRepair.peek() + " - CARS TO REPAIR");
-            
-        //repair.add(carsToRepair.poll());
-        mechanicsQueue.poll();
-        //System.out.println("carsToRepair " + (carsToRepair.isEmpty()));
-        //System.out.println("workMechanic " + workMechanic);
-        //System.out.println("AFTER - " + mechanicsQueue.toString());
-        return false;
-    }
 
-    /**
-     * Mechanic's method. Change the state to start to fix the car.
-     *
-     * @return idCar
-     */
-    @Override
-    public synchronized int startRepairProcedure() {
-        //System.out.println("Mechanic - Starting repair procedure");
-        ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
-		//System.out.println(carsToRepair);
-		
-        //System.out.println(carsToRepair.toString());
-        if(readyToRepair.isEmpty() && carsToRepair.isEmpty()) {
-            ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
-            return 0;
-        }
-        else if(!readyToRepair.isEmpty()) {
-            //System.out.println("Going to repair car " + readyToRepair.peek());
-            return readyToRepair.poll();
-        }
-        else {
-            //System.out.println("Going to repair car " + carsToRepair.peek());
+		//adds random pieces to stock
+		for (int i = 0; i < nPieces; i++) {
+			Piece pec = new Piece();
+			stock.put(pec.getTypePiece(), stock.get(pec.getTypePiece()) + 1);
+		}
+
+	}
+
+	/**
+	 * Mechanic's method. Returns the current stock in Repair Area.
+	 * 
+	 * @return HashMap stock of pieces in Repair Area
+	 */
+	@Override
+	public HashMap getPieces() {
+		return stock;
+	}
+
+	private boolean pieceInStock(Piece p) {
+		return stock.get(p.getTypePiece()) > 0;
+	}
+
+	private void removePieceFromStock(Piece p) {
+		stock.put(p.getTypePiece(), stock.get(p.getTypePiece()) - 1);
+	}
+
+	private void addPieceToStock(Piece p) {
+		stock.put(p.getTypePiece(), stock.get(p.getTypePiece()) + 1);
+	}
+
+	/**
+	 * Mechanic's method. Reads the paper while there is no work. When a he is 
+	 * alerted by the manager, he starts to work.
+	 *
+	 */
+	@Override
+	public synchronized boolean readThePaper() {
+		((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
+		int id = ((Mechanic) Thread.currentThread()).getMechanicId();
+		mechanicsQueue.add(id);
+		while (readyToRepair.isEmpty() && carsToRepair.isEmpty() && !enoughWork) {
+			try {
+				wait();
+			} catch (Exception e) {
+
+			}
+		}
+		if (enoughWork) {
+			return true;
+		}
+		mechanicsQueue.poll();
+		return false;
+	}
+
+	/**
+	 * Mechanic's method. Change the state to start to fix the car.
+	 *
+	 * @return a Integer representing the id of the car to be checked/repaired next
+	 */
+	@Override
+	public synchronized int startRepairProcedure() {
+		((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
+		if (readyToRepair.isEmpty() && carsToRepair.isEmpty()) {
+			((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
+			return 0;
+		} else if (!readyToRepair.isEmpty()) {
+			return readyToRepair.poll();
+		} else {
 			return carsToRepair.poll();
 		}
 	}
 
-    /**
-     * Mechanic's method. Mechanic removes one piece from stock to repair the
-     * car in question
-     *
-     *
-     * @param id
-     * @param piece
-     */
-    @Override
-    public synchronized void fixIt(int id, Piece piece) {
-		//System.out.println("mecanico a reparar carro, ou seja, a retirar peça do stock");
-        repaired.add(id);
-		removePieceFromStock(piece, stock.get(piece.getTypePiece()));
-		
-        piecesToBeRepaired.remove(id, piece);
-    }
-
-    /**
-     * Mechanic's method. Mechanic checks the car and finds what piece it needs.
-     * If no required piece is associated to a car, it creates a new one.
-     *
-     * @param id
-     * @return the HashMap containing the cars with the required piece,
-     * respectively
-     */
-    @Override
-    public synchronized void getRequiredPart(int id) {
-        //System.out.println("Mechanic - Getting required part");
-        ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.CHECKING_STOCK);
-        //System.out.println("CAR - " + id);
-        piecesToBeRepaired.put(id, new Piece());
-    }
-
-    /**
-     * Mechanic's method. After receiving a new car to fix, checks if the
-     * required piece is available in stock.
-     *
-     * @param part
-     * @return returns true if the piece is available and false otherwise
-     */
-    @Override
-    public boolean partAvailable(Piece part) {
-        return pieceInStock(part);
-    }
-
-    @Override
-    public synchronized void letManagerKnow(Piece piece, int idCustomerNeedsPiece) {
-        //System.out.println("Mechanic - Letting manager know");
-        ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
-        carsWaitingForPieces.put(idCustomerNeedsPiece, piece);
-        carsToRepair.remove(idCustomerNeedsPiece);
-        //notifyAll();
-    }
-
-    /**
-     * Mechanic's method. After knowing that the required part is available in
-     * stock, the mechanic's state changes to fix the car
-     *
-     */
-    @Override
-    public synchronized void resumeRepairProcedure() {
-        ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
-    }
-
-    /**
-     * Mechanic's method. Change the state to alert the manager that the repair
-     * is concluded.
-     *
-     */
-    @Override
-    public synchronized void repairConcluded() {
-        ((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
-    }
-
-    @Override
-    public synchronized void getNextTask() {
-        ((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-	
-	/*
-    ** Manager's method. After receiving a request from a customer, the manager 
-    ** registers it for further use by the mechanics.
-     */
-    @Override
-    public synchronized void registerService(int idCustomer) {
-        ((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
-        //if(!readyToRepair.contains(idCustomer) && !carsWaitingForPieces.containsKey(idCustomer) && !repaired.contains(idCustomer)) {
-        if(!alreadyAdded.contains(idCustomer)) {
-            //System.out.println("Added customer "+ idCustomer + "registerService");
-            carsToRepair.add(idCustomer);
-        }
-        alreadyAdded.add(idCustomer);
-		//System.out.println(idCustomer);
-        workMechanic = true;
-        if(!mechanicsQueue.isEmpty()) {
-            mechanicToWork = mechanicsQueue.peek();
-            notify();
-        }
-        /*else
-            mechanicToWork = 0;*/
-        //mechanicsQueue.poll();
-		//System.out.println(carsToRepair);
-        
-        //mechanicToWork = 0;
-		nRequestsManager++;
-    }
-
-    @Override
-    public synchronized int storePart(Piece part, int quant) {
-        int n = 0;
-        for(int j = 0; j < carsWaitingForPieces.size(); j++) {
-            Piece p = carsWaitingForPieces.get(carsWaitingForPieces.keySet().toArray()[j]);
-            if(p == part)
-                n = (int) getKeyFromValue(carsWaitingForPieces, p);          
-        }
-        readyToRepair.add(n);
-        carsWaitingForPieces.remove(n);
-        //System.out.println(quant + " " + part.getTypePiece() + " ADDED FOR CAR " + readyToRepair.toString());
-        for (int i = 0; i < quant; i++) {
-			
-		}
-		addPieceToStock(part,stock.get(part.getTypePiece()));
-		//System.out.println("STOCK ATUALIZADO:: " + stock);
-        /*HashMap.Entry<Integer,Piece> entry = carsWaitingForPieces.entrySet().iterator().next();
-        Integer key = entry.getKey();
-        Piece value = entry.getValue();*/
-		return n;
-    }
-	
-    public Object getKeyFromValue(HashMap hm, Object value) {
-        for (Object o : hm.keySet()) {
-          if (hm.get(o).equals(value)) {
-            return o;
-          }
-        }
-        return null;
-    }
-        
-        
+	/**
+	 * Mechanic's method. Mechanic removes one piece from stock to repair the
+	 * car in question
+	 *
+	 *
+	 * @param id the id of the car that is going to get repaired
+	 * @param piece the piece that car needs to be repaired
+	 */
 	@Override
-    public synchronized HashMap getPiecesToBeRepaired() {
-        return piecesToBeRepaired;
-    }
+	public synchronized void fixIt(int id, Piece piece) {
+		repaired.add(id);
+		removePieceFromStock(piece);
+		piecesToBeRepaired.remove(id, piece);
+	}
+
+	/**
+	 * Mechanic's method. Mechanic checks the car and finds what piece it needs.
+	 *
+	 * @param id the car it needs to be checked
+	 */
+	@Override
+	public synchronized void getRequiredPart(int id) {
+		((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.CHECKING_STOCK);
+		piecesToBeRepaired.put(id, new Piece());
+	}
+
+	/**
+	 * Mechanic's method. After receiving a new car to fix, checks if the
+	 * required piece is available in stock.
+	 *
+	 * @param part a piece
+	 * @return returns true if the piece is available and false otherwise
+	 */
+	@Override
+	public boolean partAvailable(Piece part) {
+		return pieceInStock(part);
+	}
+
+	/**
+	 * Mechanic's method. Removes the car from the queue CarsToRepair and adds it
+	 * to the CarsWaitingForPieces. Changes state to alert the manager if it needs
+	 * a new piece.
+	 * 
+	 * @param piece piece that is required to fix the car
+	 * @param idCustomerNeedsPiece the id of the card that needs to be fixed associated to this piece
+	 */
+	@Override
+	public synchronized void letManagerKnow(Piece piece, int idCustomerNeedsPiece) {
+		((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
+		carsWaitingForPieces.put(idCustomerNeedsPiece, piece);
+		carsToRepair.remove(idCustomerNeedsPiece);
+	}
+
+	/**
+	 * Mechanic's method. After knowing that the required part is available in
+	 * stock, the mechanic's state changes to fix the car.
+	 *
+	 */
+	@Override
+	public synchronized void resumeRepairProcedure() {
+		((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
+	}
+
+	/**
+	 * Mechanic's method. Change the state to alert the manager that the repair
+	 * is concluded.
+	 *
+	 */
+	@Override
+	public synchronized void repairConcluded() {
+		((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.ALERTING_MANAGER);
+	}
+
+	/**
+	 * Manager's method. Changes state to check what to do next.
+	 */
+	@Override
+	public synchronized void getNextTask() {
+		((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+	}
+
 	
-	public int getRequestsManagerSize(){
+	/**
+	 * Manager's method. After receiving a request from a customer, the manager 
+	 * registers it for further use by the mechanics.
+	 * 
+	 * @param idCustomer the id of the car that the mechanic needs to repair
+	 */
+	@Override
+	public synchronized void registerService(int idCustomer) {
+		((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
+		if (!alreadyAdded.contains(idCustomer)) {
+			carsToRepair.add(idCustomer);
+		}
+		alreadyAdded.add(idCustomer);
+		if (!mechanicsQueue.isEmpty()) {
+			notify();
+		}
+		nRequestsManager++;
+	}
+
+	/**
+	 * Manager's method. The manager comes from supplier site with a type of 
+	 * piece and its quantity, and stores them in Repair Area.
+	 * 
+	 * @param part a type of piece 
+	 * @param quant the quantity of the piece that is going to be added to stock
+	 * @return a Integer representing the id of the car that needed this type of piece
+	 */
+	@Override
+	public synchronized int storePart(Piece part, int quant) {
+		int n = 0;
+		for (int j = 0; j < carsWaitingForPieces.size(); j++) {
+			Piece p = carsWaitingForPieces.get(carsWaitingForPieces.keySet().toArray()[j]);
+			if (p == part) {
+				n = (int) getKeyFromValue(carsWaitingForPieces, p);
+			}
+		}
+		readyToRepair.add(n);
+		carsWaitingForPieces.remove(n);
+		for (int i = 0; i < quant; i++) {
+
+		}
+		addPieceToStock(part);
+		return n;
+	}
+
+	private Object getKeyFromValue(HashMap hm, Object value) {
+		for (Object o : hm.keySet()) {
+			if (hm.get(o).equals(value)) {
+				return o;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Mechanic's method. Returns the pieces that are needed to be repair the cars.
+	 * 
+	 * @return a HashMap that contains the pieces that are needed to be repair the cars
+	 */
+	@Override
+	public synchronized HashMap getPiecesToBeRepaired() {
+		return piecesToBeRepaired;
+	}
+
+	/**
+	 * Method used for log. Returns the number of requests made by the manager.
+	 * 
+	 * @return a Integer representing the number of requests made by the manager
+	 */
+	public int getRequestsManagerSize() {
 		return nRequestsManager;
 	}
-	
+
+	/**
+	 * Method used for log. Returns the number of vehicles waiting for each piece.
+	 * 
+	 * @param nTypePieces the number of different types of pieces
+	 * @return an Array with the number of vehicles waiting for each piece
+	 */
 	public int[] getNumberVehiclesWaitingForParts(int nTypePieces) {
-		//private HashMap<Integer, Piece> piecesToBeRepaired = new HashMap<>();
-		//piecesToBeRepaired.putIfAbsent(id, newPart);
-		// KEY, VALUE
 		int[] nVehiclesWaitingForParts = new int[nTypePieces];
 
 		for (int i = 0; i < nTypePieces; i++) {
 			nVehiclesWaitingForParts[i] = 0;
 		}
 		int i = 0;
-		/*for (Piece value : piecesToBeRepaired.values()) {
-			if(value.getIdTypePiece()==i)
+		for (Piece value : piecesToBeRepaired.values()) {
+			if (value.getIdTypePiece() == i) {
 				nVehiclesWaitingForParts[i]++;
+			}
 			i++;
-		}*/
+		}
 
 		return nVehiclesWaitingForParts;
 	}
-    
-    @Override
-    public synchronized void enoughWork() {
-        //((Manager)Thread.currentThread()).setManagerState(null);
-        //System.out.println("ENOUGH");
-        enoughWork = true;
-        notifyAll();
-    }
+
+	/**
+	 * Manager's method. Notifies mechanics that work is done for the day.
+	 */
+	@Override
+	public synchronized void enoughWork() {
+		enoughWork = true;
+		notifyAll();
+	}
 }

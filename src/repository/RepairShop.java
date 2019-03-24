@@ -270,11 +270,11 @@ public class RepairShop {
 
 		//ALTERAR AQUI COM ARGUMENTO A ENTRAR nTypePieces
 		for (int i = 0; i < nTypePieces; i++) {
-			int temp = (int) repairArea.getPieces().get(EnumPiece.values()[i]);
-			if (temp < 10) {
-				Prt[i] = "0" + Integer.toString(temp);
+			Object[] temp = repairArea.getPieces().values().toArray();
+			if ((int)temp[i] < 10) {
+				Prt[i] = "0" + Integer.toString((int)temp[i]);
 			} else {
-				Prt[i] = "" + Integer.toString(temp);
+				Prt[i] = "" + Integer.toString((int)temp[i]);
 			}
 
 			if (repairArea.getNumberVehiclesWaitingForParts(nTypePieces)[i] < 10) {

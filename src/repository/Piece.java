@@ -22,4 +22,8 @@ public class Piece {
 		return p.ordinal();
 	}
 		
+    @Override
+    public String toString() {
+        return this.p.toString();
+    }
 }

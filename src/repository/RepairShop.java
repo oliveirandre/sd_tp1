@@ -134,7 +134,7 @@ public class RepairShop {
         TextFile log = new TextFile(); // instanciaÃ§Ã£o de uma variÃ¡vel de tipo ficheiro de texto
 
         //fileName = "repairShop.log";
-        if (!log.openForWriting(".", fileName)) {
+        if (!log.openForWriting("./src", fileName)) {
             GenericIO.writelnString("A operação de criação do ficheiro " + fileName + " falhou!");
             System.exit(1);
         }
@@ -155,7 +155,7 @@ public class RepairShop {
 
         String lineStatus = ""; // linha a imprimir
 
-        if (!log.openForAppending(".", fileName)) {
+        if (!log.openForAppending("./src", fileName)) {
             GenericIO.writelnString("A operação de criação do ficheiro " + fileName + " falhou!");
             System.exit(1);
         }

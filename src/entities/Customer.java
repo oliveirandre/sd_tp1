@@ -56,7 +56,6 @@ public class Customer extends Thread {
         while (!this.happyCustomer) {
             switch (this.state) {
                 case NORMAL_LIFE_WITH_CAR:
-                    haveCar=true;
                     if (!haveReplacementCar) {
                         outsideWorld.decideOnRepair();
                     }
@@ -67,29 +66,33 @@ public class Customer extends Thread {
                     if (!haveReplacementCar) {
                         park.parkCar(this.id);
                     } else {
-                        park.returnReplacementCar(replacementCar);
+						park.returnReplacementCar(replacementCar);
 						haveReplacementCar = false;
                     }
                     break;
 
                 case WAITING_FOR_REPLACE_CAR:
-                    replacementCar = park.findCar();
                     haveReplacementCar = true;
+					replacementCar = park.findCar();
                     outsideWorld.backToWorkByCar();
                     break;
 
                 case RECEPTION:
                     lounge.queueIn(this.id);
+					haveCar=false;
                     if (!carRepaired) {
                         lounge.talkWithManager();
                         if (requiresCar) {
-                            lounge.collectKey();
+                            haveReplacementCar=true;
+							lounge.collectKey();
                         } else {
-                            outsideWorld.backToWorkByBus();
+							haveReplacementCar=false;
+							outsideWorld.backToWorkByBus();
                         }
                     } else {
                         lounge.talkWithManager();
                         lounge.payForTheService();
+						haveCar=true;
                         this.happyCustomer = true;
                         park.collectCar(this.id);
                         outsideWorld.backToWorkByCar();
@@ -97,7 +100,6 @@ public class Customer extends Thread {
                     break;
 
                 case NORMAL_LIFE_WITHOUT_CAR:
-                    haveCar = false;
 					outsideWorld.goToReception();
                     break;
             }
@@ -139,15 +141,15 @@ public class Customer extends Thread {
 	 * @return a String representing the current car of a customer
 	 */
 	public String getCustomerVehicle(){
-		if(haveReplacementCar)
-			return "R"+Integer.toString(replacementCar);
-		else if(haveCar)
+		if(!haveReplacementCar && !haveCar)
+			return "--";
+		else if(!haveReplacementCar)
 			if(id<10)
 				return "0"+Integer.toString(id);
 			else
 				return Integer.toString(id);
 		else{
-			return "--";
+			return "R"+Integer.toString(replacementCar);
 		}
 	}
 	

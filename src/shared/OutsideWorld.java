@@ -37,7 +37,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      */
     @Override
     public synchronized void backToWorkByBus() {
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
+		((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
         if (!((Customer) Thread.currentThread()).carRepaired) {
             waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
             notifyAll();

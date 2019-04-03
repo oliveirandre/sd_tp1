@@ -5,17 +5,15 @@
  */
 package shared;
 
+import entities.CustomerState;
+
 /**
  *
  * @author andre
  */
 public interface ICustomerL {
-
-    public void queueIn(int id);
-
-    public void talkWithManager();
-
-    public void collectKey();
-
-    public void payForTheService();
+	public void queueIn(int id, CustomerState state);
+	public void talkWithManager();
+	public void collectKey();
+	public void payForTheService();
 }

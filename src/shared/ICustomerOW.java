@@ -5,19 +5,16 @@
  */
 package shared;
 
+import entities.CustomerState;
+
 /**
  *
  * @author andre
  */
 public interface ICustomerOW {
-
-    public void decideOnRepair();
-
-    public void goToRepairShop();
-
+    public void decideOnRepair(int id, CustomerState state);
+    public void goToRepairShop(int idCustomer, CustomerState state);
     public void backToWorkByBus();
-
     public void backToWorkByCar();
-
-    public void goToReception();
+    public void goToReception(int idCustomer, CustomerState state);
 }

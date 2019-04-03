@@ -5,19 +5,15 @@
  */
 package shared;
 
+import entities.CustomerState;
+
 /**
  *
  * @author andre
  */
 public interface ICustomerP {
-
-    public void parkCar(int id);
-
+	public void parkCar(int id, CustomerState state);
     public void collectCar(int id);
-
-    public int findCar();
-
-    public void backToWorkByCar();
-
-    public void returnReplacementCar(int id);
+    public int findCar(int id, CustomerState state);
+    public void returnReplacementCar(int replacementCar, int id, CustomerState state);
 }

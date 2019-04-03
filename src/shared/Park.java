@@ -42,11 +42,11 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * @param id the id of the car
      */
     @Override
-    public synchronized void parkCar(int id) {
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+    public synchronized void parkCar(int id, CustomerState state) {
+        //((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         carsParked.add(id);
         parkingSlots--;
-		repairShop.updateFromPark(carsParked, replacementCars);
+		repairShop.updateFromPark(carsParked, replacementCars, id, state);
     }
 
     /**
@@ -68,27 +68,19 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * @return an Integer representing the replacement car id
      */
     @Override
-    public synchronized int findCar() {
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
+    public synchronized int findCar(int id, CustomerState state) {
+        //((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
         if (reserve.containsKey(((Customer) Thread.currentThread()).getCustomerId())) {
             int n = reserve.get(((Customer) Thread.currentThread()).getCustomerId());
             reserve.remove(((Customer) Thread.currentThread()).getCustomerId());
             replacementCars.remove(n);
-			repairShop.updateFromPark(carsParked, replacementCars);
+			repairShop.updateFromPark(carsParked, replacementCars, id, state);
             notifyAll();
             return n;
         } else {
+			repairShop.updateFromPark(carsParked, replacementCars, id, state);
             return 0;
         }
-    }
-
-    /**
-     * Customer's method. Customer goes back into his normal life, either with a
-     * replacement car or with his own car.
-     */
-    @Override
-    public synchronized void backToWorkByCar() {
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
     }
 
     /**
@@ -111,10 +103,10 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * @param id the replacement car's id
      */
     @Override
-    public synchronized void returnReplacementCar(int id) {
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+    public synchronized void returnReplacementCar(int id, int idCustomer, CustomerState state) {
+        //((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         replacementCars.add(id);
-		repairShop.updateFromPark(carsParked, replacementCars);
+		repairShop.updateFromPark(carsParked, replacementCars, id, state);
     }
 
     /**

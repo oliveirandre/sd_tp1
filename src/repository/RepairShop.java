@@ -76,14 +76,14 @@ public class RepairShop {
 		reportStatus();
 	}
 	
-	public synchronized void updateFromLounge(int idCustomer, CustomerState state){
+	public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired, int idCustomer, CustomerState state){
 		customersStates[idCustomer] = state;
-		reportStatus();
+		updateFromLounge(replacementQueue, customersQueue, carsRepaired);
 	}
 	
-	public synchronized void updateFromLounge(int idManager, ManagerState state){
+	public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired, int idManager, ManagerState state){
 		managerState = state;
-		reportStatus();
+		updateFromLounge(replacementQueue, customersQueue, carsRepaired);
 	}
 	
 	public synchronized void updateFromPark(List<Integer> carsParked, Queue<Integer> replacementCars){
@@ -92,9 +92,9 @@ public class RepairShop {
 		reportStatus();
 	}
 	
-	public synchronized void updateFromPark(int idCustomer, CustomerState state){
+	public synchronized void updateFromPark(List<Integer> carsParked, Queue<Integer> replacementCars, int idCustomer, CustomerState state){
 		customersStates[idCustomer] = state;
-		reportStatus();
+		updateFromPark(carsParked, replacementCars);
 	}
 	
 	public synchronized void updateFromOutsideWorld(int idCustomer, CustomerState state){
@@ -115,14 +115,14 @@ public class RepairShop {
 		reportStatus();
 	}
 	
-	public synchronized void updateFromRepairArea(ManagerState state){
+	public synchronized void updateFromRepairArea(int nRequestsManager, HashMap<Integer, Piece> piecesToBeRepaired, boolean[] flagPartMissing, HashMap<EnumPiece, Integer> stock, ManagerState state){
 		managerState = state;
-		reportStatus();
+		updateFromRepairArea(nRequestsManager, piecesToBeRepaired, flagPartMissing, stock);
 	}
 	
-	public synchronized void updateFromRepairArea(int idMechanic, MechanicState state){
+	public synchronized void updateFromRepairArea(int nRequestsManager, HashMap<Integer, Piece> piecesToBeRepaired, boolean[] flagPartMissing, HashMap<EnumPiece, Integer> stock, int idMechanic, MechanicState state){
 		mechanicsStates[idMechanic] = state;
-		reportStatus();
+		updateFromRepairArea(nRequestsManager, piecesToBeRepaired, flagPartMissing, stock);
 	}
 	
 	

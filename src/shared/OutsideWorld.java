@@ -5,23 +5,29 @@ import entities.CustomerState;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import repository.RepairShop;
 
 /**
  *
  * @author andre and joao
  */
 public class OutsideWorld implements ICustomerOW, IManagerOW {
-
+	private RepairShop repairShop;
     private final List<Integer> repairedCars = new ArrayList<>();
     private final List<Integer> waitingForCar = new ArrayList<>();
-
+	
+	public OutsideWorld(RepairShop repairShop){
+		this.repairShop = repairShop;
+		
+	}
     /**
      * Customer's method. The customer starts his life span in the outside world
      * until he decides do repair his car. Furthermore, he also decides if he is
      * going to need a replacement car or not.
      */
     @Override
-    public synchronized void decideOnRepair() {
+    public synchronized void decideOnRepair(int id, CustomerState state) {
+		repairShop.updateFromOutsideWorld(id, state);
         Random requires = new Random();
         Random n = new Random();
         int randomNum = 0;
@@ -37,8 +43,8 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      */
     @Override
     public synchronized void backToWorkByBus() {
-		((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
-        if (!((Customer) Thread.currentThread()).carRepaired) {
+		//((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
+		if (!((Customer) Thread.currentThread()).carRepaired) {
             waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
             notifyAll();
             while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
@@ -60,7 +66,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      */
     @Override
     public synchronized void backToWorkByCar() {
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
+        //((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
         if (!((Customer) Thread.currentThread()).carRepaired) {
             waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
             notifyAll();
@@ -80,8 +86,9 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      * car, he goes to the repair shop's park to park his car.
      */
     @Override
-    public synchronized void goToRepairShop() {
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
+    public synchronized void goToRepairShop(int idCustomer, CustomerState state) {
+		repairShop.updateFromOutsideWorld(idCustomer, state);
+        //((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
         //System.out.println("Customer " + ((Customer) Thread.currentThread()).getCustomerId() + " - Going to repair shop.");
     }
 
@@ -90,8 +97,9 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      * reception to speak to the manager.
      */
     @Override
-    public synchronized void goToReception() {
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+    public synchronized void goToReception(int idCustomer, CustomerState state) {
+		repairShop.updateFromOutsideWorld(idCustomer, state);
+        //((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
     }
 
     /**

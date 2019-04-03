@@ -54,37 +54,45 @@ public class Customer extends Thread {
             switch (this.state) {
                 case NORMAL_LIFE_WITH_CAR:
                     if (!haveReplacementCar) {
-                        outsideWorld.decideOnRepair();
+                        outsideWorld.decideOnRepair(this.id, this.state);
                     }
-					outsideWorld.goToRepairShop();
+					outsideWorld.goToRepairShop(this.id, this.state); // nao faz nada
+					setCustomerState(CustomerState.PARK);
                     break;
 
                 case PARK:
                     if (!haveReplacementCar) {
-                        park.parkCar(this.id);
+                        park.parkCar(this.id, this.state);
                     } else {
-						park.returnReplacementCar(replacementCar);
+						park.returnReplacementCar(replacementCar, this.id, this.state);
 						haveReplacementCar = false;
                     }
+					setCustomerState(CustomerState.RECEPTION);
                     break;
 
                 case WAITING_FOR_REPLACE_CAR:
                     haveReplacementCar = true;
-					replacementCar = park.findCar();
+					replacementCar = park.findCar(this.id, this.state);
+					setCustomerState(CustomerState.PARK);
                     outsideWorld.backToWorkByCar();
+					setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
                     break;
 
                 case RECEPTION:
-                    lounge.queueIn(this.id);
+                    lounge.queueIn(this.id, this.state);
 					haveCar=false;
                     if (!carRepaired) {
                         lounge.talkWithManager();
                         if (requiresCar) {
                             haveReplacementCar=true;
+							setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
 							lounge.collectKey();
+							if(carRepaired)
+								setCustomerState(CustomerState.RECEPTION);
                         } else {
 							haveReplacementCar=false;
 							outsideWorld.backToWorkByBus();
+							setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
                         }
                     } else {
                         lounge.talkWithManager();
@@ -93,11 +101,13 @@ public class Customer extends Thread {
                         this.happyCustomer = true;
                         park.collectCar(this.id);
                         outsideWorld.backToWorkByCar();
+						setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
                     }
                     break;
 
                 case NORMAL_LIFE_WITHOUT_CAR:
-					outsideWorld.goToReception();
+					outsideWorld.goToReception(this.id, this.state); //nao faz nada
+					setCustomerState(CustomerState.RECEPTION);
                     break;
             }
         }
@@ -108,7 +118,7 @@ public class Customer extends Thread {
 	 * 
 	 * @param state state of customer
 	 */
-	public void setCustomerState(CustomerState state) {
+	private void setCustomerState(CustomerState state) {
         if (state == this.state) {
             return;
         }

@@ -65,7 +65,7 @@ public class Main {
 		
 
 		lounge = new Lounge(nTypePieces, repairShop);
-		outsideWorld = new OutsideWorld();
+		outsideWorld = new OutsideWorld(repairShop);
 		park = new Park(nReplacementCars, repairShop);
 		repairArea = new RepairArea(nTypePieces, repairShop);
 		supplierSite = new SupplierSite(nTypePieces, repairShop);

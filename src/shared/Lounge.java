@@ -51,9 +51,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      * @param id customer's id
      */
     @Override
-    public synchronized void queueIn(int id) {
+    public synchronized void queueIn(int id, CustomerState state) {
         customersQueue.add(id);
-		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired);
+		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, id, state);
         notifyAll();
         while (nextCustomer != id && !managerAvailable) {
             try {
@@ -190,7 +190,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 */
 	@Override
     public synchronized void collectKey() {
-        ((Customer) Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
+        //((Customer) Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
 		replacementQueue.add(((Customer) Thread.currentThread()).getCustomerId());
 		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired);
         notify();
@@ -204,7 +204,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         if (carsRepaired.contains(((Customer) Thread.currentThread()).getCustomerId())) {
             carsRepaired.remove(((Customer) Thread.currentThread()).getCustomerId());
             replacementQueue.remove(((Customer) Thread.currentThread()).getCustomerId());
-            ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
+            //((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
             ((Customer) Thread.currentThread()).carRepaired = true;
 			repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired);
         }

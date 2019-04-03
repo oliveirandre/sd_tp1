@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import repository.Piece;
+import repository.RepairShop;
 
 /**
  *
@@ -28,8 +29,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     private final boolean enoughWork = false;
     private final Queue<Integer> customersToCallQueue = new LinkedList<>();
     private final Queue<Integer> carsRepaired = new LinkedList<>();
-    private final boolean[] flagPartMissing;
+    
     private boolean readyToReceive;
+	private RepairShop repairShop;
 
     private static HashMap<Integer, String> order = new HashMap<Integer, String>();
 
@@ -37,8 +39,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 *
 	 * @param nTypePieces
 	 */
-	public Lounge(int nTypePieces) {
-        flagPartMissing = new boolean[nTypePieces];
+	public Lounge(int nTypePieces, RepairShop repairShop) {
+        
+		this.repairShop = repairShop;
     }
 
     /**
@@ -50,6 +53,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void queueIn(int id) {
         customersQueue.add(id);
+		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired);
         notifyAll();
         while (nextCustomer != id && !managerAvailable) {
             try {
@@ -92,6 +96,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized String talkWithCustomer(boolean availableCar) {
         nextCustomer = customersQueue.poll();
+		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired);
         managerAvailable = true;
         notifyAll();
         managerAvailable = false;
@@ -124,6 +129,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             }
         }
         customerGetRepCar = replacementQueue.poll();
+		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired);
         notifyAll();
     }
 
@@ -186,6 +192,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized void collectKey() {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
 		replacementQueue.add(((Customer) Thread.currentThread()).getCustomerId());
+		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired);
         notify();
         while (customerGetRepCar != ((Customer) Thread.currentThread()).getCustomerId() && !carsRepaired.contains(((Customer) Thread.currentThread()).getCustomerId())) {
             try {
@@ -199,7 +206,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             replacementQueue.remove(((Customer) Thread.currentThread()).getCustomerId());
             ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
             ((Customer) Thread.currentThread()).carRepaired = true;
+			repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired);
         }
+		
     }
 
 	/**
@@ -278,7 +287,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      */
     @Override
     public synchronized Piece getPieceToReStock() {
-        return piecesQueue.poll();
+		return piecesQueue.poll();
     }
 
     /**
@@ -313,6 +322,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             carsRepaired.add(id);
             notifyAll();
             customersToCallQueue.remove(id);
+			repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired);
             return true;
         } else {
             return false;
@@ -354,8 +364,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      * @return an array of booleans that is false if the manager was alerted
 	 * that that piece is missing
 	 * 
-     */
+     *//*
     public boolean[] getFlagPartMissing() {
         return flagPartMissing;
-    }
+    }*/
 }

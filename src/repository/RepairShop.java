@@ -1,26 +1,15 @@
 package repository;
 
-import entities.Customer;
-import entities.Manager;
-import entities.Mechanic;
+import entities.CustomerState;
+import entities.ManagerState;
+import entities.MechanicState;
 import genclass.GenericIO;
 import genclass.TextFile;
-import shared.ICustomerL;
-import shared.ICustomerOW;
-import shared.ICustomerP;
-import shared.IManagerL;
-import shared.IManagerOW;
-import shared.IManagerP;
-import shared.IManagerRA;
-import shared.IManagerSS;
-import shared.IMechanicL;
-import shared.IMechanicP;
-import shared.IMechanicRA;
-import shared.Lounge;
-import shared.OutsideWorld;
-import shared.Park;
-import shared.RepairArea;
-import shared.SupplierSite;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  *
@@ -28,109 +17,133 @@ import shared.SupplierSite;
  */
 public class RepairShop {
 
-    private int nManagers;
     private int nMechanics;
     private int nCustomers;
-    private int nReplacementCars;
-    private int nTypePieces;
-
-    private Customer customers[];
-    private Mechanic mechanics[];
-    private Manager manager;
-
-    //shared
-    private Lounge lounge;
-    private Park park;
-    private OutsideWorld outsideWorld;
-    private RepairArea repairArea;
-    private SupplierSite supplierSite;
-
+	private MechanicState[] mechanicsStates;
+	private CustomerState[] customersStates;	
+	private ManagerState managerState;
+	
     private String fileName = "repairShop.log";
-
+	
+	
+	//lounge updates
+	private Queue<Integer> replacementQueue = new LinkedList<>();
+    private Queue<Integer> customersQueue = new LinkedList<>();
+	private boolean[] flagPartMissing;
+	private Queue<Integer> carsRepaired = new LinkedList<>();
+	//park updates
+	private List<Integer> carsParked = new ArrayList<>();
+    private Queue<Integer> replacementCars = new LinkedList<>();
+	//supplierSite updates
+	private int[] piecesBought;
+	//repairArea updates
+	private int nRequestsManager;
+	private HashMap<Integer, Piece> piecesToBeRepaired;
+	private HashMap<EnumPiece, Integer> stock;
+	
 	/**
 	 * RepairShop's constructor. This is where everything is initialized and
 	 * the log start.
-	 * @param nManagers
-	 * @param nMechanics
-	 * @param nCustomers
-	 * @param nTypePieces
-	 * @param nReplacementCars
-	 * @param fileName
+	 * @param nMechanics number of mechanics
+	 * @param nCustomers number of customers
+	 * @param fileName log file name
 	 */
-	public RepairShop(int nManagers, int nMechanics, int nCustomers, int nTypePieces, int nReplacementCars, String fileName) {
-        this.nManagers = nManagers;
-        this.nReplacementCars = nReplacementCars;
-        this.nCustomers = nCustomers;
+	public RepairShop( int nMechanics, int nCustomers, String fileName) {
         this.nMechanics = nMechanics;
-        this.nTypePieces = nTypePieces;
-        mechanics = new Mechanic[nMechanics];
-        customers = new Customer[nCustomers];     // array de threads cliente
-
-        lounge = new Lounge(nTypePieces);
-        outsideWorld = new OutsideWorld();
-        park = new Park(nReplacementCars);
-        repairArea = new RepairArea(nTypePieces);
-        supplierSite = new SupplierSite(nTypePieces);
-
-        for (int i = 0; i < nCustomers; i++) {
-            customers[i] = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i + 1, this);
-        }
-
-        for (int i = 0; i < nMechanics; i++) {
-            mechanics[i] = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i + 1, this);
-        }
-
-        for (int i = 0; i < nManagers; i++) {
-            manager = new Manager((IManagerL) lounge, (IManagerRA) repairArea, (IManagerSS) supplierSite, (IManagerOW) outsideWorld, (IManagerP) park, nCustomers, this);
-        }
-
-        for (int i = 0; i < nManagers; i++) {
-            manager.start();
-        }
-        for (int i = 0; i < nMechanics; i++) {
-            mechanics[i].start();
-        }
-
-        for (int i = 0; i < nCustomers; i++) {
-            customers[i].start();
-        }
-
+		this.nCustomers = nCustomers;
+		mechanicsStates = new MechanicState[nMechanics];
+		customersStates = new CustomerState[nCustomers];
+		
+		for (int i = 0; i < mechanicsStates.length; i++) {
+			mechanicsStates[i] = MechanicState.values()[0];
+		}
+		
+		for (int i = 0; i < mechanicsStates.length; i++) {
+			customersStates[i] = CustomerState.values()[0];
+		}
+		managerState = ManagerState.values()[0];
+		
         if ((fileName != null) && !("".equals(fileName))) {
             this.fileName = fileName;
         }
-        reportInitialStatus();
 		
-		for (int j = 0; j < nCustomers; j++) {
-            try {
-                customers[j].join();
-                System.err.println("Customer " + (j + 1) + " Died ");
-            } catch (InterruptedException ex) {
-                //Escrever para o log
-            }
-        }
-		
-        for (int j = 0; j < nMechanics; j++) {
-            try {
-                mechanics[j].join();
-                System.err.println("Mechanic " + (j + 1) + " Died ");
-            } catch (InterruptedException ex) {
-                //Escrever para o log
-            }
-        }
-
-        try {
-            manager.join();
-            System.err.println("Manager Died ");
-            //System.err.println("----------");
-        } catch (InterruptedException ex) {
-            //Escrever para o log
-        }
-
-        
-
     }
+	
+	public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired){
+		this.replacementQueue = replacementQueue;
+		this.customersQueue = customersQueue;
+		this.carsRepaired = carsRepaired;
+		reportStatus();
+	}
+	
+	public synchronized void updateFromLounge(int idCustomer, CustomerState state){
+		customersStates[idCustomer] = state;
+		reportStatus();
+	}
+	
+	public synchronized void updateFromLounge(int idManager, ManagerState state){
+		managerState = state;
+		reportStatus();
+	}
+	
+	public synchronized void updateFromPark(List<Integer> carsParked, Queue<Integer> replacementCars){
+		this.carsParked = carsParked;
+		this.replacementCars = replacementCars;
+		reportStatus();
+	}
+	
+	public synchronized void updateFromPark(int idCustomer, CustomerState state){
+		customersStates[idCustomer] = state;
+		reportStatus();
+	}
+	
+	public synchronized void updateFromOutsideWorld(int idCustomer, CustomerState state){
+		customersStates[idCustomer] = state;
+		reportStatus();
+	}
+	
+	public synchronized void updateFromSupplierSite(int[] piecesBought){
+		this.piecesBought = piecesBought;
+		reportStatus();
+	}
+	
+	public synchronized void updateFromRepairArea(int nRequestsManager, HashMap<Integer, Piece> piecesToBeRepaired, boolean[] flagPartMissing, HashMap<EnumPiece, Integer> stock){
+		this.nRequestsManager = nRequestsManager;
+		this.piecesToBeRepaired = piecesToBeRepaired;
+		this.flagPartMissing = flagPartMissing;
+		this.stock = stock;
+		reportStatus();
+	}
+	
+	public synchronized void updateFromRepairArea(ManagerState state){
+		managerState = state;
+		reportStatus();
+	}
+	
+	public synchronized void updateFromRepairArea(int idMechanic, MechanicState state){
+		mechanicsStates[idMechanic] = state;
+		reportStatus();
+	}
+	
+	
+	private int[] getNumberVehiclesWaitingForParts(int nTypePieces) {
+        int[] nVehiclesWaitingForParts = new int[nTypePieces];
 
-    private void reportInitialStatus() {
+        for (int i = 0; i < nTypePieces; i++) {
+            nVehiclesWaitingForParts[i] = 0;
+        }
+        
+		for (int j = 0; j < nTypePieces; j++) {
+			for (Piece value : piecesToBeRepaired.values()) {
+				if (value.getIdTypePiece() == j) {
+					nVehiclesWaitingForParts[j]++;
+				}
+			}
+		}
+        return nVehiclesWaitingForParts;
+    }
+	
+    public void reportInitialStatus() {
         TextFile log = new TextFile(); // instanciaÃ§Ã£o de uma variÃ¡vel de tipo ficheiro de texto
 
         //fileName = "repairShop.log";
@@ -150,7 +163,7 @@ public class RepairShop {
 	/**
 	 * Method to update log in every state change.
 	 */
-	public synchronized void reportStatus() {
+	private void reportStatus() {
         TextFile log = new TextFile(); // instanciação de uma variável de tipo ficheiro de texto
 
         String lineStatus = ""; // linha a imprimir
@@ -161,10 +174,10 @@ public class RepairShop {
         }
         lineStatus += " MAN  MECHANIC                                                                  CUSTOMER\n";
         //( (Customer) Thread.currentThread() ).carRepaired
-        lineStatus += manager.getManagerState() + "  ";
+        lineStatus += managerState.toString() + "  ";
 
         for (int i = 0; i < nMechanics; i++) {
-            lineStatus += mechanics[i].getMechanicState() + " ";
+            lineStatus += mechanicsStates[i].toString() + " ";
         }
         //Manager states: aCtm, cwtd, gnwp, pjob, alrC, repS
         //Mechanic stats: wfw, ftc, amg, cks
@@ -175,17 +188,27 @@ public class RepairShop {
         //P00 # (requires replacementCar; T or F)
         //R00 #  if it has already been repaired (T or F)
         lineStatus += " ";
-
-        String[] C = new String[nCustomers];
-
+		String[] customersState = new String[nCustomers];
+        String[] vehicleDriven = new String[nCustomers];
+		String[] requiresReplacement = new String[nCustomers];
+		String[] repaired = new String[nCustomers];
+		
+		
+		for (int i = 0; i < nCustomers; i++) {
+			if(carsRepaired.contains(i))
+				repaired[i] = "T";
+			else repaired[i] = "F";
+		}
+		
+		
         int t = 20;
         for (int j = 0; j < 30; j += 10) {
-            for (int i = j; i < nCustomers - t; i++) {
-                lineStatus += customers[i].getCustomerState() + "  "
+            /*for (int i = j; i < nCustomers - t; i++) {
+                lineStatus += customersState[i].toString() + "  "
                         + customers[i].getCustomerVehicle() + "  "
                         + customers[i].requiresReplacementCar() + "   "
-                        + customers[i].vehicleRepaired() + "  ";
-            }
+                        + repaired[i] + "  ";
+            }*/
             t -= 10;
             lineStatus += "\n               ";
         }
@@ -205,40 +228,40 @@ public class RepairShop {
         lineStatus += "    LOUNGE        PARK                             REPAIR AREA"
                 + "                                           SUPPLIER SITE\n";
 
-        if (lounge.getCustomersQueueSize() < 10) {
-            InQ = "0" + Integer.toString(lounge.getCustomersQueueSize());
+        if (customersQueue.size() < 10) {
+            InQ = "0" + Integer.toString(customersQueue.size());
         } else {
-            InQ = Integer.toString(lounge.getCustomersQueueSize());
+            InQ = Integer.toString(customersQueue.size());
         }
 
-        if (lounge.getCustomersReplacementQueueSize() < 10) {
-            WtK = "0" + Integer.toString(lounge.getCustomersReplacementQueueSize());
+        if (replacementQueue.size() < 10) {
+            WtK = "0" + Integer.toString(replacementQueue.size());
         } else {
-            WtK = Integer.toString(lounge.getCustomersReplacementQueueSize());
+            WtK = Integer.toString(replacementQueue.size());
         }
 
-        if (lounge.getCarsRepairedSize() < 10) {
-            NRV = "0" + Integer.toString(lounge.getCarsRepairedSize());
+        if (carsRepaired.size() < 10) {
+            NRV = "0" + Integer.toString(carsRepaired.size());
         } else {
-            NRV = Integer.toString(lounge.getCarsRepairedSize());
+            NRV = Integer.toString(carsRepaired.size());
         }
 
-        if (park.getCarsParkedSize() < 10) {
-            NCV = "0" + Integer.toString(park.getCarsParkedSize());
+        if (carsParked.size() < 10) {
+            NCV = "0" + Integer.toString(carsParked.size());
         } else {
-            NCV = Integer.toString(park.getCarsParkedSize());
+            NCV = Integer.toString(carsParked.size());
         }
 
-        if (park.getReplacementCarsSize() < 10) {
-            NPV = "0" + Integer.toString(park.getReplacementCarsSize());
+        if (replacementCars.size() < 10) {
+            NPV = "0" + Integer.toString(replacementCars.size());
         } else {
-            NPV = Integer.toString(park.getReplacementCarsSize());
+            NPV = Integer.toString(replacementCars.size());
         }
 
-        if (repairArea.getRequestsManagerSize() < 10) {
-            NSRQ = "0" + Integer.toString(repairArea.getRequestsManagerSize());
+        if (nRequestsManager < 10) {
+            NSRQ = "0" + Integer.toString(nRequestsManager);
         } else {
-            NSRQ = Integer.toString(repairArea.getRequestsManagerSize());
+            NSRQ = Integer.toString(nRequestsManager);
         }
 
         lineStatus += "                 "
@@ -261,29 +284,29 @@ public class RepairShop {
 
         //ALTERAR AQUI COM ARGUMENTO A ENTRAR nTypePieces
         for (int i = 0; i < nTypePieces; i++) {
-            Object[] temp = repairArea.getPieces().values().toArray();
+            Object[] temp = stock.values().toArray();
             if ((int) temp[i] < 10) {
                 Prt[i] = "0" + Integer.toString((int) temp[i]);
             } else {
                 Prt[i] = "" + Integer.toString((int) temp[i]);
             }
 
-            if (repairArea.getNumberVehiclesWaitingForParts(nTypePieces)[i] < 10) {
-                NV[i] = "0" + repairArea.getNumberVehiclesWaitingForParts(nTypePieces)[i];
+            if (getNumberVehiclesWaitingForParts(nTypePieces)[i] < 10) {
+                NV[i] = "0" + getNumberVehiclesWaitingForParts(nTypePieces)[i];
             } else {
-                NV[i] = "" + repairArea.getNumberVehiclesWaitingForParts(nTypePieces)[i];
+                NV[i] = "" + getNumberVehiclesWaitingForParts(nTypePieces)[i];
             }
 
-            if (lounge.getFlagPartMissing()[i]) {
+            if (flagPartMissing[i]) {
                 S[i] = "T";
             } else {
                 S[i] = "F";
             }
 
-            if (supplierSite.getPiecesBought()[i] < 10) {
-                PP[i] = "0" + supplierSite.getPiecesBought()[i];
+            if (piecesBought[i] < 10) {
+                PP[i] = "0" + piecesBought[i];
             } else {
-                PP[i] = "" + supplierSite.getPiecesBought()[i];
+                PP[i] = "" + piecesBought[i];
             }
 
             lineStatus += Prt[i] + "    "

@@ -15,7 +15,6 @@ import shared.IManagerSS;
 public class Manager extends Thread {
 
     private ManagerState state;
-    private RepairShop repairShop;
 
     private final IManagerL lounge;
     private final IManagerRA repairArea;
@@ -40,16 +39,14 @@ public class Manager extends Thread {
 	 * @param outsideWorld
 	 * @param park
 	 * @param nCustomers
-	 * @param repairShop
 	 */
-	public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park, int nCustomers, RepairShop repairShop) {
+	public Manager(IManagerL lounge, IManagerRA repairArea, IManagerSS supplierSite, IManagerOW outsideWorld, IManagerP park, int nCustomers) {
         this.lounge = lounge;
         this.repairArea = repairArea;
         this.supplierSite = supplierSite;
         this.outsideWorld = outsideWorld;
         this.park = park;
         this.nCustomers = nCustomers;
-        this.repairShop = repairShop;
     }
 
     @Override
@@ -122,7 +119,6 @@ public class Manager extends Thread {
 	 * @param state state of manager
 	 */
 	public void setManagerState(ManagerState state) {
-        repairShop.reportStatus();
         if (this.state == state) {
             return;
         }

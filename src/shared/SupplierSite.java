@@ -3,6 +3,7 @@ package shared;
 import entities.Manager;
 import entities.ManagerState;
 import repository.Piece;
+import repository.RepairShop;
 
 /**
  *
@@ -12,6 +13,7 @@ public class SupplierSite implements IManagerSS {
 
     private Piece partNeeded;
     private int[] piecesBought;
+	private RepairShop repairShop;
 
     /**
      * SupplierSite constructor. Initializes the array containing pieces bought
@@ -19,11 +21,13 @@ public class SupplierSite implements IManagerSS {
      *
      * @param nTypePieces number of type of pieces
      */
-    public SupplierSite(int nTypePieces) {
-        piecesBought = new int[nTypePieces];
+    public SupplierSite(int nTypePieces, RepairShop repairShop) {
+        this.repairShop = repairShop;
+		piecesBought = new int[nTypePieces];
         for (int i = 0; i < nTypePieces; i++) {
             piecesBought[i] = 0;
         }
+		repairShop.updateFromSupplierSite(piecesBought);
     }
 
     /**
@@ -38,6 +42,7 @@ public class SupplierSite implements IManagerSS {
         int randomNum = 1 + (int) (Math.random() * ((5 - 1) + 1)); //between 1 and 6////
         this.partNeeded = partNeeded;
         piecesBought[partNeeded.getTypePiece().ordinal()] += randomNum;
+		repairShop.updateFromSupplierSite(piecesBought);
         return randomNum;
     }
 

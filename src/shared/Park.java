@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import repository.RepairShop;
 
 /**
  *
@@ -15,7 +16,8 @@ import java.util.Queue;
 public class Park implements ICustomerP, IMechanicP, IManagerP {
 
     private int parkingSlots = 50;
-
+	private RepairShop repairShop;
+	
     private final List<Integer> carsParked = new ArrayList<>();
     private final Queue<Integer> replacementCars = new LinkedList<>();
     private final HashMap<Integer, Integer> reserve = new HashMap<>();
@@ -25,10 +27,12 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      *
      * @param nReplacementCars the number of replacement cars
      */
-    public Park(int nReplacementCars) {
+    public Park(int nReplacementCars, RepairShop repairShop) {
+		this.repairShop = repairShop;
         for (int i = 1; i < nReplacementCars + 1; i++) {
             replacementCars.add(i);
         }
+		repairShop.updateFromPark(carsParked, replacementCars);
     }
 
     /**
@@ -42,6 +46,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         carsParked.add(id);
         parkingSlots--;
+		repairShop.updateFromPark(carsParked, replacementCars);
     }
 
     /**
@@ -53,6 +58,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     public synchronized void collectCar(int id) {
         carsParked.remove(new Integer(id));
         parkingSlots++;
+		repairShop.updateFromPark(carsParked, replacementCars);
     }
 
     /**
@@ -68,6 +74,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
             int n = reserve.get(((Customer) Thread.currentThread()).getCustomerId());
             reserve.remove(((Customer) Thread.currentThread()).getCustomerId());
             replacementCars.remove(n);
+			repairShop.updateFromPark(carsParked, replacementCars);
             notifyAll();
             return n;
         } else {
@@ -94,6 +101,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     public synchronized void getVehicle(int id) {
         carsParked.remove(new Integer(id));
         parkingSlots++;
+		repairShop.updateFromPark(carsParked, replacementCars);
     }
 
     /**
@@ -106,6 +114,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     public synchronized void returnReplacementCar(int id) {
         ((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         replacementCars.add(id);
+		repairShop.updateFromPark(carsParked, replacementCars);
     }
 
     /**
@@ -118,6 +127,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     public synchronized void returnVehicle(int id) {
         carsParked.add(id);
         parkingSlots--;
+		repairShop.updateFromPark(carsParked, replacementCars);
     }
 
     /**

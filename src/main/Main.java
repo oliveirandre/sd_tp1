@@ -5,6 +5,17 @@ import entities.Customer;
 import entities.Manager;
 import entities.Mechanic;
 import repository.RepairShop;
+import shared.ICustomerL;
+import shared.ICustomerOW;
+import shared.ICustomerP;
+import shared.IManagerL;
+import shared.IManagerOW;
+import shared.IManagerP;
+import shared.IManagerRA;
+import shared.IManagerSS;
+import shared.IMechanicL;
+import shared.IMechanicP;
+import shared.IMechanicRA;
 import shared.Lounge;
 import shared.OutsideWorld;
 import shared.Park;
@@ -49,23 +60,15 @@ public class Main {
 		
 		RepairShop repairShop;
 		
-		repairShop = new RepairShop(nManagers, nMechanics, nCustomers, nTypePieces, nReplacementCars, fileName);
+		repairShop = new RepairShop(nMechanics, nCustomers, fileName);
 		
 		
-		
-		/*final int nCustomers = 29;
-		final int nMechanics = 2;
-		final int nManagers = 1;
-		final int nReplacementCars = 3;
-		final int nTypePieces = 3;
 
-		log = Log2.getInstance();
-
-		lounge = new Lounge(nTypePieces);
+		lounge = new Lounge(nTypePieces, repairShop);
 		outsideWorld = new OutsideWorld();
-		park = new Park(nReplacementCars);
-		repairArea = new RepairArea(nTypePieces);
-		supplierSite = new SupplierSite(nTypePieces);
+		park = new Park(nReplacementCars, repairShop);
+		repairArea = new RepairArea(nTypePieces, repairShop);
+		supplierSite = new SupplierSite(nTypePieces, repairShop);
 
 		// initialization of threads
 		for (int i = 0; i < nManagers; i++) {
@@ -84,7 +87,7 @@ public class Main {
 			customers[i] = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i + 1);
 			customers[i].start();
 		}
-		
+		repairShop.reportInitialStatus();
 		
 		//reportInitialStatus(nMechanics, nCustomers);
 
@@ -92,7 +95,6 @@ public class Main {
 			try {
 				manager.join();
 				System.err.println("Manager " + j + " Died ");
-                //System.err.println("----------");
 			} catch (InterruptedException ex) {
 				//Escrever para o log
 			}
@@ -114,8 +116,6 @@ public class Main {
 			} catch (InterruptedException ex) {
 				//Escrever para o log
 			}
-		}*/
-		
-		
+		}
 	}
 }

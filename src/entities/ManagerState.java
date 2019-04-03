@@ -7,16 +7,16 @@ package entities;
 public enum ManagerState {
 
     //Manager states: aCtm, cwtd, gnwp, pjob, aCtm, rSto
-    ATTENDING_CUSTOMER {
-        @Override
-        public String toString() {
-            return "aCtm";
-        }
-    },
     CHECKING_WHAT_TO_DO {
         @Override
         public String toString() {
             return "cwtd";
+        }
+    },
+	ATTENDING_CUSTOMER {
+        @Override
+        public String toString() {
+            return "aCtm";
         }
     },
     GETTING_NEW_PARTS {

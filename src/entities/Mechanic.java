@@ -14,7 +14,6 @@ import shared.IMechanicRA;
 public class Mechanic extends Thread {
 
     private MechanicState state;
-    private RepairShop repairShop;
     private final IMechanicP park;
     private final IMechanicRA repairArea;
     private final IMechanicL lounge;
@@ -26,14 +25,12 @@ public class Mechanic extends Thread {
 	 * @param repairArea
 	 * @param lounge
 	 * @param id
-	 * @param repairShop
 	 */
-	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge, int id, RepairShop repairShop) {
+	public Mechanic(IMechanicP park, IMechanicRA repairArea, IMechanicL lounge, int id) {
         this.park = park;
         this.repairArea = repairArea;
         this.lounge = lounge;
         this.id = id;
-        this.repairShop = repairShop;
     }
 
     HashMap<Integer, Piece> piecesToBeRepaired;
@@ -103,7 +100,6 @@ public class Mechanic extends Thread {
 	 * @param state state of mechanic
 	 */
     public void setMechanicState(MechanicState state) {
-        repairShop.reportStatus();
         if (this.state == state) {
             return;
         }

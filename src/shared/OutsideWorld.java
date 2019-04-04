@@ -27,7 +27,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      * going to need a replacement car or not.
      */
     @Override
-    public synchronized void decideOnRepair(int id, CustomerState state) {
+    public synchronized boolean decideOnRepair(int id, CustomerState state) {
 		repairShop.updateFromOutsideWorld(id, state);
         Random requires = new Random();
         Random n = new Random();
@@ -35,7 +35,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
         while (randomNum != 1) {
             randomNum = n.nextInt((100 - 1) + 1) + 1;
         }
-        ((Customer) Thread.currentThread()).requiresCar = requires.nextBoolean();
+        return requires.nextBoolean();
     }
 
     /**
@@ -43,22 +43,23 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      * for the manager to tell him that his car has been repaired.
      */
     @Override
-    public synchronized void backToWorkByBus(int id) {
+    public synchronized boolean backToWorkByBus(boolean carRepaired, int id) {
 		//((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
         vehicleDriven[id]="--";
-		if (!((Customer) Thread.currentThread()).carRepaired) {
-            waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
+		if (!carRepaired) {
+            waitingForCar.add(id);
             notifyAll();
-            while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
+            while (!repairedCars.contains(id)) {
                 try {
                     wait();
                 } catch (Exception e) {
 
                 }
             }
-            repairedCars.remove(new Integer(((Customer) Thread.currentThread()).getCustomerId()));
-            ((Customer) Thread.currentThread()).carRepaired = true;
+            repairedCars.remove(new Integer(id));
+            return true;
         }
+        return false;
     }
 
     /**
@@ -67,24 +68,25 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      * been repaired.
      */
     @Override
-    public synchronized void backToWorkByCar(int replacementCar, int id) {
+    public synchronized boolean backToWorkByCar(boolean carRepaired, int replacementCar, int id) {
         //((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
         if(replacementCar==-1)
             vehicleDriven[id]=Integer.toString(id);
         else vehicleDriven[id]="R"+Integer.toString(replacementCar);
         
-        if (!((Customer) Thread.currentThread()).carRepaired) {
-            waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
+        if (!carRepaired) {
+            waitingForCar.add(id);
             notifyAll();
-            while (!repairedCars.contains(((Customer) Thread.currentThread()).getCustomerId())) {
+            while (!repairedCars.contains(id)) {
                 try {
                     wait();
                 } catch (Exception e) {
 
                 }
             }
-            ((Customer) Thread.currentThread()).carRepaired = true;
+            return true;
         }
+        return false;
     }
 
     /**

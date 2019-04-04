@@ -73,11 +73,11 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      * he requires a replacement car or not.
      */
     @Override
-    public synchronized void talkWithManager() {
-        if (((Customer) Thread.currentThread()).carRepaired) {
+    public synchronized void talkWithManager(boolean carRepaired, boolean requiresCar) {
+        if (carRepaired) {
             order.put(nextCustomer, "pay");
         } else {
-            if (((Customer) Thread.currentThread()).requiresCar) {
+            if (requiresCar) {
                 order.put(nextCustomer, "car");
                 requiresReplacementeCar[nextCustomer] = true;
             } else {
@@ -198,27 +198,29 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * repaired while waiting, he goes to the normal queue.
 	 */
 	@Override
-    public synchronized void collectKey() {
+    public synchronized boolean collectKey(int id) {
         //((Customer) Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
-		replacementQueue.add(((Customer) Thread.currentThread()).getCustomerId());
+		replacementQueue.add(id);
 		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementeCar);
         notify();
-        while (customerGetRepCar != ((Customer) Thread.currentThread()).getCustomerId() && !carsRepaired.contains(((Customer) Thread.currentThread()).getCustomerId())) {
+        while (customerGetRepCar != id && !carsRepaired.contains(id)) {
             try {
                 wait();
             } catch (Exception e) {
 
             }
         }
-        if (carsRepaired.contains(((Customer) Thread.currentThread()).getCustomerId())) {
-            carsRepaired.remove(((Customer) Thread.currentThread()).getCustomerId());
-            replacementQueue.remove(((Customer) Thread.currentThread()).getCustomerId());
+        if (carsRepaired.contains(id)) {
+            carsRepaired.remove(id);
+            replacementQueue.remove(id);
             requiresReplacementeCar[nextCustomer] = false;
             //((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
-            ((Customer) Thread.currentThread()).carRepaired = true;
+            //((Customer) Thread.currentThread()).carRepaired = true;
 			repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementeCar);
+            return true;
         }
-		
+		else
+            return false;
     }
 
 	/**

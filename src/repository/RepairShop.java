@@ -49,18 +49,27 @@ public class RepairShop {
 	 * @param nCustomers number of customers
 	 * @param fileName log file name
 	 */
-	public RepairShop( int nMechanics, int nCustomers, String fileName) {
+	public RepairShop(int nTypePieces, int nMechanics, int nCustomers, String fileName) {
         this.nMechanics = nMechanics;
 		this.nCustomers = nCustomers;
 		mechanicsStates = new MechanicState[nMechanics];
 		customersStates = new CustomerState[nCustomers];
+		requiresReplacementCar = new boolean[nCustomers];
+		piecesBought = new int[nTypePieces];
 		
-		for (int i = 0; i < mechanicsStates.length; i++) {
+		
+        for (int i = 0; i < nTypePieces; i++) {
+            piecesBought[i] = 0;
+        }
+		
+		
+		for (int i = 0; i < nMechanics; i++) {
 			mechanicsStates[i] = MechanicState.values()[0];
 		}
 		
-		for (int i = 0; i < mechanicsStates.length; i++) {
+		for (int i = 0; i < nCustomers; i++) {
 			customersStates[i] = CustomerState.values()[0];
+			requiresReplacementCar[i] = false;
 		}
 		managerState = ManagerState.values()[0];
 		

@@ -58,7 +58,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
             stock.put(pec.getTypePiece(), stock.get(pec.getTypePiece()) + 1);
 			flagPartMissing[pec.getIdTypePiece()] = false;
         }
-		repairShop.updateFromRepairArea(nRequestsManager, piecesToBeRepaired, flagPartMissing, stock);
+		//repairShop.updateFromRepairArea(nRequestsManager, piecesToBeRepaired, flagPartMissing, stock);
 
     }
 

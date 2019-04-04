@@ -33,7 +33,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
         for (int i = 1; i < nReplacementCars + 1; i++) {
             replacementCars.add(i);
         }
-		repairShop.updateFromPark(carsParked, replacementCars);
+		//repairShop.updateFromPark(carsParked, replacementCars);
     }
 
     /**

@@ -60,7 +60,7 @@ public class Main {
 		
 		RepairShop repairShop;
 		
-		repairShop = new RepairShop(nMechanics, nCustomers, fileName);
+		repairShop = new RepairShop(nTypePieces, nMechanics, nCustomers, fileName);
 		
 		
 

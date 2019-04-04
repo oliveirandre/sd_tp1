@@ -27,7 +27,7 @@ public class SupplierSite implements IManagerSS {
         for (int i = 0; i < nTypePieces; i++) {
             piecesBought[i] = 0;
         }
-		repairShop.updateFromSupplierSite(piecesBought);
+		//repairShop.updateFromSupplierSite(piecesBought);
     }
 
     /**

@@ -31,6 +31,7 @@ public class RepairShop {
     private Queue<Integer> customersQueue = new LinkedList<>();
 	private boolean[] flagPartMissing;
 	private Queue<Integer> carsRepaired = new LinkedList<>();
+    private boolean[] requiresReplacementCar;
 	//park updates
 	private List<Integer> carsParked = new ArrayList<>();
     private Queue<Integer> replacementCars = new LinkedList<>();
@@ -69,23 +70,29 @@ public class RepairShop {
 		
     }
 	
-	public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired){
+	public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired, boolean[] requiresReplacementCar){
 		this.replacementQueue = replacementQueue;
 		this.customersQueue = customersQueue;
 		this.carsRepaired = carsRepaired;
+        this.requiresReplacementCar = requiresReplacementCar;
 		reportStatus();
 	}
 	
-	public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired, int idCustomer, CustomerState state){
+	public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired, boolean[] requiresReplacementCar, int idCustomer, CustomerState state){
 		customersStates[idCustomer] = state;
-		updateFromLounge(replacementQueue, customersQueue, carsRepaired);
+		updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
 	}
 	
-	public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired, int idManager, ManagerState state){
+	public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired, boolean[] requiresReplacementCar, int idManager, ManagerState state){
 		managerState = state;
-		updateFromLounge(replacementQueue, customersQueue, carsRepaired);
+		updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
 	}
 	
+    public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired, boolean[] requiresReplacementCar, int idMechanic, MechanicState state){
+		mechanicsStates[idMechanic] = state;
+		updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
+	}
+    
 	public synchronized void updateFromPark(List<Integer> carsParked, Queue<Integer> replacementCars){
 		this.carsParked = carsParked;
 		this.replacementCars = replacementCars;
@@ -94,6 +101,11 @@ public class RepairShop {
 	
 	public synchronized void updateFromPark(List<Integer> carsParked, Queue<Integer> replacementCars, int idCustomer, CustomerState state){
 		customersStates[idCustomer] = state;
+		updateFromPark(carsParked, replacementCars);
+	}
+    
+    public synchronized void updateFromPark(List<Integer> carsParked, Queue<Integer> replacementCars, int idMechanic, MechanicState state){
+		mechanicsStates[idMechanic] = state;
 		updateFromPark(carsParked, replacementCars);
 	}
 	
@@ -184,7 +196,7 @@ public class RepairShop {
         //Customer stats: lwc, prk, wrc, rcp, lnc
 
         //S00 ### customer state 
-        //C00 ## vehicle driven by customer: own car – customer id; replacement car – R0, R1, R2 ; none - ‘-’ (# - 0 .. 29)
+        //C00 ## vehicle driven by customer: own car – customer id; replacement car – R0, R1, R2 ; none - ‘--’ (# - 0 .. 29)
         //P00 # (requires replacementCar; T or F)
         //R00 #  if it has already been repaired (T or F)
         lineStatus += " ";
@@ -198,17 +210,24 @@ public class RepairShop {
 			if(carsRepaired.contains(i))
 				repaired[i] = "T";
 			else repaired[i] = "F";
+            
+            ///VEHICLE DRIVEN REQUIREMENT
+            
+            if(requiresReplacementCar[i])
+                requiresReplacement[i]="T";
+            else requiresReplacement[i]="F";
 		}
 		
+        
 		
         int t = 20;
         for (int j = 0; j < 30; j += 10) {
-            /*for (int i = j; i < nCustomers - t; i++) {
-                lineStatus += customersState[i].toString() + "  "
-                        + customers[i].getCustomerVehicle() + "  "
-                        + customers[i].requiresReplacementCar() + "   "
+            for (int i = j; i < nCustomers - t; i++) {
+                lineStatus += customersState[i] + "  "
+                        + vehicleDriven[i] + "  "
+                        + requiresReplacement[i] + "   "
                         + repaired[i] + "  ";
-            }*/
+            }
             t -= 10;
             lineStatus += "\n               ";
         }

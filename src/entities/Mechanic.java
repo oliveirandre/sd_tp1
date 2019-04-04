@@ -47,47 +47,58 @@ public class Mechanic extends Thread {
         while (!noMoreWork) {
             switch (this.state) {
                 case WAITING_FOR_WORK:
-                    enoughWork = repairArea.readThePaper();
+                    enoughWork = repairArea.readThePaper(this.id, this.state);
+                    setMechanicState(MechanicState.WAITING_FOR_WORK);
                     if (enoughWork) {
                         noMoreWork = true;
                         break;
                     }
 
-                    idCarToFix = repairArea.startRepairProcedure();
+                    int temp = idCarToFix = repairArea.startRepairProcedure();
+                    if(temp==0) setMechanicState(MechanicState.WAITING_FOR_WORK);
+                    else setMechanicState(MechanicState.FIXING_CAR);
                     break;
                 case FIXING_CAR:
 
-                    park.getVehicle(idCarToFix);
+                    park.getVehicle(idCarToFix, this.id, this.state);
 
                     piecesToBeRepaired = repairArea.getPiecesToBeRepaired();
                     if (!piecesToBeRepaired.containsKey(idCarToFix)) {
                         repairArea.getRequiredPart(idCarToFix);
+                        setMechanicState(MechanicState.CHECKING_STOCK);
                         break;
                     }
 
-                    repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
-
+                    int fix = repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
+                    
+                    if(fix==0) setMechanicState(MechanicState.WAITING_FOR_WORK);
+                    
                     park.returnVehicle(idCarToFix);
 
-                    repairArea.repairConcluded();
+                    repairArea.repairConcluded(); //NAO FAZ NADA
+                    setMechanicState(MechanicState.ALERTING_MANAGER);
+                    
                     repairConcluded = true;
                     break;
 
                 case ALERTING_MANAGER:
                     if (!repairConcluded) {
-                        lounge.alertManager(piecesToBeRepaired.get(idCarToFix), idCarToFix);
+                        lounge.alertManager(piecesToBeRepaired.get(idCarToFix), idCarToFix, this.id, this.state);
                     } else {
-                        lounge.alertManager(null, idCarToFix);
+                        lounge.alertManager(null, idCarToFix, this.id, this.state);
                     }
+                    setMechanicState(MechanicState.WAITING_FOR_WORK);
                     repairConcluded = false;
                     break;
 
                 case CHECKING_STOCK:
-                    if (!repairArea.partAvailable(piecesToBeRepaired.get(idCarToFix))) {
+                    if (!repairArea.partAvailable(piecesToBeRepaired.get(idCarToFix), this.id, this.state)) {
                         repairArea.letManagerKnow(piecesToBeRepaired.get(idCarToFix), idCarToFix);
+                        setMechanicState(MechanicState.ALERTING_MANAGER);
                         park.returnVehicle(idCarToFix);
                     } else {
-                        repairArea.resumeRepairProcedure();
+                        repairArea.resumeRepairProcedure();//NAO FAZ NADA
+                        setMechanicState(MechanicState.FIXING_CAR);
                     }
                     break;
             }
@@ -99,7 +110,7 @@ public class Mechanic extends Thread {
 	 * 
 	 * @param state state of mechanic
 	 */
-    public void setMechanicState(MechanicState state) {
+    private void setMechanicState(MechanicState state) {
         if (this.state == state) {
             return;
         }

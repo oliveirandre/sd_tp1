@@ -2,6 +2,7 @@ package shared;
 
 import entities.Customer;
 import entities.CustomerState;
+import entities.MechanicState;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -90,10 +91,10 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * @param id the car's id that is going to be checked in the repair area
      */
     @Override
-    public synchronized void getVehicle(int id) {
+    public synchronized void getVehicle(int id, int idMechanic, MechanicState state) {
         carsParked.remove(new Integer(id));
         parkingSlots++;
-		repairShop.updateFromPark(carsParked, replacementCars);
+		repairShop.updateFromPark(carsParked, replacementCars, idMechanic, state);
     }
 
     /**

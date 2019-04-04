@@ -1,5 +1,6 @@
 package shared;
 
+import entities.MechanicState;
 import java.util.HashMap;
 import repository.Piece;
 
@@ -9,7 +10,7 @@ import repository.Piece;
  */
 public interface IMechanicRA {
 
-    public boolean readThePaper();
+    public boolean readThePaper(int idMechanic, MechanicState state);
 
     public int startRepairProcedure();
 
@@ -17,9 +18,9 @@ public interface IMechanicRA {
 
     public void letManagerKnow(Piece piece, int idCarToFix);
 
-    public boolean partAvailable(Piece requiredPart);
+    public boolean partAvailable(Piece requiredPart, int idMechanic, MechanicState state);
 
-    public void fixIt(int id, Piece p);
+    public int fixIt(int id, Piece p);
 
     public void getNextTask();
 

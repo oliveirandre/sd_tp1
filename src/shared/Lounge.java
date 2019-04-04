@@ -175,12 +175,15 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * @return an Integer indicating the next customer's id to attend
 	 */
 	@Override
-    public synchronized int currentCustomer() {
+    public synchronized int currentCustomer(ManagerState state) {
+        int next = 0;
         if (customersQueue.isEmpty()) {
-            return replacementQueue.peek();
+            next = replacementQueue.peek();
         } else {
-            return customersQueue.peek();
+            next = customersQueue.peek();
         }
+        //MANDAR PARA LOG
+        return next;
     }
 
 	/**
@@ -229,8 +232,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * Manager's method. Manager changes state to check what to do next.
 	 */
 	@Override
-    public synchronized void checkWhatToDo() {
-        ((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+    public synchronized void checkWhatToDo(ManagerState state) {
+        //MANDAR PARA LOG
+        //((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
     }
 
 	/**
@@ -240,8 +244,10 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * @return an Integer indicating the customer's id
 	 */
 	@Override
-    public synchronized int getIdToCall() {
-        return customersToCallQueue.poll();
+    public synchronized int getIdToCall(ManagerState state) {
+        //MANDAR PARA LOG
+        int next = customersToCallQueue.poll();
+        return next;
     }
 
 	/**
@@ -249,13 +255,19 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * with the highest priority and changes state, accordingly.
 	 */
 	@Override
-    public synchronized void appraiseSit() {
+    public synchronized int appraiseSit() {
         if (!piecesQueue.isEmpty()) {
-            ((Manager) Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);
+            return 1;
+            //((Manager) Thread.currentThread()).setManagerState(ManagerState.GETTING_NEW_PARTS);
         } else if (!customersToCallQueue.isEmpty()) {
-            ((Manager) Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
+            return 2;
+            //((Manager) Thread.currentThread()).setManagerState(ManagerState.ALERTING_CUSTOMER);
         } else if (!customersQueue.isEmpty()) {
-            ((Manager) Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
+            return 3;
+            //((Manager) Thread.currentThread()).setManagerState(ManagerState.ATTENDING_CUSTOMER);
+        }
+        else {
+            return 0;
         }
     }
 
@@ -286,16 +298,19 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      * @return a piece that needs to be re stocked in the repair area
      */
     @Override
-    public synchronized Piece getPieceToReStock() {
-		return piecesQueue.poll();
+    public synchronized Piece getPieceToReStock(ManagerState state) {
+        Piece p = piecesQueue.poll();
+		//MANDAR PARA LOG
+        return p;
     }
 
     /**
      * Manager's method. Manager changes state to go replenish stock.
      */
     @Override
-    public synchronized void goReplenishStock() {
-        ((Manager) Thread.currentThread()).setManagerState(ManagerState.REPLENISH_STOCK);
+    public synchronized void goReplenishStock(ManagerState state) {
+        //((Manager) Thread.currentThread()).setManagerState(ManagerState.REPLENISH_STOCK);
+        //MANDAR PARA LOG
     }
 
     /**

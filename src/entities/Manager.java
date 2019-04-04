@@ -52,20 +52,36 @@ public class Manager extends Thread {
     @Override
     public void run() {
         this.setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+        int nextTask = 0;
         while (!noMoreTasks) {
             switch (this.state) {
                 case CHECKING_WHAT_TO_DO:
+                    lounge.checkWhatToDo(this.state);
                     if (leftCustomers == nCustomers) {
                         repairArea.enoughWork();
                         noMoreTasks = true;
                         break;
                     }
                     lounge.getNextTask();
-                    lounge.appraiseSit();
+                    nextTask = lounge.appraiseSit();
+                    switch (nextTask) {
+                        case 1:
+                            this.setManagerState(ManagerState.GETTING_NEW_PARTS);
+                            break;
+                        case 2:
+                            this.setManagerState(ManagerState.ALERTING_CUSTOMER);
+                            break;
+                        case 3:
+                            this.setManagerState(ManagerState.ATTENDING_CUSTOMER);
+                            break;
+                        default:
+                            System.out.println("ERROR GETTING NEXT TASK");
+                            break;
+                    }
                     break;
 
                 case ATTENDING_CUSTOMER:
-                    idCustomer = lounge.currentCustomer();
+                    idCustomer = lounge.currentCustomer(this.state);
                     availableReplacementCar = park.replacementCarAvailable();
                     String action = lounge.talkWithCustomer(availableReplacementCar);
                     if (action.equals("car")) {
@@ -74,40 +90,50 @@ public class Manager extends Thread {
                             lounge.handCarKey();
                             park.waitForCustomer(idCustomer);
                         }
-                        repairArea.registerService(idCustomer);
+                        this.setManagerState(ManagerState.POSTING_JOB);
+                        //repairArea.registerService(idCustomer);
                     } else if (action.equals("nocar")) {
-                        repairArea.registerService(idCustomer);
+                        this.setManagerState(ManagerState.POSTING_JOB);
+                        //repairArea.registerService(idCustomer);
                     } else {
                         lounge.receivePayment();
                         leftCustomers++;
-                        lounge.checkWhatToDo();
+                        this.setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+                        //lounge.checkWhatToDo();
                     }
 
                     break;
 
                 case GETTING_NEW_PARTS:
-                    partNeeded = lounge.getPieceToReStock();
-                    lounge.goReplenishStock();
+                    partNeeded = lounge.getPieceToReStock(this.state);
+                    //lounge.goReplenishStock();
+                    this.setManagerState(ManagerState.REPLENISH_STOCK);
                     break;
 
                 case POSTING_JOB:
-                    lounge.checkWhatToDo();
+                    repairArea.registerService(idCustomer, this.state);
+                    this.setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+                    //lounge.checkWhatToDo();
                     break;
 
                 case ALERTING_CUSTOMER:
-                    idToCall = lounge.getIdToCall();
+                    idToCall = lounge.getIdToCall(this.state);
                     customerWaiting = lounge.alertCustomer(idToCall);
                     if (!customerWaiting) {
                         outsideWorld.phoneCustomer(idToCall);
                     }
-                    lounge.checkWhatToDo();
+                    this.setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+                    //lounge.checkWhatToDo();
                     break;
 
                 case REPLENISH_STOCK:
+                    lounge.goReplenishStock(this.state);
                     quant = supplierSite.goToSupplier(partNeeded);
-                    int idToReFix = repairArea.storePart(partNeeded, quant);
-                    repairArea.registerService(idToReFix);
-                    lounge.getNextTask();
+                    //int idToReFix = repairArea.storePart(partNeeded, quant);
+                    idCustomer = repairArea.storePart(partNeeded, quant);
+                    this.setManagerState(ManagerState.POSTING_JOB);
+                    //repairArea.registerService(idToReFix);
+                    //lounge.getNextTask();
                     break;
             }
         }
@@ -118,7 +144,7 @@ public class Manager extends Thread {
 	 * 
 	 * @param state state of manager
 	 */
-	public void setManagerState(ManagerState state) {
+	private void setManagerState(ManagerState state) {
         if (this.state == state) {
             return;
         }

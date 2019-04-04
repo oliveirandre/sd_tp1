@@ -15,10 +15,11 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 	private RepairShop repairShop;
     private final List<Integer> repairedCars = new ArrayList<>();
     private final List<Integer> waitingForCar = new ArrayList<>();
+    private String[] vehicleDriven;
 	
-	public OutsideWorld(RepairShop repairShop){
+	public OutsideWorld(int nCustomers, RepairShop repairShop){
+        vehicleDriven = new String[nCustomers];
 		this.repairShop = repairShop;
-		
 	}
     /**
      * Customer's method. The customer starts his life span in the outside world
@@ -42,8 +43,9 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      * for the manager to tell him that his car has been repaired.
      */
     @Override
-    public synchronized void backToWorkByBus() {
+    public synchronized void backToWorkByBus(int id) {
 		//((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
+        vehicleDriven[id]="--";
 		if (!((Customer) Thread.currentThread()).carRepaired) {
             waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
             notifyAll();
@@ -65,8 +67,12 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      * been repaired.
      */
     @Override
-    public synchronized void backToWorkByCar() {
+    public synchronized void backToWorkByCar(int replacementCar, int id) {
         //((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
+        if(replacementCar==-1)
+            vehicleDriven[id]=Integer.toString(id);
+        else vehicleDriven[id]="R"+Integer.toString(replacementCar);
+        
         if (!((Customer) Thread.currentThread()).carRepaired) {
             waitingForCar.add(((Customer) Thread.currentThread()).getCustomerId());
             notifyAll();

@@ -64,8 +64,8 @@ public class Main {
 		
 		
 
-		lounge = new Lounge(nMechanics, nTypePieces, repairShop);
-		outsideWorld = new OutsideWorld(repairShop);
+		lounge = new Lounge(nCustomers, nTypePieces, repairShop);
+		outsideWorld = new OutsideWorld(nCustomers, repairShop);
 		park = new Park(nReplacementCars, repairShop);
 		repairArea = new RepairArea(nTypePieces, repairShop);
 		supplierSite = new SupplierSite(nTypePieces, repairShop);
@@ -78,13 +78,13 @@ public class Main {
 
 		mechanics = new Mechanic[nMechanics];
 		for (int i = 0; i < nMechanics; i++) {
-			mechanics[i] = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i + 1);
+			mechanics[i] = new Mechanic((IMechanicP) park, (IMechanicRA) repairArea, (IMechanicL) lounge, i);
 			mechanics[i].start();
 		}
 
 		customers = new Customer[nCustomers];
 		for (int i = 0; i < nCustomers; i++) {
-			customers[i] = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i + 1);
+			customers[i] = new Customer((ICustomerOW) outsideWorld, (ICustomerP) park, (ICustomerL) lounge, i);
 			customers[i].start();
 		}
 		repairShop.reportInitialStatus();

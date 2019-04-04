@@ -14,7 +14,7 @@ import entities.CustomerState;
 public interface ICustomerOW {
     public void decideOnRepair(int id, CustomerState state);
     public void goToRepairShop(int idCustomer, CustomerState state);
-    public void backToWorkByBus();
-    public void backToWorkByCar();
+    public void backToWorkByBus(int id);
+    public void backToWorkByCar(int replacementCar, int id);
     public void goToReception(int idCustomer, CustomerState state);
 }

@@ -74,7 +74,7 @@ public class Customer extends Thread {
                     haveReplacementCar = true;
                     replacementCar = park.findCar(this.id, this.state);
                     setCustomerState(CustomerState.PARK);
-                    outsideWorld.backToWorkByCar();
+                    outsideWorld.backToWorkByCar(replacementCar, this.id);
                     setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
                     break;
 
@@ -92,7 +92,7 @@ public class Customer extends Thread {
                             }
                         } else {
                             haveReplacementCar = false;
-                            outsideWorld.backToWorkByBus();
+                            outsideWorld.backToWorkByBus(this.id);
                             setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
                         }
                     } else {
@@ -101,7 +101,8 @@ public class Customer extends Thread {
                         haveCar = true;
                         this.happyCustomer = true;
                         park.collectCar(this.id);
-                        outsideWorld.backToWorkByCar();
+                        replacementCar = -1;
+                        outsideWorld.backToWorkByCar(replacementCar, this.id);
                         setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
                     }
                     break;

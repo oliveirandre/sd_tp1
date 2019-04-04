@@ -345,7 +345,6 @@ public class RepairShop {
             GenericIO.writelnString("A operação de fecho do ficheiro " + fileName + " falhou!");
             System.exit(1);
         }
-
     }
 
 }

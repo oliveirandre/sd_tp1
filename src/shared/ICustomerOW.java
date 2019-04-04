@@ -12,9 +12,9 @@ import entities.CustomerState;
  * @author andre
  */
 public interface ICustomerOW {
-    public void decideOnRepair(int id, CustomerState state);
+    public boolean decideOnRepair(int id, CustomerState state);
     public void goToRepairShop(int idCustomer, CustomerState state);
-    public void backToWorkByBus();
-    public void backToWorkByCar();
+    public boolean backToWorkByBus(boolean carRepaired, int id);
+    public boolean backToWorkByCar(boolean carRepaired, int id);
     public void goToReception(int idCustomer, CustomerState state);
 }

@@ -14,6 +14,6 @@ import entities.CustomerState;
 public interface ICustomerP {
 	public void parkCar(int id, CustomerState state);
     public void collectCar(int id);
-    public int findCar(int id, CustomerState state);
+    public int findCar(int id, CustomerState state, int cust);
     public void returnReplacementCar(int replacementCar, int id, CustomerState state);
 }

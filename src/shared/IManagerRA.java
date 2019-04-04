@@ -1,5 +1,6 @@
 package shared;
 
+import entities.ManagerState;
 import repository.Piece;
 
 /**
@@ -8,7 +9,7 @@ import repository.Piece;
  */
 public interface IManagerRA {
 
-    public void registerService(int idCustomer);
+    public void registerService(int idCustomer, ManagerState state);
 
     public int storePart(Piece part, int quant);
 

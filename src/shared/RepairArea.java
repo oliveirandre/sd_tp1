@@ -221,7 +221,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
      */
     @Override
     public synchronized void getNextTask() {
-        ((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+        //((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
     }
 
     /**
@@ -231,8 +231,8 @@ public class RepairArea implements IMechanicRA, IManagerRA {
      * @param idCustomer the id of the car that the mechanic needs to repair
      */
     @Override
-    public synchronized void registerService(int idCustomer) {
-        ((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
+    public synchronized void registerService(int idCustomer, ManagerState state) {
+        //((Manager) Thread.currentThread()).setManagerState(ManagerState.POSTING_JOB);
         if (!alreadyAdded.contains(idCustomer)) {
             carsToRepair.add(idCustomer);
         }
@@ -241,6 +241,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
             notify();
         }
         nRequestsManager++;
+        //MANDAR PARA LOG
 		repairShop.updateFromRepairArea(nRequestsManager, piecesToBeRepaired, flagPartMissing, stock);
     }
 

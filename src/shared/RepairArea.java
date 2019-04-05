@@ -124,7 +124,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         //((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.FIXING_CAR);
         if (readyToRepair.isEmpty() && carsToRepair.isEmpty()) {
             //((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
-            return 0;
+            return -1;
         } else if (!readyToRepair.isEmpty()) {
             return readyToRepair.poll();
         } else {

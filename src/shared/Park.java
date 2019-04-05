@@ -91,8 +91,8 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * @param id the car's id that is going to be checked in the repair area
      */
     @Override
-    public synchronized void getVehicle(int id, int idMechanic, MechanicState state) {
-        carsParked.remove(new Integer(id));
+    public synchronized void getVehicle(int idCar, int idMechanic, MechanicState state) {
+        carsParked.remove(new Integer(idCar));
         parkingSlots++;
 		repairShop.updateFromPark(carsParked, replacementCars, idMechanic, state);
     }
@@ -104,10 +104,11 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * @param id the replacement car's id
      */
     @Override
-    public synchronized void returnReplacementCar(int id, int idCustomer, CustomerState state) {
+    public synchronized void returnReplacementCar(int idCar, int idCustomer, CustomerState state) {
         //((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
-        replacementCars.add(id);
-		repairShop.updateFromPark(carsParked, replacementCars, id, state);
+        replacementCars.add(idCar);
+		System.out.println("");
+		repairShop.updateFromPark(carsParked, replacementCars, idCustomer, state);
     }
 
     /**

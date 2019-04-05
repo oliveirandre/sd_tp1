@@ -20,6 +20,11 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 	public OutsideWorld(int nCustomers, RepairShop repairShop){
         vehicleDriven = new String[nCustomers];
 		this.repairShop = repairShop;
+		
+		for (int i = 0; i < nCustomers; i++) {
+			if(i<10) vehicleDriven[i] = "0"+Integer.toString(i);
+			else vehicleDriven[i] = Integer.toString(i);
+		}
 	}
     /**
      * Customer's method. The customer starts his life span in the outside world
@@ -41,11 +46,15 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
     /**
      * Customer's method. After going back to work by bus, the customer waits
      * for the manager to tell him that his car has been repaired.
+	 * @param carRepaired
+	 * @param id
+	 * @return 
      */
     @Override
     public synchronized boolean backToWorkByBus(boolean carRepaired, int id) {
 		//((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
         vehicleDriven[id]="--";
+		repairShop.updateFromOutsideWorld(vehicleDriven);
 		if (!carRepaired) {
             waitingForCar.add(id);
             notifyAll();
@@ -66,21 +75,28 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      * Customer's method. After going back to work by car (with replacement
      * car), the customer waits for the manager to tell him that his car has
      * been repaired.
+	 * @param carRepaired
+	 * @param replacementCar
+	 * @param id
+	 * @return 
      */
     @Override
     public synchronized boolean backToWorkByCar(boolean carRepaired, int replacementCar, int id) {
         //((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
         if(replacementCar==-1)
-            vehicleDriven[id]=Integer.toString(id);
+            if(id<10) vehicleDriven[id]="0"+Integer.toString(id);
+			else vehicleDriven[id]=Integer.toString(id);
         else vehicleDriven[id]="R"+Integer.toString(replacementCar);
-        
+		
+        repairShop.updateFromOutsideWorld(vehicleDriven);
+		
         if (!carRepaired) {
             waitingForCar.add(id);
             notifyAll();
             while (!repairedCars.contains(id)) {
                 try {
                     wait();
-                } catch (Exception e) {
+                } catch (InterruptedException e) {
 
                 }
             }

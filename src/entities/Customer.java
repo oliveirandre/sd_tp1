@@ -30,7 +30,6 @@ public class Customer extends Thread {
     private boolean happyCustomer = false;
     private boolean haveReplacementCar = false;
     private int replacementCar;
-    private boolean haveCar = true;
 
     /**
      * Customer's constructor.
@@ -54,7 +53,7 @@ public class Customer extends Thread {
             switch (this.state) {
                 case NORMAL_LIFE_WITH_CAR:
                     if (!haveReplacementCar) {
-                        this.requiresCar = outsideWorld.decideOnRepair(this.id, this.state);
+                        requiresCar = outsideWorld.decideOnRepair(this.id, this.state);
                     }
                     outsideWorld.goToRepairShop(this.id, this.state); // nao faz nada
                     setCustomerState(CustomerState.PARK);
@@ -74,36 +73,40 @@ public class Customer extends Thread {
                     haveReplacementCar = true;
                     replacementCar = park.findCar(this.id, this.state);
                     setCustomerState(CustomerState.PARK);
-                    outsideWorld.backToWorkByCar(false, replacementCar, this.id);
+                    outsideWorld.backToWorkByCar(false, replacementCar, this.id); //log mete carro subst
                     setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
                     break;
 
                 case RECEPTION:
                     lounge.queueIn(this.id, this.state);
-                    haveCar = false;
                     if (!carRepaired) {
-                        lounge.talkWithManager(this.carRepaired, this.requiresCar);
+                        lounge.talkWithManager(carRepaired, requiresCar);
                         if (requiresCar) {
                             haveReplacementCar = true;
                             setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
-                            this.carRepaired = lounge.collectKey(this.id);
-                            if (carRepaired) {
-                                setCustomerState(CustomerState.RECEPTION);
-                            }
+                            carRepaired = lounge.collectKey(this.id);
+							System.err.println("Customer "+id+" tenho carro substituiçao");
+                            
                         } else {
                             haveReplacementCar = false;
-                            this.carRepaired = outsideWorld.backToWorkByBus(this.carRepaired, this.id);
+							System.err.println("Customer "+id+" vou de autocarro");
+							//log mete sem carro
+                            carRepaired = outsideWorld.backToWorkByBus(carRepaired, this.id);
                             setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
                         }
+						if (carRepaired)
+                                setCustomerState(CustomerState.RECEPTION);
                     } else {
-                        lounge.talkWithManager(this.carRepaired, this.requiresCar);
+                        System.err.println("Customer "+id+" ja vou com carro normal para a minha vida");
+						lounge.talkWithManager(true, false);
                         lounge.payForTheService();
-                        haveCar = true;
                         this.happyCustomer = true;
                         park.collectCar(this.id);
                         
-                        replacementCar = -1;
-                        this.carRepaired = outsideWorld.backToWorkByCar(this.carRepaired, replacementCar, this.id);
+                        
+						//log mete carro normal
+						System.err.println("Customer "+id+" ja vou com carro normal para a minha vida");
+                        carRepaired = outsideWorld.backToWorkByCar(true, -1, this.id);
                         setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
                     }
                     break;
@@ -153,7 +156,7 @@ public class Customer extends Thread {
      * @return a String representing the current car of a customer
      */
     public String getCustomerVehicle() {
-        if (!haveReplacementCar && !haveCar) {
+        /*if (!haveReplacementCar && !haveCar) {
             return "--";
         } else if (!haveReplacementCar) {
             if (id < 10) {
@@ -163,7 +166,8 @@ public class Customer extends Thread {
             }
         } else {
             return "R" + Integer.toString(replacementCar);
-        }
+        }*/
+		return "";
     }
 
     /**

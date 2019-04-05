@@ -1,1 +1,1273 @@
                                        REPAIR SHOP ACTIVITIES - Description of the internal state of the problem
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  lwc  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 00  00  00     00   00        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  lwc  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 00  00  00     00   00        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  lwc  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 00  00  00     00   00        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  lwc  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 00  00  00     00   00        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  lwc  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 00  00  00     00   00        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  lwc  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 00  00  00     00   00        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  lwc  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 00  00  00     00   00        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  prk  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 00  00  00     01   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  prk  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 00  00  00     01   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  rcp  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 01  00  00     02   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  lwc  28  F   F  rcp  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 01  00  00     02   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  prk  28  F   F  rcp  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 01  00  00     02   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  lwc  27  F   F  prk  28  F   F  rcp  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 02  00  00     02   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  prk  27  F   F  prk  28  F   F  rcp  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 02  00  00     03   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  prk  27  F   F  rcp  28  F   F  rcp  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 02  00  00     03   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  prk  27  F   F  rcp  28  F   F  rcp  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 03  00  00     03   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 03  00  00     03   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 02  00  00     03   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  lwc  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  F   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 02  00  00     04   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  prk  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 02  01  00     04   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  prk  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 02  01  00     04   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  prk  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 02  01  00     04   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  prk  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 03  01  00     04   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 03  01  00     05   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  lwc  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 03  00  00     05   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  prk  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 03  00  00     05   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  prk  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 03  00  00     05   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  prk  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 03  00  00     06   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  lwc  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  prk  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 04  00  00     06   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  prk  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  prk  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 04  00  00     06   03        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  prk  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  prk  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 04  00  00     06   02        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  prk  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 04  00  00     06   02        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  prk  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  rcp  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     06   02        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  prk  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     06   02        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  prk  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     07   02        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     07   02        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     07   02        00     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  lwc  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     07   02        01     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  prk  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     07   02        01     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  prk  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 06  00  00     06   02        01     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  prk  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 06  00  00     06   02        01     02    00   F  04    00   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 06  00  00     07   02        01     02    00   F  04    01   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  lwc  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     07   02        01     02    00   F  04    01   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     07   02        01     02    00   F  04    01   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  lwc  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     08   02        01     02    00   F  04    01   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     08   02        01     02    00   F  04    01   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     08   02        01     02    00   F  04    01   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  F   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  00  00     08   02        01     02    00   F  04    01   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  01  00     08   02        01     02    00   F  04    01   F  02    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  01  00     08   02        01     02    00   F  04    01   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  01  00     09   02        01     02    00   F  04    01   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 05  01  00     09   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 06  01  00     09   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               lwc  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 06  01  00     09   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               prk  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 06  01  00     09   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               prk  20  F   F  prk  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 06  01  00     10   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 06  01  00     10   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 07  01  00     10   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 07  01  00     10   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  prk  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 07  01  00     11   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 07  01  00     11   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  lwc  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 07  01  00     11   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 07  01  00     11   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 07  01  00     12   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 07  01  00     12   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  lwc  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 08  01  00     12   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  prk  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 08  01  00     12   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               prk  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  prk  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 08  01  00     13   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  prk  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 08  01  00     13   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  prk  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 09  01  00     13   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 09  01  00     13   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  lwc  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 10  01  00     13   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  prk  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 10  01  00     13   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  prk  16  F   F  lwc  17  F   F  prk  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 10  01  00     14   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  prk  16  F   F  lwc  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 10  01  00     14   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  prk  16  F   F  lwc  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 10  00  00     14   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  prk  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 10  00  00     14   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  prk  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 10  00  00     15   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  prk  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 10  00  00     15   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  lwc  15  F   F  prk  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 11  00  00     15   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  prk  15  F   F  prk  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 11  00  00     15   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  prk  15  F   F  prk  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 11  00  00     16   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  prk  15  F   F  rcp  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 11  00  00     16   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  lwc  14  F   F  prk  15  F   F  rcp  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 12  00  00     16   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  prk  14  F   F  prk  15  F   F  rcp  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 12  00  00     16   02        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  prk  14  F   F  prk  15  F   F  rcp  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 12  00  00     16   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  prk  14  F   F  rcp  15  F   F  rcp  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 12  00  00     16   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  prk  14  F   F  rcp  15  F   F  rcp  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  rcp  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 13  00  00     16   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  prk  14  F   F  rcp  15  F   F  rcp  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 13  00  00     16   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  prk  14  F   F  rcp  15  F   F  rcp  16  F   F  prk  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 13  00  00     17   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  prk  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 13  00  00     17   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  lwc  12  F   F  lwc  13  F   F  prk  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 14  00  00     17   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  prk  12  F   F  lwc  13  F   F  prk  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 14  00  00     17   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  prk  12  F   F  lwc  13  F   F  prk  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 14  00  00     18   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  prk  12  F   F  lwc  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 14  00  00     18   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  lwc  11  F   F  prk  12  F   F  lwc  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 15  00  00     18   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  prk  11  F   F  prk  12  F   F  lwc  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 15  00  00     18   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  prk  11  F   F  prk  12  F   F  lwc  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 15  00  00     19   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  prk  11  F   F  rcp  12  F   F  lwc  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 15  00  00     19   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  prk  11  F   F  rcp  12  F   F  lwc  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 16  00  00     19   01        01     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  prk  11  F   F  rcp  12  F   F  lwc  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 16  00  00     19   01        02     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  prk  11  F   F  rcp  12  F   F  prk  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 16  00  00     19   01        02     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  prk  11  F   F  rcp  12  F   F  prk  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 16  00  00     18   01        02     02    00   F  04    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  prk  11  F   F  rcp  12  F   F  prk  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 16  00  00     19   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  prk  11  F   F  rcp  12  F   F  prk  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 16  00  00     19   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  prk  11  F   F  rcp  12  F   F  prk  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 16  00  00     19   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  rcp  11  F   F  rcp  12  F   F  prk  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 16  00  00     19   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  rcp  11  F   F  rcp  12  F   F  prk  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 17  00  00     19   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  lwc  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  rcp  11  F   F  rcp  12  F   F  prk  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 17  00  00     19   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  prk  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  rcp  11  F   F  rcp  12  F   F  prk  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 17  00  00     19   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  prk  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  rcp  11  F   F  rcp  12  F   F  prk  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 17  00  00     20   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  prk  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 17  00  00     20   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  prk  01  F   F  lwc  02  F   F  lwc  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 18  00  00     20   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  prk  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               lwc  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 18  00  00     20   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  prk  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               prk  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 18  00  00     21   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  prk  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               prk  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 18  00  00     22   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               prk  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 18  00  00     22   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               prk  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 19  00  00     22   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  lwc  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               prk  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 19  00  00     22   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               prk  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 19  00  00     22   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               prk  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 19  00  00     23   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 19  00  00     23   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  lwc  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 20  00  00     23   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  prk  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 20  00  00     23   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  prk  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  prk  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 20  00  00     23   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  prk  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 20  00  00     23   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  prk  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 21  00  00     23   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  prk  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 21  00  00     23   01        02     02    00   F  04    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  prk  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 21  00  00     24   01        02     02    00   F  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  rcp  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 21  00  00     24   01        02     02    00   F  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  rcp  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 22  00  00     24   01        02     02    00   F  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  lwc  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  rcp  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 22  00  00     24   01        02     02    00   F  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  prk  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  rcp  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 22  00  00     24   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  prk  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  rcp  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 22  00  00     25   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  prk  04  F   F  lwc  05  F   F  lwc  06  F   F  prk  07  F   F  rcp  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 22  00  00     25   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  prk  04  F   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  rcp  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  28  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 22  00  00     25   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  prk  04  F   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  rcp  08  F   F  lwc  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  wrc  29  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 23  00  00     25   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  prk  04  F   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  rcp  08  F   F  prk  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  wrc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 23  00  00     25   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  prk  04  F   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  rcp  08  F   F  prk  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  wrc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 23  00  00     26   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  rcp  08  F   F  prk  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  wrc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 23  00  00     26   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  lwc  05  F   F  lwc  06  F   F  rcp  07  F   F  rcp  08  F   F  prk  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  wrc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 24  00  00     26   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  lwc  05  F   F  prk  06  F   F  rcp  07  F   F  rcp  08  F   F  prk  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  wrc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 24  00  00     26   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  lwc  05  F   F  prk  06  F   F  rcp  07  F   F  rcp  08  F   F  prk  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  lwc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 24  00  00     27   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  lwc  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  lwc  05  F   F  prk  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  lwc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 24  00  00     27   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  prk  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  lwc  05  F   F  prk  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  lwc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 25  00  00     27   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  prk  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  lwc  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  lwc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 25  00  00     28   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  prk  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  prk  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  lwc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  00  00     28   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  F   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  prk  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  lwc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  00  00     29   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  prk  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  lwc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  lwc  02  F   F  rcp  03  F   F  rcp  04  F   F  prk  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  lwc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     30   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  prk  02  F   F  rcp  03  F   F  rcp  04  F   F  prk  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  lwc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     30   01        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  prk  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  lwc  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     30   02        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  prk  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  prk  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     30   02        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  prk  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  prk  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     30   02        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  prk  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     30   02        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw amg  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  27  F   F  wrc  R2  T   F  prk  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     30   02        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  --  F   F  wrc  R2  T   F  prk  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 28  01  00     30   02        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  --  F   F  wrc  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 28  01  00     30   02        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  --  F   F  wrc  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 28  01  00     30   02        02     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  --  F   F  wrc  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 28  01  00     30   02        03     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  --  F   F  wrc  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 28  01  00     29   02        03     02    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  --  F   F  lwc  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     29   02        03     02    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  --  F   F  lwc  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     29   03        03     02    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  --  F   F  lwc  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     29   03        03     02    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  26  F   F  rcp  --  F   F  lwc  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     29   03        03     02    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  prk  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     29   03        03     02    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 28  01  00     29   03        03     02    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 28  01  00     29   03        04     02    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 28  01  00     29   03        04     02    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc wfw  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 28  01  00     29   03        04     02    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 28  01  00     28   03        04     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     28   03        04     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  24  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     28   03        04     01    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     28   03        04     01    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     29   03        04     01    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     29   03        05     01    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     29   03        05     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        05     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  19  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        05     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc cks  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        05     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg cks  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        05     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        05     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        05     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     29   03        06     01    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     28   03        06     00    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     28   03        06     00    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 27  01  00     28   03        06     00    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     28   03        06     00    00   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  ftc ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  F   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  02  00     29   03        06     00    01   F  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  02  00     29   03        06     00    01   T  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  02  00     29   03        06     00    01   T  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  02  00     30   03        06     00    01   T  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks ftc  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  02  00     30   03        06     00    01   T  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks amg  rcp  00  T   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  02  00     30   03        06     00    01   T  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks wfw  rcp  00  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     30   03        06     00    01   T  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks wfw  rcp  00  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  cks ftc  rcp  00  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  03    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg ftc  rcp  00  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg ftc  rcp  00  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg ftc  wrc  00  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg cks  wrc  R0  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  amg cks  wrc  R0  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw cks  wrc  R0  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  wrc  R0  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  03    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  wrc  R0  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  02    00   F  01    01   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  wrc  R0  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     29   03        06     00    01   T  02    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw ftc  wrc  R0  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     30   03        06     00    01   T  02    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw amg  wrc  R0  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     30   03        06     00    01   T  02    00   F  01    00   F                          00   00   00   
+ MAN  MECHANIC                                                                  CUSTOMER
+cwtd  wfw wfw  wrc  R0  F   F  rcp  01  F   F  rcp  02  F   F  rcp  03  F   F  rcp  04  F   F  rcp  05  F   F  rcp  06  F   F  rcp  07  F   F  rcp  08  F   F  rcp  09  F   F  
+               rcp  10  F   F  rcp  11  F   F  rcp  12  F   F  rcp  13  F   F  rcp  14  F   F  rcp  15  F   F  rcp  16  F   F  rcp  17  F   F  rcp  18  F   F  rcp  --  F   F  
+               rcp  20  F   F  rcp  21  F   F  rcp  22  F   F  rcp  23  T   F  rcp  --  F   F  rcp  25  F   F  rcp  --  F   F  rcp  --  F   F  rcp  R2  T   F  rcp  R1  T   F  
+                   LOUNGE        PARK                             REPAIR AREA                                           SUPPLIER SITE
+                 26  01  00     30   03        06     00    01   T  02    00   F  01    00   F                          00   00   00   

@@ -32,7 +32,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     
     private boolean readyToReceive;
 	private RepairShop repairShop;
-    private boolean[] requiresReplacementeCar;
+    private boolean[] requiresReplacementCar;
 
     private static HashMap<Integer, String> order = new HashMap<Integer, String>();
 
@@ -41,9 +41,9 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * @param nTypePieces
 	 */
 	public Lounge(int nCustomers, int nTypePieces, RepairShop repairShop) {
-        requiresReplacementeCar = new boolean[nCustomers];
+        requiresReplacementCar = new boolean[nCustomers];
         
-        Arrays.fill(requiresReplacementeCar, false);
+        Arrays.fill(requiresReplacementCar, false);
         
 		this.repairShop = repairShop;
     }
@@ -57,7 +57,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void queueIn(int id, CustomerState state) {
         customersQueue.add(id);
-		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementeCar, id, state);
+		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar, id, state);
         notifyAll();
         while (nextCustomer != id && !managerAvailable) {
             try {
@@ -71,6 +71,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     /**
      * Customer's method. When the customer is talking to the manager he says if
      * he requires a replacement car or not.
+	 * @param carRepaired
+	 * @param requiresCar
      */
     @Override
     public synchronized void talkWithManager(boolean carRepaired, boolean requiresCar) {
@@ -79,7 +81,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         } else {
             if (requiresCar) {
                 order.put(nextCustomer, "car");
-                requiresReplacementeCar[nextCustomer] = true;
+                requiresReplacementCar[nextCustomer] = true;
             } else {
                 order.put(nextCustomer, "nocar");
             }
@@ -101,7 +103,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized String talkWithCustomer(boolean availableCar) {
         nextCustomer = customersQueue.poll();
-		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementeCar);
+		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
         managerAvailable = true;
         notifyAll();
         managerAvailable = false;
@@ -134,8 +136,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             }
         }
         customerGetRepCar = replacementQueue.poll();
-        requiresReplacementeCar[nextCustomer] = false;
-		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementeCar);
+        requiresReplacementCar[nextCustomer] = false;
+		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
         notifyAll();
     }
 
@@ -196,27 +198,30 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * Customer's method. The customer waits for a replacement car's key and 
 	 * goes get one if it is available. Eventually, if the customer's car is 
 	 * repaired while waiting, he goes to the normal queue.
+	 * 
+	 * @param id
+	 * @return 
 	 */
 	@Override
     public synchronized boolean collectKey(int id) {
         //((Customer) Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
 		replacementQueue.add(id);
-		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementeCar);
+		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
         notify();
         while (customerGetRepCar != id && !carsRepaired.contains(id)) {
             try {
                 wait();
-            } catch (Exception e) {
+            } catch (InterruptedException e) {
 
             }
         }
         if (carsRepaired.contains(id)) {
             carsRepaired.remove(id);
             replacementQueue.remove(id);
-            requiresReplacementeCar[nextCustomer] = false;
+            requiresReplacementCar[nextCustomer] = false;
             //((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
             //((Customer) Thread.currentThread()).carRepaired = true;
-			repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementeCar);
+			repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
             return true;
         }
 		else
@@ -290,7 +295,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      */
     @Override
     public synchronized void alertManager(Piece piece, int customerId, int idMechanic, MechanicState state) {
-        repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementeCar, idMechanic, state);
+        repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar, idMechanic, state);
         //((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         if (piece == null) {
             customersToCallQueue.add(customerId);
@@ -347,7 +352,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             carsRepaired.add(id);
             notifyAll();
             customersToCallQueue.remove(id);
-			repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementeCar);
+			repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
             return true;
         } else {
             return false;

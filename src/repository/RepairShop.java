@@ -16,9 +16,11 @@ import java.util.Queue;
  * @author andre e joao
  */
 public class RepairShop {
+	private int count=0;
 
     private int nMechanics;
     private int nCustomers;
+	private int nTypePieces;
 	private MechanicState[] mechanicsStates;
 	private CustomerState[] customersStates;	
 	private ManagerState managerState;
@@ -41,6 +43,10 @@ public class RepairShop {
 	private int nRequestsManager;
 	private HashMap<Integer, Piece> piecesToBeRepaired;
 	private HashMap<EnumPiece, Integer> stock;
+	//outsideWorld
+	private String[] vehicleDriven;
+	
+	
 	
 	/**
 	 * RepairShop's constructor. This is where everything is initialized and
@@ -50,13 +56,14 @@ public class RepairShop {
 	 * @param fileName log file name
 	 */
 	public RepairShop(int nTypePieces, int nMechanics, int nCustomers, String fileName) {
-        this.nMechanics = nMechanics;
+        this.nTypePieces = nTypePieces;
+		this.nMechanics = nMechanics;
 		this.nCustomers = nCustomers;
 		mechanicsStates = new MechanicState[nMechanics];
 		customersStates = new CustomerState[nCustomers];
 		requiresReplacementCar = new boolean[nCustomers];
 		piecesBought = new int[nTypePieces];
-		
+		vehicleDriven = new String[nCustomers];
 		
         for (int i = 0; i < nTypePieces; i++) {
             piecesBought[i] = 0;
@@ -70,6 +77,8 @@ public class RepairShop {
 		for (int i = 0; i < nCustomers; i++) {
 			customersStates[i] = CustomerState.values()[0];
 			requiresReplacementCar[i] = false;
+			if(i<10) vehicleDriven[i] = "0"+Integer.toString(i);
+			else vehicleDriven[i] = Integer.toString(i);
 		}
 		managerState = ManagerState.values()[0];
 		
@@ -118,9 +127,14 @@ public class RepairShop {
 		updateFromPark(carsParked, replacementCars);
 	}
 	
+	public synchronized void updateFromOutsideWorld(String[] vehicleDriven){
+		this.vehicleDriven = vehicleDriven;
+		reportStatus();
+	}
+	
 	public synchronized void updateFromOutsideWorld(int idCustomer, CustomerState state){
 		customersStates[idCustomer] = state;
-		reportStatus();
+		updateFromOutsideWorld(vehicleDriven);
 	}
 	
 	public synchronized void updateFromSupplierSite(int[] piecesBought){
@@ -185,7 +199,8 @@ public class RepairShop {
 	 * Method to update log in every state change.
 	 */
 	private void reportStatus() {
-        TextFile log = new TextFile(); // instanciação de uma variável de tipo ficheiro de texto
+        
+		TextFile log = new TextFile(); // instanciação de uma variável de tipo ficheiro de texto
 
         String lineStatus = ""; // linha a imprimir
 
@@ -209,8 +224,8 @@ public class RepairShop {
         //P00 # (requires replacementCar; T or F)
         //R00 #  if it has already been repaired (T or F)
         lineStatus += " ";
-		String[] customersState = new String[nCustomers];
-        String[] vehicleDriven = new String[nCustomers];
+		//String[] customersState = new String[nCustomers];
+        //String[] vehicleDriven = new String[nCustomers];
 		String[] requiresReplacement = new String[nCustomers];
 		String[] repaired = new String[nCustomers];
 		
@@ -232,7 +247,7 @@ public class RepairShop {
         int t = 20;
         for (int j = 0; j < 30; j += 10) {
             for (int i = j; i < nCustomers - t; i++) {
-                lineStatus += customersState[i] + "  "
+                lineStatus += customersStates[i] + "  "
                         + vehicleDriven[i] + "  "
                         + requiresReplacement[i] + "   "
                         + repaired[i] + "  ";
@@ -301,7 +316,6 @@ public class RepairShop {
                 + NSRQ + "     ";
 
         //REPAIR AREA 
-        int nTypePieces = 3;
         String[] Prt = new String[nTypePieces]; //Prt# - number of parts of type # presently in storage at the repair area (# - 0 .. 2)
         String[] NV = new String[nTypePieces]; //NV# - number of customer vehicles waiting for part # to be available so that the repair may resume (# - 0 .. 2)
         String[] S = new String[nTypePieces]; //S# - flag signaling the manager has been adviced that part # is missing at the repair area: T or F (# - 0 .. 2)
@@ -310,7 +324,6 @@ public class RepairShop {
         String[] PP = new String[nTypePieces]; //PP# - number of parts of type # which have been purchased so far by the manager (# - 0 .. 2)
         //## ## # ## ## # ## ## #
 
-        //ALTERAR AQUI COM ARGUMENTO A ENTRAR nTypePieces
         for (int i = 0; i < nTypePieces; i++) {
             Object[] temp = stock.values().toArray();
             if ((int) temp[i] < 10) {
@@ -347,9 +360,12 @@ public class RepairShop {
             lineStatus += PP[i] + "   ";
         }
 
-        if (!lineStatus.toLowerCase().contains("null")) {
-            log.writelnString(lineStatus);
-        }
+        //if (!lineStatus.toLowerCase().contains("null")) {
+        //    log.writelnString(lineStatus);
+        //}
+		//System.out.println(count++);
+		log.writelnString(lineStatus);
+		
         if (!log.close()) {
             GenericIO.writelnString("A operação de fecho do ficheiro " + fileName + " falhou!");
             System.exit(1);

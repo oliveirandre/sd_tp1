@@ -48,14 +48,13 @@ public class Mechanic extends Thread {
             switch (this.state) {
                 case WAITING_FOR_WORK:
                     enoughWork = repairArea.readThePaper(this.id, this.state);
-                    setMechanicState(MechanicState.WAITING_FOR_WORK);
                     if (enoughWork) {
                         noMoreWork = true;
                         break;
                     }
 
-                    int temp = idCarToFix = repairArea.startRepairProcedure();
-                    if(temp==0) setMechanicState(MechanicState.WAITING_FOR_WORK);
+                    idCarToFix = repairArea.startRepairProcedure();
+                    if(idCarToFix==-1) setMechanicState(MechanicState.WAITING_FOR_WORK);
                     else setMechanicState(MechanicState.FIXING_CAR);
                     break;
                 case FIXING_CAR:
@@ -71,7 +70,10 @@ public class Mechanic extends Thread {
 
                     int fix = repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
                     
-                    if(fix==0) setMechanicState(MechanicState.WAITING_FOR_WORK);
+                    if(fix==0){
+						setMechanicState(MechanicState.WAITING_FOR_WORK);
+						break; //nao sei se este break é o melhor
+					}
                     
                     park.returnVehicle(idCarToFix);
 

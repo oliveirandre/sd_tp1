@@ -65,7 +65,9 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 
                 }
             }
+            System.out.println(repairedCars.toString());
             repairedCars.remove(new Integer(id));
+            System.out.println(id + "acordado");
             return true;
         }
         return false;

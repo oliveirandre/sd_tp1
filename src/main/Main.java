@@ -91,14 +91,7 @@ public class Main {
 		
 		//reportInitialStatus(nMechanics, nCustomers);
 
-		for (int j = 0; j < nManagers; j++) {
-			try {
-				manager.join();
-				System.err.println("Manager " + j + " Died ");
-			} catch (InterruptedException ex) {
-				//Escrever para o log
-			}
-		}
+        
 		
 		for (int j = 0; j < nCustomers; j++) {
 			try {
@@ -107,12 +100,21 @@ public class Main {
 			} catch (InterruptedException ex) {
 				//Escrever para o log
 			}
-		}
+        }
 		
 		for (int j = 0; j < nMechanics; j++) {
 			try {
 				mechanics[j].join();
 				System.err.println("Mechanic " + j + " Died ");
+			} catch (InterruptedException ex) {
+				//Escrever para o log
+			}
+		}
+        
+		for (int j = 0; j < nManagers; j++) {
+			try {
+				manager.join();
+				System.err.println("Manager " + j + " Died ");
 			} catch (InterruptedException ex) {
 				//Escrever para o log
 			}

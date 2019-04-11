@@ -203,10 +203,11 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * @return 
 	 */
 	@Override
-    public synchronized boolean collectKey(int id) {
+    public synchronized boolean collectKey(int id, CustomerState state) {
         //((Customer) Thread.currentThread()).setCustomerState(CustomerState.WAITING_FOR_REPLACE_CAR);
 		replacementQueue.add(id);
-		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
+		//repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
+        repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar, id, state);
         notify();
         while (customerGetRepCar != id && !carsRepaired.contains(id)) {
             try {

@@ -41,8 +41,8 @@ public class RepairShop {
 	private int[] piecesBought;
 	//repairArea updates
 	private int nRequestsManager;
-	private HashMap<Integer, Piece> piecesToBeRepaired;
-	private HashMap<EnumPiece, Integer> stock;
+	private HashMap<Integer, Piece> piecesToBeRepaired = new HashMap<>();
+	private HashMap<EnumPiece, Integer> stock = new HashMap<>();
 	//outsideWorld
 	private String[] vehicleDriven;
 	
@@ -64,9 +64,12 @@ public class RepairShop {
 		requiresReplacementCar = new boolean[nCustomers];
 		piecesBought = new int[nTypePieces];
 		vehicleDriven = new String[nCustomers];
-		
+		flagPartMissing = new boolean[nTypePieces];
+        
         for (int i = 0; i < nTypePieces; i++) {
             piecesBought[i] = 0;
+            stock.put(EnumPiece.values()[i], 0);
+            flagPartMissing[i] = true;
         }
 		
 		
@@ -101,7 +104,7 @@ public class RepairShop {
 		updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
 	}
 	
-	public synchronized void updateFromLounge(Queue<Integer> replacementQueue, Queue<Integer> customersQueue, Queue<Integer> carsRepaired, boolean[] requiresReplacementCar, int idManager, ManagerState state){
+	public synchronized void updateFromLounge(ManagerState state){
 		managerState = state;
 		updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
 	}

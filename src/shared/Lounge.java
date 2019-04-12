@@ -180,10 +180,12 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * Manager's method. Manager chooses the customer with the highest
 	 * priority.
 	 * 
+     * @param state
 	 * @return an Integer indicating the next customer's id to attend
 	 */
 	@Override
     public synchronized int currentCustomer(ManagerState state) {
+        repairShop.updateFromLounge(state);
         int next = 0;
         if (customersQueue.isEmpty()) {
             next = replacementQueue.peek();
@@ -248,7 +250,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 */
 	@Override
     public synchronized void checkWhatToDo(ManagerState state) {
-        //MANDAR PARA LOG
+        repairShop.updateFromLounge(state); //MANDAR PARA LOG
         //((Manager) Thread.currentThread()).setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
     }
 
@@ -260,7 +262,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 */
 	@Override
     public synchronized int getIdToCall(ManagerState state) {
-        //MANDAR PARA LOG
+        repairShop.updateFromLounge(state); //MANDAR PARA LOG
         int next = customersToCallQueue.poll();
         return next;
     }
@@ -316,7 +318,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized Piece getPieceToReStock(ManagerState state) {
         Piece p = piecesQueue.poll();
-		//MANDAR PARA LOG
+		repairShop.updateFromLounge(state);//MANDAR PARA LOG
         return p;
     }
 
@@ -326,7 +328,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized void goReplenishStock(ManagerState state) {
         //((Manager) Thread.currentThread()).setManagerState(ManagerState.REPLENISH_STOCK);
-        //MANDAR PARA LOG
+        repairShop.updateFromLounge(state);//MANDAR PARA LOG
     }
 
     /**

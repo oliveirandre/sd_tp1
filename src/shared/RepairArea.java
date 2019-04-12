@@ -229,6 +229,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
      * registers it for further use by the mechanics.
      *
      * @param idCustomer the id of the car that the mechanic needs to repair
+     * @param state
      */
     @Override
     public synchronized void registerService(int idCustomer, ManagerState state) {
@@ -242,7 +243,7 @@ public class RepairArea implements IMechanicRA, IManagerRA {
         }
         nRequestsManager++;
         //MANDAR PARA LOG
-		repairShop.updateFromRepairArea(nRequestsManager, piecesToBeRepaired, flagPartMissing, stock);
+		repairShop.updateFromRepairArea(nRequestsManager, piecesToBeRepaired, flagPartMissing, stock, state);
     }
 
     /**

@@ -15,6 +15,6 @@ public interface ICustomerOW {
     public boolean decideOnRepair(int id, CustomerState state);
     public void goToRepairShop(int idCustomer, CustomerState state);
     public boolean backToWorkByCar(boolean carRepaired, int replacementCar, int id);
-    public boolean backToWorkByBus(boolean carRepaired, int id);
+    public boolean backToWorkByBus(boolean carRepaired, int id, CustomerState state);
     public void goToReception(int idCustomer, CustomerState state);
 }

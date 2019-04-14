@@ -3,7 +3,9 @@ package shared;
 import entities.Customer;
 import entities.CustomerState;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 import repository.RepairShop;
 
@@ -12,12 +14,14 @@ import repository.RepairShop;
  * @author andre and joao
  */
 public class OutsideWorld implements ICustomerOW, IManagerOW {
-	private RepairShop repairShop;
-    private final List<Integer> repairedCars = new ArrayList<>();
-    private final List<Integer> waitingForCar = new ArrayList<>();
-    private String[] vehicleDriven;
+	private final RepairShop repairShop;
+    private final List<Integer> repairedCars;
+    private final List<Integer> waitingForCar;
+    private final String[] vehicleDriven;
 	
 	public OutsideWorld(int nCustomers, RepairShop repairShop){
+        this.waitingForCar = new ArrayList<>();
+        this.repairedCars = new ArrayList<>();
         vehicleDriven = new String[nCustomers];
 		this.repairShop = repairShop;
 		
@@ -48,29 +52,37 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      * for the manager to tell him that his car has been repaired.
 	 * @param carRepaired
 	 * @param id
+     * @param state
 	 * @return 
      */
     @Override
-    public synchronized boolean backToWorkByBus(boolean carRepaired, int id) {
+    public synchronized boolean backToWorkByBus(boolean carRepaired, int id, CustomerState state) {
 		//((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
         vehicleDriven[id]="--";
 		repairShop.updateFromOutsideWorld(vehicleDriven);
+        repairShop.updateFromOutsideWorld(id, state);
 		if (!carRepaired) {
             waitingForCar.add(id);
             notifyAll();
+            //System.err.println("Deadlock?"+id);
+            
+            //while (repairedCars.peek()!= id) {
             while (!repairedCars.contains(id)) {
                 try {
                     wait();
-                } catch (Exception e) {
+                    System.out.println(id + " waiting to be called");
+                    System.out.println(waitingForCar + " waitingforcar");
+                    System.out.println(repairedCars + " repairedCars");
+                } catch (InterruptedException e) {
 
                 }
-            }
+            }System.out.println(id + " called");
             System.out.println(repairedCars.toString());
-            repairedCars.remove(new Integer(id));
+            repairedCars.remove(new Integer(id));//repairedCars.remove(new Integer(id));
             System.out.println(id + "acordado");
             return true;
         }
-        return false;
+        return carRepaired;
     }
 
     /**
@@ -98,13 +110,14 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
             while (!repairedCars.contains(id)) {
                 try {
                     wait();
+                    
                 } catch (InterruptedException e) {
 
                 }
             }
             return true;
         }
-        return false;
+        return carRepaired;
     }
 
     /**
@@ -138,10 +151,11 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
      */
     @Override
     public synchronized boolean phoneCustomer(int id) {
+        System.err.println("vou ligar ao customer "+id);
         while (!waitingForCar.contains(id)) {
             try {
                 wait();
-            } catch (Exception e) {
+            } catch (InterruptedException e) {
 
             }
         }
@@ -149,6 +163,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
             repairedCars.add(id);
             notifyAll();
             waitingForCar.remove(new Integer(id));
+            System.err.println("ja liguei ao "+id);
             return true;
         } else {
             return false;

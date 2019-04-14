@@ -2,7 +2,6 @@ package entities;
 
 import java.util.HashMap;
 import repository.Piece;
-import repository.RepairShop;
 import shared.IMechanicL;
 import shared.IMechanicP;
 import shared.IMechanicRA;
@@ -71,7 +70,8 @@ public class Mechanic extends Thread {
                     int fix = repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
                     
                     if(fix==0){
-						setMechanicState(MechanicState.WAITING_FOR_WORK);
+                        System.err.println("PEIDOLASPEIDOLASPEIDOLAS");
+						setMechanicState(MechanicState.CHECKING_STOCK);
 						break; //nao sei se este break é o melhor
 					}
                     

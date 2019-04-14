@@ -302,6 +302,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         //((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         if (piece == null) {
             customersToCallQueue.add(customerId);
+            System.err.println("CustomersToCall:"+customersToCallQueue);
             notifyAll();
         } else {
             piecesQueue.add(piece);

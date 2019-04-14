@@ -142,11 +142,12 @@ public class RepairArea implements IMechanicRA, IManagerRA {
      */
     @Override
     public synchronized int fixIt(int id, Piece piece) {
-        repaired.add(id);
         if (stock.get(piece.getTypePiece()) == 0) {
             //((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
             return 0;
         }
+        repaired.add(id);
+        
         removePieceFromStock(piece);
         piecesToBeRepaired.remove(id, piece);
 		repairShop.updateFromRepairArea(nRequestsManager, piecesToBeRepaired, flagPartMissing, stock);

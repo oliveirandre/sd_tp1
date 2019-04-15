@@ -135,7 +135,7 @@ public class RepairShop {
 		reportStatus();
 	}
 	
-	public synchronized void updateFromOutsideWorld(int idCustomer, CustomerState state){
+	public synchronized void updateFromOutsideWorld(String[] vehicleDriven, int idCustomer, CustomerState state){
 		customersStates[idCustomer] = state;
 		updateFromOutsideWorld(vehicleDriven);
 	}
@@ -195,7 +195,7 @@ public class RepairShop {
             GenericIO.writelnString("A operaçã de fecho do ficheiro " + fileName + " falhou! -initialstatus");
             System.exit(1);
         }
-        reportStatus();
+        //reportStatus();
     }
 
 	/**
@@ -205,12 +205,12 @@ public class RepairShop {
         
 		TextFile log = new TextFile(); // instanciação de uma variável de tipo ficheiro de texto
 
-        String lineStatus = ""; // linha a imprimir
-
         if (!log.openForAppending("./src", fileName)) {
             GenericIO.writelnString("A operação de criação do ficheiro " + fileName + " falhou!");
             System.exit(1);
         }
+		String lineStatus = ""; // linha a imprimir
+		
         lineStatus += " MAN  MECHANIC                                                                  CUSTOMER\n";
         //( (Customer) Thread.currentThread() ).carRepaired
         lineStatus += managerState.toString() + "  ";

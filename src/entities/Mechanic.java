@@ -70,7 +70,7 @@ public class Mechanic extends Thread {
                     int fix = repairArea.fixIt(idCarToFix, piecesToBeRepaired.get(idCarToFix));
                     
                     if(fix==0){
-                        System.err.println("PEIDOLASPEIDOLASPEIDOLAS");
+                        //System.err.println("PEIDOLASPEIDOLASPEIDOLAS");
 						setMechanicState(MechanicState.CHECKING_STOCK);
 						break; //nao sei se este break é o melhor
 					}

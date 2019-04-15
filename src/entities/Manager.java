@@ -88,6 +88,7 @@ public class Manager extends Thread {
                         if (availableReplacementCar) {
                             park.reserveCar(idCustomer);
                             lounge.handCarKey();
+							System.err.println("Chave dada ao " +idCustomer);
                             park.waitForCustomer(idCustomer);
                         }
                         this.setManagerState(ManagerState.POSTING_JOB);
@@ -118,7 +119,7 @@ public class Manager extends Thread {
 
                 case ALERTING_CUSTOMER:
                     idToCall = lounge.getIdToCall(this.state);
-                    System.err.println("Manger- vou alertar o "+idToCall);
+                    //System.err.println("Manger- vou alertar o "+idToCall);
                     customerWaiting = lounge.alertCustomer(idToCall);
                     if (!customerWaiting) {
                         outsideWorld.phoneCustomer(idToCall);

@@ -131,13 +131,14 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         while (replacementQueue.isEmpty()) {
             try {
                 wait();
-            } catch (Exception e) {
+            } catch (InterruptedException e) {
 
             }
         }
         customerGetRepCar = replacementQueue.poll();
         requiresReplacementCar[nextCustomer] = false;
 		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
+		
         notifyAll();
     }
 
@@ -202,6 +203,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * repaired while waiting, he goes to the normal queue.
 	 * 
 	 * @param id
+     * @param state
 	 * @return 
 	 */
 	@Override
@@ -211,7 +213,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 		//repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
         repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar, id, state);
         notify();
-        while (customerGetRepCar != id && !carsRepaired.contains(id)) {
+        while (customerGetRepCar != id ) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -258,6 +260,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	 * Manager's method. Manager goes into the queue of customers to call and
 	 * retrieves the head of the queue.
 	 * 
+	 * @param state
 	 * @return an Integer indicating the customer's id
 	 */
 	@Override
@@ -270,6 +273,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	/**
 	 * Manager's method. When there is work to do, the manager chooses the task
 	 * with the highest priority and changes state, accordingly.
+	 * @return 
 	 */
 	@Override
     public synchronized int appraiseSit() {
@@ -302,7 +306,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         //((Mechanic) Thread.currentThread()).setMechanicState(MechanicState.WAITING_FOR_WORK);
         if (piece == null) {
             customersToCallQueue.add(customerId);
-            System.err.println("CustomersToCall:"+customersToCallQueue);
+            //System.err.println("CustomersToCall:"+customersToCallQueue);
             notifyAll();
         } else {
             piecesQueue.add(piece);

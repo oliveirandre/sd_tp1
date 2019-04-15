@@ -1,6 +1,5 @@
 package shared;
 
-import entities.Customer;
 import entities.CustomerState;
 import entities.MechanicState;
 import java.util.ArrayList;
@@ -27,6 +26,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * Park Constructor. Initializes the replacement cars in the park.
      *
      * @param nReplacementCars the number of replacement cars
+	 * @param repairShop
      */
     public Park(int nReplacementCars, RepairShop repairShop) {
 		this.repairShop = repairShop;
@@ -66,22 +66,32 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * Customer's method. Customer goes into the park and finds the replacement
      * car that has been associated to him.
      *
+	 * @param id
+	 * @param state
      * @return an Integer representing the replacement car id
      */
     @Override
     public synchronized int findCar(int id, CustomerState state) {
         //((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
-        if (reserve.containsKey(id)) {
-            int n = reserve.get(id);
-            reserve.remove(id);
-            replacementCars.remove(n);
-			repairShop.updateFromPark(carsParked, replacementCars, id, state);
-            notifyAll();
-            return n;
-        } else {
-			repairShop.updateFromPark(carsParked, replacementCars, id, state);
-            return 0;
-        }
+		//notifyAll();
+        while (!reserve.containsKey(id)) {
+			try {
+				System.err.println(id); // é sempre o id= 0 WTFFFFWWTFWTFWTF
+				wait();
+				
+			} catch (InterruptedException ex) {
+				
+			}
+		}
+        int n = reserve.get(id);
+        reserve.remove(id);
+        replacementCars.remove(n);
+		notifyAll();
+		repairShop.updateFromPark(carsParked, replacementCars, id, state);
+        
+        return n;
+		
+        
     }
 
     /**
@@ -101,13 +111,16 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * Customer's method. After being alerted that his own car is ready, the
      * customer goes into the park and parks his replacement car.
      *
+	 * @param idCar
+	 * @param idCustomer
+	 * @param state
      * @param id the replacement car's id
      */
     @Override
     public synchronized void returnReplacementCar(int idCar, int idCustomer, CustomerState state) {
         //((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
         replacementCars.add(idCar);
-		System.out.println("");
+		//System.out.println("");
 		repairShop.updateFromPark(carsParked, replacementCars, idCustomer, state);
     }
 
@@ -141,11 +154,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      */
     @Override
     public synchronized boolean replacementCarAvailable() {
-        if (replacementCars.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+		return !replacementCars.isEmpty();
     }
 
     /**
@@ -156,6 +165,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     @Override
     public synchronized void reserveCar(int id) {
         reserve.put(id, replacementCars.peek());
+		//notifyAll();
     }
 
     /**
@@ -166,31 +176,15 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      */
     @Override
     public synchronized void waitForCustomer(int id) {
-        while (reserve.containsKey(id)) {
+        notifyAll();
+		while (reserve.containsKey(id)) {
             try {
                 wait();
+				
             } catch (Exception e) {
 
             }
         }
-    }
-
-    /**
-     * Method used for log. Retrieves the number of customer cars parked.
-     *
-     * @return an Integer that represents the number of customer cars parked
-     */
-    public int getCarsParkedSize() {
-        return carsParked.size();
-    }
-
-    /**
-     * Method used for log. Retrieves the number of replacement cars available
-     *
-     * @return an Integer that represents the number of replacement cars
-     * available
-     */
-    public int getReplacementCarsSize() {
-        return replacementCars.size();
+		
     }
 }

@@ -128,7 +128,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      */
     @Override
     public synchronized void handCarKey() {
-        while (replacementQueue.isEmpty()) {
+        
+		while (replacementQueue.isEmpty()) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -187,7 +188,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	@Override
     public synchronized int currentCustomer(ManagerState state) {
         repairShop.updateFromLounge(state);
-        int next = 0;
+        int next;
         if (customersQueue.isEmpty()) {
             next = replacementQueue.peek();
         } else {
@@ -212,7 +213,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 		replacementQueue.add(id);
 		//repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
         repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar, id, state);
-        notify();
+        notifyAll();
         while (customerGetRepCar != id ) {
             try {
                 wait();
@@ -241,7 +242,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         while (customersQueue.isEmpty() && customersToCallQueue.isEmpty() && piecesQueue.isEmpty()) {
             try {
                 wait();
-            } catch (Exception e) {
+            } catch (InterruptedException e) {
 
             }
         }
@@ -249,6 +250,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 
 	/**
 	 * Manager's method. Manager changes state to check what to do next.
+	 * @param state
 	 */
 	@Override
     public synchronized void checkWhatToDo(ManagerState state) {
@@ -358,8 +360,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     public synchronized boolean alertCustomer(int id) {
         if (replacementQueue.contains(id)) {
             carsRepaired.add(id);
-            notifyAll();
             customersToCallQueue.remove(id);
+			notifyAll();
 			repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
             return true;
         } else {

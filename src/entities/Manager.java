@@ -58,6 +58,7 @@ public class Manager extends Thread {
                 case CHECKING_WHAT_TO_DO:
                     lounge.checkWhatToDo(this.state);
                     if (leftCustomers == nCustomers) {
+						System.out.println("manager cenough work");
                         repairArea.enoughWork();
                         noMoreTasks = true;
                         break;
@@ -82,16 +83,20 @@ public class Manager extends Thread {
 
                 case ATTENDING_CUSTOMER:
                     idCustomer = lounge.currentCustomer(this.state);
-                    availableReplacementCar = park.replacementCarAvailable();
-                    String action = lounge.talkWithCustomer(availableReplacementCar);
-                    if (action.equals("car")) {
+                    System.err.println("lol"+idCustomer);
+					availableReplacementCar = park.replacementCarAvailable();
+                    System.err.println("lol"+idCustomer);
+					String action = lounge.talkWithCustomer(availableReplacementCar);
+                    System.err.println("lol"+idCustomer + " "+ action);
+					if (action.equals("car")) {
                         if (availableReplacementCar) {
                             park.reserveCar(idCustomer);
+							System.err.println("lol"+idCustomer);
                             lounge.handCarKey();
 							System.err.println("Chave dada ao " +idCustomer);
                             park.waitForCustomer(idCustomer);
                         }
-                        this.setManagerState(ManagerState.POSTING_JOB);
+						this.setManagerState(ManagerState.POSTING_JOB);
                         //repairArea.registerService(idCustomer);
                     } else if (action.equals("nocar")) {
                         this.setManagerState(ManagerState.POSTING_JOB);

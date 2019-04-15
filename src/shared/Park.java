@@ -76,9 +76,9 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
 		//notifyAll();
         while (!reserve.containsKey(id)) {
 			try {
-				System.err.println(id); // é sempre o id= 0 WTFFFFWWTFWTFWTF
+				System.err.println(id + "DEALOCK MUITO PROVAVEL EM findCar()"); // é QUASE sempre o id= 0 WTFFFFWWTFWTFWTF
 				wait();
-				
+				System.err.println(id + "DEALOCK DEFINITIVAMENTE EM findCar()"); // é QUASE sempre o id= 0 WTFFFFWWTFWTFWTF
 			} catch (InterruptedException ex) {
 				
 			}
@@ -176,8 +176,9 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      */
     @Override
     public synchronized void waitForCustomer(int id) {
-        notifyAll();
+       
 		while (reserve.containsKey(id)) {
+			notifyAll();
             try {
                 wait();
 				
@@ -185,6 +186,6 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
 
             }
         }
-		
+		//notifyAll();
     }
 }

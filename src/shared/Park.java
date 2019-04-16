@@ -43,6 +43,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * the park.
      *
      * @param id the id of the car
+	 * @param state
      */
     @Override
     public synchronized void parkCar(int id, CustomerState state) {

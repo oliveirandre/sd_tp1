@@ -53,6 +53,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      * customer now has to wait in a queue to be attended by the manager.
      *
      * @param id customer's id
+	 * @param state
      */
     @Override
     public synchronized void queueIn(int id, CustomerState state) {
@@ -62,7 +63,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         while (nextCustomer != id && !managerAvailable) {
             try {
                 wait();
-            } catch (Exception e) {
+            } catch (InterruptedException e) {
 
             }
         }
@@ -141,6 +142,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
             }
         }
 		customersWithRepCar.put(idCustomer, replacementCarId);
+		System.out.println(customersWithRepCar.toString());
 		replacementQueue.remove(new Integer(idCustomer));
         requiresReplacementCar[nextCustomer] = false;
 		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
@@ -321,6 +323,8 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      *
      * @param piece piece that needs to be re stocked
 	 * @param customerId customer that needs to be called because his car is ready to be picked up
+	 * @param idMechanic
+	 * @param state
      */
     @Override
     public synchronized void alertManager(Piece piece, int customerId, int idMechanic, MechanicState state) {

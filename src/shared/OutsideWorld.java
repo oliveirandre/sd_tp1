@@ -62,7 +62,7 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
     public synchronized boolean backToWorkByBus(boolean carRepaired, int id, CustomerState state) {
 		//((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITHOUT_CAR);
         vehicleDriven[id]="--";
-        repairShop.updateFromOutsideWorld(vehicleDriven,id, state);
+        repairShop.updateFromOutsideWorld(vehicleDriven, id, state);
 		if (!carRepaired) {
             waitingForCar.add(id);
             notifyAll();
@@ -95,17 +95,18 @@ public class OutsideWorld implements ICustomerOW, IManagerOW {
 	 * @param carRepaired
 	 * @param replacementCar
 	 * @param id
+	 * @param state
 	 * @return 
      */
     @Override
-    public synchronized boolean backToWorkByCar(boolean carRepaired, int replacementCar, int id) {
+    public synchronized boolean backToWorkByCar(boolean carRepaired, int replacementCar, int id, CustomerState state) {
         //((Customer) Thread.currentThread()).setCustomerState(CustomerState.NORMAL_LIFE_WITH_CAR);
         if(replacementCar==-1)
             if(id<10) vehicleDriven[id]="0"+Integer.toString(id);
 			else vehicleDriven[id]=Integer.toString(id);
         else vehicleDriven[id]="R"+Integer.toString(replacementCar);
 		
-        repairShop.updateFromOutsideWorld(vehicleDriven);
+        repairShop.updateFromOutsideWorld(vehicleDriven, id, state);
 		
         if (!carRepaired) {
             waitingForCar.add(id);

@@ -74,15 +74,16 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      * he requires a replacement car or not.
 	 * @param carRepaired
 	 * @param requiresCar
+	 * @param idCustomer
      */
     @Override
-    public synchronized void talkWithManager(boolean carRepaired, boolean requiresCar) {
+    public synchronized void talkWithManager(boolean carRepaired, boolean requiresCar, int idCustomer) {
         if (carRepaired) {
             order.put(nextCustomer, "pay");
         } else {
             if (requiresCar) {
                 order.put(nextCustomer, "car");
-                requiresReplacementCar[nextCustomer] = true;
+                requiresReplacementCar[idCustomer] = true;
             } else {
                 order.put(nextCustomer, "nocar");
             }
@@ -104,7 +105,6 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
     @Override
     public synchronized String talkWithCustomer(boolean availableCar) {
        // nextCustomer = customersQueue.poll();
-		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
         managerAvailable = true;
         notifyAll();
         managerAvailable = false;
@@ -125,6 +125,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 	@Override
 	public synchronized void addToReplacementQueue(int idCustomer){
 		replacementQueue.add(idCustomer);
+		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
 	}
     /**
      * Manager's method. Manager gives to the customer the replacement car's
@@ -144,7 +145,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 		customersWithRepCar.put(idCustomer, replacementCarId);
 		System.out.println(customersWithRepCar.toString());
 		replacementQueue.remove(new Integer(idCustomer));
-        requiresReplacementCar[nextCustomer] = false;
+        requiresReplacementCar[idCustomer] = false;
 		repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
 		
         notifyAll();
@@ -246,7 +247,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         if (carsRepaired.contains(id)) {
             carsRepaired.remove(id);
 			replacementQueue.remove(id);
-            requiresReplacementCar[nextCustomer] = false;
+            requiresReplacementCar[id] = false;
             //((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
             //((Customer) Thread.currentThread()).carRepaired = true;
 			repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);

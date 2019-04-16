@@ -113,7 +113,7 @@ public class Customer extends Thread {
 				case RECEPTION:
 					//System.out.println(this.id + " RECEPTION");
 					lounge.queueIn(id, state);
-					lounge.talkWithManager(carRepaired, requiresCar);
+					lounge.talkWithManager(carRepaired, requiresCar, id);
 					if (!carRepaired) {
 						if (requiresCar) {
 							//haveReplacementCar = true;

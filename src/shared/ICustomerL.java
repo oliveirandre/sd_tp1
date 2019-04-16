@@ -13,7 +13,7 @@ import entities.CustomerState;
  */
 public interface ICustomerL {
 	public void queueIn(int id, CustomerState state);
-	public void talkWithManager(boolean carRepaired, boolean requiresCar);
+	public void talkWithManager(boolean carRepaired, boolean requiresCar, int idCustomer);
 	public boolean collectKey(int id, CustomerState state);
 	public void payForTheService();
 

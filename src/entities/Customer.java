@@ -78,6 +78,7 @@ public class Customer extends Thread {
 					if (haveReplacementCar && carRepaired) {
 						haveReplacementCar = false;
 						park.returnReplacementCar(replacementCar, id, state);
+						System.out.println(id+ " retornei carro "+replacementCar);
 						setCustomerState(CustomerState.RECEPTION);
 						break;
 					}
@@ -92,6 +93,9 @@ public class Customer extends Thread {
 
 				case WAITING_FOR_REPLACE_CAR:
 					System.out.println(id + " WAITING_FOR_REPLACE_CAR");
+					
+					
+					
 					carRepaired = lounge.collectKey(id, state);
 					System.err.println(id+" collected key");
 					if (carRepaired) {
@@ -102,7 +106,10 @@ public class Customer extends Thread {
 						//System.err.println("Customer "+id+" tenho carro substituiçao");
 					}
 					System.out.println(this.id + " WAITING_FOR_REPLACE_CAR2");
-					replacementCar = park.findCar(id, state);
+					replacementCar = lounge.getCarReplacementId(id);
+					
+					
+					park.findCar(id, state, replacementCar);
 					
 					System.out.println("replacementCar:"+replacementCar);
 					//outsideWorld.backToWorkByCar(false, replacementCar, id); //log mete carro subst

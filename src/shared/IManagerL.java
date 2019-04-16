@@ -11,7 +11,7 @@ public interface IManagerL {
 
     public String talkWithCustomer(boolean availableCar);
 
-    public void handCarKey();
+    public void handCarKey(int replacementCarId, int idCustomer);
 
     public int currentCustomer(ManagerState state);
 

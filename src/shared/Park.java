@@ -21,6 +21,8 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
     private final List<Integer> carsParked = new ArrayList<>();
     private final Queue<Integer> replacementCars = new LinkedList<>();
     private final HashMap<Integer, Integer> reserve = new HashMap<>();
+	private final List<Integer> toReserve = new ArrayList<>();
+	private int findCarId;
 
     /**
      * Park Constructor. Initializes the replacement cars in the park.
@@ -71,10 +73,14 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * @return an Integer representing the replacement car id
      */
     @Override
-    public synchronized int findCar(int id, CustomerState state) {
-        //((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
+    public synchronized void findCar(int id, CustomerState state, int replacementCarId) {
+        /*//((Customer) Thread.currentThread()).setCustomerState(CustomerState.PARK);
 		//notifyAll();
-        while (!reserve.containsKey(id)) {
+		System.err.println(reserve.toString());
+		findCarId = id;
+		//notifyAll();
+		System.out.println("findCar():"+id);
+        while (!reserve.containsKey(id) ) {
 			try {
 				System.err.println(id + "DEALOCK MUITO PROVAVEL EM findCar()"); // é QUASE sempre o id= 0 WTFFFFWWTFWTFWTF
 				wait();
@@ -83,15 +89,18 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
 				
 			}
 		}
+		
         int n = reserve.get(id);
         reserve.remove(id);
-        replacementCars.remove(n);
-		notifyAll();
+        notifyAll();
+		replacementCars.remove(n);
 		repairShop.updateFromPark(carsParked, replacementCars, id, state);
         
         return n;
-		
-        
+		*/
+		System.out.println("findCar():"+id);
+        replacementCars.remove(replacementCarId);
+		repairShop.updateFromPark(carsParked, replacementCars, id, state);
     }
 
     /**
@@ -150,10 +159,15 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * Manager's method. Manager checks if there is any replacement car
      * available in the park.
      *
+	 * @param idCustomer
      * @return a boolean representing if a replacement car is available
      */
     @Override
-    public synchronized boolean replacementCarAvailable() {
+    public synchronized boolean replacementCarAvailable(int idCustomer) {
+		/*return ((replacementCars.size()== 0 && reserve.size()==3) ||
+			(replacementCars.size()== 1 && reserve.size()==2) ||
+			(replacementCars.size()== 2 && reserve.size()==1) ||
+			(replacementCars.size()== 3 && reserve.size()==0));*/
 		return !replacementCars.isEmpty();
     }
 
@@ -161,10 +175,18 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      * Manager's method. Reserves a replacement car for a customer.
      *
      * @param id customer's id
+	 * @return 
      */
     @Override
-    public synchronized void reserveCar(int id) {
-        reserve.put(id, replacementCars.peek());
+    public synchronized int reserveCar(int id) {
+		System.out.println("reserveCar:"+id);
+		System.out.println("findCarId:"+findCarId);
+        try {
+			return replacementCars.poll();
+		} catch (Exception e) {
+			return -1;
+		}
+		//reserve.put(id, replacementCars.peek());
 		//notifyAll();
     }
 
@@ -176,16 +198,15 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      */
     @Override
     public synchronized void waitForCustomer(int id) {
-       
+		/*notifyAll();	
 		while (reserve.containsKey(id)) {
-			notifyAll();
             try {
                 wait();
 				
             } catch (Exception e) {
 
             }
-        }
+        }*/
 		//notifyAll();
     }
 }

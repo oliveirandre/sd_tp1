@@ -83,19 +83,30 @@ public class Manager extends Thread {
 
                 case ATTENDING_CUSTOMER:
                     idCustomer = lounge.currentCustomer(this.state);
-                    System.err.println("lol"+idCustomer);
-					availableReplacementCar = park.replacementCarAvailable();
-                    System.err.println("lol"+idCustomer);
-					String action = lounge.talkWithCustomer(availableReplacementCar);
+                    //System.err.println("lol"+idCustomer);
+					
+                    //System.err.println("lol"+idCustomer);
+					String action = lounge.talkWithCustomer(false); //boolean n faz nada
                     System.err.println("lol"+idCustomer + " "+ action);
 					if (action.equals("car")) {
-                        if (availableReplacementCar) {
-                            park.reserveCar(idCustomer);
-							System.err.println("lol"+idCustomer);
-                            lounge.handCarKey();
-							System.err.println("Chave dada ao " +idCustomer);
-                            park.waitForCustomer(idCustomer);
-                        }
+						availableReplacementCar = park.replacementCarAvailable(idCustomer);
+                        //if (availableReplacementCar) {
+                        int replacementCarId = park.reserveCar(idCustomer);
+						//System.err.println("lol"+idCustomer);
+						System.err.println(idCustomer+" added to list of rep cars");
+                        lounge.handCarKey(replacementCarId, idCustomer);
+						System.err.println("Chave dada ao " +idCustomer);
+                        park.waitForCustomer(idCustomer);
+                        /*}else{
+							//int replacementCarId=0;
+							lounge.addToReplacementQueue();
+							lounge.handCarKey(-1, idCustomer);
+							
+							System.err.println(idCustomer+" not added to list of rep cars");
+							//setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
+							//break;
+						}*/
+							
 						this.setManagerState(ManagerState.POSTING_JOB);
                         //repairArea.registerService(idCustomer);
                     } else if (action.equals("nocar")) {
@@ -123,7 +134,7 @@ public class Manager extends Thread {
                     break;
 
                 case ALERTING_CUSTOMER:
-                    idToCall = lounge.getIdToCall(this.state);
+                    idToCall = lounge.getIdToCall(state);
                     //System.err.println("Manger- vou alertar o "+idToCall);
                     customerWaiting = lounge.alertCustomer(idToCall);
                     if (!customerWaiting) {

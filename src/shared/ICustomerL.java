@@ -16,4 +16,6 @@ public interface ICustomerL {
 	public void talkWithManager(boolean carRepaired, boolean requiresCar);
 	public boolean collectKey(int id, CustomerState state);
 	public void payForTheService();
+
+	public int getCarReplacementId(int id);
 }

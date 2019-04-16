@@ -11,9 +11,9 @@ package shared;
  */
 public interface IManagerP {
 
-    public boolean replacementCarAvailable();
+    public boolean replacementCarAvailable(int idCustomer);
 
-    public void reserveCar(int id);
+    public int reserveCar(int id);
 
     public void waitForCustomer(int id);
 }

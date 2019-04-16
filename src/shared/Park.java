@@ -98,7 +98,7 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
         
         return n;
 		*/
-		System.out.println("findCar():"+id);
+		//System.out.println("findCar():"+id);
         replacementCars.remove(replacementCarId);
 		repairShop.updateFromPark(carsParked, replacementCars, id, state);
     }
@@ -179,8 +179,8 @@ public class Park implements ICustomerP, IMechanicP, IManagerP {
      */
     @Override
     public synchronized int reserveCar(int id) {
-		System.out.println("reserveCar:"+id);
-		System.out.println("findCarId:"+findCarId);
+		//System.out.println("reserveCar:"+id);
+		//System.out.println("findCarId:"+findCarId);
         try {
 			return replacementCars.poll();
 		} catch (Exception e) {

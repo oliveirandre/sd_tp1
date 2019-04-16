@@ -67,7 +67,7 @@ public class Customer extends Thread {
 					} else {
 						requiresCar = outsideWorld.decideOnRepair(id, state);
 						//requiresCar = false;
-						requiresCar=true;
+						//requiresCar=true;
 					}
 					outsideWorld.goToRepairShop(this.id, this.state); // nao faz nada
 					setCustomerState(CustomerState.PARK);
@@ -78,40 +78,36 @@ public class Customer extends Thread {
 					if (haveReplacementCar && carRepaired) {
 						haveReplacementCar = false;
 						park.returnReplacementCar(replacementCar, id, state);
-						System.out.println(id+ " retornei carro "+replacementCar);
+						//System.out.println(id+ " retornei carro "+replacementCar);
 						setCustomerState(CustomerState.RECEPTION);
 						break;
 					}
 					park.parkCar(id, state);
 					
-					//if (!haveReplacementCar) {
-						
-					//}
-					
 					setCustomerState(CustomerState.RECEPTION);
 					break;
 
 				case WAITING_FOR_REPLACE_CAR:
-					System.out.println(id + " WAITING_FOR_REPLACE_CAR");
+					//System.out.println(id + " WAITING_FOR_REPLACE_CAR");
 					
 					
 					
 					carRepaired = lounge.collectKey(id, state);
-					System.err.println(id+" collected key");
+					//System.err.println(id+" collected key");
 					if (carRepaired) {
-						System.err.println("this");
+						//System.err.println("this");
 						setCustomerState(CustomerState.RECEPTION);
 						break;
 					} else {
 						//System.err.println("Customer "+id+" tenho carro substituiçao");
 					}
-					System.out.println(this.id + " WAITING_FOR_REPLACE_CAR2");
+					//System.out.println(this.id + " WAITING_FOR_REPLACE_CAR2");
 					replacementCar = lounge.getCarReplacementId(id);
 					
 					
 					park.findCar(id, state, replacementCar);
 					
-					System.out.println("replacementCar:"+replacementCar);
+					//System.out.println("replacementCar:"+replacementCar);
 					//outsideWorld.backToWorkByCar(false, replacementCar, id); //log mete carro subst
 					haveReplacementCar = true;
 					//setCustomerState(CustomerState.PARK);

@@ -120,7 +120,11 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
         return s;
 
     }
-
+	
+	@Override
+	public synchronized void addToReplacementQueue(int idCustomer){
+		replacementQueue.add(idCustomer);
+	}
     /**
      * Manager's method. Manager gives to the customer the replacement car's
      * key.
@@ -129,10 +133,6 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
      */
     @Override
     public synchronized void handCarKey(int replacementCarId, int idCustomer) {
-        if(replacementCarId==-1){
-			replacementQueue.add(idCustomer);
-			
-		}
 		while (replacementQueue.isEmpty()) {
             try {
                 wait();
@@ -233,7 +233,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 		//repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar);
         repairShop.updateFromLounge(replacementQueue, customersQueue, carsRepaired, requiresReplacementCar, id, state);
         notifyAll();
-        while (!customersWithRepCar.containsKey(id) && carsRepaired.contains(id) ) { //&& !carsRepaired.contains(id)
+        while (!customersWithRepCar.containsKey(id) && !carsRepaired.contains(id)) { //&& !carsRepaired.contains(id)
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -243,7 +243,7 @@ public class Lounge implements ICustomerL, IManagerL, IMechanicL {
 		
         if (carsRepaired.contains(id)) {
             carsRepaired.remove(id);
-            replacementQueue.remove(id);
+			replacementQueue.remove(id);
             requiresReplacementCar[nextCustomer] = false;
             //((Customer) Thread.currentThread()).setCustomerState(CustomerState.RECEPTION);
             //((Customer) Thread.currentThread()).carRepaired = true;

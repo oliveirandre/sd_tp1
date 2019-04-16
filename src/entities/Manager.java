@@ -56,9 +56,8 @@ public class Manager extends Thread {
         while (!noMoreTasks) {
             switch (this.state) {
                 case CHECKING_WHAT_TO_DO:
-                    lounge.checkWhatToDo(this.state);
+                    lounge.checkWhatToDo(state);
                     if (leftCustomers == nCustomers) {
-						System.out.println("manager cenough work");
                         repairArea.enoughWork();
                         noMoreTasks = true;
                         break;
@@ -82,30 +81,30 @@ public class Manager extends Thread {
                     break;
 
                 case ATTENDING_CUSTOMER:
-                    idCustomer = lounge.currentCustomer(this.state);
+                    idCustomer = lounge.currentCustomer(state);
                     //System.err.println("lol"+idCustomer);
 					
                     //System.err.println("lol"+idCustomer);
 					String action = lounge.talkWithCustomer(false); //boolean n faz nada
-                    System.err.println("lol"+idCustomer + " "+ action);
+                    //System.err.println("lol"+idCustomer + " "+ action);
 					if (action.equals("car")) {
 						availableReplacementCar = park.replacementCarAvailable(idCustomer);
-                        //if (availableReplacementCar) {
-                        int replacementCarId = park.reserveCar(idCustomer);
-						//System.err.println("lol"+idCustomer);
-						System.err.println(idCustomer+" added to list of rep cars");
-                        lounge.handCarKey(replacementCarId, idCustomer);
-						System.err.println("Chave dada ao " +idCustomer);
-                        park.waitForCustomer(idCustomer);
-                        /*}else{
+                        if (availableReplacementCar) {
+							int replacementCarId = park.reserveCar(idCustomer);
+							//System.err.println("lol"+idCustomer);
+							//System.err.println(idCustomer+" added to list of rep cars");
+							lounge.handCarKey(replacementCarId, idCustomer);
+							//System.err.println("Chave dada ao " +idCustomer);
+							park.waitForCustomer(idCustomer);
+                        }else{
 							//int replacementCarId=0;
-							lounge.addToReplacementQueue();
-							lounge.handCarKey(-1, idCustomer);
+							lounge.addToReplacementQueue(idCustomer);
+							//lounge.handCarKey(-1, idCustomer);
 							
-							System.err.println(idCustomer+" not added to list of rep cars");
+							//System.err.println(idCustomer+" not added to list of rep cars");
 							//setManagerState(ManagerState.CHECKING_WHAT_TO_DO);
 							//break;
-						}*/
+						}
 							
 						this.setManagerState(ManagerState.POSTING_JOB);
                         //repairArea.registerService(idCustomer);

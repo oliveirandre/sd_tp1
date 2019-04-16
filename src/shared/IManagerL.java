@@ -12,7 +12,7 @@ public interface IManagerL {
     public String talkWithCustomer(boolean availableCar);
 
     public void handCarKey(int replacementCarId, int idCustomer);
-
+	public  void addToReplacementQueue(int idCustomer);
     public int currentCustomer(ManagerState state);
 
     public void checkWhatToDo(ManagerState state);
